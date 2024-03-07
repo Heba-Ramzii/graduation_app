@@ -11,6 +11,9 @@
 .svn/
 migrate_working_dir/
 
+static/* linguist-vendored
+
+
 # IntelliJ related
 *.iml
 *.ipr
