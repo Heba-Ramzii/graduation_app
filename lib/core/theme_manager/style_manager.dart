@@ -9,40 +9,32 @@ abstract class StyleManager {
     fontWeight: FontWeight.w900,
   );
 
-  // button text light
-  static const textStyleLight30 = TextStyle(
-      fontSize: 30,
-    fontWeight: FontWeight.bold,
+   static const buttonTextStyle16 = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: ColorsManager.white
+
+
   );
 
-   static const textStyleDark30 = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
+
+  static const mainTextStyle15 = TextStyle(
+    fontSize: 15,
   );
 
-  // Nav bar text
-  static const textStyleDark18 = TextStyle(fontSize: 18,);
+  static const warringTextStyle15 = TextStyle(
+    fontSize: 15,
+    color: ColorsManager.red,
+  );
 
-   static const textStyleLight18 = TextStyle(
-      fontSize: 18,
-     fontWeight: FontWeight.bold,
+
+  static const textStyle14= TextStyle(
+      fontSize: 14,
    );
 
-  static const textStyleDark16 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.bold
-  );
-
-  static const textStyle16 = TextStyle(
-    fontSize: 16,
-      fontWeight: FontWeight.bold,
-
-
-  );
-
-  static const textStyle14 = TextStyle(
+  static const textStyle14mid = TextStyle(
       fontSize: 14,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
   );
 
   //label
