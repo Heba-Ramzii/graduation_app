@@ -5,6 +5,7 @@ import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
+//login test
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
