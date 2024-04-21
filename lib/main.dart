@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
-//yahia
+//heba
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeScreen(),
     );
   }
 }
