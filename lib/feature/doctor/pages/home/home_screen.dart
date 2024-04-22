@@ -16,17 +16,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 24),
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: ColorsManager.white,
-                borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  color: ColorsManager.primaryLight,
-                  blurRadius: 4,
-                  offset: Offset(0, 2),
-                 )
-              ],
-            ),
+            decoration: StyleManager.containerDecoration,
             child:  Row(
               children: [
                 const ProfileImage(
