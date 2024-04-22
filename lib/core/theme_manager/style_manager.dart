@@ -32,7 +32,10 @@ abstract class StyleManager {
 
   //label
   static const textStyle12 =
-      TextStyle(fontSize: 12, color: ColorsManager.primary);
+      TextStyle(
+          fontSize: 12,
+          color: ColorsManager.primary
+      );
 
 
   static const shadow = BoxShadow(

@@ -27,8 +27,8 @@ class ProfileImage extends StatelessWidget {
         ,
         imageUrl: url!,
         fit: BoxFit.cover,
-        height: size,
-        width: size,
+        height: height,
+        width: width,
       )
     );
   }
