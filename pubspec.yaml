@@ -80,7 +80,7 @@ flutter:
   fonts:
     - family: inter
       fonts:
-   #     - asset: fonts/Inter-Regular.ttf
+       - asset: assets/fonts/Inter-Regular.ttf
 
   #
   # For details regarding fonts from package dependencies,

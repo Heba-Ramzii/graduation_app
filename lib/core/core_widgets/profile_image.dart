@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage({super.key,
-      this.size = 15.0,
+      this.size = 10.0,
       this.url = 'https://img.freepik.com/free-photo/view-3d-person-sleeping-clouds_23-2151113525.jpg?t=st=1706637011~exp=1706640611~hmac=5e7979feb03f106a75f4dab992fb94150bd270fb939f27a311ff240940ebb1cc&w=360',
+    required this.height,
+    required this.width,
 
     });
   final double size ;
+  final double height ;
+  final double width ;
   final String? url;
 
 

@@ -17,7 +17,8 @@ class UserInfoSection extends StatelessWidget {
       child:  Row(
         children: [
           const ProfileImage(
-            size: 60,
+             height: 50,
+            width: 50,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
