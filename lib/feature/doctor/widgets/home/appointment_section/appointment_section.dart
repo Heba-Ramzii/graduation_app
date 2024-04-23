@@ -27,8 +27,7 @@ class AppointmentSection extends StatelessWidget {
           height:130,
            child: ListView.separated(
             shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
+             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) => const AppointmentListBuilder(),
             itemCount: 5,
             separatorBuilder: (context, index) => const SizedBox(

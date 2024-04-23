@@ -10,7 +10,7 @@ class CustomOutlineButton extends StatelessWidget {
     required this.onPressed,
       this.icon, 
       this.isIcon=false,
-      this.iconColor=ColorsManager.grayFont,
+      this.iconColor=ColorsManager.white,
   });
   final String text;
   final IconData? icon;
@@ -19,45 +19,42 @@ class CustomOutlineButton extends StatelessWidget {
   final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: OutlinedButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          side: MaterialStateProperty.all(const BorderSide(color: ColorsManager.primary)),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(4))),
-        ),
-        child:  Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if(isIcon)
-              Row(
-                children: [
-                  Icon(
-                    icon,
-                    size: 24,
-                    color: iconColor,
+    return OutlinedButton(
+     onPressed: onPressed,
+     style: ButtonStyle(
+       backgroundColor: MaterialStateProperty.all(ColorsManager.primary),
+       elevation: MaterialStateProperty.all(0),
+       side: MaterialStateProperty.all(const BorderSide(color: ColorsManager.primary)),
+       shape: MaterialStateProperty.all(
+           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+     ),
+     child:  Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+         if(isIcon)
+           Row(
+             children: [
+               Text(
+                 text,
+                 style: StyleManager.buttonTextStyle16.copyWith(
                   ),
-                  const SizedBox(width: 10,),
-                  Text(
-                    text.toUpperCase(),
-                    style: StyleManager.buttonTextStyle16.copyWith(
-                        fontWeight: FontWeight.normal
-                    ),
-                  ),
-
-                ],
-              ),if (!isIcon)
-                    Text(
-                text.toUpperCase(),
-                style: StyleManager.buttonTextStyle16.copyWith(
-                    fontWeight: FontWeight.normal
-                ),
                ),
-          ],
-        ),
-      ),
-    );
+               const SizedBox(width: 5,),
+               Icon(
+                 icon,
+                 size: 20,
+                 color: iconColor,
+               ),
+             ],
+           ),if (!isIcon)
+                 Text(
+             text,
+             style: StyleManager.buttonTextStyle16.copyWith(
+                 fontWeight: FontWeight.normal
+             ),
+            ),
+       ],
+     ),
+          );
   }
 }

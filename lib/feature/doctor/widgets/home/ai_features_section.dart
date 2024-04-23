@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/appointment_list_builder.dart';
-import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/clinic_info_section.dart';
-
-import '../../../../../core/core_widgets/profile_image.dart';
-import '../../../../../core/theme_manager/colors_manager.dart';
 import '../../../../../core/theme_manager/style_manager.dart';
+import '../../../../core/core_widgets/custom_outlined_button.dart';
 
 class AIFeaturesSection extends StatelessWidget {
   const AIFeaturesSection({super.key});
@@ -24,37 +20,33 @@ class AIFeaturesSection extends StatelessWidget {
           ),
         ),
          Container(
-           padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
           decoration: StyleManager.containerDecoration,
           child:  Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const ClinicInfoSection(),
-              Text(
-                '12 Patients',
-                style: StyleManager.textStyle12.copyWith(
-                  fontSize: 13,
-                  color: ColorsManager.primaryLight,
-                ),
+             children: [
+               const Text(
+                'New AI Assistant',
+                style: StyleManager.textStyle15light,
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+               Padding(
+                 padding: const EdgeInsets.symmetric(vertical: 16.0),
+                 child: Image.asset(
+                     'assets/images/Scan.jpg',
+                 ),
+               ),
+               Row(
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      FontAwesomeIcons.calendarMinus,
-                      size: 20,
-                      color: ColorsManager.primary,
-                    ),
-
+                   const Text(
+                    "Diagnose in seconds !",
+                     style: StyleManager.textStyle15light,
                   ),
-                  const SizedBox(width: 8,),
-                  const Text(
-                    "16:00 - 22:00",
-                    style: StyleManager.textStyle12,
-                  )
+                   const Spacer(),
+                   CustomOutlineButton(
+                       text: "Try Now",
+                       isIcon: true,
+                       icon: Icons.arrow_forward_ios_rounded,
+                       onPressed:(){},
+                   ),
                 ],
               ),
             ],

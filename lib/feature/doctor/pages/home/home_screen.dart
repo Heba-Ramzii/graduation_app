@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppointmentSection(),
-                AIFeaturesSection()
+                AIFeaturesSection(),
                ],
             ),
           ),
