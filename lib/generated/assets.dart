@@ -7,6 +7,6 @@ class Assets {
   static const String iconsFacebook = 'assets/icons/facebook.svg';
   static const String iconsGoogle = 'assets/icons/google.svg';
   static const String imagesLogo = 'assets/images/Logo.png';
-  static const String imagesScan = 'assets/images/Scan.jpg';
+  static const String imagesScan = 'assets/images/Scan.png';
 
 }

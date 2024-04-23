@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../../core/theme_manager/style_manager.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+ import '../../../../../core/theme_manager/style_manager.dart';
 import '../../../../core/core_widgets/custom_outlined_button.dart';
 
 class AIFeaturesSection extends StatelessWidget {
@@ -30,9 +30,9 @@ class AIFeaturesSection extends StatelessWidget {
               ),
                Padding(
                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                 child: Image.asset(
-                     'assets/images/Scan.jpg',
-                 ),
+                 child:SvgPicture.asset(
+                   'assets/images/Scan.svg',
+                 )
                ),
                Row(
                 children: [
