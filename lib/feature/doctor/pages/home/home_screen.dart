@@ -8,8 +8,8 @@ import 'package:graduation_app/feature/doctor/widgets/home/user_info.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeDoctorScreen extends StatelessWidget {
+  const HomeDoctorScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

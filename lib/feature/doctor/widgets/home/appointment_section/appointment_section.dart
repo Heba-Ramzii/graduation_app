@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:graduation_app/feature/doctor/pages/appointment/appointment_screen.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/appointment_list_builder.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/clinic_info_section.dart';
 
@@ -28,7 +29,12 @@ class AppointmentSection extends StatelessWidget {
            child: ListView.separated(
             shrinkWrap: true,
              scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => const AppointmentListBuilder(),
+            itemBuilder: (context, index) =>  InkWell(
+                child: AppointmentListBuilder(),
+              onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AppointmentScreen()));
+              },
+            ),
             itemCount: 5,
             separatorBuilder: (context, index) => const SizedBox(
               width: 30,

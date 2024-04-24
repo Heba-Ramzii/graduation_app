@@ -39,7 +39,8 @@ dependencies:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter:
   cached_network_image:
-
+  flutter_iconly: ^1.0.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

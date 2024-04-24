@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
+import 'feature/doctor/pages/appointment/appointment_screen.dart';
+
 //heba
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const HomeDoctorScreen(),
     );
   }
 }
