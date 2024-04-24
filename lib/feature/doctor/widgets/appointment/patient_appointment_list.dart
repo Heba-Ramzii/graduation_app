@@ -9,40 +9,44 @@ class PatientAppointmentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const Text(
-              'Patients',
-              style: StyleManager.textStyle14,
-            ),
-            const Spacer(),
-            Text(
-              '7 Patients',
-              style: StyleManager.textStyle12.copyWith(
-                fontSize: 13,
-                color: ColorsManager.primaryLight,
+    return Expanded(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Text(
+                'Patients',
+                style: StyleManager.textStyle14,
               ),
+              const Spacer(),
+              Text(
+                '7 Patients',
+                style: StyleManager.textStyle12.copyWith(
+                  fontSize: 13,
+                  color: ColorsManager.primaryLight,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Expanded(
+            child: ListView.builder(
+             shrinkWrap: true,
+               itemBuilder: (context, index) => InkWell(
+                   child: const PatientListBuilder(),
+                 onTap: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientDetailsScreen()
+                   )
+                   );
+                 },
+               ),
+             itemCount: 10,
             ),
-          ],
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        ListView.builder(
-         shrinkWrap: true,
-           itemBuilder: (context, index) => InkWell(
-               child: const PatientListBuilder(),
-             onTap: (){
-               Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientDetailsScreen()
-               )
-               );
-             },
-           ),
-         itemCount: 10,
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

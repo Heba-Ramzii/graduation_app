@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
 
@@ -13,9 +14,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
+      title: 'Graduation App',
+      theme: ThemeData(
+        //primarySwatch: const MaterialColor(ColorsManager.primary),
+        iconTheme:IconThemeData(
+          color:ColorsManager.primary,
+         )
+      ),
       debugShowCheckedModeBanner: false,
-      home: HomeDoctorScreen(),
+      home: const HomeDoctorScreen(),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/doctor/widgets/patient_details/patient_info_section.dart';
+import 'package:graduation_app/feature/doctor/widgets/patient_details/patient_note_section.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
@@ -32,8 +34,10 @@ class PatientDetailsScreen extends StatelessWidget {
       body:const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
+            PatientInfoSection(),
+            PatientNote(),
           ],
         ),
       ),

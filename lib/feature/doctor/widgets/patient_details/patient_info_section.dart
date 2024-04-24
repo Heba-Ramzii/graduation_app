@@ -14,7 +14,7 @@ class PatientInfoSection extends StatelessWidget {
         Row(
           children: [
             const Text(
-              'Clinic Name',
+              'Patient Name',
               style:StyleManager.textStyle14mid ,
             ),
             const Spacer(),
@@ -27,20 +27,16 @@ class PatientInfoSection extends StatelessWidget {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 12,bottom: 20),
+          padding: const EdgeInsets.only(top: 8,bottom: 28),
           child:Row(
             children: [
-              InkWell(
-                onTap: () {},
-                child: const Icon(
-                  FontAwesomeIcons.calendarMinus,
-                  size: 20,
-                  color: ColorsManager.primary,
-                ),
-
+              const Icon(
+                FontAwesomeIcons.calendarMinus,
+                size: 20,
+                color: ColorsManager.primary,
               ),
                const Padding(
-                 padding: EdgeInsets.symmetric(vertical: 5.0),
+                 padding: EdgeInsets.symmetric(horizontal: 5.0),
                  child: Text(
                   "12-Feb-2024",
                   style: StyleManager.textStyle12,
