@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/core_widgets/profile_image.dart';
 import '../../../../../core/theme_manager/colors_manager.dart';

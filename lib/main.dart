@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
-import 'feature/doctor/pages/appointment/appointment_screen.dart';
 
 //heba
 void main() {
@@ -14,13 +13,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeDoctorScreen(),
+      home: HomeDoctorScreen(),
     );
   }
 }
