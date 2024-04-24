@@ -1,33 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/core/theme_manager/style_manager.dart';
-import 'package:graduation_app/feature/doctor/widgets/appointment/clinic_section.dart';
-import 'package:graduation_app/feature/doctor/widgets/appointment/patient_appointment_listdart';
+import '../../../../core/theme_manager/colors_manager.dart';
+import '../../../../core/theme_manager/style_manager.dart';
 
-class AppointmentScreen extends StatelessWidget {
-  const AppointmentScreen({super.key});
+class PatientDetailsScreen extends StatelessWidget {
+  const PatientDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title:  Text(
-            'Appointment',
+          'Patient',
           style: StyleManager.mainTextStyle15.copyWith(
-            fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold
           ),
         ),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
               icon: const Icon(
-                  Icons.arrow_back,
+                Icons.arrow_back,
                 color: ColorsManager.primaryLight3,
               ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
-             );
+            );
           },
         ),
       ),
@@ -35,8 +33,7 @@ class AppointmentScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
-            ClinicSection(),
-            PatientAppointmentList(),
+
           ],
         ),
       ),

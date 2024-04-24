@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/doctor/widgets/appointment/paient_list_builder.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
+import '../../pages/patient_details/patient_details_screen.dart';
 
-class PatientSection extends StatelessWidget {
-  const PatientSection({super.key});
+class PatientAppointmentList extends StatelessWidget {
+  const PatientAppointmentList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,9 @@ class PatientSection extends StatelessWidget {
            itemBuilder: (context, index) => InkWell(
                child: const PatientListBuilder(),
              onTap: (){
-               //Navigator.push(context, MaterialPageRoute(builder: (context) => const AppointmentScreen()));
+               Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientDetailsScreen()
+               )
+               );
              },
            ),
          itemCount: 10,
