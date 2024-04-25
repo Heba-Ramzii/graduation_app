@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Graduation App',
       theme: ThemeData(
         //primarySwatch: const MaterialColor(ColorsManager.primary),
-        iconTheme:IconThemeData(
+        iconTheme:const IconThemeData(
           color:ColorsManager.primary,
          )
       ),

@@ -11,7 +11,7 @@ class PatientNote extends StatelessWidget {
     return  Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(bottom: 15.0,),
           child: Text(
             'Patient Note',
@@ -19,17 +19,18 @@ class PatientNote extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
+          margin: EdgeInsets.only(bottom: 21.0,),
           decoration: BoxDecoration(
             color: ColorsManager.primaryLight2,
             borderRadius: BorderRadius.circular(20),
           ),
           child:  Row(
             children: [
-              Icon(
+              const Icon(
                 IconlyBold.infoCircle,
               ),
-              SizedBox(width: 6,),
+              const SizedBox(width: 6,),
               Text(
                   "Patient message...",
                   style: StyleManager.textStyle12.copyWith(
