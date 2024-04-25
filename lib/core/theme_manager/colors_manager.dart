@@ -12,6 +12,20 @@ class ColorsManager
   static const Color grayFont = Color(0xff717171); // grayFont
   static const Color gold = Color(0xffFFDF00); // grayFont
   static const Color red = Color(0xffFF3D00); // grayFont
-  static const Color white = Color(0xffFFFFFF); // grayFont
+  static const Color white = Color(0xffFFFFFF);
+  static const MaterialColor primaryMaterialColor = MaterialColor(0xff0066FF, {
+    50: Color(0xff0066FF),
+    100: Color(0xff0066FF),
+    200: Color(0xff0066FF),
+    300: Color(0xff0066FF),
+    400: Color(0xff0066FF),
+    500: Color(0xff0066FF),
+    600: Color(0xff0066FF),
+    700: Color(0xff0066FF),
+    800: Color(0xff0066FF),
+    900: Color(0xff0066FF),
+  });
+
+// Now you can use primaryMaterialColor as primarySwatch
 
 }

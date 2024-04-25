@@ -10,23 +10,27 @@ class CustomMaterialButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
       this.color=ColorsManager.primary,
+      this.minWidth = double.infinity,
   });
   final String text;
   final  Color? color;
   final Function()? onPressed;
+  final double minWidth;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      minWidth: minWidth,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-              Radius.circular(4.0))),
+              Radius.circular(8.0))),
       color:color ,
       textColor: ColorsManager.font,
       onPressed:onPressed,
-      child:Text(
-        text.toUpperCase(),
-        style: StyleManager.buttonTextStyle16.copyWith(
-            fontWeight: FontWeight.normal
+      child:Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Text(
+          text,
+          style: StyleManager.buttonTextStyle16
         ),
       ),
     );

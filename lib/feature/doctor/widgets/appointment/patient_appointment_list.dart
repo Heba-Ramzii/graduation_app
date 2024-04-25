@@ -37,8 +37,12 @@ class PatientAppointmentList extends StatelessWidget {
                itemBuilder: (context, index) => InkWell(
                    child: const PatientListBuilder(),
                  onTap: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => const PatientDetailsScreen()
-                   )
+                   Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                           builder: (context)
+                           => const PatientDetailsScreen()
+                   ),
                    );
                  },
                ),

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/ai_diagnosis.dart';
 
 import '../../../../generated/assets.dart';
 
@@ -21,7 +22,9 @@ class XrayImage extends StatelessWidget {
           ),
         ),
         InkWell(
-        onTap: (){},
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const AiDiagnosisScreen()));
+        },
         child: const CircleAvatar(
           backgroundColor: ColorsManager.secondary,
           child: Icon(
@@ -31,24 +34,6 @@ class XrayImage extends StatelessWidget {
           ),
         ),
                   )
-
-        /*
-        Positioned(
-          left: 250,
-            top: 375,
-            child: InkWell(
-            onTap: (){},
-            child: const CircleAvatar(
-              backgroundColor: ColorsManager.secondary,
-              child: Icon(
-                  IconlyBold.scan,
-                color: ColorsManager.primary,
-                size: 24,
-              ),
-            ),
-          ),
-        )
-         */
       ],
     );
   }

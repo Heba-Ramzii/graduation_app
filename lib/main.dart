@@ -17,11 +17,8 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: 'Graduation App',
       theme: ThemeData(
-        //primarySwatch: const MaterialColor(ColorsManager.primary),
-        iconTheme:const IconThemeData(
-          color:ColorsManager.primary,
-         )
-      ),
+          primarySwatch: ColorsManager.primaryMaterialColor,
+       ),
       debugShowCheckedModeBanner: false,
       home: const HomeDoctorScreen(),
     );
