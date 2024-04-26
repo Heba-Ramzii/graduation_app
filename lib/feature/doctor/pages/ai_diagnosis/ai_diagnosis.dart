@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/image_result_section.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/report_section.dart';
-import 'package:graduation_app/feature/doctor/widgets/appointment/clinic_section.dart';
-import 'package:graduation_app/feature/doctor/widgets/appointment/patient_appointment_list.dart';
 
-import '../../../../generated/assets.dart';
 
 class AiDiagnosisScreen extends StatelessWidget {
   const AiDiagnosisScreen({super.key});

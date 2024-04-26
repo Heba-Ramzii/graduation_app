@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/add_clinic.dart';
 import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/app_bar_section.dart';
 
 import '../../widgets/doctor_clinics/pay_to_clinic.dart';

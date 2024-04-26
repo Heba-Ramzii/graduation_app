@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
-class AddClinic extends StatelessWidget {
-  const AddClinic({super.key});
+class ToAddClinic extends StatelessWidget {
+  const ToAddClinic({super.key});
 
   @override
   Widget build(BuildContext context) {

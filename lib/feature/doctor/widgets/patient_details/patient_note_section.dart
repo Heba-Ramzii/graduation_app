@@ -20,7 +20,7 @@ class PatientNote extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(16),
-          margin: EdgeInsets.only(bottom: 21.0,),
+          margin: const EdgeInsets.only(bottom: 21.0,),
           decoration: BoxDecoration(
             color: ColorsManager.primaryLight2,
             borderRadius: BorderRadius.circular(20),
