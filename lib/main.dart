@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
+import 'feature/doctor/pages/doctor_clinics/doctor_clinics.dart';
+
 
 //heba
 void main() {
@@ -17,10 +19,14 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: 'Graduation App',
       theme: ThemeData(
-          primarySwatch: ColorsManager.primaryMaterialColor,
+        iconTheme: const IconThemeData(
+          color: ColorsManager.primary,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: ColorsManager.primaryMaterialColor,
        ),
       debugShowCheckedModeBanner: false,
-      home: const HomeDoctorScreen(),
+      home: const DoctorClinic(),
     );
   }
 }

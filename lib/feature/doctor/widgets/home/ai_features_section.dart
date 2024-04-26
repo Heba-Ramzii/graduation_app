@@ -45,7 +45,9 @@ class AIFeaturesSection extends StatelessWidget {
                        text: "Try Now",
                        isIcon: true,
                        icon: Icons.arrow_forward_ios_rounded,
-                       onPressed:(){},
+                       onPressed:(){
+
+                       },
                    ),
                 ],
               ),
