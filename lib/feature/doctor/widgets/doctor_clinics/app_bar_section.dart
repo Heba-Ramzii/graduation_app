@@ -14,9 +14,9 @@ class AppBarSection extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           const ProfileImage(
-            height: 60,
-            width: 60,
-            size: 60,
+            height: 50,
+            width: 50,
+            size: 50,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -53,13 +53,15 @@ class AppBarSection extends StatelessWidget implements PreferredSizeWidget {
           );
         },
       ),
-      actions: const [
-        InkWell(
-          child: Icon(
-            Icons.edit,
-            size: 20,
-            color: ColorsManager.primary,
-          ),
+      actions:  [
+        IconButton(
+          onPressed: () {  },
+          icon:
+            const Icon(
+              Icons.edit,
+              size: 20,
+              color: ColorsManager.primary,
+            ),
         )
       ],
     );
