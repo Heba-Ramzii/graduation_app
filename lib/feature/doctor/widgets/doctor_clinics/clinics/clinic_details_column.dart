@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/clinics/rate_clinic.dart';
 
 import '../../../../../core/theme_manager/colors_manager.dart';
 
@@ -74,10 +75,7 @@ class ClinicDetailsColumn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Icon(
-                IconlyBold.location,
-              size: 15,
-            ),
+            const RateClinic(),
             Text(
                 "42 Reviews",
               style: StyleManager.textStyle12.copyWith(
