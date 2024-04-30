@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
-import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/upload_image_container.dart';
+import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/image_result_section.dart';
+import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/report_section.dart';
 
 
-
-class AIDiagnosisScreen extends StatelessWidget {
-  const AIDiagnosisScreen({super.key});
+class AIDiagnosisDetectedScreen extends StatelessWidget {
+  const AIDiagnosisDetectedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,10 @@ class AIDiagnosisScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
-             children: [
-               UploadImageContainer(),
-              ],
+            children: [
+              ImageResultSection(),
+              ReportSection(),
+            ],
           ),
         ),
       ),

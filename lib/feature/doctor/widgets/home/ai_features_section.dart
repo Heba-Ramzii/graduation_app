@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/ai_diagnosis.dart';
  import '../../../../../core/theme_manager/style_manager.dart';
 import '../../../../core/core_widgets/custom_outlined_button.dart';
+import '../../pages/ai_diagnosis/ai-diagnosis_detected.dart';
 
 class AIFeaturesSection extends StatelessWidget {
   const AIFeaturesSection({super.key});
@@ -46,7 +48,7 @@ class AIFeaturesSection extends StatelessWidget {
                        isIcon: true,
                        icon: Icons.arrow_forward_ios_rounded,
                        onPressed:(){
-
+                         Navigator.push(context, MaterialPageRoute(builder: (context) => const AIDiagnosisScreen()));
                        },
                    ),
                 ],
