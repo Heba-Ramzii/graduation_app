@@ -17,7 +17,7 @@ class _PatientHomeState extends State<PatientHome> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorsManager.homePageBackground,
+        ///   backgroundColor: ColorsManager.homePageBackground,
         bottomNavigationBar: NavigationBar(
           height: 70,
           indicatorShape: CircleBorder(
