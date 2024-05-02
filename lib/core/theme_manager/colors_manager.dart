@@ -1,19 +1,19 @@
+
 import 'package:flutter/material.dart';
 
-class ColorsManager {
+class ColorsManager
+{
   static const Color primary = Color(0xff0066FF);
   static const Color primaryLight = Color(0xff94A3B8); // login background
   static const Color primaryLight3 = Color(0xff7EB2FF); // login background
+  static const Color primaryBorder = Color(0xff93C5FD); // Border
   static const Color primaryLight2 = Color(0xffE5F0FF); // login background
-  static const Color secondary = Color(0xffF4A261); // login background
+  static const Color secondary = Color(0xffEEFFF8); // login background
   static const Color font = Color(0xff212121); // grayFont
   static const Color grayFont = Color(0xff717171); // grayFont
-  static const Color gold = Color(0xffFFDF00); // rate color
+  static const Color gold = Color(0xffFFDF00); // grayFont
   static const Color red = Color(0xffFF3D00); // grayFont
-  static const Color white = Color(0xffFFFFFF); // grayFont
-  static const Color blue = Color(0xff5C9DFF); // favorite color
-  static const Color blue2 = Color(0xffE5F0FF); // navigation bar
-  static const Color homePageBackground = Color(0xFFF8F9FA); // navigation bar
+  static const Color white = Color(0xffFFFFFF);
   static const MaterialColor primaryMaterialColor = MaterialColor(0xff0066FF, {
     50: Color(0xff0066FF),
     100: Color(0xff0066FF),
@@ -26,4 +26,7 @@ class ColorsManager {
     800: Color(0xff0066FF),
     900: Color(0xff0066FF),
   });
+
+// Now you can use primaryMaterialColor as primarySwatch
+
 }
