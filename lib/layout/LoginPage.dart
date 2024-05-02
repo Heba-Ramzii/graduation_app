@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                             padding: const EdgeInsets.fromLTRB(40, 20, 160, 0),
                             child: CustomIconButton(
                               onPressed: () {},
-                              icon: "assets/icons/facebook.svg",
+                              icon: "assets/icons/facebook.png",
                               iconSize: 16,
                             ),
                           ),
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                             padding: const EdgeInsets.fromLTRB(60, 20, 0, 0),
                             child: CustomIconButton(
                               onPressed: () {},
-                              icon: "assets/icons/google.svg",
+                              icon: "assets/icons/google.png",
                               iconSize: 16,
                             ),
                           ),

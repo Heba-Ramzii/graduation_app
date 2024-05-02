@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/layout/LoginPage.dart';
+import 'package:graduation_app/layout/patient_home_screen.dart';
 
 //yahia
 void main() {
@@ -12,12 +15,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Graduation App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        iconTheme: const IconThemeData(
+          color: ColorsManager.primary,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: ColorsManager.primaryMaterialColor,
       ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: const PatientHome(),
     );
   }
 }
