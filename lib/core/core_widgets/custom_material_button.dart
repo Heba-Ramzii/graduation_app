@@ -8,7 +8,8 @@ class CustomMaterialButton extends StatelessWidget {
     const CustomMaterialButton({
     super.key,
     required this.text,
-    required this.onPressed, this.color=ColorsManager.primary,
+    required this.onPressed,
+      this.color=ColorsManager.primary,
   });
   final String text;
   final  Color? color;

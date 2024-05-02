@@ -9,14 +9,8 @@ abstract class StyleManager {
     fontWeight: FontWeight.w900,
   );
 
-   static const buttonTextStyle16 = TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: ColorsManager.white
-
-
-  );
-
+  static const buttonTextStyle16 = TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w500, color: ColorsManager.white);
 
   static const mainTextStyle15 = TextStyle(
     fontSize: 15,
@@ -27,20 +21,39 @@ abstract class StyleManager {
     color: ColorsManager.red,
   );
 
-
-  static const textStyle14= TextStyle(
-      fontSize: 14,
-   );
+  static const textStyle14 = TextStyle(
+    fontSize: 14,
+  );
 
   static const textStyle14mid = TextStyle(
-      fontSize: 14,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
+  );
+  static const textStyle15light = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color: ColorsManager.primaryLight3,
   );
 
   //label
-  static const textStyle12 = TextStyle(
-      fontSize: 12,
-      color: ColorsManager.primary
-  );
+  static const textStyle12 =
+      TextStyle(
+          fontSize: 12,
+          color: ColorsManager.primary
+      );
 
+
+  static const shadow = BoxShadow(
+    color: ColorsManager.primaryLight,
+    blurRadius: 4,
+    offset: Offset(0, 2),
+  );
+  static BorderRadius borderRadius = BorderRadius.circular(10);
+  static  BoxDecoration containerDecoration = BoxDecoration(
+    color: ColorsManager.white,
+    borderRadius: borderRadius,
+    boxShadow:  const [
+      StyleManager.shadow
+    ],
+  );
 }
