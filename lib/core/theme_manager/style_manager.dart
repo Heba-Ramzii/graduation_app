@@ -25,6 +25,11 @@ abstract class StyleManager {
     fontSize: 14,
   );
 
+  static const textStyle13 = TextStyle(
+    fontSize: 13,
+    color: ColorsManager.primaryLight
+  );
+
   static const textStyle14mid = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
