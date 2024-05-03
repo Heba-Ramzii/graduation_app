@@ -31,6 +31,7 @@ dependencies:
   cached_network_image: ^3.3.1
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
+  date_picker_plus: ^3.0.2
   flutter:
     sdk: flutter
   flutter_iconly: ^1.0.2
@@ -66,11 +67,11 @@ flutter:
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
-   # example:
+  # example:
   fonts:
     - family: inter
-      fonts:
-   #     - asset: assets/fonts/Inter-Regular.ttf
+      fonts: null
+  #     - asset: assets/fonts/Inter-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -15,6 +15,7 @@ class ColorsManager {
   static const Color blue2 = Color(0xffE5F0FF);
   static const Color fillter = Color(0xFF1F5F9);
   static const Color blue3 = Color(0xFF94A3B8);
+  static const Color black = Color(0xFF212121);
 
   static const Color blue =
       Color(0xff5C9DFF); // favorite color // navigation bar
