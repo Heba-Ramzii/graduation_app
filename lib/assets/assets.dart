@@ -80,6 +80,7 @@ class _assets_icons_dart {
     required Brightness brightness,
   })  : _brightness = brightness;
 
+  final adjustments_svg = 'assets/icons/adjustments.svg';
   final calendar_png = 'assets/icons/calendar.png';
   final calendar_svg = 'assets/icons/calendar.svg';
   final chat_alt_png = 'assets/icons/chat-alt.png';
@@ -102,4 +103,6 @@ class _assets_images_dart {
   })  : _brightness = brightness;
 
   final Logo_png = 'assets/images/Logo.png';
+  final Scan_png = 'assets/images/Scan.png';
+  final Scan_svg = 'assets/images/Scan.svg';
 }

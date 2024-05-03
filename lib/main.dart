@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/layout/patient_home_screen.dart';
+import 'package:graduation_app/layout/search_patient_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PatientHome(),
+      home: const SearchPatientSceen(),
     );
   }
 }

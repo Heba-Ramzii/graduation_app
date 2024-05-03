@@ -47,11 +47,12 @@ class _PatientHomeState extends State<PatientHome> {
                 ),
                 label: ''),
             NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/dots-horizontal.svg',
-                  color: ColorsManager.blue,
-                ),
-                label: ''),
+              icon: SvgPicture.asset(
+                'assets/icons/dots-horizontal.svg',
+                color: ColorsManager.blue,
+              ),
+              label: '',
+            ),
           ],
         ),
         body: SingleChildScrollView(

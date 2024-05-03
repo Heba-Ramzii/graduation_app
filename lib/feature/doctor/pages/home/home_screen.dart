@@ -3,7 +3,6 @@ import 'package:graduation_app/feature/doctor/widgets/home/ai_features_section.d
 import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/appointment_section.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/user_info.dart';
 
-
 class HomeDoctorScreen extends StatelessWidget {
   const HomeDoctorScreen({super.key});
 
@@ -20,10 +19,10 @@ class HomeDoctorScreen extends StatelessWidget {
               children: [
                 AppointmentSection(),
                 AIFeaturesSection(),
-               ],
+              ],
             ),
           ),
-         ],
+        ],
       ),
     );
   }
