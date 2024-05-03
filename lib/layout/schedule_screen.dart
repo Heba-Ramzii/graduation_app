@@ -1,10 +1,7 @@
 import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/appointment_card.dart';
-import 'package:graduation_app/widget/book_card.dart';
 import 'package:graduation_app/widget/clinic_card.dart';
 
 class SchedualScreen extends StatefulWidget {
