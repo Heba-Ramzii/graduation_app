@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/file_list.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/upload_image_container.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/upload_process.dart';
 
@@ -32,25 +34,14 @@ class AIDiagnosisScreen extends StatelessWidget {
           },
         ),
       ),
-      body:  SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-             children: [
-               const UploadImageContainer(),
-               Padding(
-                 padding: const EdgeInsets.only(top: 30.0,bottom: 20),
-                 child: Text(
-                     "Files",
-                   style: StyleManager.textStyle14.copyWith(
-                     fontWeight: FontWeight.bold,
-                   ),
-                 ),
-               ),
-               const UploadProcess(),
-              ],
-          ),
+      body:  const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 40.0),
+        child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+             UploadImageContainer(),
+             FileList(),
+             ],
         ),
       ),
     );
