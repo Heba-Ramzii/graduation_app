@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
-import 'feature/doctor/pages/doctor_clinics/clinic.dart';
-
-
-//heba
 void main() {
   runApp(const MyApp());
 }
@@ -16,10 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Graduation App',
       theme: ThemeData(
-        iconTheme: const IconThemeData(
+         iconTheme: const IconThemeData(
           color: ColorsManager.primary,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,

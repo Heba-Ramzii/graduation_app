@@ -42,8 +42,8 @@ dependencies:
   flutter_iconly: ^1.0.2
   flutter_rating_bar: ^4.0.1
   mobkit_dashed_border: ^0.0.6
+  percent_indicator: ^4.2.3
 
-  
 dev_dependencies:
   flutter_test:
     sdk: flutter

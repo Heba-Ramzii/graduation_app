@@ -11,7 +11,7 @@ class UploadImageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-       padding: EdgeInsets.all(32),
+       padding: const EdgeInsets.all(32),
       decoration: const BoxDecoration(
           border: DashedBorder.fromBorderSide(
               dashLength: 15,
