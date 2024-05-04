@@ -1,5 +1,8 @@
+import 'dart:ffi';
+
 import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
@@ -39,7 +42,7 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                   "schedule",
                   style: TextStyle(
                       color: ColorsManager.black,
-                      fontSize: 16,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -70,7 +73,7 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
             ),
             SizedBox(height: 10),
             ToggleSwitch(
-              minWidth: 200,
+              minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
               labels: ['Your Self', 'Another Person'],
@@ -101,6 +104,43 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
             CustomTextFormField(
               controller: controller1,
               type: TextInputType.phone,
+            ),
+            SizedBox(height: 10),
+            ToggleSwitch(
+              minWidth: MediaQuery.of(context).size.width,
+              initialLabelIndex: 0,
+              totalSwitches: 2,
+              labels: ['Male', 'Female'],
+              onToggle: (index) {
+                print('switched to: $index');
+              },
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Describe Your Case",
+              style: TextStyle(
+                color: ColorsManager.black,
+                fontSize: 18,
+              ),
+            ),
+            TextFormField(
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: 'Write your case here',
+                hintStyle: TextStyle(
+                  color: ColorsManager.blue,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
+            Container(
+              padding: EdgeInsets.only(left: 15, right: 10),
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 50,
+              child: CustomMaterialButton(text: "Continue", onPressed: () {}),
             ),
           ],
         ),

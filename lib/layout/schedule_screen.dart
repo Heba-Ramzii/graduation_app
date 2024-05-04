@@ -36,7 +36,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
                   "schedule",
                   style: TextStyle(
                       color: ColorsManager.black,
-                      fontSize: 16,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
               ],
