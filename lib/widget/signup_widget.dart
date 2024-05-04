@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/custom_icon_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
-class LoginWidget extends StatelessWidget {
-  const LoginWidget({super.key});
+class SignupWidget extends StatelessWidget {
+  const SignupWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller2 = TextEditingController();
-    TextEditingController controller3 = TextEditingController();
     return Stack(
       children: [
         Container(
@@ -30,7 +27,7 @@ class LoginWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(50, 30, 50, 50),
               child: Text(
-                'Login',
+                'Sign up',
                 style: TextStyle(
                   color: ColorsManager.primary,
                   fontSize: 40,
@@ -39,18 +36,39 @@ class LoginWidget extends StatelessWidget {
               ),
             ),
             CustomTextFormField(
-              controller: controller2,
-              type: TextInputType.emailAddress,
-              label: "Email",
-              prefixIcon: Icons.email,
-              hint: "Enter your email",
+              controller: TextEditingController(),
+              type: TextInputType.name,
+              label: "name",
+              hint: "Enter your name",
               colorFont: ColorsManager.black,
             ),
             SizedBox(
               height: 20,
             ),
             CustomTextFormField(
-              controller: controller3,
+              controller: TextEditingController(),
+              type: TextInputType.emailAddress,
+              label: "Email",
+              hint: "Enter your Email",
+              colorFont: ColorsManager.black,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomTextFormField(
+              controller: TextEditingController(),
+              type: TextInputType.visiblePassword,
+              label: "Password",
+              suffixPressed: () => {},
+              hint: "Enter your password",
+              suffixIcon: Icons.remove_red_eye,
+              colorFont: ColorsManager.black,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomTextFormField(
+              controller: TextEditingController(),
               type: TextInputType.visiblePassword,
               label: "Password",
               suffixPressed: () => {},
@@ -62,15 +80,8 @@ class LoginWidget extends StatelessWidget {
               height: 20,
             ),
             CustomMaterialButton(
-              text: "Login",
+              text: "Sign up",
               onPressed: () => {},
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 200),
-              child: CustomTextButton(
-                text: "forget Password?",
-                onPressed: () => {},
-              ),
             ),
             SizedBox(
               height: 30,
@@ -143,11 +154,11 @@ class LoginWidget extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 100,
+                  width: 120,
                 ),
-                Text("Don't have an account?"),
+                Text("have an account?"),
                 CustomTextButton(
-                  text: "  Sign up",
+                  text: "  Login",
                   onPressed: () => {},
                 ),
               ],
