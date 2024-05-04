@@ -15,6 +15,9 @@ Widget CustomTextFormField({
   Function()? suffixPressed,
   IconData? prefixIcon,
   double iconSize = 24,
+  String label = "",
+  String hint = "",
+  IconData? suffixIcon,
 }) =>
     Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -29,6 +32,15 @@ Widget CustomTextFormField({
         onChanged: onChange,
         //enabled: isClickable,
         decoration: InputDecoration(
+          suffixIcon: suffixPressed != null
+              ? IconButton(
+                  onPressed: suffixPressed,
+                  icon: Icon(
+                    Icons.remove_red_eye,
+                    color: ColorsManager.primary,
+                  ),
+                )
+              : null,
           prefixIcon: Icon(
             prefixIcon,
             size: iconSize,
@@ -39,13 +51,13 @@ Widget CustomTextFormField({
           ),
           fillColor: ColorsManager.secondary,
           filled: false,
-
-          // label: Text(
-          //   label,
-          //   style: TextStyle(
-          //     color: ColorsManager.primary,
-          //   ),
-          // ),
+          label: Text(
+            label,
+            style: TextStyle(
+              color: ColorsManager.primary,
+            ),
+          ),
+          hintText: hint,
         ),
       ),
     );

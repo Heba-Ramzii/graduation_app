@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
+import 'package:graduation_app/layout/login_screen.dart';
 import 'package:graduation_app/layout/patient_home_screen.dart';
 import 'package:graduation_app/layout/schedule_screen.dart';
 import 'package:graduation_app/layout/schedule_screen_2.dart';
 import 'package:graduation_app/layout/search_patient_screen.dart';
+import 'package:graduation_app/layout/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const ScheduleSreen2(),
+      home: const LoginScreen(),
     );
   }
 }
