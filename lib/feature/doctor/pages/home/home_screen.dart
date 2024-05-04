@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/ai_features_section.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/appointment_section.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/user_info.dart';

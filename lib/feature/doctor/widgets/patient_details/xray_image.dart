@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/ai_diagnosis.dart';
 
 import '../../../../generated/assets.dart';
 import '../../pages/ai_diagnosis/ai-diagnosis_detected.dart';

@@ -47,7 +47,7 @@ class OptionsColumn extends StatelessWidget {
             onTap:  (){},
             text: "Help Center "
         ),
-        SizedBox(height: 17,),
+        const SizedBox(height: 17,),
         Row(
           children: [
             const Icon(

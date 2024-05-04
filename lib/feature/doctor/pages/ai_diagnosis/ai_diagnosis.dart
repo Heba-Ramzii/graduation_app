@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/file_list.dart';
 import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/upload_image_container.dart';
-import 'package:graduation_app/feature/doctor/widgets/ai_diagnosis/upload_process.dart';
 
 
 

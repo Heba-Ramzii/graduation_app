@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/options_column.dart';
 
-import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
 class Profile extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
 import 'feature/doctor/pages/profile/profile.dart';
 
