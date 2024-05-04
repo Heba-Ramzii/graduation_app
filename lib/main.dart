@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 
+import 'feature/doctor/pages/profile/profile.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
        ),
       debugShowCheckedModeBanner: false,
-      home: const HomeDoctorScreen(),
+      home: const Profile(),
     );
   }
 }

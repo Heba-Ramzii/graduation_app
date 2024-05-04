@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/ai_features_section.dart';
 import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/appointment_section.dart';
@@ -35,31 +36,35 @@ class HomeDoctorScreen extends StatelessWidget {
         ),
         backgroundColor: ColorsManager.primaryLight2,
         selectedIndex: 0,
-        //indicatorColor: ColorsManager.white,
+        indicatorColor: ColorsManager.white,
         onDestinationSelected: (index) {},
-        destinations: [
+        destinations: const [
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                color: ColorsManager.primary,
+              icon: Icon(
+                  Icons.home_outlined,
+                color: ColorsManager.primaryLight4,
+                size: 20,
               ),
               label: ''),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/chat-alt.svg',
-                color: ColorsManager.primary,
+              icon:  Icon(
+                  Icons.chat_outlined,
+                color: ColorsManager.primaryLight4,
+                size: 20,
               ),
               label: ''),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/calendar.svg',
-                color: ColorsManager.primary,
+              icon:  Icon(
+                  IconlyLight.calendar,
+                color: ColorsManager.primaryLight4,
+                size: 20,
               ),
               label: ''),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/dots-horizontal.svg',
-                color: ColorsManager.primary,
+              icon:  Icon(
+                  Icons.more_horiz_rounded,
+                color: ColorsManager.primaryLight4,
+                size: 20,
               ),
               label: ''),
         ],
