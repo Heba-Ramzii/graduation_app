@@ -15,7 +15,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: ColorsManager.homePageBackground,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
