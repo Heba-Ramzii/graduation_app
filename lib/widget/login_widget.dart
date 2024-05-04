@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/custom_icon_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
