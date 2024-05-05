@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:graduation_app/feature/doctor/widgets/profile/option_row.dart';
+import 'package:graduation_app/core/function/core_function.dart';
+import 'package:graduation_app/feature/doctor/pages/profile/profile.dart';
+import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
@@ -14,7 +16,9 @@ class OptionsColumn extends StatelessWidget {
       children: [
         OptionRow(
             icon: IconlyLight.profile,
-            onTap:  (){},
+            onTap:  (){
+              navigateToScreen(context, ProfileScreen());
+            },
             text: "Profile"
         ),
         OptionRow(

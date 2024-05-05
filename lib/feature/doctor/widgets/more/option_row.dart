@@ -34,7 +34,7 @@ class OptionRow extends StatelessWidget {
           ),
           const Spacer(),
           InkWell(
-            onTap: (){},
+            onTap: onTap,
             child: const Icon(
                 IconlyLight.arrowRight,
               size: 24,
