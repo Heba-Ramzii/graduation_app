@@ -4,12 +4,14 @@ import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
 class CustomMaterialButton extends StatelessWidget {
   const CustomMaterialButton({
+    this.style,
     super.key,
     required this.text,
     required this.onPressed,
     this.color = ColorsManager.primary,
     this.minWidth = double.infinity,
   });
+  final TextStyle? style;
   final String text;
   final Color? color;
   final Function()? onPressed;
@@ -19,13 +21,16 @@ class CustomMaterialButton extends StatelessWidget {
     return MaterialButton(
       minWidth: minWidth,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8.0))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
       color: color,
       textColor: ColorsManager.font,
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
-        child: Text(text, style: StyleManager.buttonTextStyle16),
+        child: Text(text, style: style ?? StyleManager.buttonTextStyle16),
       ),
     );
   }

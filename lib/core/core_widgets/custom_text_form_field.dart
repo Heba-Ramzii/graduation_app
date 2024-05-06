@@ -5,7 +5,7 @@ import '../theme_manager/style_manager.dart';
 
 Widget CustomTextFormField({
   Color? colorFont = ColorsManager.primaryLight2,
-  required TextEditingController controller,
+  TextEditingController? controller,
   required TextInputType type,
   Function(String)? onSubmit,
   final Function(String)? onChange,

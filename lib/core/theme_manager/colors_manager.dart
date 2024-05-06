@@ -17,6 +17,8 @@ class ColorsManager {
   static const Color blue3 = Color(0xFF94A3B8);
   static const Color black = Color(0xFF212121);
   static const Color background = Color(0xFFDBEAFE);
+  static const Color purple = Color(0xff8676fb);
+  static const Color shadow = Color(0x99ABBED1);
 
   static const Color blue =
       Color(0xff5C9DFF); // favorite color // navigation bar
