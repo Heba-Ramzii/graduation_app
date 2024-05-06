@@ -7,8 +7,7 @@ import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../core/theme_manager/colors_manager.dart';
-import '../../../../core/theme_manager/style_manager.dart';
+import '../../../../../core/theme_manager/colors_manager.dart';
 
 class PatientProfileScreen extends StatefulWidget {
    PatientProfileScreen({super.key});

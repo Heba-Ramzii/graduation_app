@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/feature/doctor/pages/more/settings/password_manager_screen.dart';
 
 import '../../../../../core/function/core_function.dart';
-import '../../../pages/profile/patient_profile.dart';
 import '../../more/option_row.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -22,7 +22,9 @@ class SettingsBody extends StatelessWidget {
         ),
         OptionRow(
             icon: Icons.key,
-            onTap:  (){},
+            onTap:  (){
+              navigateToScreen(context,const PasswordManagerScreen());
+            },
             text: "Password manager"
         ),
         OptionRow(

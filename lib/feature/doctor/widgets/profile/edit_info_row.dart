@@ -13,9 +13,11 @@ class EditInfoRow extends StatelessWidget {
     required this.inputType,
      this.icon,
      this.onTap,
-     this.readOnly= false ,
+     this.readOnly= false,
+      this.helpText ="" ,
    });
   final String title;
+  final String helpText;
    final TextEditingController controller;
   final TextInputType  inputType;
   final IconData? icon;
@@ -37,11 +39,16 @@ class EditInfoRow extends StatelessWidget {
             controller: controller,
             keyboardType: inputType,
             decoration: InputDecoration(
+              helperText: helpText,
+              helperStyle: TextStyle(
+                color: ColorsManager.primaryLight4,
+                locale: ,
+              ),
               suffixIcon: InkWell(
                 onTap: onTap,
                 child:  Icon(
                   icon,
-                  color: ColorsManager.primary,
+                  color: ColorsManager.primaryLight4,
                 ),
               ),
                labelText: title,
