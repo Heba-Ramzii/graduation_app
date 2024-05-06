@@ -15,10 +15,10 @@ import '../theme_manager/style_manager.dart';
     return InkWell(
       onTap: onPressed,
       child:  Text(
-        text.toUpperCase(),
+        text,
         textAlign: TextAlign.center,
-        style: StyleManager.buttonTextStyle16.copyWith(
-          color: ColorsManager.primary,
+        style: StyleManager.textStyle14.copyWith(
+          color: ColorsManager.primaryLight4,
         )
 
       ),

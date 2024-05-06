@@ -3,14 +3,13 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
-import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../core/theme_manager/colors_manager.dart';
 
 class PatientProfileScreen extends StatefulWidget {
-   PatientProfileScreen({super.key});
+   const PatientProfileScreen({super.key});
 
   @override
   State<PatientProfileScreen> createState() => _PatientProfileScreenState();
@@ -45,7 +44,7 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
           title: 'Profile'
       ),
       body:  Padding(

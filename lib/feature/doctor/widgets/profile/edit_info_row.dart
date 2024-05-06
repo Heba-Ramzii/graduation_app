@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
-import '../../../../core/theme_manager/style_manager.dart';
 
 
 class EditInfoRow extends StatelessWidget {
@@ -14,10 +12,8 @@ class EditInfoRow extends StatelessWidget {
      this.icon,
      this.onTap,
      this.readOnly= false,
-      this.helpText ="" ,
    });
   final String title;
-  final String helpText;
    final TextEditingController controller;
   final TextInputType  inputType;
   final IconData? icon;
@@ -39,11 +35,6 @@ class EditInfoRow extends StatelessWidget {
             controller: controller,
             keyboardType: inputType,
             decoration: InputDecoration(
-              helperText: helpText,
-              helperStyle: TextStyle(
-                color: ColorsManager.primaryLight4,
-                locale: ,
-              ),
               suffixIcon: InkWell(
                 onTap: onTap,
                 child:  Icon(

@@ -18,7 +18,7 @@ class OptionsColumn extends StatelessWidget {
         OptionRow(
             icon: IconlyLight.profile,
             onTap:  (){
-              navigateToScreen(context, PatientProfileScreen());
+              navigateToScreen(context, const PatientProfileScreen());
             },
             text: "Profile"
         ),
