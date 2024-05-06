@@ -4,7 +4,6 @@ import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../core/theme_manager/colors_manager.dart';
 
