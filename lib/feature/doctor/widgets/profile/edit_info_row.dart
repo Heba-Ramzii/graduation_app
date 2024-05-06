@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
@@ -10,10 +11,16 @@ class EditInfoRow extends StatelessWidget {
      required this.title,
     required  this.controller,
     required this.inputType,
+     this.icon,
+     this.onTap,
+     this.readOnly= false ,
    });
   final String title;
    final TextEditingController controller;
   final TextInputType  inputType;
+  final IconData? icon;
+  final bool readOnly ;
+  final Function()? onTap;
   String value = "";
 
 
@@ -25,17 +32,21 @@ class EditInfoRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextField(
+            readOnly: readOnly,  //set it true, so that user will not able to edit text
             cursorColor:ColorsManager.primary ,
             controller: controller,
             keyboardType: inputType,
             decoration: InputDecoration(
+              suffixIcon: InkWell(
+                onTap: onTap,
+                child:  Icon(
+                  icon,
+                  color: ColorsManager.primary,
+                ),
+              ),
                labelText: title,
              focusColor: ColorsManager.primary,
-             labelStyle:const TextStyle(
-               fontSize: 14,
-             ) ,
-              //hintText: title,
-
+             labelStyle:const TextStyle(fontSize: 14,) ,
              ),
             onChanged: (text) {
               value = text;

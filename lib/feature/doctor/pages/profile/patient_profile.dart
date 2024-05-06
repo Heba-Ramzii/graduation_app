@@ -1,18 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
-class ProfileScreen extends StatelessWidget {
-   ProfileScreen({super.key});
+class PatientProfileScreen extends StatefulWidget {
+   PatientProfileScreen({super.key});
+
+  @override
+  State<PatientProfileScreen> createState() => _PatientProfileScreenState();
+}
+
+class _PatientProfileScreenState extends State<PatientProfileScreen> {
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate) {
+
+      String formattedDate = DateFormat('dd-MM-yyyy').format(picked);
+      print(formattedDate);
+      setState(() {
+        birthController.text = formattedDate;
+      });
+    }
+  }
+
   final nameController = TextEditingController();
   final emailController = TextEditingController();
-  final passController = TextEditingController();
   final sexController = TextEditingController();
   final birthController = TextEditingController();
   final phoneController = TextEditingController();
@@ -20,28 +46,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(
-          'Profile',
-          style: StyleManager.mainTextStyle15.copyWith(
-              fontWeight: FontWeight.bold
-          ),
-        ),
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.arrow_back,
-                color: ColorsManager.primaryLight3,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            );
-          },
-        ),
+      appBar: CustomAppBar(
+          title: 'Profile'
       ),
-
       body:  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 27.0,),
       child: Column(
@@ -81,19 +88,20 @@ class ProfileScreen extends StatelessWidget {
             inputType: TextInputType.emailAddress,
           ),
           EditInfoRow(
-            title: "Password",
-             controller: passController,
-            inputType: TextInputType.visiblePassword,
-           ),
-          EditInfoRow(
             title: "Phone Number",
              controller: phoneController,
             inputType: TextInputType.phone,
           ),
           EditInfoRow(
             title: "Date of Birth",
+             readOnly: true,
              controller: birthController,
             inputType: TextInputType.datetime,
+            icon: IconlyLight.calendar,
+            onTap: () {
+              _selectDate(context);
+
+              },
           ),
           const SizedBox(height: 40,),
           CustomMaterialButton(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/function/core_function.dart';
-import 'package:graduation_app/feature/doctor/pages/profile/profile.dart';
+import 'package:graduation_app/feature/doctor/pages/profile/patient_profile.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
+import '../../pages/more/settings_screen.dart';
 
 class OptionsColumn extends StatelessWidget {
   const OptionsColumn({super.key});
@@ -17,7 +18,7 @@ class OptionsColumn extends StatelessWidget {
         OptionRow(
             icon: IconlyLight.profile,
             onTap:  (){
-              navigateToScreen(context, ProfileScreen());
+              navigateToScreen(context, PatientProfileScreen());
             },
             text: "Profile"
         ),
@@ -43,7 +44,9 @@ class OptionsColumn extends StatelessWidget {
         ),
         OptionRow(
             icon: Icons.settings_outlined,
-            onTap:  (){},
+            onTap:  (){
+              navigateToScreen(context, const SettingsScreen());
+            },
             text: "Settings"
         ),
         OptionRow(
