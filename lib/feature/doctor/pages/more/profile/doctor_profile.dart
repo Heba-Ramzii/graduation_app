@@ -8,37 +8,17 @@ import 'package:intl/intl.dart';
 
 import '../../../../../core/theme_manager/colors_manager.dart';
 
-class DoctorProfileScreen extends StatefulWidget {
-  const DoctorProfileScreen({super.key});
-
-  @override
-  State<DoctorProfileScreen> createState() => _DoctorProfileScreenState();
-}
-
-class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
-  DateTime selectedDate = DateTime.now();
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != selectedDate) {
-
-      String formattedDate = DateFormat('dd-MM-yyyy').format(picked);
-      print(formattedDate);
-      setState(() {
-        birthController.text = formattedDate;
-      });
-    }
-  }
+class DoctorProfileScreen extends StatelessWidget {
+   DoctorProfileScreen({super.key});
 
   final nameController = TextEditingController();
+
   final emailController = TextEditingController();
+
   final sexController = TextEditingController();
-  final birthController = TextEditingController();
+
+  final specialityController = TextEditingController();
+
   final phoneController = TextEditingController();
 
   @override
@@ -93,14 +73,9 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
             ),
             EditInfoRow(
               title: "Speciality",
-              readOnly: true,
-              controller: birthController,
+               controller: specialityController,
               inputType: TextInputType.datetime,
-              icon: IconlyLight.calendar,
-              onTap: () {
-                _selectDate(context);
-
-              },
+               onTap: () {},
             ),
             const SizedBox(height: 40,),
             CustomMaterialButton(
