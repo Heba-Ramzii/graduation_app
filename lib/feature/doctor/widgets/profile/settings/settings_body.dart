@@ -3,6 +3,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/feature/doctor/pages/more/settings/password_manager_screen.dart';
 
 import '../../../../../core/function/core_function.dart';
+import '../../../pages/more/settings/notification _settings_screen.dart';
 import '../../more/option_row.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -15,7 +16,7 @@ class SettingsBody extends StatelessWidget {
         OptionRow(
             icon: IconlyLight.notification,
             onTap:  (){
-              //navigateToScreen(context, PatientProfileScreen());
+              navigateToScreen(context, const NotificationSettingsScreen());
             },
             text: "Notification Settings"
         ),
