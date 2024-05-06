@@ -88,11 +88,14 @@ class _assets_icons_dart {
   final dots_horizontal_png = 'assets/icons/dots-horizontal.png';
   final dots_horizontal_svg = 'assets/icons/dots-horizontal.svg';
   final facebook_png = 'assets/icons/facebook.png';
+  final facebook_svg = 'assets/icons/facebook.svg';
   final google_png = 'assets/icons/google.png';
+  final google_svg = 'assets/icons/google.svg';
   final home_png = 'assets/icons/home.png';
   final home_svg = 'assets/icons/home.svg';
   final Reminder_png = 'assets/icons/Reminder.png';
   final Reminder_svg = 'assets/icons/Reminder.svg';
+  final visa_svg = 'assets/icons/visa.svg';
 }
 
 class _assets_images_dart {
