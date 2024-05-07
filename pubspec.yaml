@@ -33,13 +33,17 @@ dependencies:
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   date_picker_plus: ^3.0.2
+  file_picker: ^8.0.3
   flutter:
     sdk: flutter
+  flutter_chat_ui: ^1.6.12
   flutter_iconly: ^1.0.2
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.10+1
   font_awesome_flutter: null
+  image_picker: ^1.1.1
   intl: ^0.18.0
+  mime: ^1.0.5
   toggle_switch: ^2.3.0
 
 dev_dependencies:

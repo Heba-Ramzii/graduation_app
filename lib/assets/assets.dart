@@ -105,6 +105,7 @@ class _assets_images_dart {
     required Brightness brightness,
   })  : _brightness = brightness;
 
+  final drimage_png = 'assets/images/drimage.png';
   final Logo_png = 'assets/images/Logo.png';
   final Scan_png = 'assets/images/Scan.png';
   final Scan_svg = 'assets/images/Scan.svg';
