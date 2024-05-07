@@ -13,6 +13,7 @@ class AppointmentContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 20.0),
       padding:  const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
         color: ColorsManager.white,
@@ -28,28 +29,26 @@ class AppointmentContainer extends StatelessWidget {
             onTap: () {},
             icon: Icons.keyboard_arrow_down_rounded,
           ),
-          Expanded(
-            child: Row(
-               children: [
-                Expanded(
-                  child: EditInfoRow(
-                     title: "From",
-                    controller: fromController,
-                    inputType: TextInputType.text,
-                    onTap: () {},
-                   ),
-                ),
-                 const SizedBox(width: 15,),
-                 Expanded(
-                   child: EditInfoRow(
-                      title: "To",
-                     controller: toController,
-                     inputType: TextInputType.text,
-                     onTap: () {},
-                    ),
+           Row(
+             children: [
+              Expanded(
+                child: EditInfoRow(
+                   title: "From",
+                  controller: fromController,
+                  inputType: TextInputType.text,
+                  onTap: () {},
                  ),
-              ],
-            ),
+              ),
+               const SizedBox(width: 15,),
+               Expanded(
+                 child: EditInfoRow(
+                    title: "To",
+                   controller: toController,
+                   inputType: TextInputType.text,
+                   onTap: () {},
+                  ),
+               ),
+            ],
           ),
         ],
       ),
