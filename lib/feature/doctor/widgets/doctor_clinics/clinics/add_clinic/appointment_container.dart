@@ -7,39 +7,52 @@ import '../../../profile/edit_info_row.dart';
 class AppointmentContainer extends StatelessWidget {
    AppointmentContainer({super.key});
   final dayController = TextEditingController();
+  final fromController = TextEditingController();
+  final toController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
-            "Appointments",
-            style: StyleManager.mainTextStyle15,
+    return Container(
+      padding:  const EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        color: ColorsManager.white,
+        borderRadius:StyleManager.borderRadius,
+      ),
+      child: Column(
+        children: [
+          EditInfoRow(
+            readOnly: true,
+            title: "Day",
+            controller: dayController,
+            inputType: TextInputType.text,
+            onTap: () {},
+            icon: Icons.keyboard_arrow_down_rounded,
           ),
-        ),
-        Container(
-          padding:  const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            color: ColorsManager.white,
-            borderRadius:StyleManager.borderRadius,
+          Expanded(
+            child: Row(
+               children: [
+                Expanded(
+                  child: EditInfoRow(
+                     title: "From",
+                    controller: fromController,
+                    inputType: TextInputType.text,
+                    onTap: () {},
+                   ),
+                ),
+                 const SizedBox(width: 15,),
+                 Expanded(
+                   child: EditInfoRow(
+                      title: "To",
+                     controller: toController,
+                     inputType: TextInputType.text,
+                     onTap: () {},
+                    ),
+                 ),
+              ],
+            ),
           ),
-          child:  Column(
-            children: [
-              EditInfoRow(
-                readOnly: true,
-                title: "Day",
-                controller: dayController,
-                inputType: TextInputType.datetime,
-                onTap: () {},
-                icon: Icons.keyboard_arrow_down_rounded,
-              ),
-
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

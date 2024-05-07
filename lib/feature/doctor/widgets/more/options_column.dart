@@ -5,6 +5,7 @@ import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
+import '../../pages/doctor_clinics/add_clinic.dart';
 import '../../pages/more/profile/patient_profile.dart';
 import '../../pages/more/settings/settings_screen.dart';
 
@@ -29,7 +30,9 @@ class OptionsColumn extends StatelessWidget {
         ),
         OptionRow(
             icon: Icons.add_business_outlined,
-            onTap:  (){},
+            onTap:  (){
+              navigateToScreen(context, const AddClinic());
+            },
             text: "Add clinic"
         ),
         OptionRow(
