@@ -53,6 +53,7 @@ abstract class StyleManager {
     blurRadius: 4,
     offset: Offset(0, 2),
   );
+
   static BorderRadius borderRadius = BorderRadius.circular(10);
   static  BoxDecoration containerDecoration = BoxDecoration(
     color: ColorsManager.white,

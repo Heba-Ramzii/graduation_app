@@ -4,9 +4,11 @@ import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.actionIcon, this.actionTap});
 
   final String title;
+  final IconData? actionIcon;
+  final Function()? actionTap ;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
           );
         },
       ),
+      actions: [
+        IconButton(
+          onPressed:  actionTap,
+            icon: Icon(
+                actionIcon,
+              color: ColorsManager.primary,
+            ),
+        ),
+      ],
     );
   }
 

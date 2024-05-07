@@ -4,6 +4,8 @@ import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
+
+import '../../../../../core/theme_manager/colors_manager.dart';
 class PasswordManagerScreen extends StatelessWidget {
   const PasswordManagerScreen({super.key});
 
@@ -30,6 +32,7 @@ class PasswordManagerScreen extends StatelessWidget {
               child:CustomTextButton(
                 text: "Forget Password?",
                 onPressed: (){},
+                fontColor: ColorsManager.primaryLight4,
               ),
             ),
             EditInfoRow(

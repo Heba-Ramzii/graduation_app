@@ -7,9 +7,13 @@ import '../theme_manager/style_manager.dart';
     super.key,
     required this.text,
     required this.onPressed,
+      this.fontWeight,
+      this.fontColor = ColorsManager.primary,
   });
   String text;
   Function()? onPressed;
+    FontWeight? fontWeight;
+    final Color fontColor;
     @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -18,7 +22,8 @@ import '../theme_manager/style_manager.dart';
         text,
         textAlign: TextAlign.center,
         style: StyleManager.textStyle14.copyWith(
-          color: ColorsManager.primaryLight4,
+          color: fontColor,
+          fontWeight: fontWeight,
         )
 
       ),
