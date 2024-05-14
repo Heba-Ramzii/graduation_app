@@ -8,11 +8,13 @@ import '../theme_manager/style_manager.dart';
     required this.text,
     required this.onPressed,
       this.fontWeight,
+      this.fontSize,
       this.fontColor = ColorsManager.primary,
   });
   String text;
   Function()? onPressed;
     FontWeight? fontWeight;
+    double? fontSize;
     final Color fontColor;
     @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ import '../theme_manager/style_manager.dart';
         style: StyleManager.textStyle14.copyWith(
           color: fontColor,
           fontWeight: fontWeight,
+          fontSize: fontSize,
         )
 
       ),

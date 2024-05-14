@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 
@@ -66,12 +67,18 @@ class OptionsColumn extends StatelessWidget {
               color: ColorsManager.red,
             ),
             const SizedBox(width: 40,),
-            Text(
-              "Log Out",
-              style: StyleManager.mainTextStyle15.copyWith(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500
-              ),
+            CustomTextButton(
+              text:"Log Out",
+              onPressed: () {
+                showMyDialog(context, "Log Out",
+                    "Yes, Log Out",
+                        (){}
+
+                );
+               },
+              fontSize: 18,
+                fontWeight: FontWeight.w500,
+              fontColor: ColorsManager.font,
             ),
 
           ],

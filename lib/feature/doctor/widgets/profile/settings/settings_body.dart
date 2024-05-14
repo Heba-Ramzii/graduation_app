@@ -29,7 +29,14 @@ class SettingsBody extends StatelessWidget {
         ),
         OptionRow(
             icon: IconlyLight.delete,
-            onTap:  (){},
+            onTap:  (){
+              showMyDialog(
+                  context, "Delete Account",
+                  "Yes, Delete",
+                      (){}
+
+              );
+            },
             text: "Delete Account"
         ),
       ],

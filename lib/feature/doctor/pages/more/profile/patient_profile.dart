@@ -48,33 +48,31 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
           title: 'Profile'
       ),
       body:  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 27.0,),
+      padding: const EdgeInsets.symmetric(horizontal: 27.0,vertical: 10),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
-                child: Stack(alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      ProfileImage(
-                        size: 90,
-                        height: 100,
-                        width: 100,
+         children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 30.0),
+            child: Stack(alignment: AlignmentDirectional.bottomEnd,
+                children: [
+                  ProfileImage(
+                    size: 90,
+                    height: 100,
+                    width: 100,
+                  ),
+                  InkWell(
+                    child: CircleAvatar(
+                      radius: 16,
+                      backgroundColor: ColorsManager.white,
+                      child: Icon(
+                        IconlyLight.edit,
+                        size: 18,
+                        color: ColorsManager.primary,
                       ),
-                      InkWell(
-                        child: CircleAvatar(
-                          radius: 16,
-                          backgroundColor: ColorsManager.white,
-                          child: Icon(
-                            IconlyLight.edit,
-                            size: 18,
-                            color: ColorsManager.primary,
-                          ),
-                        ),
-                      ),
-                    ]),
-              )),
+                    ),
+                  ),
+                ]),
+          ),
           EditInfoRow(
             title: "Name",
             controller: nameController,
@@ -101,8 +99,8 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
 
               },
           ),
-          const SizedBox(height: 40,),
-          CustomMaterialButton(
+           const SizedBox(height: 80,),
+           CustomMaterialButton(
               text: "Update profile",
               onPressed:  (){},
           ),
