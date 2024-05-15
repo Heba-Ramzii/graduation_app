@@ -1,8 +1,11 @@
 import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
+import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/layout/schedule_screen_2.dart';
 import 'package:graduation_app/widget/clinic_card.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class SchedualScreen extends StatefulWidget {
   const SchedualScreen({Key? key});
@@ -12,6 +15,8 @@ class SchedualScreen extends StatefulWidget {
 }
 
 class _SchedualScreenState extends State<SchedualScreen> {
+  get controller1 => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +50,9 @@ class _SchedualScreenState extends State<SchedualScreen> {
               ],
             ),
             SizedBox(height: 20),
-            Image.asset('assets/images/Logo.png', height: 200),
+            Image.asset(
+              'assets/images/profile.png',
+            ),
             SizedBox(height: 20),
             Text(
               "Profile",
@@ -93,11 +100,97 @@ class _SchedualScreenState extends State<SchedualScreen> {
               ),
             ),
             SizedBox(height: 50),
+            SizedBox(height: 10),
+            Divider(
+              color: ColorsManager.blue,
+              thickness: 2,
+            ),
+            SizedBox(height: 5),
+            Text(
+              "Patient Information",
+              style: TextStyle(
+                color: ColorsManager.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+            ToggleSwitch(
+              minWidth: MediaQuery.of(context).size.width,
+              initialLabelIndex: 0,
+              totalSwitches: 2,
+              labels: ['Your Self', 'Another Person'],
+              onToggle: (index) {
+                print('switched to: $index');
+              },
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Full Name",
+              style: TextStyle(
+                color: ColorsManager.primary,
+                fontSize: 16,
+              ),
+            ),
+            CustomTextFormField(
+              controller: controller1,
+              type: TextInputType.name,
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Age",
+              style: TextStyle(
+                color: ColorsManager.primary,
+                fontSize: 16,
+              ),
+            ),
+            CustomTextFormField(
+              controller: controller1,
+              type: TextInputType.phone,
+            ),
+            SizedBox(height: 10),
+            ToggleSwitch(
+              minWidth: MediaQuery.of(context).size.width,
+              initialLabelIndex: 0,
+              totalSwitches: 2,
+              labels: ['Male', 'Female'],
+              onToggle: (index) {
+                print('switched to: $index');
+              },
+            ),
+            SizedBox(height: 10),
+            Text(
+              "Describe Your Case",
+              style: TextStyle(
+                color: ColorsManager.black,
+                fontSize: 18,
+              ),
+            ),
+            TextFormField(
+              maxLines: 5,
+              decoration: InputDecoration(
+                hintText: 'Write your case here',
+                hintStyle: TextStyle(
+                  color: ColorsManager.blue,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(height: 10),
             Container(
               width: MediaQuery.of(context).size.width * 0.9,
               child: CustomMaterialButton(
-                text: "Continue",
-                onPressed: () {},
+                text: "Submit",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                      return ScheduleSreen2();
+                    }),
+                  );
+                },
               ),
             ),
           ],

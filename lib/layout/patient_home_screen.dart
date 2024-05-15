@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation_app/core/core_widgets/navigation_bar.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/layout/chat_screen.dart';
+import 'package:graduation_app/layout/patient_profile_screen.dart';
+import 'package:graduation_app/layout/schedule_screen.dart';
 import 'package:graduation_app/layout/search_patient_screen.dart';
 import 'package:graduation_app/widget/appointment_card.dart';
 import 'package:graduation_app/widget/reminder_card.dart';
@@ -14,11 +18,16 @@ class PatientHome extends StatefulWidget {
 }
 
 class _PatientHomeState extends State<PatientHome> {
+  int currentIndex = 0;
+
+  List<Widget> screens = [
+    PatientHomeScreen(),
+    ChatScreen(),
+    SchedualScreen(),
+    PatientProfileScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 0;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
@@ -27,11 +36,11 @@ class _PatientHomeState extends State<PatientHome> {
               eccentricity: 0.0,
             ),
             backgroundColor: ColorsManager.blue2,
-            selectedIndex: 0,
+            selectedIndex: currentIndex,
             indicatorColor: ColorsManager.white,
-            onDestinationSelected: (int index) {
+            onDestinationSelected: (Index) {
               setState(() {
-                currentIndex = index;
+                currentIndex = Index;
               });
             },
             destinations: [
@@ -64,202 +73,213 @@ class _PatientHomeState extends State<PatientHome> {
                 label: '',
               ),
             ]),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        body: screens[currentIndex],
+      ),
+    );
+  }
+}
+
+class PatientHomeScreen extends StatelessWidget {
+  const PatientHomeScreen({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.05),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          Row(
             children: [
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://picsum.photos/200/300',
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          ' Hello\'',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: ColorsManager.primaryLight,
-                          ),
-                        ),
-                        Text(
-                          'Jimmy Foley!',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: ColorsManager.font,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  IconButton(
-                    iconSize: 30,
-                    color: ColorsManager.blue,
-                    onPressed: () {},
-                    icon: Icon(Icons.notifications_none),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              Stack(
-                children: [
-                  SearchBar(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                          return SearchPatientSceen();
-                        }),
-                      );
-                    },
-                    backgroundColor:
-                        MaterialStatePropertyAll(ColorsManager.white),
-                    hintText: 'Search Doctor, Clinic',
-                    leading: Icon(Icons.search, color: ColorsManager.blue),
-                  ),
-                ],
-              ),
-              SizedBox(height: 24),
-              Text(
-                'Reminders',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 10),
-              ReminderCard(
-                medication: Text(
-                  'Paracetamol',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsManager.font,
-                  ),
-                ),
-                time: '8:45 AM',
-                image: Image.asset(
-                  'assets/icons/Reminder.png',
+              CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://picsum.photos/200/300',
                 ),
               ),
-              SizedBox(height: 10),
-              ReminderCard(
-                medication: Text(
-                  'test',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsManager.font,
-                  ),
-                ),
-                time: '11:45 AM',
-                image: Image.asset(
-                  'assets/icons/Reminder.png',
-                ),
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Upcoming Appointment',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.2),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'view all',
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: ColorsManager.blue,
-                        ),
+              SizedBox(width: 10),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      ' Hello\'',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: ColorsManager.primaryLight,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: CarouselSlider(
-                  items: [
-                    AppointmentCard(
-                      doctorName: 'Dr. James Hilar',
-                      department: 'Respiratory',
-                      time: '16:00 - 22:00',
-                      rating: 4.2,
-                    ),
-                    AppointmentCard(
-                      doctorName: 'Dr. ahmed Hilar',
-                      department: 'Respiratory',
-                      time: '16:00 - 22:00',
-                      rating: 4.2,
-                    ),
-                  ],
-                  options: CarouselOptions(),
-                ),
-              ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Recommended Doctor',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: screenWidth * 0.2),
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'view all',
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                          color: ColorsManager.blue,
-                        ),
+                    Text(
+                      'Jimmy Foley!',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: ColorsManager.font,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Container(
-                height: 150,
-                width: double.infinity,
-                child: CarouselSlider(
-                  items: [
-                    AppointmentCard(
-                      doctorName: 'Dr. James Hilar',
-                      department: 'Respiratory',
-                      time: '16:00 - 22:00',
-                      rating: 4.2,
-                    ),
-                    AppointmentCard(
-                      doctorName: 'Dr. ahmed Hilar',
-                      department: 'Respiratory',
-                      time: '16:00 - 22:00',
-                      rating: 4.2,
-                    ),
                   ],
-                  options: CarouselOptions(),
+                ),
+              ),
+              IconButton(
+                iconSize: 30,
+                color: ColorsManager.blue,
+                onPressed: () {},
+                icon: Icon(Icons.notifications_none),
+              ),
+            ],
+          ),
+          SizedBox(height: 16),
+          Stack(
+            children: [
+              SearchBar(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                      return SearchPatientSceen();
+                    }),
+                  );
+                },
+                backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
+                hintText: 'Search Doctor, Clinic',
+                leading: Icon(Icons.search, color: ColorsManager.blue),
+              ),
+            ],
+          ),
+          SizedBox(height: 24),
+          Text(
+            'Reminders',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: 10),
+          ReminderCard(
+            medication: Text(
+              'Paracetamol',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: ColorsManager.font,
+              ),
+            ),
+            time: '8:45 AM',
+            image: Image.asset(
+              'assets/icons/Reminder.png',
+            ),
+          ),
+          SizedBox(height: 10),
+          ReminderCard(
+            medication: Text(
+              'test',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: ColorsManager.font,
+              ),
+            ),
+            time: '11:45 AM',
+            image: Image.asset(
+              'assets/icons/Reminder.png',
+            ),
+          ),
+          SizedBox(height: 16),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Upcoming Appointment',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'view all',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: ColorsManager.blue,
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
-        ),
+          Container(
+            height: 150,
+            width: double.infinity,
+            child: CarouselSlider(
+              items: [
+                AppointmentCard(
+                  doctorName: 'Dr. James Hilar',
+                  department: 'Respiratory',
+                  time: '16:00 - 22:00',
+                  rating: 4.2,
+                ),
+                AppointmentCard(
+                  doctorName: 'Dr. ahmed Hilar',
+                  department: 'Respiratory',
+                  time: '16:00 - 22:00',
+                  rating: 4.2,
+                ),
+              ],
+              options: CarouselOptions(),
+            ),
+          ),
+          SizedBox(height: 16),
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Recommended Doctor',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.2),
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'view all',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: ColorsManager.blue,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            height: 150,
+            width: double.infinity,
+            child: CarouselSlider(
+              items: [
+                AppointmentCard(
+                  doctorName: 'Dr. James Hilar',
+                  department: 'Respiratory',
+                  time: '16:00 - 22:00',
+                  rating: 4.2,
+                ),
+                AppointmentCard(
+                  doctorName: 'Dr. ahmed Hilar',
+                  department: 'Respiratory',
+                  time: '16:00 - 22:00',
+                  rating: 4.2,
+                ),
+              ],
+              options: CarouselOptions(),
+            ),
+          ),
+        ],
       ),
     );
   }

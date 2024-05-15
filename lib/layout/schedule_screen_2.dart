@@ -53,16 +53,6 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                 ),
               ],
             ),
-            Container(
-              color: ColorsManager.white,
-              child: DatePicker(
-                minDate: DateTime(2021, 1, 1),
-                maxDate: DateTime(2023, 12, 31),
-                onDateSelected: (value) {
-                  // Handle selected date
-                },
-              ),
-            ),
             SizedBox(height: 10),
             Divider(
               color: ColorsManager.blue,

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PatientProfileScreen(),
+      home: const SchedualScreen(),
     );
   }
 }
