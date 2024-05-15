@@ -36,12 +36,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
   cupertino_icons: ^1.0.2
+  intl:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter:
   cached_network_image:
   flutter_iconly: ^1.0.2
   flutter_rating_bar: ^4.0.1
   mobkit_dashed_border: ^0.0.6
+  flutter_switch:
+  percent_indicator:
+
 
   
 dev_dependencies:
