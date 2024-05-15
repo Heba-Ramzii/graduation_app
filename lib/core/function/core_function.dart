@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
-import 'package:graduation_app/core/core_widgets/custom_outlined_button.dart';
 
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';

@@ -10,7 +10,7 @@ class ClinicsList extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         itemBuilder: (context, index) => const ClinicsItemBuilder(),
-        itemCount: 10,
+        itemCount: 3,
       ),
     );
   }
