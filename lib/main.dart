@@ -18,6 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Graduation App',
       theme: ThemeData(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        appBarTheme: const AppBarTheme(
+          color: ColorsManager.white,
+        ),
+        primaryColor: ColorsManager.primaryMaterialColor,
         colorScheme: ColorScheme.fromSeed(
           seedColor: ColorsManager.primaryMaterialColor,
         ),
