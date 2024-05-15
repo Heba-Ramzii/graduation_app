@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Graduation App',
       theme: ThemeData(
+        scaffoldBackgroundColor: ColorsManager.white,
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
         appBarTheme: const AppBarTheme(
           color: ColorsManager.white,
         ),
