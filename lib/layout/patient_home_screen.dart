@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/layout/search_patient_screen.dart';
 import 'package:graduation_app/widget/appointment_card.dart';
 import 'package:graduation_app/widget/reminder_card.dart';
 
@@ -15,50 +16,54 @@ class PatientHome extends StatefulWidget {
 class _PatientHomeState extends State<PatientHome> {
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
-          height: 70,
-          indicatorShape: CircleBorder(
-            eccentricity: 0.0,
-          ),
-          backgroundColor: ColorsManager.blue2,
-          selectedIndex: 0,
-          indicatorColor: ColorsManager.white,
-          onDestinationSelected: (index) {},
-          destinations: [
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                color: ColorsManager.blue,
-              ),
-              label: '',
+            height: 70,
+            indicatorShape: CircleBorder(
+              eccentricity: 0.0,
             ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/chat-alt.svg',
-                color: ColorsManager.blue,
+            backgroundColor: ColorsManager.blue2,
+            selectedIndex: 0,
+            indicatorColor: ColorsManager.white,
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            destinations: [
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/icons/home.svg',
+                  color: ColorsManager.blue,
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/calendar.svg',
-                color: ColorsManager.blue,
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/icons/chat-alt.svg',
+                  color: ColorsManager.blue,
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/dots-horizontal.svg',
-                color: ColorsManager.blue,
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/icons/calendar.svg',
+                  color: ColorsManager.blue,
+                ),
+                label: '',
               ),
-              label: '',
-            ),
-          ],
-        ),
+              NavigationDestination(
+                icon: SvgPicture.asset(
+                  'assets/icons/dots-horizontal.svg',
+                  color: ColorsManager.blue,
+                ),
+                label: '',
+              ),
+            ]),
         body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           child: Column(
@@ -108,6 +113,14 @@ class _PatientHomeState extends State<PatientHome> {
               Stack(
                 children: [
                   SearchBar(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                          return SearchPatientSceen();
+                        }),
+                      );
+                    },
                     backgroundColor:
                         MaterialStatePropertyAll(ColorsManager.white),
                     hintText: 'Search Doctor, Clinic',

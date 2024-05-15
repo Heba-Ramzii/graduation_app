@@ -5,6 +5,7 @@ import 'package:graduation_app/layout/chat_screen.dart';
 import 'package:graduation_app/layout/login_screen.dart';
 import 'package:graduation_app/layout/my_chat_screen.dart';
 import 'package:graduation_app/layout/patient_home_screen.dart';
+import 'package:graduation_app/layout/patient_profile_screen.dart';
 import 'package:graduation_app/layout/payment_screen.dart';
 import 'package:graduation_app/layout/schedule_screen.dart';
 import 'package:graduation_app/layout/schedule_screen_2.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PatientHome(),
+      home: const PatientProfileScreen(),
     );
   }
 }
