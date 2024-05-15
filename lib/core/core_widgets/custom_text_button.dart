@@ -7,18 +7,26 @@ import '../theme_manager/style_manager.dart';
     super.key,
     required this.text,
     required this.onPressed,
+      this.fontWeight,
+      this.fontSize,
+      this.fontColor = ColorsManager.primary,
   });
   String text;
   Function()? onPressed;
+    FontWeight? fontWeight;
+    double? fontSize;
+    final Color fontColor;
     @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child:  Text(
-        text.toUpperCase(),
+        text,
         textAlign: TextAlign.center,
-        style: StyleManager.buttonTextStyle16.copyWith(
-          color: ColorsManager.primary,
+        style: StyleManager.textStyle14.copyWith(
+          color: fontColor,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
         )
 
       ),

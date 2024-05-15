@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
 
-//heba
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,12 +15,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Graduation App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorsManager.primaryMaterialColor,
+        ),
+         iconTheme: const IconThemeData(
+          color: ColorsManager.primary,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: ColorsManager.primaryMaterialColor,
+       ),
+      debugShowCheckedModeBanner: false,
+      home: const MoreScreen(),
     );
   }
 }
