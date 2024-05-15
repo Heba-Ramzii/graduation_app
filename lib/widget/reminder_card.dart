@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 class ReminderCard extends StatelessWidget {
@@ -7,11 +6,12 @@ class ReminderCard extends StatelessWidget {
   final String time;
   final Image image;
 
-  const ReminderCard(
-      {super.key,
-      required this.medication,
-      required this.time,
-      required this.image});
+  const ReminderCard({
+    Key? key,
+    required this.medication,
+    required this.time,
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +28,24 @@ class ReminderCard extends StatelessWidget {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('data aaa'),
+              const SizedBox(height: 4), // Added some spacing for better layout
               Row(
                 children: [
-                  const Icon(Icons.alarm, color: ColorsManager.blue),
-                  Text(' $time'),
+                  const Icon(Icons.alarm, color: ColorsManager.blue, size: 20),
+                  const SizedBox(
+                      width: 4), // Added some spacing for better layout
+                  Text(time),
                 ],
               ),
             ],
           ),
           trailing: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_forward,
-                color: ColorsManager.blue,
-              )),
+            onPressed: () {},
+            icon: const Icon(
+              Icons.arrow_forward,
+              color: ColorsManager.blue,
+            ),
+          ),
         ),
       ),
     );

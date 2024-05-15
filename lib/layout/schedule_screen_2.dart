@@ -6,29 +6,37 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class ScheduleSreen2 extends StatefulWidget {
-  const ScheduleSreen2({super.key});
+  const ScheduleSreen2({Key? key});
 
   @override
   State<ScheduleSreen2> createState() => _ScheduleSreen2State();
 }
 
 class _ScheduleSreen2State extends State<ScheduleSreen2> {
+  late TextEditingController controller1;
+
   @override
-  TextEditingController controller1 = TextEditingController();
+  void initState() {
+    super.initState();
+    controller1 = TextEditingController();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.homePageBackground,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 16),
+            SizedBox(height: 20),
             Row(
               children: [
                 InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
                   child: Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
@@ -36,11 +44,12 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  "schedule",
+                  "Schedule",
                   style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                    color: ColorsManager.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
@@ -134,10 +143,13 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
             ),
             SizedBox(height: 10),
             Container(
-              padding: EdgeInsets.only(left: 15, right: 10),
+              padding: EdgeInsets.symmetric(horizontal: 15),
               width: MediaQuery.of(context).size.width * 0.9,
               height: 50,
-              child: CustomMaterialButton(text: "Continue", onPressed: () {}),
+              child: CustomMaterialButton(
+                text: "Continue",
+                onPressed: () {},
+              ),
             ),
           ],
         ),

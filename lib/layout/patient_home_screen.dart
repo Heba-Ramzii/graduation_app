@@ -15,9 +15,10 @@ class PatientHome extends StatefulWidget {
 class _PatientHomeState extends State<PatientHome> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
-        ///   backgroundColor: ColorsManager.homePageBackground,
         bottomNavigationBar: NavigationBar(
           height: 70,
           indicatorShape: CircleBorder(
@@ -29,23 +30,26 @@ class _PatientHomeState extends State<PatientHome> {
           onDestinationSelected: (index) {},
           destinations: [
             NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/home.svg',
-                  color: ColorsManager.blue,
-                ),
-                label: ''),
+              icon: SvgPicture.asset(
+                'assets/icons/home.svg',
+                color: ColorsManager.blue,
+              ),
+              label: '',
+            ),
             NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/chat-alt.svg',
-                  color: ColorsManager.blue,
-                ),
-                label: ''),
+              icon: SvgPicture.asset(
+                'assets/icons/chat-alt.svg',
+                color: ColorsManager.blue,
+              ),
+              label: '',
+            ),
             NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/calendar.svg',
-                  color: ColorsManager.blue,
-                ),
-                label: ''),
+              icon: SvgPicture.asset(
+                'assets/icons/calendar.svg',
+                color: ColorsManager.blue,
+              ),
+              label: '',
+            ),
             NavigationDestination(
               icon: SvgPicture.asset(
                 'assets/icons/dots-horizontal.svg',
@@ -56,39 +60,38 @@ class _PatientHomeState extends State<PatientHome> {
           ],
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     backgroundImage: NetworkImage(
                       'https://picsum.photos/200/300',
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10),
                   Expanded(
                     flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           ' Hello\'',
                           style: TextStyle(
-                              fontSize: 13, color: ColorsManager.primaryLight),
+                            fontSize: 13,
+                            color: ColorsManager.primaryLight,
+                          ),
                         ),
-                        const Text(
+                        Text(
                           'Jimmy Foley!',
                           style: TextStyle(
-                              fontSize: 16,
-                              color: ColorsManager.font,
-                              fontWeight: FontWeight.bold),
+                            fontSize: 16,
+                            color: ColorsManager.font,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ],
                     ),
@@ -97,11 +100,11 @@ class _PatientHomeState extends State<PatientHome> {
                     iconSize: 30,
                     color: ColorsManager.blue,
                     onPressed: () {},
-                    icon: const Icon(Icons.notifications_none),
+                    icon: Icon(Icons.notifications_none),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Stack(
                 children: [
                   SearchBar(
@@ -112,12 +115,12 @@ class _PatientHomeState extends State<PatientHome> {
                   ),
                 ],
               ),
-              const SizedBox(height: 24),
-              const Text(
+              SizedBox(height: 24),
+              Text(
                 'Reminders',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               ReminderCard(
                 medication: Text(
                   'Paracetamol',
@@ -132,7 +135,7 @@ class _PatientHomeState extends State<PatientHome> {
                   'assets/icons/Reminder.png',
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               ReminderCard(
                 medication: Text(
                   'test',
@@ -147,28 +150,30 @@ class _PatientHomeState extends State<PatientHome> {
                   'assets/icons/Reminder.png',
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
-                    child: const Text(
+                    child: Text(
                       'Upcoming Appointment',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 0, 0),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'view all',
-                          style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: ColorsManager.blue),
+                    padding: EdgeInsets.only(left: screenWidth * 0.2),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'view all',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: ColorsManager.blue,
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Container(
@@ -192,28 +197,30 @@ class _PatientHomeState extends State<PatientHome> {
                   options: CarouselOptions(),
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Row(
                 children: [
                   Expanded(
-                    child: const Text(
+                    child: Text(
                       'Recommended Doctor',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 0, 0),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'view all',
-                          style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: ColorsManager.blue),
+                    padding: EdgeInsets.only(left: screenWidth * 0.2),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'view all',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: ColorsManager.blue,
                         ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Container(

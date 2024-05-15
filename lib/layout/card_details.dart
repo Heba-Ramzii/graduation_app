@@ -13,67 +13,72 @@ class CardDetails extends StatefulWidget {
 class _CardDetailsState extends State<CardDetails> {
   @override
   Widget build(BuildContext context) {
+    // Get the screen width and height
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      body: (SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 36,
-            ),
-            Row(
-              children: [
-                InkWell(
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: ColorsManager.blue,
-                  ),
-                ),
-                Text(
-                  "     Add Card",
-                  style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 50, right: 50),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: screenHeight * 0.05,
+              ),
+              Row(
                 children: [
-                  Text(
-                    "Payment",
-                    style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: 22,
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: ColorsManager.blue,
+                      size: screenWidth * 0.06,
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  AddPayment(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 50, right: 50),
-                    child: CustomMaterialButton(
-                      text: "Save",
-                      onPressed: () {},
+                  SizedBox(width: screenWidth * 0.03),
+                  Text(
+                    "Add Card",
+                    style: TextStyle(
+                      color: ColorsManager.black,
+                      fontSize: screenWidth * 0.06,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+              SizedBox(
+                height: screenHeight * 0.05,
+              ),
+              Text(
+                "Payment",
+                style: TextStyle(
+                  color: ColorsManager.black,
+                  fontSize: screenWidth * 0.06,
+                ),
+              ),
+              SizedBox(
+                height: screenHeight * 0.02,
+              ),
+              const AddPayment(),
+              SizedBox(
+                height: screenHeight * 0.02,
+              ),
+              Center(
+                child: CustomMaterialButton(
+                  text: "Save",
+                  onPressed: () {},
+                  minWidth: screenWidth * 0.5,
+                ),
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

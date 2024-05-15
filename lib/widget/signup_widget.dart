@@ -6,14 +6,16 @@ import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 class SignupWidget extends StatelessWidget {
-  const SignupWidget({super.key});
+  const SignupWidget({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Stack(
       children: [
         Container(
-          width: 430,
+          width: screenWidth * 0.9, // Adjusted width
           height: 550,
           decoration: ShapeDecoration(
             color: ColorsManager.white,
@@ -25,12 +27,17 @@ class SignupWidget extends StatelessWidget {
         Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(50, 30, 50, 50),
+              padding: EdgeInsets.fromLTRB(
+                screenWidth * 0.115, // Adjusted left padding
+                30,
+                screenWidth * 0.115, // Adjusted right padding
+                50,
+              ),
               child: Text(
                 'Sign up',
                 style: TextStyle(
                   color: ColorsManager.primary,
-                  fontSize: 40,
+                  fontSize: screenWidth * 0.06, // Adjusted font size
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -42,9 +49,7 @@ class SignupWidget extends StatelessWidget {
               hint: "Enter your name",
               colorFont: ColorsManager.black,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.02), // Adjusted height
             CustomTextFormField(
               controller: TextEditingController(),
               type: TextInputType.emailAddress,
@@ -52,9 +57,7 @@ class SignupWidget extends StatelessWidget {
               hint: "Enter your Email",
               colorFont: ColorsManager.black,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.02), // Adjusted height
             CustomTextFormField(
               controller: TextEditingController(),
               type: TextInputType.visiblePassword,
@@ -64,9 +67,7 @@ class SignupWidget extends StatelessWidget {
               suffixIcon: Icons.remove_red_eye,
               colorFont: ColorsManager.black,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.02), // Adjusted height
             CustomTextFormField(
               controller: TextEditingController(),
               type: TextInputType.visiblePassword,
@@ -76,29 +77,21 @@ class SignupWidget extends StatelessWidget {
               suffixIcon: Icons.remove_red_eye,
               colorFont: ColorsManager.black,
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.02), // Adjusted height
             CustomMaterialButton(
               text: "Sign up",
               onPressed: () => {},
             ),
-            SizedBox(
-              height: 30,
-            ),
+            SizedBox(height: screenWidth * 0.03), // Adjusted height
             Text("Or connect with"),
-            SizedBox(
-              height: 30,
-            ),
+            SizedBox(height: screenWidth * 0.03), // Adjusted height
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 25,
-                ),
                 Stack(
                   children: [
                     Container(
-                      width: 145,
+                      width: screenWidth * 0.3, // Adjusted width
                       height: 40,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 36, vertical: 10),
@@ -119,13 +112,11 @@ class SignupWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  width: 80,
-                ),
+                SizedBox(width: screenWidth * 0.1), // Adjusted width
                 Stack(
                   children: [
                     Container(
-                      width: 145,
+                      width: screenWidth * 0.3, // Adjusted width
                       height: 40,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 36, vertical: 10),
@@ -148,14 +139,10 @@ class SignupWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.02), // Adjusted height
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  width: 120,
-                ),
                 Text("have an account?"),
                 CustomTextButton(
                   text: "  Login",

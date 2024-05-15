@@ -5,7 +5,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/widget/clinic_card.dart';
 
 class SchedualScreen extends StatefulWidget {
-  const SchedualScreen({super.key});
+  const SchedualScreen({Key? key});
 
   @override
   State<SchedualScreen> createState() => _SchedualScreenState();
@@ -17,30 +17,34 @@ class _SchedualScreenState extends State<SchedualScreen> {
     return Scaffold(
       backgroundColor: ColorsManager.homePageBackground,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 16),
+            SizedBox(height: 20),
+            SizedBox(height: 16),
             Row(
               children: [
                 InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
                   child: Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
                   ),
                 ),
                 Text(
-                  "schedule",
+                  "Schedule",
                   style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                    color: ColorsManager.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Image.asset('assets/images/Logo.png', height: 200),
             SizedBox(height: 20),
             Text(
@@ -53,17 +57,22 @@ class _SchedualScreenState extends State<SchedualScreen> {
             ),
             SizedBox(height: 10),
             Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."),
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            ),
             SizedBox(height: 30),
             Text(
-              "Choose clinic",
+              "Choose Clinic",
               style: TextStyle(
                 color: ColorsManager.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            ClinicCad(doctorName: "Ebrahim", adddress: "Abokpir", time: "12:1"),
+            ClinicCad(
+              doctorName: "Ebrahim",
+              adddress: "Abokpir",
+              time: "12:1",
+            ),
             SizedBox(height: 15),
             Text(
               "Choose Time",
@@ -84,7 +93,13 @@ class _SchedualScreenState extends State<SchedualScreen> {
               ),
             ),
             SizedBox(height: 50),
-            CustomMaterialButton(text: "continue", onPressed: () {})
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: CustomMaterialButton(
+                text: "Continue",
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
       ),

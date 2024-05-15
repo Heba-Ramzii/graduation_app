@@ -15,36 +15,41 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
+    // Get the screen width and height
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      ///   backgroundColor: ColorsManager.homePageBackground,
+      /// backgroundColor: ColorsManager.homePageBackground,
       bottomNavigationBar: NavigationBar(
-        height: 70,
-        indicatorShape: CircleBorder(
-          eccentricity: 0.0,
-        ),
+        height: screenHeight * 0.1,
+        indicatorShape: const CircleBorder(),
         backgroundColor: ColorsManager.blue2,
         selectedIndex: 0,
         indicatorColor: ColorsManager.white,
         onDestinationSelected: (index) {},
         destinations: [
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/home.svg',
+              color: ColorsManager.blue,
+            ),
+            label: '',
+          ),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/chat-alt.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/chat-alt.svg',
+              color: ColorsManager.blue,
+            ),
+            label: '',
+          ),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/calendar.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/calendar.svg',
+              color: ColorsManager.blue,
+            ),
+            label: '',
+          ),
           NavigationDestination(
             icon: SvgPicture.asset(
               'assets/icons/dots-horizontal.svg',
@@ -55,66 +60,61 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(screenWidth * 0.04),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: screenHeight * 0.02,
             ),
-            const SizedBox(height: 16),
-            Stack(
-              children: [
-                SearchBar(
-                  backgroundColor:
-                      MaterialStatePropertyAll(ColorsManager.white),
-                  hintText: 'My Chat',
-                  trailing: Iterable.generate(1)
-                      .map((index) =>
-                          Icon(Icons.search, color: ColorsManager.blue))
-                      .toList(),
-                ),
-              ],
+            SizedBox(height: screenHeight * 0.02),
+            SearchBar(
+              backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
+              hintText: 'My Chat',
+              trailing: [Icon(Icons.search, color: ColorsManager.blue)],
             ),
-            const SizedBox(height: 24),
-            const SizedBox(height: 10),
+            SizedBox(height: screenHeight * 0.03),
+            SizedBox(height: screenHeight * 0.01),
             ChatBox(
               drName: Text(
                 'Dr Ahmed',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: screenWidth * 0.04,
                   fontWeight: FontWeight.bold,
                   color: ColorsManager.font,
                 ),
               ),
-              profileImage: ProfileImage(height: 50, width: 50),
+              profileImage: ProfileImage(
+                  height: screenWidth * 0.12, width: screenWidth * 0.12),
               message: "hi",
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: screenHeight * 0.01),
             ChatBox(
               drName: Text(
                 'Dr Ahmed',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: screenWidth * 0.04,
                   fontWeight: FontWeight.bold,
                   color: ColorsManager.font,
                 ),
               ),
-              profileImage: ProfileImage(height: 50, width: 50),
+              profileImage: ProfileImage(
+                  height: screenWidth * 0.12, width: screenWidth * 0.12),
               message: "hi",
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: screenHeight * 0.01),
             ChatBox(
               drName: Text(
                 'Dr Ahmed',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: screenWidth * 0.04,
                   fontWeight: FontWeight.bold,
                   color: ColorsManager.font,
                 ),
               ),
-              profileImage: ProfileImage(height: 50, width: 50),
+              profileImage: ProfileImage(
+                  height: screenWidth * 0.12, width: screenWidth * 0.12),
               message: "hi",
             ),
           ],

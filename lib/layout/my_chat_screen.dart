@@ -19,16 +19,21 @@ class _MyChatScreenState extends State<MyChatScreen> {
   final user = const types.User(
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
+
   @override
   Widget build(BuildContext context) {
+    // Get the screen width and height
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      backgroundColor: ColorsManager
-          .homePageBackground, // Add this line to change the background color to white
+      backgroundColor: ColorsManager.homePageBackground,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
             color: ColorsManager.primary,
+            size: screenWidth * 0.06,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -37,14 +42,18 @@ class _MyChatScreenState extends State<MyChatScreen> {
         backgroundColor: ColorsManager.white,
         title: Row(
           children: [
-            Image.asset("assets/images/drimage.png"),
-            SizedBox(width: 10),
-            const Text(
-              'My Chat ',
+            Image.asset(
+              "assets/images/drimage.png",
+              width: screenWidth * 0.1,
+            ),
+            SizedBox(width: screenWidth * 0.03),
+            Text(
+              'My Chat',
               style: TextStyle(
-                  color: ColorsManager.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
+                color: ColorsManager.black,
+                fontSize: screenWidth * 0.045,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -53,6 +62,7 @@ class _MyChatScreenState extends State<MyChatScreen> {
             icon: Icon(
               Icons.more_vert,
               color: ColorsManager.primary,
+              size: screenWidth * 0.06,
             ),
             onPressed: () {},
           ),
@@ -66,10 +76,11 @@ class _MyChatScreenState extends State<MyChatScreen> {
         disableImageGallery: false,
         theme: DefaultChatTheme(
           sentMessageBodyTextStyle: TextStyle(
-              color: ColorsManager.white,
-              decorationColor: ColorsManager.primary,
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
+            color: ColorsManager.white,
+            decorationColor: ColorsManager.primary,
+            fontSize: screenWidth * 0.04,
+            fontWeight: FontWeight.bold,
+          ),
           backgroundColor: ColorsManager.background,
           inputBackgroundColor: ColorsManager.white,
           inputTextColor: ColorsManager.primary,
@@ -103,7 +114,7 @@ class _MyChatScreenState extends State<MyChatScreen> {
       context: context,
       builder: (BuildContext context) => SafeArea(
         child: SizedBox(
-          height: 144,
+          height: MediaQuery.of(context).size.height * 0.2,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

@@ -9,73 +9,85 @@ class AppointmentCard extends StatelessWidget {
   final double rating;
 
   const AppointmentCard({
-    super.key,
+    Key? key,
     required this.doctorName,
     required this.department,
     required this.time,
     required this.rating,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: ListTile(
-      leading: Image.network(
-        'https://as1.ftcdn.net/v2/jpg/03/02/88/46/1000_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg',
-        width: 70,
-        height: 400,
-        fit: BoxFit.cover,
-      ),
-      title: Text(
-        doctorName,
-        maxLines: 1,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      subtitle: Expanded(
-        child: Column(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(department),
-            SizedBox(
-              height: 10,
+            Image.network(
+              'https://as1.ftcdn.net/v2/jpg/03/02/88/46/1000_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg',
+              width: 70,
+              height: 70,
+              fit: BoxFit.cover,
             ),
-            RatingBar.builder(
-              initialRating: rating,
-              itemSize: 20,
-              itemCount: 4,
-              minRating: 1,
-              direction: Axis.horizontal,
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: ColorsManager.gold,
-                size: 5,
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    doctorName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    department,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: ColorsManager.font,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  RatingBar.builder(
+                    initialRating: rating,
+                    itemSize: 20,
+                    itemCount: 5,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: ColorsManager.gold,
+                    ),
+                    onRatingUpdate: (value) {
+                      print(value);
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      const Icon(Icons.alarm, color: ColorsManager.blue),
+                      const SizedBox(width: 4),
+                      Text(time),
+                    ],
+                  ),
+                ],
               ),
-              onRatingUpdate: (value) {
-                print(value);
-              },
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                const Icon(Icons.alarm, color: ColorsManager.blue),
-                Text(' $time'),
-              ],
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.favorite,
+                color: ColorsManager.blue,
+              ),
             ),
           ],
         ),
       ),
-      trailing: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.favorite, color: ColorsManager.blue),
-        ],
-      ),
-    ));
+    );
   }
 }

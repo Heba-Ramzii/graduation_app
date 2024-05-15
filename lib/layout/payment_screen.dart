@@ -7,7 +7,7 @@ import 'package:graduation_app/widget/credit_card.dart';
 import 'package:graduation_app/widget/payment_card.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  const PaymentScreen({Key? key});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -16,15 +16,14 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: (SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 36,
-            ),
+            SizedBox(height: 36),
             Row(
               children: [
                 InkWell(
@@ -36,30 +35,33 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 Text(
                   "     Pay by credit",
                   style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                    color: ColorsManager.black,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 50,
-            ),
-            CereditCard(),
-            PaymentCard(),
-            SizedBox(
-              height: 50,
+            SizedBox(height: 50),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+              child: CereditCard(),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 50, right: 50),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+              child: PaymentCard(),
+            ),
+            SizedBox(height: 50),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
               child: CustomMaterialButton(
-                text: "New Paymet Method",
+                text: "New Payment Method",
                 onPressed: () {},
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

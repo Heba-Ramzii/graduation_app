@@ -7,7 +7,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/widget/book_card.dart';
 
 class SearchPatientSceen extends StatefulWidget {
-  const SearchPatientSceen({super.key});
+  const SearchPatientSceen({Key? key});
 
   @override
   _SearchPatientSceenState createState() => _SearchPatientSceenState();
@@ -17,7 +17,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: ColorsManager.homePageBackground,
       bottomNavigationBar: NavigationBar(
         height: 70,
         indicatorShape: CircleBorder(
@@ -29,27 +29,38 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         onDestinationSelected: (index) {},
         destinations: [
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/home.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/home.svg',
+              color: ColorsManager.blue,
+              width: 24, // Adjusted icon size
+              height: 24,
+            ),
+            label: '',
+          ),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/chat-alt.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/chat-alt.svg',
+              color: ColorsManager.blue,
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
           NavigationDestination(
-              icon: SvgPicture.asset(
-                'assets/icons/calendar.svg',
-                color: ColorsManager.blue,
-              ),
-              label: ''),
+            icon: SvgPicture.asset(
+              'assets/icons/calendar.svg',
+              color: ColorsManager.blue,
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
           NavigationDestination(
             icon: SvgPicture.asset(
               'assets/icons/dots-horizontal.svg',
               color: ColorsManager.blue,
+              width: 24,
+              height: 24,
             ),
             label: '',
           ),
@@ -58,7 +69,6 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
@@ -70,6 +80,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                   child: Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
+                    size: 24, // Adjusted icon size
                   ),
                 ),
                 Padding(
@@ -86,6 +97,8 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                       (index) => SvgPicture.asset(
                         'assets/icons/adjustments.svg',
                         color: ColorsManager.blue,
+                        width: 24,
+                        height: 24,
                       ),
                     ).toList(),
                   ),
@@ -94,83 +107,34 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
             ),
             Row(
               children: [
-                CustomFillterButton(
-                  text: 'filter',
-                  onPressed: () {},
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                CustomFillterButton(
-                  text: 'filter',
-                  onPressed: () {},
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                CustomFillterButton(
-                  text: 'filter',
-                  onPressed: () {},
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                CustomFillterButton(
-                  text: 'filter',
-                  onPressed: () {},
-                ),
-                Spacer(
-                  flex: 1,
-                ),
-                CustomFillterButton(
-                  text: 'filter',
-                  onPressed: () {},
-                ),
+                for (int i = 0; i < 5; i++) ...[
+                  CustomFillterButton(
+                    text: 'Filter',
+                    onPressed: () {},
+                  ),
+                  Spacer(
+                    flex: 1,
+                  ),
+                ],
               ],
             ),
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: BookCard(
-                doctorName: 'Dr. James Hilar',
-                department: 'Respiratory',
-                price: "150",
-                rating: 4.2,
+            for (int i = 0; i < 4; i++) ...[
+              SizedBox(
+                height: 200,
+                width:
+                    MediaQuery.of(context).size.width * 0.9, // Adjusted width
+                child: BookCard(
+                  doctorName: 'Dr. James Hilar',
+                  department: 'Respiratory',
+                  price: "150",
+                  rating: 4.2,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: BookCard(
-                doctorName: 'Dr. James Hilar',
-                department: 'Respiratory',
-                price: "150",
-                rating: 4.2,
-              ),
-            ),
-            SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: BookCard(
-                doctorName: 'Dr. James Hilar',
-                department: 'Respiratory',
-                price: "150",
-                rating: 4.2,
-              ),
-            ),
-            SizedBox(
-              height: 200,
-              width: double.infinity,
-              child: BookCard(
-                doctorName: 'Dr. James Hilar',
-                department: 'Respiratory',
-                price: "150",
-                rating: 4.2,
-              ),
-            )
+              SizedBox(height: 10),
+            ],
           ],
         ),
       ),
