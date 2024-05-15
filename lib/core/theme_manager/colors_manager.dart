@@ -18,8 +18,9 @@ class ColorsManager {
   static const Color black = Color(0xFF212121);
   static const Color background = Color(0xFFDBEAFE);
   static const Color purple = Color(0xff8676fb);
-  static const Color shadow = Color(0x99ABBED1);
-
+  static const Color shadow = Color(0x99ABBED1);// login background
+  static const Color primaryLight4 = Color(0xff5C9DFF); // login background// login background
+  static const Color switcH = Color(0xffE2E8F0); // login background
   static const Color blue =
       Color(0xff5C9DFF); // favorite color // navigation bar
   static const Color homePageBackground = Color(0xFFF8F9FA); // navigation bar
