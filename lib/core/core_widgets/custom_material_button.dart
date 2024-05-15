@@ -10,10 +10,12 @@ class CustomMaterialButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
       this.color=ColorsManager.primary,
+      this.fontColor,
       this.minWidth = double.infinity,
   });
   final String text;
   final  Color? color;
+  final  Color? fontColor;
   final Function()? onPressed;
   final double minWidth;
   @override
@@ -30,7 +32,9 @@ class CustomMaterialButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: Text(
           text,
-          style: StyleManager.buttonTextStyle16
+          style: StyleManager.buttonTextStyle16.copyWith(
+            color: fontColor
+          )
         ),
       ),
     );
