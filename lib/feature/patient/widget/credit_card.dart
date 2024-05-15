@@ -16,7 +16,7 @@ class CereditCard extends StatelessWidget {
             height: 174,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              gradient: LinearGradient(colors: [
+              gradient: const LinearGradient(colors: [
                 ColorsManager.purple,
                 ColorsManager.purple,
               ]),
@@ -34,7 +34,7 @@ class CereditCard extends StatelessWidget {
                     height: 50,
                     width: 50,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 200,
                   ),
                   SvgPicture.asset(
@@ -45,27 +45,27 @@ class CereditCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(
+              const Text(
                 "****    ****    ****    1234",
                 style: TextStyle(
                     color: ColorsManager.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              Text(
+              const Text(
                 "CARD HOLDER                                                    EXPIRES ",
                 style: TextStyle(
                     color: ColorsManager.white,
                     fontSize: 12,
                     fontWeight: FontWeight.w300),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Text(
+              const Text(
                 "Lindsey Johnson                             05/25 ",
                 style: TextStyle(
                     color: ColorsManager.white,

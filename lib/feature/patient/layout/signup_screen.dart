@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/signup_widget.dart';
+
+import '../widget/signup_widget.dart';
 
 class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key});
+  const SignupScreen({super.key});
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
@@ -35,7 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: screenWidth * 0.5, // Adjusted image height
               ),
             ),
-            SignupWidget(),
+            const SignupWidget(),
           ],
         ),
       ),

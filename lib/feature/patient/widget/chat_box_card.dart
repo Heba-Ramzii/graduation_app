@@ -14,7 +14,7 @@ class ChatBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Card(
         shape: RoundedRectangleBorder(
@@ -28,14 +28,14 @@ class ChatBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '$message',
-                style: TextStyle(color: ColorsManager.blue),
+                message,
+                style: const TextStyle(color: ColorsManager.blue),
               ),
             ],
           ),
           trailing: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_forward,
                 color: ColorsManager.blue,
               )),

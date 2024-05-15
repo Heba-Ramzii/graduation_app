@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/credit_card.dart';
-import 'package:graduation_app/widget/payment_card.dart';
+
+import '../widget/credit_card.dart';
+import '../widget/payment_card.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({Key? key});
+  const PaymentScreen({super.key});
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -23,8 +22,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 36),
-            Row(
+            const SizedBox(height: 36),
+            const Row(
               children: [
                 InkWell(
                   child: Icon(
@@ -42,16 +41,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
-              child: CereditCard(),
+              child: const CereditCard(),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
-              child: PaymentCard(),
+              child: const PaymentCard(),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
               child: CustomMaterialButton(

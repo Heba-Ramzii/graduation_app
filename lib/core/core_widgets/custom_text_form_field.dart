@@ -35,7 +35,7 @@ Widget CustomTextFormField({
           suffixIcon: suffixPressed != null
               ? IconButton(
                   onPressed: suffixPressed,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.remove_red_eye,
                     color: ColorsManager.primary,
                   ),
@@ -53,7 +53,7 @@ Widget CustomTextFormField({
           filled: false,
           label: Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
               color: ColorsManager.primary,
             ),
           ),

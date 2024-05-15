@@ -26,7 +26,7 @@ class ClinicCad extends StatelessWidget {
       title: Text(
         doctorName,
         maxLines: 1,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 12,
         ),
       ),
@@ -36,7 +36,7 @@ class ClinicCad extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(adddress),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -48,7 +48,7 @@ class ClinicCad extends StatelessWidget {
           ],
         ),
       ),
-      trailing: Column(
+      trailing: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(

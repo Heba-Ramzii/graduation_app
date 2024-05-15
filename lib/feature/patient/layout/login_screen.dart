@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/login_widget.dart';
+
+import '../widget/login_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               child: Image.asset('assets/images/Logo.png'),
             ),
-            LoginWidget(),
+            const LoginWidget(),
           ],
         ),
       ),

@@ -6,7 +6,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class ScheduleSreen2 extends StatefulWidget {
-  const ScheduleSreen2({Key? key});
+  const ScheduleSreen2({super.key});
 
   @override
   State<ScheduleSreen2> createState() => _ScheduleSreen2State();
@@ -26,24 +26,24 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
     return Scaffold(
       backgroundColor: ColorsManager.homePageBackground,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               children: [
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
                   ),
                 ),
-                SizedBox(width: 10),
-                Text(
+                const SizedBox(width: 10),
+                const Text(
                   "Schedule",
                   style: TextStyle(
                     color: ColorsManager.black,
@@ -63,13 +63,13 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                 },
               ),
             ),
-            SizedBox(height: 10),
-            Divider(
+            const SizedBox(height: 10),
+            const Divider(
               color: ColorsManager.blue,
               thickness: 2,
             ),
-            SizedBox(height: 5),
-            Text(
+            const SizedBox(height: 5),
+            const Text(
               "Patient Information",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -77,18 +77,18 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ToggleSwitch(
               minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
-              labels: ['Your Self', 'Another Person'],
+              labels: const ['Your Self', 'Another Person'],
               onToggle: (index) {
                 print('switched to: $index');
               },
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Full Name",
               style: TextStyle(
                 color: ColorsManager.primary,
@@ -99,8 +99,8 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
               controller: controller1,
               type: TextInputType.name,
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Age",
               style: TextStyle(
                 color: ColorsManager.primary,
@@ -111,18 +111,18 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
               controller: controller1,
               type: TextInputType.phone,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ToggleSwitch(
               minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
-              labels: ['Male', 'Female'],
+              labels: const ['Male', 'Female'],
               onToggle: (index) {
                 print('switched to: $index');
               },
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Describe Your Case",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -133,7 +133,7 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
               maxLines: 5,
               decoration: InputDecoration(
                 hintText: 'Write your case here',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: ColorsManager.blue,
                 ),
                 border: OutlineInputBorder(
@@ -141,9 +141,9 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               width: MediaQuery.of(context).size.width * 0.9,
               height: 50,
               child: CustomMaterialButton(

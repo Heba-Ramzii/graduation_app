@@ -28,31 +28,47 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  booking_calendar: ^1.1.10
-  cached_network_image: ^3.3.1
-  carousel_slider: ^4.2.1
-  cupertino_icons: ^1.0.2
-  date_picker_plus: ^3.0.2
-  file_picker: ^8.0.3
   flutter:
     sdk: flutter
-  flutter_chat_ui: ^1.6.12
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+
+  cupertino_icons: ^1.0.2
+  intl:
+  flutter_svg: ^2.0.10+1
+  font_awesome_flutter:
+  cached_network_image:
   flutter_iconly: ^1.0.2
   flutter_rating_bar: ^4.0.1
-  flutter_svg: ^2.0.10+1
-  font_awesome_flutter: null
-  image_picker: ^1.1.1
-  intl: ^0.18.0
+  mobkit_dashed_border: ^0.0.6
+  flutter_switch:
+  percent_indicator:
+  booking_calendar: ^1.1.10
+  carousel_slider: ^4.2.1
+  date_picker_plus: ^3.0.2
+  file_picker:
+  flutter_chat_ui: ^1.6.12
+  image_picker:
   mime: ^1.0.5
   toggle_switch: ^2.3.0
 
+
 dev_dependencies:
-  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -67,8 +83,10 @@ flutter:
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
+
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -77,7 +95,8 @@ flutter:
   fonts:
     - family: inter
       fonts:
-       - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

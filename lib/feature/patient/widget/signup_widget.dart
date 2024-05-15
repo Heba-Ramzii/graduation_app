@@ -6,7 +6,7 @@ import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 class SignupWidget extends StatelessWidget {
-  const SignupWidget({Key? key});
+  const SignupWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class SignupWidget extends StatelessWidget {
               onPressed: () => {},
             ),
             SizedBox(height: screenWidth * 0.03), // Adjusted height
-            Text("Or connect with"),
+            const Text("Or connect with"),
             SizedBox(height: screenWidth * 0.03), // Adjusted height
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +143,7 @@ class SignupWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("have an account?"),
+                const Text("have an account?"),
                 CustomTextButton(
                   text: "  Login",
                   onPressed: () => {},

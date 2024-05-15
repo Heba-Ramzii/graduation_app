@@ -9,7 +9,7 @@ class BookCard extends StatelessWidget {
   final String price;
   final double rating;
 
-  const BookCard({
+  const BookCard({super.key, 
     required this.doctorName,
     required this.department,
     required this.price,

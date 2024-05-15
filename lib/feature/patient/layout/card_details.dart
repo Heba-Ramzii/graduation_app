@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/addPayment_card.dart';
+
+import '../widget/addPayment_card.dart';
 
 class CardDetails extends StatefulWidget {
   const CardDetails({super.key});

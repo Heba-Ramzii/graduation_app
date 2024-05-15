@@ -5,7 +5,7 @@ class CustomFillterButton extends StatelessWidget {
   final String text;
   final Function()? onPressed;
 
-  CustomFillterButton({
+  const CustomFillterButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -21,7 +21,7 @@ class CustomFillterButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Text(
-        style: TextStyle(
+        style: const TextStyle(
           color: ColorsManager.blue3,
           fontSize: 16,
         ),

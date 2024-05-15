@@ -26,7 +26,7 @@ class LoginWidget extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 30),
-            Text(
+            const Text(
               'Login',
               style: TextStyle(
                 color: ColorsManager.primary,

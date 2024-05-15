@@ -37,7 +37,7 @@ class AddPayment extends StatelessWidget {
                     hint: "00/00",
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Expanded(
@@ -49,7 +49,7 @@ class AddPayment extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             CustomTextFormField(

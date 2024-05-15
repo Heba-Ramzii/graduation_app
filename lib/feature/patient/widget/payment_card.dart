@@ -19,7 +19,7 @@ class PaymentCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              shadows: [
+              shadows: const [
                 BoxShadow(
                   color: ColorsManager.shadow,
                   blurRadius: 4,
@@ -39,23 +39,23 @@ class PaymentCard extends StatelessWidget {
                 disabledColor: ColorsManager.white,
                 selectedColor: ColorsManager.blue,
                 borderWidth: 15,
+                isSelected: const [true, false],
+                direction: Axis.vertical,
                 children: [
                   CustomMaterialButton(
                     text: "Month:        20 dollars",
-                    style: TextStyle(color: ColorsManager.black),
+                    style: const TextStyle(color: ColorsManager.black),
                     onPressed: () {},
                     color: ColorsManager.white,
                   ),
                   CustomMaterialButton(
                     text: "year:        200 dollars",
-                    style: TextStyle(color: ColorsManager.black),
+                    style: const TextStyle(color: ColorsManager.black),
                     onPressed: () {},
                     color: ColorsManager.white,
                     minWidth: 200,
                   ),
                 ],
-                isSelected: [true, false],
-                direction: Axis.vertical,
               ),
               CustomMaterialButton(
                 minWidth: 200,

@@ -1,6 +1,5 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -15,7 +14,7 @@ class MyChatScreen extends StatefulWidget {
 }
 
 class _MyChatScreenState extends State<MyChatScreen> {
-  List<types.Message> _messages = [];
+  final List<types.Message> _messages = [];
   final user = const types.User(
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
