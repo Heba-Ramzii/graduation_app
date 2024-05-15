@@ -5,7 +5,6 @@ import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
-import '../../pages/doctor_clinics/add_clinic.dart';
 import '../../pages/doctor_clinics/clinic.dart';
 import '../../pages/more/profile/patient_profile.dart';
 import '../../pages/more/settings/settings_screen.dart';
