@@ -8,7 +8,6 @@ import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../doctor/pages/more/profile/patient_profile.dart';
 import '../../../doctor/pages/more/settings/settings_screen.dart';
 
-
 class PatientOptionsColumn extends StatelessWidget {
   const PatientOptionsColumn({super.key});
 
@@ -18,36 +17,33 @@ class PatientOptionsColumn extends StatelessWidget {
       children: [
         OptionRow(
             icon: IconlyLight.profile,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const PatientProfileScreen());
             },
-            text: "Profile"
-        ),
+            text: "Profile"),
         OptionRow(
             icon: Icons.favorite_border_rounded,
-            onTap:  (){},
-            text: "Favorite"
-        ),
-         OptionRow(
+            onTap: () {},
+            text: "Favorite"),
+        OptionRow(
             icon: Icons.payment_rounded,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const PaymentScreen());
             },
-            text: "Payments"
-        ),
+            text: "Payments"),
         OptionRow(
             icon: Icons.settings_outlined,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const SettingsScreen());
             },
-            text: "Settings"
-        ),
+            text: "Settings"),
         OptionRow(
             icon: Icons.help_outline_rounded,
-            onTap:  (){},
-            text: "Help Center "
+            onTap: () {},
+            text: "Help Center "),
+        const SizedBox(
+          height: 17,
         ),
-        const SizedBox(height: 17,),
         Row(
           children: [
             const Icon(
@@ -55,21 +51,18 @@ class PatientOptionsColumn extends StatelessWidget {
               size: 25,
               color: ColorsManager.red,
             ),
-            const SizedBox(width: 40,),
+            const SizedBox(
+              width: 40,
+            ),
             CustomTextButton(
-              text:"Log Out",
+              text: "Log Out",
               onPressed: () {
-                showMyDialog(context, "Log Out",
-                    "Yes, Log Out",
-                        (){}
-
-                );
+                showMyDialog(context, "Log Out", "Yes, Log Out", () {});
               },
               fontSize: 18,
               fontWeight: FontWeight.w500,
               fontColor: ColorsManager.font,
             ),
-
           ],
         )
       ],
