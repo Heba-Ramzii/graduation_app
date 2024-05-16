@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/layout/my_chat_screen.dart';
 
 class ChatBox extends StatelessWidget {
   final Widget drName;
@@ -14,7 +15,7 @@ class ChatBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
       child: Card(
         shape: RoundedRectangleBorder(
@@ -28,14 +29,21 @@ class ChatBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                message,
-                style: const TextStyle(color: ColorsManager.blue),
+                '$message',
+                style: TextStyle(color: ColorsManager.blue),
               ),
             ],
           ),
           trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                    return MyChatScreen();
+                  }),
+                );
+              },
+              icon: Icon(
                 Icons.arrow_forward,
                 color: ColorsManager.blue,
               )),

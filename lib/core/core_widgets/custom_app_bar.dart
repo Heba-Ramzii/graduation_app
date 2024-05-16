@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
-import '../theme_manager/colors_manager.dart';
-import '../theme_manager/style_manager.dart';
-
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const CustomAppBar({super.key, required this.title, this.actionIcon, this.actionTap});
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar(
+      {super.key, required this.title, this.actionIcon, this.actionTap});
 
   final String title;
   final IconData? actionIcon;
-  final Function()? actionTap ;
+  final Function()? actionTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +33,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{
       ),
       actions: [
         IconButton(
-          onPressed:  actionTap,
-            icon: Icon(
-                actionIcon,
-              color: ColorsManager.primary,
-            ),
+          onPressed: actionTap,
+          icon: Icon(
+            actionIcon,
+            color: ColorsManager.primary,
+          ),
         ),
       ],
     );

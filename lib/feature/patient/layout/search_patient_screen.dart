@@ -1,12 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button_fillter.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-
-import '../widget/book_card.dart';
+import 'package:graduation_app/widget/book_card.dart';
 
 class SearchPatientSceen extends StatefulWidget {
-  const SearchPatientSceen({super.key});
+  const SearchPatientSceen({Key? key});
 
   @override
   _SearchPatientSceenState createState() => _SearchPatientSceenState();
@@ -19,7 +20,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
       backgroundColor: ColorsManager.homePageBackground,
       bottomNavigationBar: NavigationBar(
         height: 70,
-        indicatorShape: const CircleBorder(
+        indicatorShape: CircleBorder(
           eccentricity: 0.0,
         ),
         backgroundColor: ColorsManager.blue2,
@@ -66,31 +67,33 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 16),
+            SizedBox(height: 20),
+            SizedBox(height: 16),
             Stack(
               children: [
                 InkWell(
-                  onTap: () {},
-                  child: const Icon(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
                     size: 24, // Adjusted icon size
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(70, 0, 0, 20),
+                  padding: EdgeInsets.fromLTRB(70, 0, 0, 20),
                   child: SearchBar(
-                    shadowColor: const MaterialStatePropertyAll(ColorsManager.white),
-                    shape: const MaterialStatePropertyAll(LinearBorder()),
+                    shadowColor: MaterialStatePropertyAll(ColorsManager.white),
+                    shape: MaterialStatePropertyAll(LinearBorder()),
                     backgroundColor:
-                        const MaterialStatePropertyAll(ColorsManager.white),
+                        MaterialStatePropertyAll(ColorsManager.white),
                     hintText: 'Search Doctor, Clinic',
-                    leading: const Icon(Icons.search, color: ColorsManager.blue),
+                    leading: Icon(Icons.search, color: ColorsManager.blue),
                     trailing: Iterable<Widget>.generate(
                       1,
                       (index) => SvgPicture.asset(
@@ -111,13 +114,13 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                     text: 'Filter',
                     onPressed: () {},
                   ),
-                  const Spacer(
+                  Spacer(
                     flex: 1,
                   ),
                 ],
               ],
             ),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             for (int i = 0; i < 4; i++) ...[
@@ -125,14 +128,14 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                 height: 200,
                 width:
                     MediaQuery.of(context).size.width * 0.9, // Adjusted width
-                child: const BookCard(
+                child: BookCard(
                   doctorName: 'Dr. James Hilar',
                   department: 'Respiratory',
                   price: "150",
                   rating: 4.2,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
             ],
           ],
         ),
