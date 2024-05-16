@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
       ),
       debugShowCheckedModeBanner: false,
-      home: const PatientHomeScreen(),
+      home: const PatientHome(),
     );
   }
 }

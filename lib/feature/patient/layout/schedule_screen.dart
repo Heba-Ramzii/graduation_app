@@ -55,6 +55,8 @@ class _SchedualScreenState extends State<SchedualScreen> {
             const SizedBox(height: 20),
             Image.asset(
               'assets/images/profile.png',
+              height: 200,
+              width: 200,
             ),
             const SizedBox(height: 20),
             const Text(

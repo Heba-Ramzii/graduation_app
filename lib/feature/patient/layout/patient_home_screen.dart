@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
 import 'package:graduation_app/feature/patient/layout/schedule_screen.dart';
 import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
 
@@ -9,7 +10,6 @@ import '../../doctor/pages/more/profile/patient_profile.dart';
 import '../widget/appointment_card.dart';
 import '../widget/reminder_card.dart';
 import 'chat_screen.dart';
-
 
 class PatientHome extends StatefulWidget {
   const PatientHome({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _PatientHomeState extends State<PatientHome> {
     const PatientHomeScreen(),
     const ChatScreen(),
     const SchedualScreen(),
-    const PatientProfileScreen(),
+    const MoreScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -145,7 +145,8 @@ class PatientHomeScreen extends StatelessWidget {
                     }),
                   );
                 },
-                backgroundColor: const MaterialStatePropertyAll(ColorsManager.white),
+                backgroundColor:
+                    const MaterialStatePropertyAll(ColorsManager.white),
                 hintText: 'Search Doctor, Clinic',
                 leading: const Icon(Icons.search, color: ColorsManager.blue),
               ),

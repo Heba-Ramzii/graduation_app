@@ -18,46 +18,36 @@ class OptionsColumn extends StatelessWidget {
       children: [
         OptionRow(
             icon: IconlyLight.profile,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const PatientProfileScreen());
             },
-            text: "Profile"
-        ),
+            text: "Profile"),
         OptionRow(
             icon: Icons.favorite_border_rounded,
-            onTap:  (){},
-            text: "Favorite"
-        ),
+            onTap: () {},
+            text: "Favorite"),
         OptionRow(
             icon: Icons.add_business_outlined,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const AddClinic());
             },
-            text: "Add clinic"
-        ),
+            text: "Add clinic"),
+        OptionRow(icon: Icons.payment_rounded, onTap: () {}, text: "Payments"),
         OptionRow(
-            icon: Icons.payment_rounded,
-            onTap:  (){},
-            text: "Payments"
-        ),
-        OptionRow(
-            icon: IconlyLight.lock,
-            onTap:  (){},
-            text: "Privacy & Policy"
-        ),
+            icon: IconlyLight.lock, onTap: () {}, text: "Privacy & Policy"),
         OptionRow(
             icon: Icons.settings_outlined,
-            onTap:  (){
+            onTap: () {
               navigateToScreen(context, const SettingsScreen());
             },
-            text: "Settings"
-        ),
+            text: "Settings"),
         OptionRow(
             icon: Icons.help_outline_rounded,
-            onTap:  (){},
-            text: "Help Center "
+            onTap: () {},
+            text: "Help Center "),
+        const SizedBox(
+          height: 17,
         ),
-        const SizedBox(height: 17,),
         Row(
           children: [
             const Icon(
@@ -65,21 +55,18 @@ class OptionsColumn extends StatelessWidget {
               size: 25,
               color: ColorsManager.red,
             ),
-            const SizedBox(width: 40,),
+            const SizedBox(
+              width: 40,
+            ),
             CustomTextButton(
-              text:"Log Out",
+              text: "Log Out",
               onPressed: () {
-                showMyDialog(context, "Log Out",
-                    "Yes, Log Out",
-                        (){}
-
-                );
-               },
+                showMyDialog(context, "Log Out", "Yes, Log Out", () {});
+              },
               fontSize: 18,
-                fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w500,
               fontColor: ColorsManager.font,
             ),
-
           ],
         )
       ],
