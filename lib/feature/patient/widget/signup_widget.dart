@@ -5,8 +5,6 @@ import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
-import '../layout/login_screen.dart';
-
 class SignupWidget extends StatelessWidget {
   const SignupWidget({super.key});
 
@@ -82,14 +80,7 @@ class SignupWidget extends StatelessWidget {
             SizedBox(height: screenWidth * 0.02), // Adjusted height
             CustomMaterialButton(
               text: "Sign up",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                    return const LoginScreen();
-                  }),
-                );
-              },
+              onPressed: () => {},
             ),
             SizedBox(height: screenWidth * 0.03), // Adjusted height
             const Text("Or connect with"),
@@ -155,14 +146,7 @@ class SignupWidget extends StatelessWidget {
                 const Text("have an account?"),
                 CustomTextButton(
                   text: "  Login",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                        return const LoginScreen();
-                      }),
-                    );
-                  },
+                  onPressed: () => {},
                 ),
               ],
             ),

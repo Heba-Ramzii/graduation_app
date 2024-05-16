@@ -1,3 +1,4 @@
+import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
@@ -51,6 +52,16 @@ class _ScheduleSreen2State extends State<ScheduleSreen2> {
                   ),
                 ),
               ],
+            ),
+            Container(
+              color: ColorsManager.white,
+              child: DatePicker(
+                minDate: DateTime(2021, 1, 1),
+                maxDate: DateTime(2023, 12, 31),
+                onDateSelected: (value) {
+                  // Handle selected date
+                },
+              ),
             ),
             const SizedBox(height: 10),
             const Divider(

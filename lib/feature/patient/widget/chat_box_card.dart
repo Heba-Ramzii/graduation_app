@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
-import '../layout/my_chat_screen.dart';
-
 class ChatBox extends StatelessWidget {
   final Widget drName;
   final String message;
@@ -36,14 +34,7 @@ class ChatBox extends StatelessWidget {
             ],
           ),
           trailing: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                    return const MyChatScreen();
-                  }),
-                );
-              },
+              onPressed: () {},
               icon: const Icon(
                 Icons.arrow_forward,
                 color: ColorsManager.blue,

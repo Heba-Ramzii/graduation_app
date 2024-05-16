@@ -75,9 +75,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
             Stack(
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                  onTap: () {},
                   child: const Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
