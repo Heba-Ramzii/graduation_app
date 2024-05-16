@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 import 'feature/doctor/pages/doctor_clinics/clinic.dart';
+import 'feature/doctor/pages/home/home_screen.dart';
 
 
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
        ),
       debugShowCheckedModeBanner: false,
-      home: const Clinics(),
+      home: const HomeDoctorScreen(),
     );
   }
 }
