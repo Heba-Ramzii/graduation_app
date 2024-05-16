@@ -25,8 +25,10 @@ abstract class StyleManager {
     fontSize: 14,
   );
 
-  static const textStyle13 =
-      TextStyle(fontSize: 13, color: ColorsManager.primaryLight);
+  static const textStyle13 = TextStyle(
+    fontSize: 13,
+    color: ColorsManager.primaryLight
+  );
 
   static const textStyle14mid = TextStyle(
     fontSize: 14,
@@ -40,17 +42,24 @@ abstract class StyleManager {
 
   //label
   static const textStyle12 =
-      TextStyle(fontSize: 12, color: ColorsManager.primary);
+      TextStyle(
+          fontSize: 12,
+          color: ColorsManager.primary
+      );
+
 
   static const shadow = BoxShadow(
     color: ColorsManager.primaryLight,
     blurRadius: 4,
     offset: Offset(0, 2),
   );
+
   static BorderRadius borderRadius = BorderRadius.circular(10);
-  static BoxDecoration containerDecoration = BoxDecoration(
+  static  BoxDecoration containerDecoration = BoxDecoration(
     color: ColorsManager.white,
     borderRadius: borderRadius,
-    boxShadow: const [StyleManager.shadow],
+    boxShadow:  const [
+      StyleManager.shadow
+    ],
   );
 }

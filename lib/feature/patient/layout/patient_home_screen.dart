@@ -27,6 +27,7 @@ class _PatientHomeState extends State<PatientHome> {
     const SchedualScreen(),
     const MoreScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -81,9 +82,7 @@ class _PatientHomeState extends State<PatientHome> {
 }
 
 class PatientHomeScreen extends StatelessWidget {
-  const PatientHomeScreen({
-    super.key,
-  });
+  const PatientHomeScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {

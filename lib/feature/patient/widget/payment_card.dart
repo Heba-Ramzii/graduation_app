@@ -44,13 +44,13 @@ class PaymentCard extends StatelessWidget {
                 children: [
                   CustomMaterialButton(
                     text: "Month:        20 dollars",
-                    style: const TextStyle(color: ColorsManager.black),
+                    fontColor:  ColorsManager.black,
                     onPressed: () {},
                     color: ColorsManager.white,
                   ),
                   CustomMaterialButton(
                     text: "year:        200 dollars",
-                    style: const TextStyle(color: ColorsManager.black),
+                    fontColor:  ColorsManager.black,
                     onPressed: () {},
                     color: ColorsManager.white,
                     minWidth: 200,
