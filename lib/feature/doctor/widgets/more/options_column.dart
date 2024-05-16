@@ -3,6 +3,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
+import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../pages/doctor_clinics/add_clinic.dart';
@@ -32,10 +33,10 @@ class OptionsColumn extends StatelessWidget {
               navigateToScreen(context, const AddClinic());
             },
             text: "Add clinic"),
-        OptionRow(icon: Icons.payment_rounded, onTap: () {}, text: "Payments"),
-        OptionRow(
-            icon: IconlyLight.lock, onTap: () {}, text: "Privacy & Policy"),
-        OptionRow(
+        OptionRow(icon: Icons.payment_rounded,
+            onTap: () {navigateToScreen(context, const PaymentScreen());},
+            text: "Payments"),
+         OptionRow(
             icon: Icons.settings_outlined,
             onTap: () {
               navigateToScreen(context, const SettingsScreen());
