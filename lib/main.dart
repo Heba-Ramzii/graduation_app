@@ -3,6 +3,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 import 'feature/doctor/pages/doctor_clinics/clinic.dart';
 import 'feature/doctor/pages/home/home_screen.dart';
+import 'feature/patient/layout/patient_home_screen.dart';
 
 
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorsManager.primaryMaterialColor,
        ),
       debugShowCheckedModeBanner: false,
-      home: const HomeDoctorScreen(),
+      home: const PatientHome(),
     );
   }
 }
