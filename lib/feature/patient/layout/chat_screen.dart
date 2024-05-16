@@ -21,44 +21,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
     return Scaffold(
       /// backgroundColor: ColorsManager.homePageBackground,
-      bottomNavigationBar: NavigationBar(
-        height: screenHeight * 0.1,
-        indicatorShape: const CircleBorder(),
-        backgroundColor: ColorsManager.blue2,
-        selectedIndex: 0,
-        indicatorColor: ColorsManager.white,
-        onDestinationSelected: (index) {},
-        destinations: [
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/home.svg',
-              color: ColorsManager.blue,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/chat-alt.svg',
-              color: ColorsManager.blue,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/calendar.svg',
-              color: ColorsManager.blue,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/dots-horizontal.svg',
-              color: ColorsManager.blue,
-            ),
-            label: '',
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(screenWidth * 0.04),
         child: Column(
