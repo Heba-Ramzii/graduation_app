@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/patient/layout/schedule_screen_2.dart';
+import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 import '../widget/clinic_card.dart';
 
 class SchedualScreen extends StatefulWidget {
-  const SchedualScreen({super.key,});
+  const SchedualScreen({
+    super.key,
+  });
 
   @override
   State<SchedualScreen> createState() => _SchedualScreenState();
@@ -188,7 +190,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                      return const ScheduleSreen2();
+                      return const PatientHome();
                     }),
                   );
                 },
