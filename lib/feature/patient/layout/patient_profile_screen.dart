@@ -4,8 +4,9 @@ import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/edit_info.dart';
 import 'package:intl/intl.dart';
+
+import '../../doctor/widgets/profile/edit_info_row.dart';
 
 class PatientProfileScreen extends StatefulWidget {
   const PatientProfileScreen({super.key});

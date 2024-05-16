@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/chat_screen.dart';
-import 'package:graduation_app/layout/patient_home_screen.dart';
-import 'package:graduation_app/layout/schedule_screen.dart';
+
 
 class BottomNavBarMenue extends StatefulWidget {
-  BottomNavBarMenue({
+  BottomNavBarMenue({super.key, 
     required this.currentIndex,
   });
 
@@ -22,7 +19,7 @@ class _BottomNavBarMenueState extends State<BottomNavBarMenue> {
   Widget build(BuildContext context) {
     return NavigationBar(
         height: 70,
-        indicatorShape: CircleBorder(
+        indicatorShape: const CircleBorder(
           eccentricity: 0.0,
         ),
         backgroundColor: ColorsManager.blue2,

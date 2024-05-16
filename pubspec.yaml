@@ -54,7 +54,7 @@ dependencies:
   mime: ^1.0.5
   toggle_switch: ^2.3.0
 
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

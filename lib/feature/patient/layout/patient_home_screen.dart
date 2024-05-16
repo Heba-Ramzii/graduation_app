@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graduation_app/core/core_widgets/navigation_bar.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/chat_screen.dart';
-import 'package:graduation_app/layout/patient_profile_screen.dart';
-import 'package:graduation_app/layout/schedule_screen.dart';
-import 'package:graduation_app/layout/search_patient_screen.dart';
-import 'package:graduation_app/widget/appointment_card.dart';
-import 'package:graduation_app/widget/reminder_card.dart';
+import 'package:graduation_app/feature/patient/layout/schedule_screen.dart';
+import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
+
+import '../../doctor/pages/more/profile/patient_profile.dart';
+import '../widget/appointment_card.dart';
+import '../widget/reminder_card.dart';
+import 'chat_screen.dart';
+
 
 class PatientHome extends StatefulWidget {
   const PatientHome({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _PatientHomeState extends State<PatientHome> {
   int currentIndex = 0;
 
   List<Widget> screens = [
-    PatientHomeScreen(),
+    const PatientHomeScreen(),
     ChatScreen(),
     SchedualScreen(),
     PatientProfileScreen(),
@@ -32,7 +33,7 @@ class _PatientHomeState extends State<PatientHome> {
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
             height: 70,
-            indicatorShape: CircleBorder(
+            indicatorShape: const CircleBorder(
               eccentricity: 0.0,
             ),
             backgroundColor: ColorsManager.blue2,
@@ -92,16 +93,16 @@ class PatientHomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage: NetworkImage(
                   'https://picsum.photos/200/300',
                 ),
               ),
-              SizedBox(width: 10),
-              Expanded(
+              const SizedBox(width: 10),
+              const Expanded(
                 flex: 3,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,11 +129,11 @@ class PatientHomeScreen extends StatelessWidget {
                 iconSize: 30,
                 color: ColorsManager.blue,
                 onPressed: () {},
-                icon: Icon(Icons.notifications_none),
+                icon: const Icon(Icons.notifications_none),
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Stack(
             children: [
               SearchBar(
@@ -144,20 +145,20 @@ class PatientHomeScreen extends StatelessWidget {
                     }),
                   );
                 },
-                backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
+                backgroundColor: const MaterialStatePropertyAll(ColorsManager.white),
                 hintText: 'Search Doctor, Clinic',
-                leading: Icon(Icons.search, color: ColorsManager.blue),
+                leading: const Icon(Icons.search, color: ColorsManager.blue),
               ),
             ],
           ),
-          SizedBox(height: 24),
-          Text(
+          const SizedBox(height: 24),
+          const Text(
             'Reminders',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ReminderCard(
-            medication: Text(
+            medication: const Text(
               'Paracetamol',
               style: TextStyle(
                 fontSize: 15,
@@ -170,9 +171,9 @@ class PatientHomeScreen extends StatelessWidget {
               'assets/icons/Reminder.png',
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ReminderCard(
-            medication: Text(
+            medication: const Text(
               'test',
               style: TextStyle(
                 fontSize: 15,
@@ -185,10 +186,10 @@ class PatientHomeScreen extends StatelessWidget {
               'assets/icons/Reminder.png',
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: Text(
                   'Upcoming Appointment',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -199,7 +200,7 @@ class PatientHomeScreen extends StatelessWidget {
                     left: MediaQuery.of(context).size.width * 0.2),
                 child: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'view all',
                     style: TextStyle(
                       fontSize: 13,
@@ -211,7 +212,7 @@ class PatientHomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 150,
             width: double.infinity,
             child: CarouselSlider(
@@ -232,10 +233,10 @@ class PatientHomeScreen extends StatelessWidget {
               options: CarouselOptions(),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: Text(
                   'Recommended Doctor',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -246,7 +247,7 @@ class PatientHomeScreen extends StatelessWidget {
                     left: MediaQuery.of(context).size.width * 0.2),
                 child: TextButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     'view all',
                     style: TextStyle(
                       fontSize: 13,
@@ -258,7 +259,7 @@ class PatientHomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 150,
             width: double.infinity,
             child: CarouselSlider(

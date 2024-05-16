@@ -4,8 +4,9 @@ import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/patient_home_screen.dart';
-import 'package:graduation_app/layout/signup_screen.dart';
+
+import '../layout/patient_home_screen.dart';
+import '../layout/signup_screen.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key});
@@ -62,7 +63,7 @@ class LoginWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                    return PatientHome();
+                    return const PatientHome();
                   }),
                 );
               },
@@ -106,7 +107,7 @@ class LoginWidget extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                        return SignupScreen();
+                        return const SignupScreen();
                       }),
                     );
                   },

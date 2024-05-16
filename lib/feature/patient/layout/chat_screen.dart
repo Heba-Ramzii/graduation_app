@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/widget/chat_box_card.dart';
+
+import '../widget/chat_box_card.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -28,7 +27,7 @@ class _ChatScreenState extends State<ChatScreen> {
               height: MediaQuery.of(context).size.height * 0.02,
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            SearchBar(
+            const SearchBar(
               backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
               hintText: 'My Chat',
               trailing: [Icon(Icons.search, color: ColorsManager.blue)],

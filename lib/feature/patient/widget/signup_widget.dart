@@ -4,7 +4,8 @@ import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/login_screen.dart';
+
+import '../layout/login_screen.dart';
 
 class SignupWidget extends StatelessWidget {
   const SignupWidget({super.key});
@@ -85,7 +86,7 @@ class SignupWidget extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                    return LoginScreen();
+                    return const LoginScreen();
                   }),
                 );
               },
@@ -158,7 +159,7 @@ class SignupWidget extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                        return LoginScreen();
+                        return const LoginScreen();
                       }),
                     );
                   },

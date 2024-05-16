@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/card_details.dart';
-import 'package:graduation_app/layout/chat_screen.dart';
-import 'package:graduation_app/layout/login_screen.dart';
-import 'package:graduation_app/layout/my_chat_screen.dart';
-import 'package:graduation_app/layout/patient_home_screen.dart';
-import 'package:graduation_app/layout/patient_profile_screen.dart';
-import 'package:graduation_app/layout/payment_screen.dart';
-import 'package:graduation_app/layout/schedule_screen.dart';
-import 'package:graduation_app/layout/schedule_screen_2.dart';
-import 'package:graduation_app/layout/search_patient_screen.dart';
-import 'package:graduation_app/layout/login_screen.dart';
-import 'package:graduation_app/layout/signup_screen.dart';
+
+import 'feature/patient/layout/schedule_screen.dart';
+
 
 void main() {
   runApp(const MyApp());

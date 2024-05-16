@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/layout/schedule_screen_2.dart';
-import 'package:graduation_app/widget/clinic_card.dart';
+import 'package:graduation_app/feature/patient/layout/schedule_screen_2.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+import '../widget/clinic_card.dart';
+
 class SchedualScreen extends StatefulWidget {
-  const SchedualScreen({Key? key});
+  const SchedualScreen({super.key,});
 
   @override
   State<SchedualScreen> createState() => _SchedualScreenState();
@@ -22,24 +23,24 @@ class _SchedualScreenState extends State<SchedualScreen> {
     return Scaffold(
       backgroundColor: ColorsManager.homePageBackground,
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            SizedBox(height: 16),
+            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             Row(
               children: [
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back,
                     color: ColorsManager.blue,
                   ),
                 ),
-                Text(
+                const Text(
                   "Schedule",
                   style: TextStyle(
                     color: ColorsManager.black,
@@ -49,12 +50,12 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Image.asset(
               'assets/images/profile.png',
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               "Profile",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -62,12 +63,12 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
             ),
-            SizedBox(height: 30),
-            Text(
+            const SizedBox(height: 30),
+            const Text(
               "Choose Clinic",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -80,8 +81,8 @@ class _SchedualScreenState extends State<SchedualScreen> {
               adddress: "Abokpir",
               time: "12:1",
             ),
-            SizedBox(height: 15),
-            Text(
+            const SizedBox(height: 15),
+            const Text(
               "Choose Time",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -99,14 +100,14 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 },
               ),
             ),
-            SizedBox(height: 50),
-            SizedBox(height: 10),
-            Divider(
+            const SizedBox(height: 50),
+            const SizedBox(height: 10),
+            const Divider(
               color: ColorsManager.blue,
               thickness: 2,
             ),
-            SizedBox(height: 5),
-            Text(
+            const SizedBox(height: 5),
+            const Text(
               "Patient Information",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -114,18 +115,18 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ToggleSwitch(
               minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
-              labels: ['Your Self', 'Another Person'],
+              labels: const ['Your Self', 'Another Person'],
               onToggle: (index) {
                 print('switched to: $index');
               },
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Full Name",
               style: TextStyle(
                 color: ColorsManager.primary,
@@ -136,8 +137,8 @@ class _SchedualScreenState extends State<SchedualScreen> {
               controller: controller1,
               type: TextInputType.name,
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Age",
               style: TextStyle(
                 color: ColorsManager.primary,
@@ -148,18 +149,18 @@ class _SchedualScreenState extends State<SchedualScreen> {
               controller: controller1,
               type: TextInputType.phone,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ToggleSwitch(
               minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
-              labels: ['Male', 'Female'],
+              labels: const ['Male', 'Female'],
               onToggle: (index) {
                 print('switched to: $index');
               },
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               "Describe Your Case",
               style: TextStyle(
                 color: ColorsManager.black,
@@ -170,7 +171,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
               maxLines: 5,
               decoration: InputDecoration(
                 hintText: 'Write your case here',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: ColorsManager.blue,
                 ),
                 border: OutlineInputBorder(
@@ -178,8 +179,8 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
-            Container(
+            const SizedBox(height: 10),
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               child: CustomMaterialButton(
                 text: "Submit",
