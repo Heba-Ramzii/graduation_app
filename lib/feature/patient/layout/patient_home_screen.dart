@@ -23,9 +23,9 @@ class _PatientHomeState extends State<PatientHome> {
 
   List<Widget> screens = [
     const PatientHomeScreen(),
-    ChatScreen(),
-    SchedualScreen(),
-    PatientProfileScreen(),
+    const ChatScreen(),
+    const SchedualScreen(),
+    const PatientProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class PatientHomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                      return SearchPatientSceen();
+                      return const SearchPatientSceen();
                     }),
                   );
                 },
@@ -216,7 +216,7 @@ class PatientHomeScreen extends StatelessWidget {
             height: 150,
             width: double.infinity,
             child: CarouselSlider(
-              items: [
+              items: const [
                 AppointmentCard(
                   doctorName: 'Dr. James Hilar',
                   department: 'Respiratory',
@@ -263,7 +263,7 @@ class PatientHomeScreen extends StatelessWidget {
             height: 150,
             width: double.infinity,
             child: CarouselSlider(
-              items: [
+              items: const [
                 AppointmentCard(
                   doctorName: 'Dr. James Hilar',
                   department: 'Respiratory',

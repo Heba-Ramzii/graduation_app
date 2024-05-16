@@ -40,7 +40,7 @@ class ChatBox extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                    return MyChatScreen();
+                    return const MyChatScreen();
                   }),
                 );
               },

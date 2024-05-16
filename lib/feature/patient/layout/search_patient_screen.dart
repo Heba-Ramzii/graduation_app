@@ -127,7 +127,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                 height: 200,
                 width:
                     MediaQuery.of(context).size.width * 0.9, // Adjusted width
-                child: BookCard(
+                child: const BookCard(
                   doctorName: 'Dr. James Hilar',
                   department: 'Respiratory',
                   price: "150",

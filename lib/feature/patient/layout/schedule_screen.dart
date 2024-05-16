@@ -76,7 +76,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            ClinicCad(
+            const ClinicCad(
               doctorName: "Ebrahim",
               adddress: "Abokpir",
               time: "12:1",
@@ -188,7 +188,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                      return ScheduleSreen2();
+                      return const ScheduleSreen2();
                     }),
                   );
                 },
