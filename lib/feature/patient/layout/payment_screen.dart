@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
-import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/function/core_function.dart';
+import 'package:graduation_app/feature/patient/layout/card_details.dart';
 
 import '../widget/credit_card.dart';
 import '../widget/payment_card.dart';
@@ -18,44 +20,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      appBar: const CustomAppBar(title: "Pay by Credit"),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 36),
-            const Row(
-              children: [
-                InkWell(
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: ColorsManager.blue,
-                  ),
-                ),
-                Text(
-                  "     Pay by credit",
-                  style: TextStyle(
-                    color: ColorsManager.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 50),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
-              child: const CereditCard(),
+              child: const CreditCard(),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.001),
               child: const PaymentCard(),
             ),
             const SizedBox(height: 50),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.2),
               child: CustomMaterialButton(
                 text: "New Payment Method",
-                onPressed: () {},
+                onPressed: () {
+                  navigateToScreen(context, const CardDetails());
+                },
               ),
             ),
           ],

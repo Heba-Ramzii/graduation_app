@@ -25,11 +25,11 @@ Widget CustomTextFormField({
         //style: StyleManager.textStyle14,
         controller: controller,
         keyboardType: type,
-
         obscureText: isPassword,
         onFieldSubmitted: onSubmit,
         onTap: onTap,
         onChanged: onChange,
+        scrollPadding:const EdgeInsets.all(0.0) ,
         //enabled: isClickable,
         decoration: InputDecoration(
           suffixIcon: suffixPressed != null
@@ -41,23 +41,16 @@ Widget CustomTextFormField({
                   ),
                 )
               : null,
-          prefixIcon: Icon(
-            prefixIcon,
-            size: iconSize,
-            //color: ColorsManager.grayFont,
-          ),
-          hintStyle: StyleManager.buttonTextStyle16.copyWith(
-            color: colorFont,
-          ),
           fillColor: ColorsManager.secondary,
           filled: false,
           label: Text(
             label,
-            style: const TextStyle(
-              color: ColorsManager.primary,
+            style: StyleManager.textStyle13.copyWith(
+              color: ColorsManager.primary
             ),
           ),
           hintText: hint,
+          hintStyle: StyleManager.textStyle14,
         ),
       ),
     );

@@ -13,10 +13,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: ColorsManager.white,
       title: Text(
         title,
         style:
-            StyleManager.mainTextStyle15.copyWith(fontWeight: FontWeight.bold),
+            StyleManager.mainTextStyle15.copyWith(
+              fontSize: 16,
+                fontWeight: FontWeight.bold,
+            ),
       ),
       leading: Builder(
         builder: (BuildContext context) {

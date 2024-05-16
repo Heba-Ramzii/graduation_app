@@ -34,7 +34,9 @@ class _ChatScreenState extends State<ChatScreen> {
             const SearchBar(
               backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
               hintText: 'My Chat',
-              trailing: [Icon(Icons.search, color: ColorsManager.blue)],
+              trailing: [
+                Icon(Icons.search, color: ColorsManager.blue)
+              ],
             ),
             SizedBox(height: screenHeight * 0.03),
             SizedBox(height: screenHeight * 0.01),

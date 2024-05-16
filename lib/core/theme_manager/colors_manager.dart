@@ -17,6 +17,7 @@ class ColorsManager {
   static const Color blue3 = Color(0xFF94A3B8);
   static const Color black = Color(0xFF212121);
   static const Color background = Color(0xFFDBEAFE);
+  static const Color background2 = Color(0xFFF8F9FA);
   static const Color purple = Color(0xff8676fb);
   static const Color shadow = Color(0x99ABBED1);// login background
   static const Color primaryLight4 = Color(0xff5C9DFF); // login background// login background
