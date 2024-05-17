@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button_fillter.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
 import '../widget/book_card.dart';
 
@@ -16,6 +17,45 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                color: ColorsManager.primaryLight3,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          },
+        ),
+        actions: [
+          SizedBox(
+            child: Container(
+              width: 380,
+              height: 50,
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: SearchBar(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                 hintText: 'Search Doctor, Clinic',
+                leading: const Icon(Icons.search, color: ColorsManager.blue),
+                trailing: Iterable<Widget>.generate(
+                  1,
+                      (index) => SvgPicture.asset(
+                    'assets/icons/adjustments.svg',
+                    color: ColorsManager.blue,
+                    width: 24,
+                    height: 24,
+                  ),
+                ).toList(),
+              ),
+            ),
+          ),
+
+        ],
+      ),
       backgroundColor: ColorsManager.homePageBackground,
       bottomNavigationBar: NavigationBar(
         height: 70,
@@ -70,40 +110,6 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
-            const SizedBox(height: 16),
-            Stack(
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: ColorsManager.blue,
-                    size: 24, // Adjusted icon size
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(70, 0, 0, 20),
-                  child: SearchBar(
-                    shadowColor: const MaterialStatePropertyAll(ColorsManager.white),
-                    shape: const MaterialStatePropertyAll(LinearBorder()),
-                    backgroundColor:
-                        const MaterialStatePropertyAll(ColorsManager.white),
-                    hintText: 'Search Doctor, Clinic',
-                    leading: const Icon(Icons.search, color: ColorsManager.blue),
-                    trailing: Iterable<Widget>.generate(
-                      1,
-                      (index) => SvgPicture.asset(
-                        'assets/icons/adjustments.svg',
-                        color: ColorsManager.blue,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ).toList(),
-                  ),
-                ),
-              ],
-            ),
             Row(
               children: [
                 for (int i = 0; i < 5; i++) ...[
@@ -126,10 +132,6 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                 width:
                     MediaQuery.of(context).size.width * 0.9, // Adjusted width
                 child: const BookCard(
-                  doctorName: 'Dr. James Hilar',
-                  department: 'Respiratory',
-                  price: "150",
-                  rating: 4.2,
                 ),
               ),
               const SizedBox(height: 10),

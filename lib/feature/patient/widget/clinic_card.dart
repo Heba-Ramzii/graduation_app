@@ -1,65 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import '../../doctor/pages/appointment/appointment_screen.dart';
+import '../../doctor/widgets/home/appointment_section/appointment_list_builder.dart';
 
 class ClinicCad extends StatelessWidget {
-  final String doctorName;
-  final String adddress;
-  final String time;
 
   const ClinicCad({
     super.key,
-    required this.doctorName,
-    required this.adddress,
-    required this.time,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        child: ListTile(
-      leading: Image.network(
-        'https://as1.ftcdn.net/v2/jpg/03/02/88/46/1000_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg',
-        width: 70,
-        height: 400,
-        fit: BoxFit.cover,
-      ),
-      title: Text(
-        doctorName,
-        maxLines: 1,
-        style: const TextStyle(
-          fontSize: 12,
-        ),
-      ),
-      subtitle: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(adddress),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                const Icon(Icons.alarm, color: ColorsManager.blue),
-                Text(' $time'),
-              ],
-            ),
-          ],
-        ),
-      ),
-      trailing: const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "12 patient",
-            style: TextStyle(
-              color: ColorsManager.blue,
-              fontSize: 12,
-            ),
+    return SizedBox(
+        height:130,
+        child: ListView.separated(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) =>  InkWell(
+            child: const AppointmentListBuilder(),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AppointmentScreen()));
+            },
           ),
-        ],
-      ),
-    ));
+          itemCount: 5,
+          separatorBuilder: (context, index) => const SizedBox(
+            width: 16,
+          ),
+        ),
+      );
   }
 }
