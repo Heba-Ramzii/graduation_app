@@ -4,6 +4,9 @@ import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/patient/layout/login_screen.dart';
+import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
+import 'package:graduation_app/feature/patient/layout/signup_screen.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key});
@@ -56,7 +59,12 @@ class LoginWidget extends StatelessWidget {
             const SizedBox(height: 20),
             CustomMaterialButton(
               text: "Login",
-              onPressed: () => {},
+              onPressed: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PatientHome()),
+                )
+              },
             ),
             const SizedBox(height: 10),
             Align(
@@ -93,7 +101,13 @@ class LoginWidget extends StatelessWidget {
                 const Text("Don't have an account?"),
                 CustomTextButton(
                   text: "  Sign up",
-                  onPressed: () => {},
+                  onPressed: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SignupScreen()),
+                    )
+                  },
                 ),
               ],
             ),

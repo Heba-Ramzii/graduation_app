@@ -26,7 +26,7 @@ class _CardDetailsState extends State<CardDetails> {
       appBar: const CustomAppBar(title: "Add Card"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -47,7 +47,7 @@ class _CardDetailsState extends State<CardDetails> {
                 child: CustomMaterialButton(
                   text: "Save",
                   onPressed: () {
-                    navigateToScreen(context, const PaymentScreen());
+                    Navigator.pop(context);
                   },
                   minWidth: screenWidth * 0.5,
                 ),
