@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
@@ -19,8 +20,8 @@ class _BottomNavBarMenueState extends State<BottomNavBarMenue> {
   Widget build(BuildContext context) {
     return NavigationBar(
         height: 70,
-        indicatorShape: const CircleBorder(
-          eccentricity: 0.0,
+        indicatorShape:  const CircleBorder(
+          eccentricity: 0.2,
         ),
         backgroundColor: ColorsManager.blue2,
         selectedIndex: widget.currentIndex,
@@ -30,32 +31,35 @@ class _BottomNavBarMenueState extends State<BottomNavBarMenue> {
             widget.currentIndex = Index;
           });
         },
-        destinations: [
+        destinations: const [
           NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/home.svg',
+            icon: Icon(
+              IconlyLight.home,
+              color: ColorsManager.blue,
+              size: 24,
+            ),
+            label: '',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              IconlyLight.chat,
               color: ColorsManager.blue,
             ),
             label: '',
           ),
           NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/chat-alt.svg',
+            icon: Icon(
+              IconlyLight.calendar,
               color: ColorsManager.blue,
+              size: 24,
             ),
             label: '',
           ),
           NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/calendar.svg',
+            icon: Icon(
+              Icons.more_horiz_rounded,
               color: ColorsManager.blue,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/dots-horizontal.svg',
-              color: ColorsManager.blue,
+              size: 24,
             ),
             label: '',
           ),

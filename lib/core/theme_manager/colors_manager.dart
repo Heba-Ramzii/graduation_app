@@ -10,7 +10,7 @@ class ColorsManager {
   static const Color font = Color(0xff212121); // grayFont
   static const Color grayFont = Color(0xff717171); // grayFont
   static const Color gold = Color(0xffFFDF00); // grayFont
-  static const Color red = Color(0xffFF3D00); // grayFont
+  static const Color red = Color(0xffFF3D00);
   static const Color white = Color(0xffFFFFFF);
   static const Color blue2 = Color(0xffE5F0FF);
   static const Color fillter = Color(0x0ff1f5f9);

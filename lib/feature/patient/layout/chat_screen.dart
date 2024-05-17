@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
 import '../widget/chat_box_card.dart';
 
@@ -15,72 +16,86 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-    // Get the screen width and height
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
+      List<bool> haveMessage = [
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+
+      ];
 
     return Scaffold(
       /// backgroundColor: ColorsManager.homePageBackground,
+      appBar: AppBar(
+        elevation: 2.0,
+        shadowColor:ColorsManager.shadow ,
+        backgroundColor: ColorsManager.white,
+        shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(25.0),
+            bottomLeft: Radius.circular(25.0),
+          ),
+        ),
+         title: Text("My Chat",
+          style: StyleManager.textStyle18.copyWith(fontWeight: FontWeight.w600),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search_rounded,
+                color: ColorsManager.primary,
+                size: 24,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_vert,
+                color: ColorsManager.primary,
+                size: 24,
+              )),
+        ],
+      ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(screenWidth * 0.04),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: screenHeight * 0.02,
+            ListView.separated(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index) =>   ChatBox(
+                                drName: 'Dr Ahmed',
+                                message: "hi", haveMessage: haveMessage[index],
+                              ),
+                separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 5),
+                itemCount: 5
             ),
-            SizedBox(height: screenHeight * 0.02),
-            const SearchBar(
-              backgroundColor: MaterialStatePropertyAll(ColorsManager.white),
-              hintText: 'My Chat',
-              trailing: [
-                Icon(Icons.search, color: ColorsManager.blue)
-              ],
-            ),
-            SizedBox(height: screenHeight * 0.03),
-            SizedBox(height: screenHeight * 0.01),
-            ChatBox(
-              drName: Text(
-                'Dr Ahmed',
-                style: TextStyle(
-                  fontSize: screenWidth * 0.04,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsManager.font,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                Text(
+                    "your personal messages are ",
+                  style: StyleManager.textStyle13.copyWith(
+                    color: ColorsManager.font,
+                  ),
                 ),
-              ),
-              profileImage: ProfileImage(
-                  height: screenWidth * 0.12, width: screenWidth * 0.12),
-              message: "hi",
-            ),
-            SizedBox(height: screenHeight * 0.01),
-            ChatBox(
-              drName: Text(
-                'Dr Ahmed',
-                style: TextStyle(
-                  fontSize: screenWidth * 0.04,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsManager.font,
+                Text(
+                    "end-to-end-encrypted",
+                  style: StyleManager.textStyle13.copyWith(
+                    color: ColorsManager.primary,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
-              ),
-              profileImage: ProfileImage(
-                  height: screenWidth * 0.12, width: screenWidth * 0.12),
-              message: "hi",
-            ),
-            SizedBox(height: screenHeight * 0.01),
-            ChatBox(
-              drName: Text(
-                'Dr Ahmed',
-                style: TextStyle(
-                  fontSize: screenWidth * 0.04,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsManager.font,
-                ),
-              ),
-              profileImage: ProfileImage(
-                  height: screenWidth * 0.12, width: screenWidth * 0.12),
-              message: "hi",
-            ),
+              ],),
+            )
           ],
         ),
       ),

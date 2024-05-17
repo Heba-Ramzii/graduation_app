@@ -26,12 +26,16 @@ class ReportSection extends StatelessWidget {
           cursorColor: ColorsManager.primary,
           maxLines: null,
           decoration: InputDecoration(
-            border: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(20)
+            enabledBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(color: ColorsManager.primaryBorder),
+            ),
+            focusedBorder:  OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: const BorderSide(color: ColorsManager.primaryBorder),
             ),
             filled: true,
-            fillColor: ColorsManager.primaryLight2,
+            fillColor: ColorsManager.white,
             hintText: "Report...",
             hintStyle: StyleManager.textStyle12.copyWith(
               color: ColorsManager.primaryLight,

@@ -37,8 +37,8 @@ class _PatientHomeState extends State<PatientHome> {
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
             height: 70,
-            indicatorShape: const CircleBorder(
-              eccentricity: 0.0,
+            indicatorShape:  const CircleBorder(
+                eccentricity: 0.2,
             ),
             backgroundColor: ColorsManager.blue2,
             selectedIndex: currentIndex,
@@ -48,32 +48,35 @@ class _PatientHomeState extends State<PatientHome> {
                 currentIndex = Index;
               });
             },
-            destinations: [
+            destinations: const [
               NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/home.svg',
+                icon: Icon(
+                    IconlyLight.home,
+                  color: ColorsManager.blue,
+                  size: 24,
+                ),
+                label: '',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  IconlyLight.chat,
                   color: ColorsManager.blue,
                 ),
                 label: '',
               ),
               NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/chat-alt.svg',
+                icon: Icon(
+                  IconlyLight.calendar,
                   color: ColorsManager.blue,
+                  size: 24,
                 ),
                 label: '',
               ),
               NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/calendar.svg',
+                icon: Icon(
+                  Icons.more_horiz_rounded,
                   color: ColorsManager.blue,
-                ),
-                label: '',
-              ),
-              NavigationDestination(
-                icon: SvgPicture.asset(
-                  'assets/icons/dots-horizontal.svg',
-                  color: ColorsManager.blue,
+                  size: 24,
                 ),
                 label: '',
               ),
