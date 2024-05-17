@@ -6,7 +6,6 @@ import 'feature/doctor/pages/doctor_clinics/clinic.dart';
 import 'feature/doctor/pages/home/home_screen.dart';
 import 'feature/patient/layout/patient_home_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -31,12 +30,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: ColorsManager.primaryMaterialColor,
         ),
-         iconTheme: const IconThemeData(
+        iconTheme: const IconThemeData(
           color: ColorsManager.primary,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primarySwatch: ColorsManager.primaryMaterialColor,
-       ),
+      ),
       debugShowCheckedModeBanner: false,
       home: const PatientHome(),
     );
