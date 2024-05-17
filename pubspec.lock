@@ -56,9 +56,6 @@ packages:
       sha256: "205d6a9f1862de34b93184f22b9d2d94586b2f05c581d546695e3d8f6a805cd7"
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
-    version: "1.1.1"
-=======
     version: "1.2.0"
   carousel_slider:
     dependency: "direct main"
@@ -68,7 +65,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.1"
->>>>>>> b99fd6457783ca83ef1a4b4f9c0106f583e94921
   characters:
     dependency: transitive
     description:
@@ -290,8 +286,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-<<<<<<< HEAD
-=======
   flutter_parsed_text:
     dependency: transitive
     description:
@@ -316,7 +310,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.1"
->>>>>>> b99fd6457783ca83ef1a4b4f9c0106f583e94921
   flutter_svg:
     dependency: "direct main"
     description:
@@ -375,32 +368,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-<<<<<<< HEAD
-  leak_tracker:
-    dependency: transitive
-    description:
-      name: leak_tracker
-      sha256: "78eb209deea09858f5269f5a5b02be4049535f568c07b275096836f01ea323fa"
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.0.0"
-  leak_tracker_flutter_testing:
-    dependency: transitive
-    description:
-      name: leak_tracker_flutter_testing
-      sha256: b46c5e37c19120a8a01918cfaf293547f47269f7cb4b0058f21531c2465d6ef0
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
-  leak_tracker_testing:
-    dependency: transitive
-    description:
-      name: leak_tracker_testing
-      sha256: a597f72a664dbd293f3bfc51f9ba69816f84dcd403cdac7066cb3f6003f3ab47
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
-=======
   image_picker:
     dependency: "direct main"
     description:
@@ -481,6 +448,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
+  leak_tracker:
+    dependency: transitive
+    description:
+      name: leak_tracker
+      sha256: "78eb209deea09858f5269f5a5b02be4049535f568c07b275096836f01ea323fa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.0.0"
+  leak_tracker_flutter_testing:
+    dependency: transitive
+    description:
+      name: leak_tracker_flutter_testing
+      sha256: b46c5e37c19120a8a01918cfaf293547f47269f7cb4b0058f21531c2465d6ef0
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
+  leak_tracker_testing:
+    dependency: transitive
+    description:
+      name: leak_tracker_testing
+      sha256: a597f72a664dbd293f3bfc51f9ba69816f84dcd403cdac7066cb3f6003f3ab47
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   linkify:
     dependency: transitive
     description:
@@ -489,7 +480,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
->>>>>>> b99fd6457783ca83ef1a4b4f9c0106f583e94921
   lints:
     dependency: transitive
     description:
@@ -521,10 +511,7 @@ packages:
       sha256: d584fa6707a52763a52446f02cc621b077888fb63b93bbcb1143a7be5a0c0c04
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "1.11.0"
-=======
-    version: "1.10.0"
   mime:
     dependency: "direct main"
     description:
@@ -549,7 +536,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
->>>>>>> b99fd6457783ca83ef1a4b4f9c0106f583e94921
   octo_image:
     dependency: transitive
     description:
@@ -907,16 +893,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-<<<<<<< HEAD
-  vm_service:
-    dependency: transitive
-    description:
-      name: vm_service
-      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
-      url: "https://pub.dev"
-    source: hosted
-    version: "13.0.0"
-=======
   visibility_detector:
     dependency: transitive
     description:
@@ -925,7 +901,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.0+2"
->>>>>>> b99fd6457783ca83ef1a4b4f9c0106f583e94921
+  vm_service:
+    dependency: transitive
+    description:
+      name: vm_service
+      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
+      url: "https://pub.dev"
+    source: hosted
+    version: "13.0.0"
   web:
     dependency: transitive
     description:
