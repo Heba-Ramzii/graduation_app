@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
+import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/patient/layout/my_chat_screen.dart';
 
 import '../widget/chat_box_card.dart';
 
@@ -69,10 +71,13 @@ class _ChatScreenState extends State<ChatScreen> {
               padding: const EdgeInsets.symmetric(vertical: 10),
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-                itemBuilder: (BuildContext context, int index) =>   ChatBox(
-                                drName: 'Dr Ahmed',
-                                message: "hi", haveMessage: haveMessage[index],
-                              ),
+                itemBuilder: (BuildContext context, int index) =>   InkWell(
+                  child:
+                  ChatBox(drName: 'Dr Ahmed', message: "hi", haveMessage: haveMessage[index],),
+                  onTap: (){
+                    navigateToScreen(context, MyChatScreen());
+                  },
+                ),
                 separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 5),
                 itemCount: 5
             ),
