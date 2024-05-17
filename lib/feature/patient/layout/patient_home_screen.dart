@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_more_screen.dart';
@@ -98,10 +100,11 @@ class PatientHomeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://picsum.photos/200/300',
-                ),
+              const ProfileImage(
+                url:'https://picsum.photos/200/300',
+                  height: 60,
+                  width: 60,
+                size: 60,
               ),
               const SizedBox(width: 10),
               const Expanded(
@@ -110,7 +113,7 @@ class PatientHomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ' Hello\'',
+                      ' Hello,',
                       style: TextStyle(
                         fontSize: 13,
                         color: ColorsManager.primaryLight,
@@ -136,30 +139,35 @@ class PatientHomeScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Stack(
-            children: [
-              SearchBar(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                      return const SearchPatientSceen();
-                    }),
-                  );
-                },
-                backgroundColor:
-                    const MaterialStatePropertyAll(ColorsManager.white),
-                hintText: 'Search Doctor, Clinic',
-                leading: const Icon(Icons.search, color: ColorsManager.blue),
+          SearchBar(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (BuildContext context) {
+                  return const SearchPatientSceen();
+                }),
+              );
+            },
+            backgroundColor: const MaterialStatePropertyAll(ColorsManager.white),
+            hintText: 'Search Doctor, Clinic',
+            leading: const Center(
+              child: Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Icon(
+                    Icons.search_rounded,
+                  color: ColorsManager.primary,
+                  size: 30,
+                ),
               ),
-            ],
+            ),
           ),
-          const SizedBox(height: 24),
-          const Text(
-            'Reminders',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Text(
+              'Reminders',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
           ),
-          const SizedBox(height: 10),
           ReminderCard(
             medication: const Text(
               'Paracetamol',

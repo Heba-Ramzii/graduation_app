@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+
+import '../../../core/theme_manager/style_manager.dart';
 
 class AppointmentCard extends StatelessWidget {
   final String doctorName;
@@ -18,18 +21,18 @@ class AppointmentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+    return  Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        decoration:StyleManager.containerDecoration ,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              'https://as1.ftcdn.net/v2/jpg/03/02/88/46/1000_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg',
-              width: 70,
-              height: 70,
-              fit: BoxFit.cover,
-            ),
+            const ProfileImage(
+              url:'https://as1.ftcdn.net/v2/jpg/03/02/88/46/1000_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg',
+                height: 70, width: 70
+            )   ,
             const SizedBox(width: 10),
             Expanded(
               child: Column(

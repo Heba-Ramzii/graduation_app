@@ -23,7 +23,7 @@ class ColorsManager {
   static const Color switcH = Color(0xffE2E8F0); // login background
   static const Color blue =
       Color(0xff5C9DFF); // favorite color // navigation bar
-  static const Color homePageBackground = Color(0xFFF8F9FA); // navigation bar
+  static const Color homePageBackground = Color(0xFFF8F9FA); // #F8F9FA navigation bar
   static const MaterialColor primaryMaterialColor = MaterialColor(0xff0066FF, {
     50: Color(0xff0066FF),
     100: Color(0xff0066FF),
