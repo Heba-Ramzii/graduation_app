@@ -25,9 +25,19 @@ abstract class StyleManager {
     fontSize: 14,
   );
 
+  static const textStyle13 = TextStyle(
+    fontSize: 13,
+    color: ColorsManager.primaryLight
+  );
+
   static const textStyle14mid = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
+  );
+  static const textStyle18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+
   );
   static const textStyle15light = TextStyle(
     fontSize: 15,
@@ -48,6 +58,7 @@ abstract class StyleManager {
     blurRadius: 4,
     offset: Offset(0, 2),
   );
+
   static BorderRadius borderRadius = BorderRadius.circular(10);
   static  BoxDecoration containerDecoration = BoxDecoration(
     color: ColorsManager.white,

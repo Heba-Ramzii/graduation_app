@@ -80,6 +80,7 @@ class _assets_icons_dart {
     required Brightness brightness,
   })  : _brightness = brightness;
 
+  final adjustments_svg = 'assets/icons/adjustments.svg';
   final calendar_png = 'assets/icons/calendar.png';
   final calendar_svg = 'assets/icons/calendar.svg';
   final chat_alt_png = 'assets/icons/chat-alt.png';
@@ -87,11 +88,14 @@ class _assets_icons_dart {
   final dots_horizontal_png = 'assets/icons/dots-horizontal.png';
   final dots_horizontal_svg = 'assets/icons/dots-horizontal.svg';
   final facebook_png = 'assets/icons/facebook.png';
+  final facebook_svg = 'assets/icons/facebook.svg';
   final google_png = 'assets/icons/google.png';
+  final google_svg = 'assets/icons/google.svg';
   final home_png = 'assets/icons/home.png';
   final home_svg = 'assets/icons/home.svg';
   final Reminder_png = 'assets/icons/Reminder.png';
   final Reminder_svg = 'assets/icons/Reminder.svg';
+  final visa_svg = 'assets/icons/visa.svg';
 }
 
 class _assets_images_dart {
@@ -101,5 +105,8 @@ class _assets_images_dart {
     required Brightness brightness,
   })  : _brightness = brightness;
 
+  final drimage_png = 'assets/images/drimage.png';
   final Logo_png = 'assets/images/Logo.png';
+  final Scan_png = 'assets/images/Scan.png';
+  final Scan_svg = 'assets/images/Scan.svg';
 }

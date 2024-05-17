@@ -21,61 +21,70 @@ class PatientListBuilder extends StatelessWidget {
             height: 46,
             width:42 ,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   children: <Widget>[
-                    const Text(
-                      'Patient Name',
-                      style:StyleManager.textStyle14mid ,
-                    ),
-                   //const Spacer(),
-                    Text(
-                      '1',
-                      style: StyleManager.textStyle12.copyWith(
-                          fontSize: 13,
-                          color: ColorsManager.primaryLight
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: <Widget>[
+                      const Text(
+                        'Patient Name',
+                        style:StyleManager.textStyle14mid ,
                       ),
-                    ),
-                  ],
-                ),
-                Text(
-                  'Take After Meal',
-                  style: StyleManager.textStyle12.copyWith(
-                      fontSize: 13,
-                      color: ColorsManager.primaryLight
+                     //const Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5.0),
+                        child: Text(
+                          '1',
+                          style: StyleManager.textStyle12.copyWith(
+                              fontSize: 13,
+                              color: ColorsManager.primaryLight
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Icon(
-                      FontAwesomeIcons.clock,
-                      size: 15,
-                      color: ColorsManager.primary,
+                  Text(
+                    'Take After Meal',
+                    style: StyleManager.textStyle12.copyWith(
+                        fontSize: 13,
+                        color: ColorsManager.primaryLight
                     ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      "8:45 AM",
-                      style: StyleManager.textStyle12.copyWith(
-                          color: ColorsManager.primaryLight
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            FontAwesomeIcons.clock,
+                            size: 15,
+                            color: ColorsManager.primary,
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "8:45 AM",
+                            style: StyleManager.textStyle12.copyWith(
+                                color: ColorsManager.primaryLight
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    //const Spacer(),
-                    const Icon(
-                      IconlyBold.download,
-                      color: ColorsManager.primary,
-                    ),
-                  ],
-                ),
-              ],
+                      //const Spacer(),
+                      const Icon(
+                        IconlyBold.download,
+                        color: ColorsManager.primary,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
          ],

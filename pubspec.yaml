@@ -36,10 +36,25 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
   cupertino_icons: ^1.0.2
+  intl:
   flutter_svg: ^2.0.10+1
   font_awesome_flutter:
   cached_network_image:
   flutter_iconly: ^1.0.2
+  flutter_rating_bar: ^4.0.1
+  mobkit_dashed_border: ^0.0.6
+  flutter_switch:
+  percent_indicator:
+  booking_calendar: ^1.1.10
+  carousel_slider: ^4.2.1
+  date_picker_plus: ^3.0.2
+  file_picker:
+  flutter_chat_ui: ^1.6.12
+  image_picker:
+  mime: ^1.0.5
+  toggle_switch: ^2.3.0
+  custom_radio_grouped_button: ^2.2.1
+
   
 dev_dependencies:
   flutter_test:

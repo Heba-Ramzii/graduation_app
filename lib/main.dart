@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 
-//heba
+import 'feature/doctor/pages/doctor_clinics/clinic.dart';
+import 'feature/doctor/pages/home/home_screen.dart';
+import 'feature/patient/layout/patient_home_screen.dart';
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,12 +18,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Graduation App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        scaffoldBackgroundColor: ColorsManager.homePageBackground,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        appBarTheme: const AppBarTheme(
+          color: ColorsManager.white,
+        ),
+        primaryColor: ColorsManager.primaryMaterialColor,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ColorsManager.primaryMaterialColor,
+        ),
+         iconTheme: const IconThemeData(
+          color: ColorsManager.primary,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: ColorsManager.primaryMaterialColor,
+       ),
+      debugShowCheckedModeBanner: false,
+      home: const PatientHome(),
     );
   }
 }
