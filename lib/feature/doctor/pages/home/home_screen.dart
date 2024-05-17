@@ -17,13 +17,7 @@ class HomeDoctorScreen extends StatefulWidget {
 }
 
 class _HomeDoctorScreenState extends State<HomeDoctorScreen> {
-  int currentIndex = 0;
-  List<Widget> screens = [
-    const HomeDoctorScreen(),
-    const ChatScreen(),
-    const AppointmentScreen(),
-     DoctorProfileScreen(),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +36,6 @@ class _HomeDoctorScreenState extends State<HomeDoctorScreen> {
           ),
          ],
       ),
-      bottomNavigationBar:  BottomNavBarMenue(currentIndex: currentIndex),
 
     );
   }

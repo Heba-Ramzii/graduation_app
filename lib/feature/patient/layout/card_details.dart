@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
+import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
 import '../widget/addPayment_card.dart';
 
@@ -19,60 +23,32 @@ class _CardDetailsState extends State<CardDetails> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      appBar: const CustomAppBar(title: "Add Card"),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
+          padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 20),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: screenHeight * 0.05,
-              ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: ColorsManager.blue,
-                      size: screenWidth * 0.06,
-                    ),
-                  ),
-                  SizedBox(width: screenWidth * 0.03),
-                  Text(
-                    "Add Card",
-                    style: TextStyle(
-                      color: ColorsManager.black,
-                      fontSize: screenWidth * 0.06,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight * 0.05,
-              ),
               Text(
                 "Payment",
-                style: TextStyle(
-                  color: ColorsManager.black,
-                  fontSize: screenWidth * 0.06,
+                style: StyleManager.buttonTextStyle16.copyWith(
+                  color: ColorsManager.font,
                 ),
               ),
               SizedBox(
-                height: screenHeight * 0.02,
+                height: screenHeight * 0.03,
               ),
-              const AddPayment(),
+              const Center(child: AddPayment()),
               SizedBox(
-                height: screenHeight * 0.02,
+                height: screenHeight * 0.06,
               ),
               Center(
                 child: CustomMaterialButton(
                   text: "Save",
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateToScreen(context, const PaymentScreen());
+                  },
                   minWidth: screenWidth * 0.5,
                 ),
               ),
