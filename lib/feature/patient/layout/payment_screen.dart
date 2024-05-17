@@ -29,7 +29,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               child: const CreditCard(),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.001),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
               child: const PaymentCard(),
             ),
             const SizedBox(height: 50),

@@ -1,54 +1,60 @@
+
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
-class PaymentCard extends StatelessWidget {
+class PaymentCard extends StatefulWidget {
   const PaymentCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(20),
-           decoration: StyleManager.containerDecoration,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              ToggleButtons(
-                disabledBorderColor: ColorsManager.white,
-                disabledColor: ColorsManager.white,
-                selectedColor: ColorsManager.primary,
-                borderWidth: 15,
-                isSelected: const [true, false],
-                direction: Axis.vertical,
-                children: [
-                  CustomMaterialButton(
-                    text: "Month/20\$",
-                    fontColor:  ColorsManager.black,
-                    onPressed: () {},
-                    color: ColorsManager.white,
-                  ),
-                  CustomMaterialButton(
-                    text: "Year/200\$",
-                    fontColor:  ColorsManager.black,
-                    onPressed: () {},
-                    color: ColorsManager.white,
-                    minWidth: 200,
-                  ),
-                ],
-              ),
-              CustomMaterialButton(
-                minWidth: 200,
-                text: 'PAY',
-                onPressed: () {},
-              )
-            ],
-          ),
-        ),
+  State<PaymentCard> createState() => _PaymentCardState();
+}
 
-      ],
+class _PaymentCardState extends State<PaymentCard> {
+  bool _value = false;
+  int val = -1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+       decoration: StyleManager.containerDecoration,
+      child: Column(
+         children: [
+          CustomRadioButton(
+            horizontal:true,
+            height: 45,
+            elevation: 0,
+            unSelectedColor: Theme.of(context).canvasColor,
+            buttonLables: const [
+              'Month/20\$',
+              'Year/200\$',
+            ],
+            buttonValues: const [
+              "Month",
+              "PARENT",
+            ],
+            shapeRadius: 10,
+            padding: 5,
+            enableShape: true,
+            buttonTextStyle: const ButtonTextStyle(
+                selectedColor: Colors.white,
+                unSelectedColor: ColorsManager.font,
+                textStyle: StyleManager.textStyle18),
+            radioButtonValue: (value) {
+              print(value);
+            },
+            selectedColor: ColorsManager.primary,
+          ),
+          CustomMaterialButton(
+            minWidth: 200,
+            text: 'PAY',
+            onPressed: () {},
+          )
+        ],
+      ),
     );
   }
 }

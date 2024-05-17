@@ -53,6 +53,7 @@ dependencies:
   image_picker:
   mime: ^1.0.5
   toggle_switch: ^2.3.0
+  custom_radio_grouped_button: ^2.2.1
 
   
 dev_dependencies:
