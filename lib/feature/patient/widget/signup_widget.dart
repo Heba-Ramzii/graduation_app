@@ -7,7 +7,9 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 
 class SignupWidget extends StatelessWidget {
-  const SignupWidget({super.key});
+  const SignupWidget({super.key, required this.isDoctor});
+  final bool isDoctor  ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class SignupWidget extends StatelessWidget {
               onPressed: () => {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  MaterialPageRoute(builder: (context) =>  LoginScreen(isDoctor:isDoctor,)),
                 )
               },
             ),
@@ -156,7 +158,7 @@ class SignupWidget extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginScreen()),
+                          builder: (context) =>  LoginScreen(isDoctor: isDoctor,)),
                     )
                   },
                 ),

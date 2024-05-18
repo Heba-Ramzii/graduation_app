@@ -3,14 +3,10 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
 import '../widget/signup_widget.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key, required this.isDoctor,});
+  final bool isDoctor;
 
-  @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
-
-class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -36,7 +32,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: screenWidth * 0.5, // Adjusted image height
               ),
             ),
-            const SignupWidget(),
+             SignupWidget(isDoctor: isDoctor,),
           ],
         ),
       ),

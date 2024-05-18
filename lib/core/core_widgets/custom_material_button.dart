@@ -11,6 +11,7 @@ class CustomMaterialButton extends StatelessWidget {
     this.color = ColorsManager.primary,
     this.minWidth = double.infinity,
     this.fontColor,
+    this.height= double.minPositive,
   });
   final TextStyle? style;
   final String text;
@@ -18,10 +19,12 @@ class CustomMaterialButton extends StatelessWidget {
   final Color? fontColor;
   final Function()? onPressed;
   final double minWidth;
+  final double height;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       minWidth: minWidth,
+      height: height,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(8.0),

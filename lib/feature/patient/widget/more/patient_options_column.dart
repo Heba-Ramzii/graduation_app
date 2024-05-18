@@ -5,6 +5,7 @@ import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
+
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../doctor/pages/more/profile/patient_profile.dart';
 import '../../../doctor/pages/more/settings/settings_screen.dart';
@@ -62,7 +63,7 @@ class PatientOptionsColumn extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
+                        builder: (context) =>  LoginScreen(isDoctor: false,)),
                   );
                 });
               },
