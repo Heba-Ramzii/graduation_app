@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
-import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
 import 'package:graduation_app/feature/patient/widget/more/patient_options_column.dart';
 
 import '../../../../core/theme_manager/style_manager.dart';

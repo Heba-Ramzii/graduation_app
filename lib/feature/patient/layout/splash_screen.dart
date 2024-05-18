@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
           splash: Assets.imagesDoctorAssistant1,
           splashIconSize: 100,
           splashTransition: SplashTransition.scaleTransition,
-          nextScreen:  OnboardingScreen(),
+          nextScreen:  const OnboardingScreen(),
         ),
     );
   }

@@ -9,7 +9,7 @@ import '../../../core/function/core_function.dart';
 import '../../../core/theme_manager/colors_manager.dart';
 
 class OnboardingScreen extends StatelessWidget {
-    OnboardingScreen({super.key, });
+    const OnboardingScreen({super.key, });
 
   @override
   Widget build(BuildContext context) {

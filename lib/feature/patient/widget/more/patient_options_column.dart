@@ -63,7 +63,7 @@ class PatientOptionsColumn extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  LoginScreen(isDoctor: false,)),
+                        builder: (context) =>  const LoginScreen(isDoctor: false,)),
                   );
                 });
               },

@@ -4,7 +4,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import '../widget/login_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-    LoginScreen({super.key,   required this.isDoctor});
+    const LoginScreen({super.key,   required this.isDoctor});
     final bool isDoctor  ;
 
 

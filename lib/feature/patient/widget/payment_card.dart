@@ -13,7 +13,6 @@ class PaymentCard extends StatefulWidget {
 }
 
 class _PaymentCardState extends State<PaymentCard> {
-  bool _value = false;
   int val = -1;
 
   @override
@@ -44,7 +43,6 @@ class _PaymentCardState extends State<PaymentCard> {
                 unSelectedColor: ColorsManager.font,
                 textStyle: StyleManager.textStyle18),
             radioButtonValue: (value) {
-              print(value);
             },
             selectedColor: ColorsManager.primary,
           ),

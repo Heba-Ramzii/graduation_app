@@ -54,7 +54,7 @@ class ChatBox extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               haveMessage ? CircleAvatar(

@@ -1,15 +1,11 @@
-import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
-import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import '../widget/clinic_card.dart';
 
 class ContinueScheduleScreen extends StatefulWidget {
   const ContinueScheduleScreen({
