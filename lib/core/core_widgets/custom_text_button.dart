@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
@@ -23,7 +24,7 @@ class CustomTextButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Text(
-        text.toUpperCase(),
+        text,
         textAlign: TextAlign.center,
         style: StyleManager.buttonTextStyle16.copyWith(
           color:fontColor ,

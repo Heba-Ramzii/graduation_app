@@ -6,6 +6,8 @@ import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 
+import '../../../core/theme_manager/style_manager.dart';
+
 class SignupWidget extends StatelessWidget {
   const SignupWidget({super.key, required this.isDoctor});
   final bool isDoctor  ;
@@ -19,6 +21,7 @@ class SignupWidget extends StatelessWidget {
       children: [
         Container(
           width: screenWidth * 0.9,
+          padding: EdgeInsets.symmetric(vertical: screenWidth * 0.04,horizontal: screenWidth * 0.02),
           decoration: ShapeDecoration(
             color: ColorsManager.white,
             shape: RoundedRectangleBorder(
@@ -72,38 +75,55 @@ class SignupWidget extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03),
-                child: const Text("Or connect with"),
+                child: Text("Or connect with",
+                  style: StyleManager.mainTextStyle15.copyWith(
+                  color: ColorsManager.grayFont,
+                ),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CustomOutlineButton(
-                    text: "Facebook ",
-                    onPressed:  () {},
-                    isSvg: true,
-                    isIcon: true,
-                    fontColor: ColorsManager.font,
-                    iconSvg:"assets/icons/facebook.svg",
-                    color: ColorsManager.background,
-                  ),
-                  SizedBox(width: screenWidth * 0.1), // Adjusted width
-                   CustomOutlineButton(
-                    text: "Google ",
-                    onPressed:  () {},
-                     fontColor: ColorsManager.font,
-                     isSvg: true,
-                    isIcon: true,
-                    iconSvg:"assets/icons/google.svg",
-                    color: ColorsManager.background,
-                                     ),
+                  SizedBox(
+                     width: screenWidth * 0.35,
+                     height: screenWidth * 0.11,
+                     child: CustomOutlineButton(
+                      text: "Google ",
+                      onPressed:  () {},
+                       fontColor: ColorsManager.font,
+                       isSvg: true,
+                      isIcon: true,
+                      iconSvg:"assets/icons/google.svg",
+                      color: ColorsManager.background,
+                                       ),
+                   ),
+                  SizedBox(width: screenWidth * 0.04), // Adjusted width
+                   SizedBox(
+                     width: screenWidth * 0.35,
+                     height: screenWidth * 0.11,
+                     child: CustomOutlineButton(
+                      text: "Facebook ",
+                      onPressed:  () {},
+                      isSvg: true,
+                      isIcon: true,
+                      fontColor: ColorsManager.font,
+                      iconSvg:"assets/icons/facebook.svg",
+                      color: ColorsManager.background,
+                                       ),
+                   ),
                 ],
               ),
-              SizedBox(height: screenWidth * 0.02), // Adjusted height
+              SizedBox(height: screenWidth * 0.03), // Adjusted height
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("have an account?"),
+                   Text(
+                      "have an account ?",
+                    style: StyleManager.mainTextStyle15.copyWith(
+                      color: ColorsManager.grayFont,
+                    ),
+                  ),
                   CustomTextButton(
                     text: "  Login",
                     onPressed: () => {

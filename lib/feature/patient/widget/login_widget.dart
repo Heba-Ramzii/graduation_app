@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/core_widgets/custom_icon_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
@@ -7,6 +6,9 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/home/main_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:graduation_app/feature/patient/layout/signup_screen.dart';
+
+import '../../../core/core_widgets/custom_outlined_button.dart';
+import '../../../core/theme_manager/style_manager.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({super.key, required this.isDoctor});
@@ -17,11 +19,12 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Center(
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
+        width: screenWidth * 0.9,
+        padding: EdgeInsets.symmetric(vertical: screenWidth * 0.04,horizontal: screenWidth * 0.02),
         decoration: ShapeDecoration(
           color: ColorsManager.white,
           shape: RoundedRectangleBorder(
@@ -30,7 +33,6 @@ class LoginWidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 30),
             const Text(
               'Login',
               style: TextStyle(
@@ -76,31 +78,57 @@ class LoginWidget extends StatelessWidget {
                 onPressed: () => {},
               ),
             ),
-            const SizedBox(height: 30),
-            const Text("Or connect with"),
-            const SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomIconButton(
-                  onPressed: () {},
-                  iconSize: 20,
-                  icon: "assets/icons/facebook.svg",
-                  text: "Facebook",
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03),
+              child: Text("Or connect with",
+                style: StyleManager.mainTextStyle15.copyWith(
+                  color: ColorsManager.grayFont,
                 ),
-                CustomIconButton(
-                  onPressed: () {},
-                  iconSize: 20,
-                  icon: "assets/icons/google.svg",
-                  text: "Google",
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: screenWidth * 0.35,
+                  height: screenWidth * 0.11,
+                  child: CustomOutlineButton(
+                    text: "Google ",
+                    onPressed:  () {},
+                    fontColor: ColorsManager.font,
+                    isSvg: true,
+                    isIcon: true,
+                    iconSvg:"assets/icons/google.svg",
+                    color: ColorsManager.background,
+                  ),
+                ),
+                SizedBox(width: screenWidth * 0.04), // Adjusted width
+                SizedBox(
+                  width: screenWidth * 0.35,
+                  height: screenWidth * 0.11,
+                  child: CustomOutlineButton(
+                    text: "Facebook ",
+                    onPressed:  () {},
+                    isSvg: true,
+                    isIcon: true,
+                    fontColor: ColorsManager.font,
+                    iconSvg:"assets/icons/facebook.svg",
+                    color: ColorsManager.background,
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: screenWidth * 0.03), // Adjusted height
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account?"),
+                Text(
+                  "Don't have an account?",
+                  style: StyleManager.mainTextStyle15.copyWith(
+                    color: ColorsManager.grayFont,
+                  ),
+                ),
                 CustomTextButton(
                   text: "  Sign up",
                   onPressed: () => {
@@ -113,7 +141,7 @@ class LoginWidget extends StatelessWidget {
                 ),
               ],
             ),
-          ],
+           ],
         ),
       ),
     );
