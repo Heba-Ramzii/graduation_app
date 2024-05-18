@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   child:
                   ChatBox(drName: 'Dr Ahmed', message: "hi", haveMessage: haveMessage[index],),
                   onTap: (){
-                    navigateToScreen(context, MyChatScreen());
+                    navigateToScreen(context, const MyChatScreen());
                   },
                 ),
                 separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 5),
