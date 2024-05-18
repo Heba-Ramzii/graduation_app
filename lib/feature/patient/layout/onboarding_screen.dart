@@ -26,22 +26,22 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0),
+              padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Text(
                 'Welcome in our app\n Your Trusted Healthcare Companion',
                 style: StyleManager.textStyle18,
                 textAlign: TextAlign.center,
               ),
             ),
-
              Row(
+               mainAxisAlignment: MainAxisAlignment.center,
                children: [
                  Column(
                    children: [
                      Container(
                        width: 100,
                        height: 100,
-                       margin: const EdgeInsets.only(bottom: 10),
+                       margin: const EdgeInsets.only(bottom: 10,top: 10),
                        decoration: StyleManager.containerDecoration,
                        child: SvgPicture.asset(
                            Assets.imagesDoctorFilesMedicalSvgrepoCom,
@@ -51,7 +51,7 @@ class OnboardingScreen extends StatelessWidget {
                        ),
                      ),
                      CustomMaterialButton(
-                       minWidth:200,
+                       minWidth:180,
                        height: 60,
                        text: "Doctor",
                        style: StyleManager.textStyle18.copyWith(
@@ -64,20 +64,20 @@ class OnboardingScreen extends StatelessWidget {
                      ),
                    ],
                  ),
-                 const Spacer(),
+                 const SizedBox(width: 20,),
                  Column(
                    children: [
                      Container(
                        width: 100,
                        padding: const EdgeInsets.all(15),
-                       margin: const EdgeInsets.only(bottom: 10),
+                       margin: const EdgeInsets.only(bottom: 10,top: 10),
                        decoration: StyleManager.containerDecoration,
                        child: Image.asset(
                          Assets.imagesPatient2,
                        ),
                      ),
                      CustomMaterialButton(
-                         minWidth:200,
+                         minWidth:180,
                          height: 60,
                          text: "Patient",
                          style: StyleManager.textStyle18.copyWith(

@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_more_screen.dart';
 import 'package:graduation_app/feature/patient/layout/schedule_screen.dart';
 import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
 
-import '../../doctor/pages/more/profile/patient_profile.dart';
 import '../widget/appointment_card.dart';
 import '../widget/reminder_card.dart';
 import 'chat_screen.dart';
@@ -51,8 +48,13 @@ class _PatientHomeState extends State<PatientHome> {
             destinations: const [
               NavigationDestination(
                 icon: Icon(
-                    IconlyLight.home,
+                  IconlyLight.home,
                   color: ColorsManager.blue,
+                  size: 24,
+                ),
+                selectedIcon: Icon(
+                  IconlyBold.home,
+                  color: ColorsManager.primary,
                   size: 24,
                 ),
                 label: '',
@@ -62,12 +64,21 @@ class _PatientHomeState extends State<PatientHome> {
                   IconlyLight.chat,
                   color: ColorsManager.blue,
                 ),
+                selectedIcon: Icon(
+                  IconlyBold.chat,
+                  color: ColorsManager.primary,
+                ),
                 label: '',
               ),
               NavigationDestination(
                 icon: Icon(
                   IconlyLight.calendar,
                   color: ColorsManager.blue,
+                  size: 24,
+                ),
+                selectedIcon: Icon(
+                  IconlyBold.calendar,
+                  color: ColorsManager.primary,
                   size: 24,
                 ),
                 label: '',
@@ -78,9 +89,15 @@ class _PatientHomeState extends State<PatientHome> {
                   color: ColorsManager.blue,
                   size: 24,
                 ),
+                selectedIcon: Icon(
+                  Icons.more_horiz_rounded,
+                  color: ColorsManager.primary,
+                  size: 24,
+                ),
                 label: '',
               ),
-            ]),
+            ]
+        ),
         body: screens[currentIndex],
       ),
     );

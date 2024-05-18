@@ -17,20 +17,12 @@ class SignupScreen extends StatelessWidget {
         padding: EdgeInsets.all(screenWidth * 0.06), // Adjusted padding
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                screenWidth * 0.25, // Adjusted left padding
-                screenWidth * 0.1, // Adjusted top padding
-                screenWidth * 0.15, // Adjusted right padding
-                screenWidth * 0.05, // Adjusted bottom padding
-              ),
-              child: Image.asset(
-                'assets/images/Logo.png',
-                width: screenWidth * 0.5, // Adjusted image width
-                height: screenWidth * 0.5, // Adjusted image height
-              ),
+            Image.asset(
+              'assets/images/Logo.png',
+              width: screenWidth * 0.5, // Adjusted image width
+              height: screenWidth * 0.5, // Adjusted image height
             ),
              SignupWidget(isDoctor: isDoctor,),
           ],
