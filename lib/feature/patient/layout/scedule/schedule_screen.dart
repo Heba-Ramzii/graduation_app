@@ -6,7 +6,7 @@ import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
-import '../widget/clinic_card.dart';
+import '../../widget/clinic_card.dart';
 import 'continue_schedule.dart';
 
 class SchedualScreen extends StatefulWidget {

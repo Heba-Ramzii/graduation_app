@@ -4,7 +4,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/patient/layout/patient_more_screen.dart';
-import 'package:graduation_app/feature/patient/layout/schedule_screen.dart';
+import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
 
 import '../widget/appointment_card.dart';

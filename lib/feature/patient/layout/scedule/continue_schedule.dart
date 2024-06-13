@@ -3,7 +3,7 @@ import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
-import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
+import 'package:graduation_app/feature/patient/layout/scedule/final_schedule.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 
@@ -29,10 +29,6 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Divider(
-              color: ColorsManager.blue,
-              thickness: 2,
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Text(
@@ -46,6 +42,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
               minWidth: MediaQuery.of(context).size.width,
               initialLabelIndex: 0,
               totalSwitches: 2,
+              borderWidth: 1,
+              borderColor: const [
+                ColorsManager.grayFont,
+                ColorsManager.primary,
+              ],
+              inactiveBgColor: ColorsManager.white ,
+              inactiveFgColor: ColorsManager.grayFont ,
               labels: const ['Your Self', 'Another Person'],
               onToggle: (index) {
                 print('switched to: $index');
@@ -79,6 +82,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                 minWidth: MediaQuery.of(context).size.width,
                 initialLabelIndex: 0,
                 totalSwitches: 2,
+                borderWidth: 1,
+                borderColor: const [
+                  ColorsManager.grayFont,
+                  ColorsManager.primary,
+                ],
+                inactiveBgColor: ColorsManager.white ,
+                inactiveFgColor: ColorsManager.grayFont ,
                 labels: const ['Male', 'Female'],
                 onToggle: (index) {
                   print('switched to: $index');
@@ -117,12 +127,12 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             ),
             const SizedBox(height: 20,),
             CustomMaterialButton(
-              text: "Submit",
+              text: "Continue",
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (BuildContext context) {
-                    return const PatientHome();
+                    return const FinalScheduleScreen();
                   }),
                 );
               },

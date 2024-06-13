@@ -1,30 +1,32 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
-import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/clinics/clinic_details_column.dart';
-import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 
-import '../../../../../core/core_widgets/custom_material_button.dart';
+import '../../../../core/theme_manager/colors_manager.dart';
 
-class BookCard extends StatelessWidget {
-  const BookCard({super.key});
+class DoctorCard extends StatelessWidget {
+  const DoctorCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 200,
       margin: const EdgeInsets.only(top: 13),
       padding: const EdgeInsets.all( 10.0),
-      decoration: StyleManager.containerDecoration,
-      child: Column(
+      decoration: BoxDecoration(
+        color: ColorsManager.primaryLight2,
+        borderRadius: StyleManager.borderRadius,
+       ),
+      child: const Column(
         children: [
-          const Row(
+          Row(
             children: [
               ProfileImage(
-                  height: 91,
-                  width: 95
+                  height: 90,
+                  width: 90
               ),
+
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(left: 10.0),
@@ -33,16 +35,6 @@ class BookCard extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0,vertical: 10),
-            child: CustomMaterialButton(
-                text: "Book",
-                onPressed:  (){
-                  navigateToScreen(context, const SchedualScreen());
-                }
-            ),
-          ),
-
         ],
       ),
     );
