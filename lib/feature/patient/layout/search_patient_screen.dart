@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:graduation_app/core/core_widgets/custom_text_button_fillter.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 
+import '../../../core/core_widgets/filter_row.dart';
 import '../widget/book_card.dart';
 
 class SearchPatientSceen extends StatefulWidget {
@@ -109,19 +109,12 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                for (int i = 0; i < 5; i++) ...[
-                  CustomFillterButton(
-                    text: 'Filter',
-                    onPressed: () {},
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                ],
-              ],
-            ),
+            FilterRow(
+              filters:  const ['All', 'Top Doctor', 'Favourite', 'Near',],
+              onSelected: (index) {
+                // Handle the selection change
+                print('Selected filter index: $index');
+              },),
             const SizedBox(
               height: 10,
             ),
