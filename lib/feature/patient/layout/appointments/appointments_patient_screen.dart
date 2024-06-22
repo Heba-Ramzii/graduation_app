@@ -16,7 +16,9 @@ class AppointmentsPatientScreen extends StatefulWidget {
 }
 
 class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
-   final List<String> filter = [
+  int _selectedIndex = 0;
+
+  final List<String> filter = [
      'All',
      'Upcoming',
      'Completed',
@@ -46,10 +48,19 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
             FilterRow(
               filters: filter,
               onSelected: (index) {
-              // Handle the selection change
-              print('Selected filter index: $index');
-            },)
-          ],
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            ),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (context, index) => const CancelledAppointment(),
+                itemCount: 10,
+              ),
+            )
+        ],
         ),
       ),
     );
