@@ -9,23 +9,26 @@ class CancelAppointmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: "Cancel Appointment"),
+    return  Scaffold(
+      appBar: const CustomAppBar(title: "Cancel Appointment"),
       body:  Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0,vertical: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 25),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "why you want to cancel the appointment?",
-              style: StyleManager.mainTextStyle15,
+              "Why you want to cancel the appointment?",
+              style: StyleManager.mainTextStyle15.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(vertical: 24.0),
               child: Column(
                 children: [],
               ),
             ),
-            ReasonSection(title: "Tell Us The reason",),
+            const ReasonSection(title: "Tell Us The reason",),
           ],
         ),
       ),

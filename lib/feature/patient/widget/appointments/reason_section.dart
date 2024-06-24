@@ -18,7 +18,10 @@ class ReasonSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
             title,
-            style: StyleManager.textStyle12
+            style: StyleManager.textStyle14.copyWith(
+              color: const Color(0xff4B5563),
+              fontWeight: FontWeight.normal,
+            )
           ),
         ),
         TextField(
