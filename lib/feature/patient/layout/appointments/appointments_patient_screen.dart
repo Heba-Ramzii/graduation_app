@@ -9,7 +9,7 @@ import '../../widget/appointments/completed_appointment.dart';
 
 
 class AppointmentsPatientScreen extends StatefulWidget {
-   AppointmentsPatientScreen({super.key});
+   const AppointmentsPatientScreen({super.key});
 
   @override
   State<AppointmentsPatientScreen> createState() => _AppointmentsPatientScreenState();
@@ -26,7 +26,7 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
    ];
 
    final List<Widget> screens = [
-      AppointmentsPatientScreen(),
+      const AppointmentsPatientScreen(),
      const UpcomingAppointment(),
      const CompletedAppointment(),
      const CancelledAppointment(),

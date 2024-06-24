@@ -6,7 +6,7 @@ class FilterRow extends StatefulWidget {
   final ValueChanged<int> onSelected;
   final int initialIndex;
 
-  FilterRow({
+  const FilterRow({super.key, 
     required this.filters,
     required this.onSelected,
     this.initialIndex = 0,

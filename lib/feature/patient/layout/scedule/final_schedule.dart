@@ -25,11 +25,11 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
     showModalBottomSheet(
         context: context,
         builder: (builder){
-          return new Container(
+          return Container(
             height: 200.0,
             color: Colors.green,
-            child: new Center(
-              child: new Text(" Modal BottomSheet",textScaleFactor: 2,
+            child: const Center(
+              child: Text(" Modal BottomSheet",
                   style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
             ),
           );
@@ -56,7 +56,7 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
                 text: "Submit",
                 onPressed: () {
                   showMyDialog(context, "Congratulations", "you have Booked successfully", () {
-                    navigateToScreen(context,  AppointmentsPatientScreen());
+                    navigateToScreen(context,  const AppointmentsPatientScreen());
                   });
                 },
               ),
