@@ -32,13 +32,20 @@ class AppointmentsCardBuilder extends StatelessWidget {
                 ),
               ],
             ),
-             Text(
-              "\$150",
-              style: StyleManager.textStyle12.copyWith(
-                fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsManager.primary
-              ),
+            Row(
+              children: [
+                const Icon(
+                    Icons.attach_money_rounded,
+                    size: 15,
+                    color: ColorsManager.primaryLight3
+                ),
+                Text(
+                  "150",
+                  style: StyleManager.textStyle14mid.copyWith(
+                    color: ColorsManager.primary,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

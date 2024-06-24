@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/function/core_function.dart';
+import 'package:graduation_app/feature/patient/layout/appointments/add_review_screen.dart';
 
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
@@ -32,7 +34,9 @@ class CancelledAppointment extends StatelessWidget {
           ),
           CustomMaterialButton(
               text: "Add review",
-              onPressed:  (){}
+              onPressed:  (){
+                navigateToScreen(context, const AddReviewScreen());
+              }
           ),
 
         ],

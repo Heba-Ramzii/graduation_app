@@ -24,10 +24,6 @@ class OptionsColumn extends StatelessWidget {
             },
             text: "Profile"),
         OptionRow(
-            icon: Icons.favorite_border_rounded,
-            onTap: () {},
-            text: "Favorite"),
-        OptionRow(
             icon: Icons.add_business_outlined,
             onTap: () {
               navigateToScreen(context, const AddClinic());

@@ -3,6 +3,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
+import 'package:graduation_app/feature/patient/layout/favorites_screen.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
@@ -25,7 +26,10 @@ class PatientOptionsColumn extends StatelessWidget {
             text: "Profile"),
         OptionRow(
             icon: Icons.favorite_border_rounded,
-            onTap: () {},
+            onTap: () {
+              navigateToScreen(context, const FavoritesScreen());
+
+            },
             text: "Favorite"),
         OptionRow(
             icon: Icons.payment_rounded,

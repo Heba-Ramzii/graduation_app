@@ -56,7 +56,7 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemBuilder: (context, index) => const CancelledAppointment(),
+                itemBuilder: (context, index) => const CompletedAppointment(),
                 itemCount: 10,
               ),
             )

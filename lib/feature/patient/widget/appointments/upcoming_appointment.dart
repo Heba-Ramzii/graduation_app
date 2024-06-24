@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/patient/layout/appointments/cancel_screen.dart';
 
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
+import '../../../../core/function/core_function.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import 'appointments_card_builder.dart';
 
@@ -16,33 +18,39 @@ class UpcomingAppointment extends StatelessWidget {
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
-          const Row(
-            children: [
-              ProfileImage(
-                  height: 91,
-                  width: 95
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 10.0),
-                  child: AppointmentsCardBuilder(),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              children: [
+                ProfileImage(
+                    height: 91,
+                    width: 95
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: AppointmentsCardBuilder(),
+                  ),
+                ),
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4.0,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0,),
             child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomMaterialButton(
+                    minWidth: 185,
                     text: "Details",
                     onPressed:  (){}
                 ),
-                SizedBox(width: 100,),
                 CustomMaterialButton(
+                    minWidth: 185,
                     text: "Cancel",
-                    onPressed:  (){}
+                    onPressed:  (){
+                      navigateToScreen(context, const CancelAppointmentScreen());
+                    }
                 ),
               ],
             ),

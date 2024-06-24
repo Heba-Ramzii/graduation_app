@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+
 import '../../../../../core/core_widgets/rate_clinic.dart';
 import '../../../../../core/theme_manager/colors_manager.dart';
 
@@ -36,13 +37,13 @@ class ClinicDetailsColumn extends StatelessWidget {
               children: [
                 const Icon(
                     Icons.attach_money_rounded,
-                  size: 13,
+                  size: 15,
                     color: ColorsManager.primaryLight3
                 ),
                 Text(
                     "150",
-                  style: StyleManager.textStyle12.copyWith(
-                      color: ColorsManager.primary
+                  style: StyleManager.textStyle14mid.copyWith(
+                      color: ColorsManager.primary,
                   ),
                 ),
               ],
