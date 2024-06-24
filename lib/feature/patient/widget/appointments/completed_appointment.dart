@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
@@ -50,7 +51,7 @@ class CompletedAppointment extends StatelessWidget {
                     minWidth: 185,
                     text: "Add review",
                     onPressed:  (){
-                      navigateToScreen(context, const AddReviewScreen());
+                      navigateToScreen(context, const AddReviewScreen().animate().fade().scale(),);
                     }
                 ),
               ],
