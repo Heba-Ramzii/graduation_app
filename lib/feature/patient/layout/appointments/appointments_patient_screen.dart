@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/filter_row.dart';
 import 'package:graduation_app/feature/patient/widget/appointments/upcoming_appointment.dart';
@@ -58,7 +57,7 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemBuilder: (context, index) => screens[_selectedIndex].animate().fade().scale(),
+                itemBuilder: (context, index) => screens[_selectedIndex],
                 itemCount: 10,
               ),
             )

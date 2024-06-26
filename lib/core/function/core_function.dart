@@ -6,7 +6,32 @@ import '../theme_manager/style_manager.dart';
 void navigateToScreen(BuildContext context, Widget screen) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => screen),
+    PageRouteBuilder(
+      transitionsBuilder:
+          (context, animation, secondaryAnimation, child) {
+        return ScaleTransition(
+          alignment: Alignment.center,
+          scale: Tween<double>(begin: 1, end: 1).animate(
+            CurvedAnimation(
+              parent: animation,
+              curve: Curves.decelerate,
+            ),
+          ),
+          child: child,
+        );
+      },
+      transitionDuration: const Duration(seconds: 1),
+      pageBuilder: (BuildContext context,
+          Animation<double> animation,
+          Animation<double> secondaryAnimation) {
+        return new ScaleTransition(
+          scale: animation,
+          child: new FadeTransition(
+            opacity: animation,
+            child:  screen,
+        ));
+      },
+    ),
   );
 }
 

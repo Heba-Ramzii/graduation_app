@@ -8,6 +8,7 @@ import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:graduation_app/feature/patient/layout/signup_screen.dart';
 
 import '../../../core/core_widgets/custom_outlined_button.dart';
+import '../../../core/function/core_function.dart';
 import '../../../core/theme_manager/style_manager.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -132,11 +133,7 @@ class LoginWidget extends StatelessWidget {
                 CustomTextButton(
                   text: "  Sign up",
                   onPressed: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>  SignupScreen(isDoctor: isDoctor,)),
-                    )
+                    navigateToScreen(context, SignupScreen(isDoctor: isDoctor,)),
                   },
                 ),
               ],

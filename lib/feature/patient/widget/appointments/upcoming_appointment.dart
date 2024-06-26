@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:graduation_app/feature/patient/layout/appointments/cancel_screen.dart';
 
 import '../../../../core/core_widgets/custom_material_button.dart';
@@ -50,7 +49,7 @@ class UpcomingAppointment extends StatelessWidget {
                     minWidth: 185,
                     text: "Cancel",
                     onPressed:  (){
-                      navigateToScreen(context, const CancelAppointmentScreen().animate().fade().scale(),);
+                      navigateToScreen(context, const CancelAppointmentScreen(),);
                     }
                 ),
               ],
