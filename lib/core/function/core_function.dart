@@ -11,10 +11,10 @@ void navigateToScreen(BuildContext context, Widget screen) {
           (context, animation, secondaryAnimation, child) {
         return ScaleTransition(
           alignment: Alignment.center,
-          scale: Tween<double>(begin: 1, end: 1).animate(
+          scale: Tween<double>(begin: 0, end: 1).animate(
             CurvedAnimation(
               parent: animation,
-              curve: Curves.decelerate,
+              curve: Curves.easeInOutCubicEmphasized,
             ),
           ),
           child: child,
@@ -24,9 +24,9 @@ void navigateToScreen(BuildContext context, Widget screen) {
       pageBuilder: (BuildContext context,
           Animation<double> animation,
           Animation<double> secondaryAnimation) {
-        return new ScaleTransition(
+        return ScaleTransition(
           scale: animation,
-          child: new FadeTransition(
+          child: FadeTransition(
             opacity: animation,
             child:  screen,
         ));

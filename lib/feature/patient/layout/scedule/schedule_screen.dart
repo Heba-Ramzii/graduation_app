@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
+import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
@@ -76,12 +77,7 @@ class _SchedualScreenState extends State<SchedualScreen> {
               child: CustomMaterialButton(
                 text: "Continue",
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                      return const ContinueScheduleScreen();
-                    }),
-                  );
+                  navigateToScreen(context, const ContinueScheduleScreen());
                 },
               ),
             ),

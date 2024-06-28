@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSplashScreen(
-          animationDuration: const Duration(milliseconds: 2000),
+          animationDuration: const Duration(milliseconds: 1000),
            centered : true,
           backgroundColor:ColorsManager.primary,
           splash: Assets.imagesDoctorAssistant1,
