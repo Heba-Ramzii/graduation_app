@@ -1,38 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/function/page_router.dart';
 
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
+
 void navigateToScreen(BuildContext context, Widget screen) {
-  Navigator.push(
-    context,
-    PageRouteBuilder(
-      transitionsBuilder:
-          (context, animation, secondaryAnimation, child) {
-        return ScaleTransition(
-          alignment: Alignment.center,
-          scale: Tween<double>(begin: 0, end: 1).animate(
-            CurvedAnimation(
-              parent: animation,
-              curve: Curves.easeInOutCubicEmphasized,
-            ),
-          ),
-          child: child,
-        );
-      },
-      transitionDuration: const Duration(seconds: 1),
-      pageBuilder: (BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation) {
-        return ScaleTransition(
-          scale: animation,
-          child: FadeTransition(
-            opacity: animation,
-            child:  screen,
-        ));
-      },
-    ),
-  );
+
+  Navigator.push(context, CustomPageRoute(screen));
+
 }
 
 // This function is triggered by a user action, like pressing a button
