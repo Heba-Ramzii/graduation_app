@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_app/core/failure/failure.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
-
 import 'auth_repo.dart';
 
 class AuthRepoImp implements AuthRepo {
