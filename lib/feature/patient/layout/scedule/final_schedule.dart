@@ -58,7 +58,7 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      Future.delayed(const Duration(seconds: 4), () {
+                      Future.delayed(const Duration(seconds: 1), () {
                         navigateToScreen(
                             context, const AppointmentsPatientScreen());
                       });
