@@ -38,7 +38,7 @@ class _CancelAppointmentScreenState extends State<CancelAppointmentScreen> {
                       RadioListTile(
                           contentPadding: EdgeInsets.zero,
                           title: Text(
-                              'weather condition',
+                              'Weather condition',
                               style: StyleManager.mainTextStyle15.copyWith(
                                   color: ColorsManager.primaryLight
                               )

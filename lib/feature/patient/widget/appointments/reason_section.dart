@@ -15,7 +15,7 @@ class ReasonSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
          Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          padding: const EdgeInsets.only(bottom: 16.0),
           child: Text(
             title,
             style: StyleManager.textStyle14.copyWith(
