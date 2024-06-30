@@ -11,7 +11,7 @@ Widget CustomTextFormField({
   final Function(String)? onChange,
   GestureTapCallback? onTap,
   bool isClickable = true,
-  bool isPassword = true,
+  bool isPassword = false,
   void Function()? suffixPressed,
   IconData? prefixIcon,
   double iconSize = 24,
