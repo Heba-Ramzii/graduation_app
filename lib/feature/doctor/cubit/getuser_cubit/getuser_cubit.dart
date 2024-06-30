@@ -10,10 +10,10 @@ class GetUserCubit extends Cubit<GetUserState> {
 
   GetUserCubit(this.authRepoImp) : super(GetUserInitial());
 
-  void getUser ({required bool isDoctor}) async {
+  void getUser () async {
     emit(GetUserLoading());
-    final result = await authRepoImp.getUser(isDoctor: isDoctor);
+    final result = await authRepoImp.getUser();
     result.fold((l) => emit(GetUserFailure(failure: l)), (r) =>
-        emit(GetUserSuccess()));
+        emit(GetUserSuccess(authModel: r)));
   }
 }

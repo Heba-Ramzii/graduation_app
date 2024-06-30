@@ -63,8 +63,9 @@ dependencies:
   cloud_firestore:
   flutter_bloc:
   bloc:
-  get_it:
-  fluttertoast:
+  get_it: 
+  fluttertoast: 
+
 
 dev_dependencies:
   flutter_test:

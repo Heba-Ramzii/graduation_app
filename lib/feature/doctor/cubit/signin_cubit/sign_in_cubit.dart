@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/feature/doctor/data/repo/auth_repo_imp.dart';
 
@@ -13,7 +11,7 @@ class SignInCubit extends Cubit<SignInState> {
   void signIn({required String email, required String password}) async {
     emit(SignInLoading());
     final result = await authRepoImp.login(email: email, password: password);
-    result.fold((l) => emit(SignInFailure(failure: l)), (r) =>
-        emit(SignInSuccess()));
+    result.fold((l) => emit(SignInFailure(failure: l)),
+        (r) => emit(SignInSuccess(authModel: r)));
   }
 }

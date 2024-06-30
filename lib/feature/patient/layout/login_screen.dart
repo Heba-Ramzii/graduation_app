@@ -4,14 +4,12 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import '../widget/login_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-    const LoginScreen({super.key,   required this.isDoctor});
-    final bool isDoctor  ;
-
-
+  const LoginScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-
     // Get screen size
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
@@ -39,7 +37,7 @@ class LoginScreen extends StatelessWidget {
               ),
               child: Image.asset('assets/images/Logo.png'),
             ),
-             LoginWidget(isDoctor: isDoctor,),
+            const LoginWidget(),
           ],
         ),
       ),
