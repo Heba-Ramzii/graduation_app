@@ -1,4 +1,3 @@
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
@@ -7,9 +6,15 @@ import 'package:graduation_app/feature/patient/widget/appointments/reason_sectio
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
-class AddReviewScreen extends StatelessWidget {
+class AddReviewScreen extends StatefulWidget {
   const AddReviewScreen({super.key});
 
+  @override
+  State<AddReviewScreen> createState() => _AddReviewScreenState();
+}
+
+class _AddReviewScreenState extends State<AddReviewScreen> {
+  var _val;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,36 +37,74 @@ class AddReviewScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 24.0),
               child: Column(
                 children: [
-                  CustomRadioButton(
-                    horizontal:true,
-                    height: 45,
-                    elevation: 0,
-                    unSelectedColor: Theme.of(context).canvasColor,
-                    buttonLables: const [
-                      '5 Stars',
-                      '4 Stars',
-                      '3 Stars',
-                      '2 Stars',
-                      '1 Stars',
-                    ],
-                    buttonValues: const [
-                      '5 Stars',
-                      '4 Stars',
-                      '3 Stars',
-                      '2 Stars',
-                      '1 Stars',
-                    ],
-                    shapeRadius: 10,
-                    padding: 1,
-                    enableShape: true,
-                    buttonTextStyle: const ButtonTextStyle(
-                        selectedColor: Colors.white,
-                        unSelectedColor: ColorsManager.font,
-                        textStyle: StyleManager.textStyle18),
-                    radioButtonValue: (value) {
-                    },
-                    selectedColor: ColorsManager.primary,
-                  ),
+                  RadioListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                          '5 Stars',
+                          style: StyleManager.mainTextStyle15.copyWith(
+                              color: ColorsManager.primaryLight
+                          )
+                      ),
+                      selectedTileColor:ColorsManager.primary ,
+                      value: 5,
+                      groupValue: _val,
+                      onChanged: (value) {
+                        setState(() {
+                          _val = value;
+                        });
+                      }),
+                  RadioListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title:  Text('4 Stars',
+                          style: StyleManager.mainTextStyle15.copyWith(
+                              color: ColorsManager.primaryLight
+                          )),
+                      value: 4,
+                      groupValue: _val,
+                      onChanged: (value) {
+                        setState(() {
+                          _val = value;
+                        });
+                      }),
+                  RadioListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                          '3 Stars',style: StyleManager.mainTextStyle15.copyWith(
+                          color: ColorsManager.primaryLight
+                      )),
+                      value: 3,
+                      groupValue: _val,
+                      onChanged: (value) {
+                        setState(() {
+                          _val = value;
+                        });
+                      }),
+                  RadioListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text('2 Stars',
+                          style: StyleManager.mainTextStyle15.copyWith(
+                              color: ColorsManager.primaryLight
+                          )),
+                      value: 2,
+                      groupValue: _val,
+                      onChanged: (value) {
+                        setState(() {
+                          _val = value;
+                        });
+                      }),
+                  RadioListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title:  Text('1 Star',
+                          style: StyleManager.mainTextStyle15.copyWith(
+                              color: ColorsManager.primaryLight
+                          )),
+                      value: 1,
+                      groupValue: _val,
+                      onChanged: (value) {
+                        setState(() {
+                          _val = value;
+                        });
+                      }),
                 ],
               ),
             ),
