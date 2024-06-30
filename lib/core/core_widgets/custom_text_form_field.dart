@@ -11,8 +11,8 @@ Widget CustomTextFormField({
   final Function(String)? onChange,
   GestureTapCallback? onTap,
   bool isClickable = true,
-  bool isPassword = false,
-  Function()? suffixPressed,
+  bool isPassword = true,
+  void Function()? suffixPressed,
   IconData? prefixIcon,
   double iconSize = 24,
   String label = "",
@@ -41,8 +41,8 @@ Widget CustomTextFormField({
           suffixIcon: suffixPressed != null
               ? IconButton(
                   onPressed: suffixPressed,
-                  icon: const Icon(
-                    Icons.remove_red_eye,
+                  icon:  Icon(
+                    suffixIcon,
                     color: ColorsManager.primary,
                   ),
                 )

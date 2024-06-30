@@ -1,11 +1,17 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
+import 'package:graduation_app/core/core_widgets/default_loading.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
+import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_state.dart';
+import 'package:graduation_app/feature/patient/layout/login_screen.dart';
+import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:graduation_app/generated/assets.dart';
 
-import 'onboarding_screen.dart';
+import '../../doctor/pages/home/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -24,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         debugPrint('User is currently signed out!');
         this.user = null;
       } else {
+        GetUserCubit.get(context).getUser();
         this.user = user;
         debugPrint('User is signed in!');
       }
@@ -33,16 +40,41 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedSplashScreen(
-        animationDuration: const Duration(milliseconds: 1000),
-        centered: true,
-        backgroundColor: ColorsManager.primary,
-        splash: Assets.imagesDoctorAssistant1,
-        splashIconSize: 100,
-        splashTransition: SplashTransition.scaleTransition,
-        nextScreen:
-            user == null ? const OnboardingScreen() : const HomeDoctorScreen(),
-      ),
+      body:
+          BlocConsumer<GetUserCubit, GetUserState>(listener: (context, state) {
+        if (state is GetUserFailure) {
+          callMyToast(massage: state.failure.message, state: ToastState.ERROR);
+          goToFinish(context, const LoginScreen());
+        }
+      }, builder: (context, state) {
+        Widget nextScreen;
+        if (user == null) {
+          nextScreen = const LoginScreen();
+        } else if (state is GetUserSuccess)
+        {
+          if (state.authModel.isDoctor == null) {
+            nextScreen = const LoginScreen();
+          } else {
+            if (state.authModel.isDoctor!) {
+              nextScreen = const DoctorView();
+            } else {
+              nextScreen = const PatientHome();
+            }
+          }
+        }
+        else {
+          nextScreen = const DefaultLoading();
+        }
+        return AnimatedSplashScreen(
+          animationDuration: const Duration(milliseconds: 1000),
+          centered: true,
+          backgroundColor: ColorsManager.primary,
+          splash: Assets.imagesDoctorAssistant1,
+          splashIconSize: 100,
+          splashTransition: SplashTransition.scaleTransition,
+          nextScreen: nextScreen,
+        );
+      }),
     );
   }
 }

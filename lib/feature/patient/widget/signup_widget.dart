@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
-import 'package:graduation_app/core/core_widgets/custom_outlined_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
@@ -10,8 +9,6 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_state.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
-
-import '../../../core/function/core_function.dart';
 import '../../../core/theme_manager/style_manager.dart';
 
 class SignupWidget extends StatefulWidget {
@@ -24,15 +21,15 @@ class SignupWidget extends StatefulWidget {
 
 class _SignupWidgetState extends State<SignupWidget> {
   var formKey = GlobalKey<FormState>();
+  var nameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
-  var nameController = TextEditingController();
   var confirmPasswordController = TextEditingController();
+  bool isPassword = true;
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
     return Column(
       children: [
         Container(
@@ -73,23 +70,34 @@ class _SignupWidgetState extends State<SignupWidget> {
                   colorFont: ColorsManager.black,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
+
                 CustomTextFormField(
                   controller: passwordController,
                   type: TextInputType.visiblePassword,
                   label: "Password",
-                  suffixPressed: () => {},
                   hint: "Enter your password",
-                  suffixIcon: Icons.remove_red_eye_outlined,
                   colorFont: ColorsManager.black,
+                  isPassword: isPassword,
+                  suffixPressed: (){
+                    setState(() {
+                      isPassword = !isPassword;
+                    });
+                  },
+                  suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
                 CustomTextFormField(
                   controller: confirmPasswordController,
                   type: TextInputType.visiblePassword,
                   label: "Confirm Password",
-                  suffixPressed: () => {},
+                  isPassword: isPassword,
+                  suffixPressed: (){
+                    setState(() {
+                      isPassword = !isPassword;
+                    });
+                  },
+                  suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
                   hint: "Confirm your password",
-                  suffixIcon: Icons.remove_red_eye_outlined,
                   colorFont: ColorsManager.black,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
@@ -99,7 +107,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     callMyToast(
                         massage: 'Registered successfully',
                         state: ToastState.SUCCESS);
-                    goTo(context, LoginScreen());
+                    goTo(context, const LoginScreen());
                   } else if (state is RegisterFailure) {
                     callMyToast(
                         massage: state.failure.message,
@@ -131,48 +139,6 @@ class _SignupWidgetState extends State<SignupWidget> {
                     },
                   );
                 }),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03),
-                  child: Text(
-                    "Or connect with",
-                    style: StyleManager.mainTextStyle15.copyWith(
-                      color: ColorsManager.grayFont,
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: screenWidth * 0.35,
-                      height: screenWidth * 0.11,
-                      child: CustomOutlineButton(
-                        text: "Google ",
-                        onPressed: () {},
-                        fontColor: ColorsManager.font,
-                        isSvg: true,
-                        isIcon: true,
-                        iconSvg: "assets/icons/google.svg",
-                        color: ColorsManager.background,
-                      ),
-                    ),
-                    SizedBox(width: screenWidth * 0.04), // Adjusted width
-                    SizedBox(
-                      width: screenWidth * 0.35,
-                      height: screenWidth * 0.11,
-                      child: CustomOutlineButton(
-                        text: "Facebook ",
-                        onPressed: () {},
-                        isSvg: true,
-                        isIcon: true,
-                        fontColor: ColorsManager.font,
-                        iconSvg: "assets/icons/facebook.svg",
-                        color: ColorsManager.background,
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: screenWidth * 0.03), // Adjusted height
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

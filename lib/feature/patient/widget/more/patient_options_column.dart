@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
+import 'package:graduation_app/core/core_widgets/default_loading.dart';
 import 'package:graduation_app/core/function/core_function.dart';
+import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_state.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 import 'package:graduation_app/feature/patient/layout/favorites_screen.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
@@ -59,20 +64,33 @@ class PatientOptionsColumn extends StatelessWidget {
             const SizedBox(
               width: 40,
             ),
-            CustomTextButton(
-              text: "Log Out",
-              onPressed: () {
-                showMyDialog(context, "Log Out", "Yes, Log Out", () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
+            BlocConsumer<LogoutCubit,LogoutState>(
+              builder: (context, state) {
+                if(state is LogoutLoading){
+                  return const DefaultLoading();
+                }
+                else{
+                  return CustomTextButton(
+                    text: "Log Out",
+                    onPressed: () {
+                      showMyDialog(context, "Log Out", "Yes, Log Out", () {
+                        LogoutCubit.get(context).logout();
+                      });
+                    },
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontColor: ColorsManager.font,
                   );
-                });
+                }
+              } ,
+              listener: (context, state) {
+                if(state is LogoutSuccess){
+                  goToFinish(context, const LoginScreen());
+                }
+                else if(state is LogoutFailure){
+                  callMyToast(massage: state.failure.message, state: ToastState.ERROR);
+                }
               },
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              fontColor: ColorsManager.font,
             ),
           ],
         )

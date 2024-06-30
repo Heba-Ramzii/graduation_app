@@ -9,10 +9,9 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_state.dart';
 import 'package:graduation_app/feature/doctor/pages/home/main_screen.dart';
+import 'package:graduation_app/feature/patient/layout/onboarding_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
-import 'package:graduation_app/feature/patient/layout/signup_screen.dart';
 
-import '../../../core/core_widgets/custom_outlined_button.dart';
 import '../../../core/function/core_function.dart';
 import '../../../core/theme_manager/style_manager.dart';
 
@@ -28,11 +27,10 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  bool isPassword = true;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
     return Center(
       child: Container(
         width: screenWidth * 0.9,
@@ -68,10 +66,23 @@ class _LoginWidgetState extends State<LoginWidget> {
               controller: passwordController,
               type: TextInputType.visiblePassword,
               label: "Password",
-              suffixPressed: () => {},
+              isPassword: isPassword,
+              suffixPressed: () => {
+                 setState(() {
+                   isPassword = !isPassword;
+                 })
+              },
+              suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
               hint: "Enter your password",
-              suffixIcon: Icons.remove_red_eye,
               colorFont: ColorsManager.black,
+            ),
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.centerRight,
+              child: CustomTextButton(
+                text: "Forget Password?",
+                onPressed: () => {},
+              ),
             ),
             const SizedBox(height: 20),
             BlocConsumer<SignInCubit, SignInState>(listener: (context, state) {
@@ -102,55 +113,6 @@ class _LoginWidgetState extends State<LoginWidget> {
               }
             }),
             const SizedBox(height: 10),
-            Align(
-              alignment: Alignment.centerRight,
-              child: CustomTextButton(
-                text: "Forget Password?",
-                onPressed: () => {},
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: screenWidth * 0.03),
-              child: Text(
-                "Or connect with",
-                style: StyleManager.mainTextStyle15.copyWith(
-                  color: ColorsManager.grayFont,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: screenWidth * 0.35,
-                  height: screenWidth * 0.11,
-                  child: CustomOutlineButton(
-                    text: "Google ",
-                    onPressed: () {},
-                    fontColor: ColorsManager.font,
-                    isSvg: true,
-                    isIcon: true,
-                    iconSvg: "assets/icons/google.svg",
-                    color: ColorsManager.background,
-                  ),
-                ),
-                SizedBox(width: screenWidth * 0.04), // Adjusted width
-                SizedBox(
-                  width: screenWidth * 0.35,
-                  height: screenWidth * 0.11,
-                  child: CustomOutlineButton(
-                    text: "Facebook ",
-                    onPressed: () {},
-                    isSvg: true,
-                    isIcon: true,
-                    fontColor: ColorsManager.font,
-                    iconSvg: "assets/icons/facebook.svg",
-                    color: ColorsManager.background,
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: screenWidth * 0.03), // Adjusted height
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -166,9 +128,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                   onPressed: () => {
                     navigateToScreen(
                         context,
-                        SignupScreen(
-                          isDoctor: false,
-                        )),
+                        const OnboardingScreen(),
+                    ),
                   },
                 ),
               ],

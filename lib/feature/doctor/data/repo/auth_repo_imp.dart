@@ -15,10 +15,10 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, AuthModel>> getUser({required bool isDoctor}) async {
+  Future<Either<Failure, AuthModel>> getUser() async {
     try {
       var response = await FirebaseFirestore.instance
-          .collection(isDoctor ? 'doctors' : 'patient')
+          .collection('users')
           .doc(_firebaseAuth.currentUser!.uid)
           .get();
       return right(AuthModel.fromJson(response.data()!));
