@@ -7,15 +7,14 @@ import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
 
 import '../../../patient/layout/chat_screen.dart';
 
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class DoctorView extends StatefulWidget {
+  const DoctorView({Key? key}) : super(key: key);
 
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _DoctorViewState createState() => _DoctorViewState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _DoctorViewState extends State<DoctorView> {
   int currentIndex = 0;
 
   List<Widget> screens = [
@@ -31,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
             height: 70,
-            indicatorShape:  const CircleBorder(
+            indicatorShape: const CircleBorder(
               eccentricity: 0.2,
             ),
             backgroundColor: ColorsManager.blue2,
@@ -93,8 +92,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 label: '',
               ),
-            ]
-        ),
+            ]),
         body: screens[currentIndex],
       ),
     );

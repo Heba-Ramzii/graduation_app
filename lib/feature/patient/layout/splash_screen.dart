@@ -15,13 +15,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  User? user ;
+  User? user;
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         debugPrint('User is currently signed out!');
         this.user = null;
@@ -31,18 +29,20 @@ class _SplashScreenState extends State<SplashScreen> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedSplashScreen(
-          animationDuration: const Duration(milliseconds: 1000),
-           centered : true,
-          backgroundColor:ColorsManager.primary,
-          splash: Assets.imagesDoctorAssistant1,
-          splashIconSize: 100,
-          splashTransition: SplashTransition.scaleTransition,
-          nextScreen:  user == null ? const OnboardingScreen() : const HomeDoctorScreen(),
-        ),
+        animationDuration: const Duration(milliseconds: 1000),
+        centered: true,
+        backgroundColor: ColorsManager.primary,
+        splash: Assets.imagesDoctorAssistant1,
+        splashIconSize: 100,
+        splashTransition: SplashTransition.scaleTransition,
+        nextScreen:
+            user == null ? const OnboardingScreen() : const HomeDoctorScreen(),
+      ),
     );
   }
 }

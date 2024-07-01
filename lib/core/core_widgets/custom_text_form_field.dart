@@ -28,8 +28,14 @@ Widget CustomTextFormField({
         obscureText: isPassword,
         onFieldSubmitted: onSubmit,
         onTap: onTap,
+        validator: (String? value) {
+          if (value!.isEmpty) {
+            return "required";
+          }
+          return null;
+        },
         onChanged: onChange,
-        scrollPadding:const EdgeInsets.all(0.0) ,
+        scrollPadding: const EdgeInsets.all(0.0),
         //enabled: isClickable,
         decoration: InputDecoration(
           suffixIcon: suffixPressed != null
@@ -45,9 +51,8 @@ Widget CustomTextFormField({
           filled: false,
           label: Text(
             label,
-            style: StyleManager.textStyle13.copyWith(
-              color: ColorsManager.primary
-            ),
+            style:
+                StyleManager.textStyle13.copyWith(color: ColorsManager.primary),
           ),
           hintText: hint,
           hintStyle: StyleManager.textStyle14,

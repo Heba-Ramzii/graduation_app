@@ -28,7 +28,6 @@ class PatientOptionsColumn extends StatelessWidget {
             icon: Icons.favorite_border_rounded,
             onTap: () {
               navigateToScreen(context, const FavoritesScreen());
-
             },
             text: "Favorite"),
         OptionRow(
@@ -67,7 +66,7 @@ class PatientOptionsColumn extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>  const LoginScreen(isDoctor: false,)),
+                        builder: (context) => const LoginScreen()),
                   );
                 });
               },

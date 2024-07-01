@@ -1,14 +1,16 @@
 class AuthModel {
-   String? id;
-   String? name;
-   String? email;
-   String? password;
+  String? id;
+  String? name;
+  String? email;
+  String? password;
+  bool? isDoctor;
 
   AuthModel({
     this.id,
     required this.name,
     required this.email,
     required this.password,
+    required this.isDoctor,
   });
 
   factory AuthModel.fromJson(Map<String, dynamic> json) {
@@ -17,6 +19,7 @@ class AuthModel {
       name: json['name'],
       email: json['email'],
       password: json['password'],
+      isDoctor: json['isDoctor'],
     );
   }
 
@@ -26,6 +29,7 @@ class AuthModel {
       'name': name,
       'email': email,
       'password': password,
+      'isDoctor': isDoctor
     };
   }
 }

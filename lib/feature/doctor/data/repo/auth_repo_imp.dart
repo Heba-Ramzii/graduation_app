@@ -17,66 +17,80 @@ class AuthRepoImp implements AuthRepo {
   @override
   Future<Either<Failure, AuthModel>> getUser({required bool isDoctor}) async {
     try {
-      var response = await FirebaseFirestore.instance.collection(
-          isDoctor?'doctors':'patient').doc(_firebaseAuth.currentUser!.uid).get();
+      var response = await FirebaseFirestore.instance
+          .collection(isDoctor ? 'doctors' : 'patient')
+          .doc(_firebaseAuth.currentUser!.uid)
+          .get();
       return right(AuthModel.fromJson(response.data()!));
-    }
-    on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
-    }
-    on Exception catch (e) {
+    } on Exception catch (e) {
       return left(Failure.fromException(e));
     }
   }
 
   @override
-  Future<Either<Failure, void>> login ({required String email, required String password}) async {
+  Future<Either<Failure, AuthModel>> login(
+      {required String email, required String password}) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      var loginResponse =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return right(null);
-    }
-    on FirebaseAuthException catch (e) {
+
+      var response = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(loginResponse.user!.uid)
+          .get();
+
+      return right(AuthModel.fromJson(response.data()!));
+    } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
-    }
-    on Exception catch (e) {
+    } on Exception catch (e) {
       return left(Failure.fromException(e));
     }
   }
 
   @override
-  Future<Either<Failure, void>> logout() async{
+  Future<Either<Failure, void>> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
       return right(null);
-    }
-    on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
-    }
-    on Exception catch (e) {
+    } on Exception catch (e) {
       return left(Failure.fromException(e));
     }
-
   }
 
   @override
-  Future<Either<Failure, void>> signup
-      ({required String name, required String email, required String password})async {
+  Future<Either<Failure, void>> signup(
+      {required String name,
+      required String email,
+      required bool isDoctor,
+      required String password}) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var response = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      AuthModel authModel = AuthModel(
+          name: name,
+          email: email,
+          password: password,
+          id: response.user!.uid,
+          isDoctor: isDoctor);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(authModel.id)
+          .set(authModel.toJson());
       return right(null);
-    }
-    on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
-    }
-    on Exception catch (e) {
+    } on Exception catch (e) {
       return left(Failure.fromException(e));
     }
   }
-
 }
