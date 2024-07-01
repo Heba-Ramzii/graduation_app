@@ -40,7 +40,7 @@ class Clinics extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         foregroundColor: ColorsManager.white,
         backgroundColor: ColorsManager.primary,
-          onPressed: () => navigateToScreen(context, const AddClinic()),
+          onPressed: () => navigateToScreen(context,  AddClinic()),
         child: const Icon(Icons.add,size: 30,),
       ),
 

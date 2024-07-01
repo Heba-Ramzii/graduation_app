@@ -31,8 +31,10 @@ class _ChatScreenState extends State<ChatScreen> {
       ];
 
     return Scaffold(
+
       /// backgroundColor: ColorsManager.homePageBackground,
       appBar: AppBar(
+
         elevation: 2.0,
         shadowColor:ColorsManager.shadow ,
         backgroundColor: ColorsManager.white,

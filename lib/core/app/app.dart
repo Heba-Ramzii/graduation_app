@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/services/service_locator.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubit.dart';
@@ -24,7 +25,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => SignInCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
-            create: (context) => RegisterCubit(getIt.get<AuthRepoImp>()))
+            create: (context) => RegisterCubit(getIt.get<AuthRepoImp>())),
+        BlocProvider(
+            create: (context) => GetClinicImageCubit()),
       ],
       child: MaterialApp(
         title: 'Graduation App',

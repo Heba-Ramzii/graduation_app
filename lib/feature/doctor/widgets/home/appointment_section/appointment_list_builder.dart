@@ -6,8 +6,8 @@ import 'package:graduation_app/feature/doctor/widgets/home/appointment_section/c
 import '../../../../../core/theme_manager/style_manager.dart';
 
 class AppointmentListBuilder extends StatelessWidget {
-  const AppointmentListBuilder({super.key});
-
+  const AppointmentListBuilder({super.key, required this.data});
+  final Map<String, dynamic> data;
   @override
   Widget build(BuildContext context) {
     return SizedBox(

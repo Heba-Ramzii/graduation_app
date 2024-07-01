@@ -32,7 +32,7 @@ class OptionsColumn extends StatelessWidget {
         OptionRow(
             icon: Icons.add_business_outlined,
             onTap: () {
-              navigateToScreen(context, const AddClinic());
+              navigateToScreen(context,  AddClinic());
             },
             text: "Add clinic"),
         OptionRow(icon: Icons.payment_rounded,

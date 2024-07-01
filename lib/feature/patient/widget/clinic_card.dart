@@ -15,7 +15,8 @@ class ClinicCad extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => InkWell(
-          child: const AppointmentListBuilder(),
+          //todooooo
+          child:  AppointmentListBuilder(data:{},),
           onTap: () {
             Navigator.push(
               context,

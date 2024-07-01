@@ -25,7 +25,9 @@ class _SignupWidgetState extends State<SignupWidget> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
-  bool isPassword = true;
+
+  bool isPasswordVisible = true;
+  bool isConfirmPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -70,50 +72,49 @@ class _SignupWidgetState extends State<SignupWidget> {
                   colorFont: ColorsManager.black,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
-
                 CustomTextFormField(
                   controller: passwordController,
                   type: TextInputType.visiblePassword,
                   label: "Password",
                   hint: "Enter your password",
                   colorFont: ColorsManager.black,
-                  isPassword: isPassword,
-                  suffixPressed: (){
+                  isPassword: isPasswordVisible,
+                  suffixPressed: () {
                     setState(() {
-                      isPassword = !isPassword;
+                      isPasswordVisible = !isPasswordVisible;
                     });
                   },
-                  suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
+                  suffixIcon: isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
                 CustomTextFormField(
                   controller: confirmPasswordController,
                   type: TextInputType.visiblePassword,
                   label: "Confirm Password",
-                  isPassword: isPassword,
-                  suffixPressed: (){
+                  isPassword: isConfirmPasswordVisible,
+                  suffixPressed: () {
                     setState(() {
-                      isPassword = !isPassword;
+                      isConfirmPasswordVisible = !isConfirmPasswordVisible;
                     });
                   },
-                  suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
+                  suffixIcon: isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
                   hint: "Confirm your password",
                   colorFont: ColorsManager.black,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
                 BlocConsumer<RegisterCubit, RegisterState>(
                     listener: (context, state) {
-                  if (state is RegisterSuccess) {
-                    callMyToast(
-                        massage: 'Registered successfully',
-                        state: ToastState.SUCCESS);
-                    goTo(context, const LoginScreen());
-                  } else if (state is RegisterFailure) {
-                    callMyToast(
-                        massage: state.failure.message,
-                        state: ToastState.ERROR);
-                  }
-                }, builder: (context, state) {
+                      if (state is RegisterSuccess) {
+                        callMyToast(
+                            massage: 'Registered successfully',
+                            state: ToastState.SUCCESS);
+                        goTo(context, const LoginScreen());
+                      } else if (state is RegisterFailure) {
+                        callMyToast(
+                            massage: state.failure.message,
+                            state: ToastState.ERROR);
+                      }
+                    }, builder: (context, state) {
                   if (state is RegisterLoading) {
                     return const DefaultLoading();
                   }
