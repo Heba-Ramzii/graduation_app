@@ -25,7 +25,9 @@ class AppointmentSection extends StatelessWidget {
         StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection('users').doc(FirebaseAuth.instance.currentUser!.uid)
-              .collection('appointments').snapshots(),
+              .collection('appointments').where(
+            'day', isEqualTo: DateTime.now().day,
+          ).orderBy('from').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.hasError) {
               return const Text('Something went wrong');

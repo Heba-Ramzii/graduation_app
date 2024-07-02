@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_app/feature/doctor/data/repo/auth_repo_imp.dart';
+import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
 
 import 'logout_state.dart';
 

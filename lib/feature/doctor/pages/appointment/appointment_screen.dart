@@ -8,10 +8,10 @@ class AppointmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       appBar: CustomAppBar(title: 'Appointment'),
       body:Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
             ClinicSection(),

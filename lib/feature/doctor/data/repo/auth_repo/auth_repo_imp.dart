@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_app/core/failure/failure.dart';
+import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'auth_repo.dart';
 
@@ -24,9 +25,10 @@ class AuthRepoImp implements AuthRepo {
       return right(AuthModel.fromJson(response.data()!));
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
-    } on Exception catch (e) {
-      return left(Failure.fromException(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
     }
+
   }
 
   @override

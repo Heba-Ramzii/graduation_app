@@ -19,14 +19,7 @@ class AppointmentListBuilder extends StatelessWidget {
         child:  Column(
           crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-            const ClinicInfoSection(),
-            Text(
-              '12 Patients',
-               style: StyleManager.textStyle12.copyWith(
-                fontSize: 13,
-                color: ColorsManager.primaryLight,
-              ),
-            ),
+             ClinicInfoSection(data:data,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -41,10 +34,10 @@ class AppointmentListBuilder extends StatelessWidget {
 
                 ),
                 const SizedBox(width: 8,),
-                const Text(
-                  "16:00 - 22:00",
+                 Text(
+                  '${data['fromTime']} : ${data['toTime']}',
                   style: StyleManager.textStyle12,
-                )
+                ),
               ],
             ),
           ],

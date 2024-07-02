@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/services/service_locator.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
-import 'package:graduation_app/feature/doctor/data/repo/auth_repo_imp.dart';
+import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
+import 'package:graduation_app/feature/doctor/data/repo/doctor_reop/doctor_repo_imp.dart';
 import 'package:graduation_app/feature/patient/layout/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
             create: (context) => RegisterCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
             create: (context) => GetClinicImageCubit()),
+        BlocProvider(
+            create: (context) => AddClinicCubit(getIt.get<DoctorRepoImp>())),
       ],
       child: MaterialApp(
         title: 'Graduation App',

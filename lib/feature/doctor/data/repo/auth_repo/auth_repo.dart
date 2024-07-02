@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:graduation_app/core/failure/failure.dart';
+import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 
 abstract class AuthRepo {

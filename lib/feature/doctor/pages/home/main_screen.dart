@@ -68,7 +68,7 @@ class _DoctorViewState extends State<DoctorView> {
               ),
               NavigationDestination(
                 icon: Icon(
-                  IconlyLight.calendar,
+                  Icons.add_business_outlined,
                   color: ColorsManager.blue,
                   size: 24,
                 ),

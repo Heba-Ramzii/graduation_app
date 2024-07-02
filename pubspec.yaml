@@ -64,7 +64,8 @@ dependencies:
   flutter_bloc:
   bloc:
   get_it: 
-  fluttertoast: 
+  fluttertoast:
+  firebase_storage:
 
 
 dev_dependencies:
