@@ -84,7 +84,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                       isPasswordVisible = !isPasswordVisible;
                     });
                   },
-                  suffixIcon: isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  suffixIcon: isPasswordVisible
+                      ? Icons.visibility
+                      : Icons.visibility_off,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
                 CustomTextFormField(
@@ -97,24 +99,27 @@ class _SignupWidgetState extends State<SignupWidget> {
                       isConfirmPasswordVisible = !isConfirmPasswordVisible;
                     });
                   },
-                  suffixIcon: isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                  suffixIcon: isConfirmPasswordVisible
+                      ? Icons.visibility
+                      : Icons.visibility_off,
                   hint: "Confirm your password",
                   colorFont: ColorsManager.black,
                 ),
                 SizedBox(height: screenWidth * 0.02), // Adjusted height
                 BlocConsumer<RegisterCubit, RegisterState>(
                     listener: (context, state) {
-                      if (state is RegisterSuccess) {
-                        callMyToast(
-                            massage: 'Registered successfully',
-                            state: ToastState.SUCCESS);
-                        goTo(context, const LoginScreen());
-                      } else if (state is RegisterFailure) {
-                        callMyToast(
-                            massage: state.failure.message,
-                            state: ToastState.ERROR);
-                      }
-                    }, builder: (context, state) {
+                  if (state is RegisterSuccess) {
+                    callMyToast(
+                        massage:
+                            'Registered successfully\nPlease verify your email',
+                        state: ToastState.SUCCESS);
+                    goTo(context, const LoginScreen());
+                  } else if (state is RegisterFailure) {
+                    callMyToast(
+                        massage: state.failure.message,
+                        state: ToastState.ERROR);
+                  }
+                }, builder: (context, state) {
                   if (state is RegisterLoading) {
                     return const DefaultLoading();
                   }

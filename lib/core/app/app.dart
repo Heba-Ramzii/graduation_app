@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/services/service_locator.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
@@ -23,13 +24,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => GetUserCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
+            create: (context) => ForgetPassCubit(getIt.get<AuthRepoImp>())),
+        BlocProvider(
             create: (context) => LogoutCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
             create: (context) => SignInCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
             create: (context) => RegisterCubit(getIt.get<AuthRepoImp>())),
-        BlocProvider(
-            create: (context) => GetClinicImageCubit()),
+        BlocProvider(create: (context) => GetClinicImageCubit()),
         BlocProvider(
             create: (context) => AddClinicCubit(getIt.get<DoctorRepoImp>())),
       ],

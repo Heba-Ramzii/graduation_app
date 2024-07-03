@@ -11,6 +11,7 @@ import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_state.d
 import 'package:graduation_app/feature/doctor/pages/home/main_screen.dart';
 import 'package:graduation_app/feature/patient/layout/onboarding_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
+import 'package:graduation_app/feature/patient/widget/forget_password.dart';
 
 import '../../../core/function/core_function.dart';
 import '../../../core/theme_manager/style_manager.dart';
@@ -68,9 +69,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               label: "Password",
               isPassword: isPassword,
               suffixPressed: () => {
-                 setState(() {
-                   isPassword = !isPassword;
-                 })
+                setState(() {
+                  isPassword = !isPassword;
+                })
               },
               suffixIcon: isPassword ? Icons.visibility : Icons.visibility_off,
               hint: "Enter your password",
@@ -81,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               alignment: Alignment.centerRight,
               child: CustomTextButton(
                 text: "Forget Password?",
-                onPressed: () => {},
+                onPressed: () => {goTo(context, const ForgetPasswordScreen())},
               ),
             ),
             const SizedBox(height: 20),
@@ -127,8 +128,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                   text: "  Sign up",
                   onPressed: () => {
                     navigateToScreen(
-                        context,
-                        const OnboardingScreen(),
+                      context,
+                      const OnboardingScreen(),
                     ),
                   },
                 ),

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_app/core/failure/failure.dart';
-import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'auth_repo.dart';
 
@@ -10,9 +9,15 @@ class AuthRepoImp implements AuthRepo {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
-  Future<Either<Failure, void>> forgetPassword({required String email}) {
-    // TODO: implement forgetPassword
-    throw UnimplementedError();
+  Future<Either<Failure, void>> forgetPassword({required String email}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
+    }
   }
 
   @override
@@ -28,7 +33,6 @@ class AuthRepoImp implements AuthRepo {
     } catch (e) {
       return left(Failure("400", e.toString()));
     }
-
   }
 
   @override
@@ -40,6 +44,11 @@ class AuthRepoImp implements AuthRepo {
         email: email,
         password: password,
       );
+
+      if (!FirebaseAuth.instance.currentUser!.emailVerified) {
+        return left(Failure(
+            "400", "Please Verify Your Email First\nPlease Check Your Email"));
+      }
 
       var response = await FirebaseFirestore.instance
           .collection('users')
@@ -77,7 +86,7 @@ class AuthRepoImp implements AuthRepo {
         email: email,
         password: password,
       );
-
+      await FirebaseAuth.instance.currentUser!.sendEmailVerification();
       AuthModel authModel = AuthModel(
           name: name,
           email: email,
