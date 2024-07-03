@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/ai_diagnosis.dart';
 import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/manage/cubit/ai_diagnosis_cubit.dart';
 import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/manage/repo/ai_repo_imp.dart';
 
 import 'core/dio_helper/dio_helper.dart';
 import 'core/service/service_locator.dart';
-import 'feature/doctor/pages/ai_diagnosis/ai_diagnosis.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
