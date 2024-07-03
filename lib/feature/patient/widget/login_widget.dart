@@ -6,6 +6,7 @@ import 'package:graduation_app/core/core_widgets/custom_text_button.dart';
 import 'package:graduation_app/core/core_widgets/custom_text_form_field.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_state.dart';
 import 'package:graduation_app/feature/doctor/pages/home/main_screen.dart';
@@ -90,6 +91,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               if (state is SignInSuccess) {
                 callMyToast(
                     massage: 'Login Success', state: ToastState.SUCCESS);
+                if(state.authModel.isDoctor!)
+                {
+                  GetDoctorCubit.get(context).getDoctor();
+                }
                 goTo(
                     context,
                     state.authModel.isDoctor!

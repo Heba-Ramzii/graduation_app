@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/clinics/clinics_item_builder.dart';
+import 'package:graduation_app/feature/patient/widget/clinic_card.dart';
 
 class ClinicsList extends StatelessWidget {
   const ClinicsList({super.key});
@@ -32,9 +33,14 @@ class ClinicsList extends StatelessWidget {
             return Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemBuilder: (context, index) => ClinicsItemBuilder(
-                    clinicModel: ClinicModel.fromJson(snapshot.data!.docs[index]
-                        .data() as Map<String, dynamic>)),
+                itemBuilder: (context, index) {
+                  ClinicModel clinicModel = ClinicModel.fromJson(
+                      snapshot.data!.docs[index].data() as Map<String, dynamic>);
+                  clinicModel.id = snapshot.data!.docs[index].id;
+                  return ClinicsItemBuilder(
+                      clinicModel: clinicModel
+                  );
+                },
                 itemCount: snapshot.data!.docs.length,
               ),
             );

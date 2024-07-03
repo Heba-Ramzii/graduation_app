@@ -96,4 +96,46 @@ class DoctorRepoImp implements DoctorRepo {
       return left(Failure("400", e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> editClinic({required ClinicModel clinicModel}) async{
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('clinics')
+          .doc(clinicModel.id)
+          .update(clinicModel.toJson());
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments({required String clinicId}) async {
+    try {
+
+      var response = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_firebaseAuth.currentUser!.uid)
+          .collection('appointments')
+          .where("clinicId", isEqualTo: clinicId)
+          .get();
+      List<AppointmentModel> appointments = [];
+      await Future.forEach(response.docs, (element){
+        appointments.add(AppointmentModel.fromJson(element.data()));
+      });
+      return right(appointments);
+    } on FirebaseAuthException catch (e) {
+      print('${e.toString()} +++++++++++++')  ;
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      print('${e.toString()} +++++++++++++')  ;
+
+      return left(Failure("400", e.toString()));
+    }
+  }
 }

@@ -10,6 +10,8 @@ class DoctorModel {
   Timestamp? birthDate;
   bool? isDoctor;
   XFile? image;
+  String? speciality;
+  double? rate;
 
   DoctorModel(
       {this.id,
@@ -18,7 +20,10 @@ class DoctorModel {
       this.birthDate,
       this.isDoctor,
       this.phone,
-      this.imagePath});
+      this.imagePath,
+      this.speciality,
+      this.rate,
+      });
 
   DoctorModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -28,6 +33,8 @@ class DoctorModel {
     isDoctor = json['isDoctor'];
     imagePath = json['imagePath'];
     birthDate = json['birthDate'];
+    speciality = json['speciality'];
+    rate = json['rate'];
   }
 
   Map<String, dynamic> toJson() {
@@ -38,7 +45,9 @@ class DoctorModel {
       'phone': phone,
       'isDoctor': isDoctor,
       'imagePath': imagePath,
-      'birthDate': birthDate
+      'birthDate': birthDate,
+      'speciality': speciality,
+      'rate': rate,
     };
   }
 }

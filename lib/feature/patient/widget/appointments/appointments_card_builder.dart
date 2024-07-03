@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
-import '../../../../core/theme_manager/colors_manager.dart';
-import '../../../../core/theme_manager/style_manager.dart';
 
 class AppointmentsCardBuilder extends StatelessWidget {
   const AppointmentsCardBuilder({super.key});

@@ -26,24 +26,27 @@ class ClinicDetailsColumn extends StatelessWidget {
                   style: StyleManager.textStyle14
                       .copyWith(fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  "Respiratory",
-                  style: StyleManager.textStyle12
-                      .copyWith(color: ColorsManager.primaryLight),
-                ),
+                // Text(
+                //   "Respiratory",
+                //   style: StyleManager.textStyle12
+                //       .copyWith(color: ColorsManager.primaryLight),
+                // ),
               ],
             ),
-            Row(
-              children: [
-                const Icon(Icons.attach_money_rounded,
-                    size: 15, color: ColorsManager.primaryLight3),
-                Text(
-                  "150",
-                  style: StyleManager.textStyle14mid.copyWith(
-                    color: ColorsManager.primary,
+            Padding(
+              padding: const EdgeInsets.only(
+                right: 10.0,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    '${clinicModel.price.toString()}.LE',
+                    style: StyleManager.textStyle14mid.copyWith(
+                      color: ColorsManager.primary,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -59,24 +62,24 @@ class ClinicDetailsColumn extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                "Germany medical center",
+                clinicModel.address ?? '',
                 style: StyleManager.textStyle12
                     .copyWith(color: ColorsManager.primaryLight),
               ),
             ],
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const RateClinic(),
-            Text(
-              "42 Reviews",
-              style: StyleManager.textStyle12
-                  .copyWith(color: ColorsManager.primaryLight),
-            ),
-          ],
-        ),
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //   children: [
+        //     const RateClinic(),
+        //     Text(
+        //       "42 Reviews",
+        //       style: StyleManager.textStyle12
+        //           .copyWith(color: ColorsManager.primaryLight),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }

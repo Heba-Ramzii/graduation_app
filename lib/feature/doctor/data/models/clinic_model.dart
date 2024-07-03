@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ClinicModel {
@@ -8,6 +9,8 @@ class ClinicModel {
   XFile? image;
   String? imagePath;
   List<AppointmentModel>? appointments;
+  int? price;
+  String? id;
 
   ClinicModel({
     this.name,
@@ -17,6 +20,7 @@ class ClinicModel {
     this.image,
     this.imagePath,
     this.appointments,
+    this.price,
   });
 
   factory ClinicModel.fromJson(Map<String, dynamic> json) {
@@ -25,7 +29,8 @@ class ClinicModel {
       address: json['address'],
       phone: json['phone'],
       description: json['description'],
-      imagePath: json['imagePath']
+      imagePath: json['imagePath'],
+      price: json['price'],
     );
   }
   Map<String, dynamic> toJson() {
@@ -35,6 +40,8 @@ class ClinicModel {
       'phone': phone,
       'description': description,
       'imagePath': imagePath,
+      'price': price,
+
     };
   }
 
@@ -110,7 +117,7 @@ class AppointmentModel{
 
 class DateTimeFirebaseManager
 {
-  DateTime? dateTime;
+  Timestamp? dateTime;
   String? timeOfDay;
   DateTimeFirebaseManager({this.dateTime,this.timeOfDay});
 }

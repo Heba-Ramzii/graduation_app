@@ -4,25 +4,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'dart:io';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
+import 'package:graduation_app/core/core_widgets/default_loading.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
-import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
-import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_state.dart';
+import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_state.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_state.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
 
 
-class AddClinic extends StatefulWidget {
+class EditClinic extends StatefulWidget {
+  final ClinicModel clinicModel;
 
-  const AddClinic({super.key});
+  const EditClinic({super.key, required this.clinicModel});
 
   @override
-  State<AddClinic> createState() => _AddClinicState();
+  State<EditClinic> createState() => _EditClinicState();
 }
 
-class _AddClinicState extends State<AddClinic> {
+class _EditClinicState extends State<EditClinic> {
 
 
   final nameController = TextEditingController();
@@ -47,9 +51,30 @@ class _AddClinicState extends State<AddClinic> {
 
   final formKey = GlobalKey<FormState>();
   List<AppointmentModel> appointments = [
-    AppointmentModel(),
-  ];
 
+  ];
+  @override
+  void dispose() {
+    GetClinicImageCubit.get(context).profileImage = null;
+    nameController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
+    descriptionController.dispose();
+    priceController.dispose();
+    super.dispose();
+  }
+  @override
+  void initState() {
+    nameController.text = widget.clinicModel.name ?? '';
+    phoneController.text = widget.clinicModel.phone ?? '';
+    addressController.text = widget.clinicModel.address ?? '';
+    descriptionController.text = widget.clinicModel.description ?? '';
+    priceController.text = widget.clinicModel.price.toString() ?? '';
+    setState(() {
+
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,9 +88,9 @@ class _AddClinicState extends State<AddClinic> {
                 }
               },
               builder: (context, state) {
-               return BlocBuilder<AddClinicCubit, AddClinicState>(
+               return BlocBuilder<EditClinicCubit, EditClinicState>(
                    builder: (context, state){
-                     if (state is AddClinicLoading) {
+                     if (state is EditClinicLoading) {
                        return const SizedBox();
                      }
                      else {
@@ -83,7 +108,7 @@ class _AddClinicState extends State<AddClinic> {
                            clinicModel.image = GetClinicImageCubit
                                .get(context)
                                .profileImage;
-                           AddClinicCubit.get(context).addClinic(
+                           EditClinicCubit.get(context).editClinic(
                              clinicModel,
                            );
                          }
@@ -108,20 +133,19 @@ class _AddClinicState extends State<AddClinic> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlocConsumer<AddClinicCubit, AddClinicState>(
+                BlocConsumer<EditClinicCubit, EditClinicState>(
                   listener: (context, state) {
-                    if (state is AddClinicSuccess) {
-                      callMyToast(massage: 'Successfully Added',
+                    if (state is EditClinicSuccess) {
+                      callMyToast(massage: 'Successfully Edited',
                           state: ToastState.SUCCESS);
-                      Navigator.of(context).pop();
                     }
-                    else if (state is AddClinicFailure) {
+                    else if (state is EditClinicFailure) {
                       callMyToast(massage: state.failure.message,
                           state: ToastState.ERROR);
                     }
                   },
                   builder: (context, state) {
-                    if (state is AddClinicLoading) {
+                    if (state is EditClinicLoading) {
                       return const Center(child: LinearProgressIndicator(),);
                     }
                     else {
@@ -166,11 +190,20 @@ class _AddClinicState extends State<AddClinic> {
                                                     .profileImage!
                                                     .path)),
                                             fit: BoxFit.cover,
-                                          ) : null
+                                          ) :
+                                          widget.clinicModel.imagePath != null ?
+                                          DecorationImage(
+                                            image: NetworkImage(widget.clinicModel.imagePath!),
+                                            fit: BoxFit.cover,
+                                          )
+                                              :
+                                          null
                                       ),
                                       child: GetClinicImageCubit
                                           .get(context)
-                                          .profileImage == null ? const Icon(
+                                          .profileImage == null &&
+                                          widget.clinicModel.imagePath == null
+                                          ? const Icon(
                                         Icons.add_business_outlined,
                                         size: 40,
                                         color: Colors.grey,
@@ -253,85 +286,99 @@ class _AddClinicState extends State<AddClinic> {
                     ],
                   ),
                 ),
-                ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) =>
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 20.0),
-                          padding: const EdgeInsets.all(12.0),
-                          decoration: BoxDecoration(
-                            color: ColorsManager.white,
-                            borderRadius: StyleManager.borderRadius,
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Appointment ${index + 1}",
-                                    style: StyleManager.mainTextStyle15
-                                        .copyWith(
-                                      fontWeight: FontWeight.normal,
-                                    ),),
-                                  const Spacer(),
-                                  if(index != 0)
-                                    IconButton(
-                                      icon: const Icon(
-                                        Icons.remove_circle_outline,
-                                        color: Colors.red,
+                BlocConsumer<GetClinicAppointmentsCubit,GetClinicAppointmentState>(
+                    listener: (context, state) {
+                      if (state is GetClinicAppointmentFailure) {
+                        callMyToast(massage: state.failure.message,
+                            state: ToastState.ERROR);
+                      }
+                    },
+                    builder: (context, state) {
+                      if(state is GetClinicAppointmentSuccess){
+                        appointments = state.appointmentModels;
+
+                        return ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) =>
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 20.0),
+                                  padding: const EdgeInsets.all(12.0),
+                                  decoration: BoxDecoration(
+                                    color: ColorsManager.white,
+                                    borderRadius: StyleManager.borderRadius,
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "Appointment ${index + 1}",
+                                            style: StyleManager.mainTextStyle15
+                                                .copyWith(
+                                              fontWeight: FontWeight.normal,
+                                            ),),
+                                          const Spacer(),
+                                          if(index != 0)
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.remove_circle_outline,
+                                                color: Colors.red,
+                                              ),
+                                              onPressed: () {
+                                                appointments.removeAt(index);
+                                                setState(() {
+
+                                                });
+                                              },
+                                            ),
+                                        ],
                                       ),
-                                      onPressed: () {
-                                        appointments.removeAt(index);
-                                        setState(() {});
-                                      },
-                                    ),
-                                ],
-                              ),
-                              DropdownButtonFormField<int>(
-                                decoration: const InputDecoration(
-                                  labelText: 'Select a day',
+                                      DropdownButtonFormField<int>(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Select a day',
+                                        ),
+                                        value: appointments[index].day,
+                                        items: daysOfWeek.map((day) {
+                                          return DropdownMenuItem<int>(
+                                            value: day['value'],
+                                            child: Text(day['name']),
+                                          );
+                                        }).toList(),
+                                        onChanged: (int? newValue) {
+                                          setState(() {
+                                            appointments[index].day = newValue;
+                                          });
+                                        },
+                                        validator: (value) =>
+                                        value == null ? 'Please select a day' : null,
+                                      ),
+
+                                      Row(
+                                        children: [
+                                          appointmentFieldBuilder(
+                                              index: index, isFrom: true),
+                                          const SizedBox(width: 15,),
+                                          appointmentFieldBuilder(
+                                              index: index, isFrom: false),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                value: appointments[index].day,
-                                items: daysOfWeek.map((day) {
-                                  return DropdownMenuItem<int>(
-                                    value: day['value'],
-                                    child: Text(day['name']),
-                                  );
-                                }).toList(),
-                                onChanged: (int? newValue) {
-                                  setState(() {
-                                    appointments[index].day = newValue;
-                                  });
-                                },
-                                validator: (value) =>
-                                value == null ? 'Please select a day' : null,
-                              ),
-                              // EditInfoRow(
-                              //   readOnly: true,
-                              //   title: appointments[index].dayName ?? "Day",
-                              //   controller: TextEditingController(),
-                              //   inputType: TextInputType.text,
-                              //   onTap: () {
-                              //     //todo
-                              //   },
-                              //   icon: Icons.keyboard_arrow_down_rounded,
-                              // ),
-                              Row(
-                                children: [
-                                  appointmentFieldBuilder(
-                                      index: index, isFrom: true),
-                                  const SizedBox(width: 15,),
-                                  appointmentFieldBuilder(
-                                      index: index, isFrom: false),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                    separatorBuilder: (context, index) =>
-                    const SizedBox(height: 20.0),
-                    itemCount: appointments.length
+                            separatorBuilder: (context, index) =>
+                            const SizedBox(height: 20.0),
+                            itemCount: appointments.length
+                        );
+                      }
+                      else if (state is GetClinicAppointmentLoading) {
+                        return const DefaultLoading();
+                      }
+                      else {
+                        return const SizedBox();
+                      }
+
+                      },
                 ),
               ],
             ),

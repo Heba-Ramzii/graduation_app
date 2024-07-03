@@ -54,7 +54,7 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
   final emailController = TextEditingController();
   final sexController = TextEditingController();
   final phoneController = TextEditingController();
-
+  final sepcialityController = TextEditingController();
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -75,6 +75,10 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
                   if (phoneController.text.isEmpty &&
                       state.doctorModel.phone != null) {
                     phoneController.text = state.doctorModel.phone!;
+                  }
+                  if (sepcialityController.text.isEmpty &&
+                      state.doctorModel.speciality != null) {
+                    sepcialityController.text = state.doctorModel.speciality!;
                   }
                   if (selectedDate == null &&
                       state.doctorModel.birthDate != null) {
@@ -200,6 +204,11 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
                             inputType: TextInputType.emailAddress,
                           ),
                           EditInfoRow(
+                            title: "Speciality",
+                            controller: sepcialityController,
+                            inputType: TextInputType.text,
+                          ),
+                          EditInfoRow(
                             title: "Phone Number",
                             controller: phoneController,
                             inputType: TextInputType.phone,
@@ -244,7 +253,8 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
                                     if (formKey.currentState!.validate()) {
                                       state.doctorModel.image =
                                           GetDocImageCubit.get(context).image;
-
+                                      state.doctorModel.speciality =
+                                          sepcialityController.text;
                                       state.doctorModel.name =
                                           nameController.text;
                                       state.doctorModel.phone =

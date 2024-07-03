@@ -75,7 +75,7 @@ class _DoctorViewState extends State<DoctorView> {
                   size: 24,
                 ),
                 selectedIcon: Icon(
-                  IconlyBold.calendar,
+                  Icons.add_business_rounded,
                   color: ColorsManager.primary,
                   size: 24,
                 ),
@@ -83,7 +83,7 @@ class _DoctorViewState extends State<DoctorView> {
               ),
               NavigationDestination(
                 icon: Icon(
-                  Icons.more_horiz_rounded,
+                  Icons.more_horiz,
                   color: ColorsManager.blue,
                   size: 24,
                 ),
