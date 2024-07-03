@@ -49,6 +49,11 @@ class _AddClinicState extends State<AddClinic> {
   List<AppointmentModel> appointments = [
     AppointmentModel(),
   ];
+  @override
+  void initState() {
+    super.initState();
+    GetClinicImageCubit.get(context).profileImage = null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +82,7 @@ class _AddClinicState extends State<AddClinic> {
                              phone: phoneController.text,
                              address: addressController.text,
                              description: descriptionController.text,
-                              price: int.parse(priceController.text),
+                             price: int.parse(priceController.text),
                            );
                            clinicModel.appointments = appointments;
                            clinicModel.image = GetClinicImageCubit
@@ -214,6 +219,7 @@ class _AddClinicState extends State<AddClinic> {
                           inputType: TextInputType.streetAddress,
                         ),
                         EditInfoRow(
+                          isNumber: true,
                           title: "Price",
                           controller: priceController,
                           inputType: TextInputType.number,

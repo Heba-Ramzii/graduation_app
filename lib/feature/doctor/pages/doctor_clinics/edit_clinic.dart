@@ -65,7 +65,7 @@ class _EditClinicState extends State<EditClinic> {
     phoneController.text = widget.clinicModel.phone ?? '';
     addressController.text = widget.clinicModel.address ?? '';
     descriptionController.text = widget.clinicModel.description ?? '';
-    priceController.text = widget.clinicModel.price.toString() ?? '';
+    priceController.text = widget.clinicModel.price.toString();
     setState(() {});
     super.initState();
   }
@@ -246,6 +246,7 @@ class _EditClinicState extends State<EditClinic> {
                           inputType: TextInputType.streetAddress,
                         ),
                         EditInfoRow(
+                          isNumber: true,
                           title: "Price",
                           controller: priceController,
                           inputType: TextInputType.number,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
@@ -41,7 +42,9 @@ class Clinics extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         foregroundColor: ColorsManager.white,
         backgroundColor: ColorsManager.primary,
-        onPressed: () => navigateToScreen(context, AddClinic()),
+        onPressed: () {
+          goTo(context, const AddClinic());
+        },
         child: const Icon(
           Icons.add,
           size: 30,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 
 
+// ignore: must_be_immutable
 class EditInfoRow extends StatelessWidget {
   final String title;
   final TextEditingController controller;
@@ -11,6 +12,7 @@ class EditInfoRow extends StatelessWidget {
   final bool readOnly ;
   final Function()? onTap;
   String value = "";
+  bool isNumber;
 
    EditInfoRow({
     super.key,
@@ -20,6 +22,7 @@ class EditInfoRow extends StatelessWidget {
      this.icon,
      this.onTap,
      this.readOnly= false,
+     this.isNumber=false,
    });
 
   @override
@@ -37,6 +40,9 @@ class EditInfoRow extends StatelessWidget {
             validator: (value) {
               if (value!.isEmpty) {
                 return 'This field is required';
+              }
+              else if(isNumber && int.tryParse(value)==null){
+                return 'This field must be a integer number';
               }
               return null;
             },
