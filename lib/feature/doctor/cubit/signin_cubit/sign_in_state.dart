@@ -8,7 +8,7 @@ class SignInInitial extends SignInState {}
 class SignInLoading extends SignInState {}
 
 class SignInSuccess extends SignInState {
-  AuthModel authModel;
+  DoctorModel authModel;
   SignInSuccess({required this.authModel});
 }
 

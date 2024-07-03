@@ -5,10 +5,13 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_image_cubit/get_doc_image_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/update_doctor_cubit/update_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
 import 'package:graduation_app/feature/doctor/data/repo/doctor_reop/doctor_repo_imp.dart';
 import 'package:graduation_app/feature/patient/layout/splash_screen.dart';
@@ -24,6 +27,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => GetUserCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
+            create: (context) => GetDoctorCubit(getIt.get<DoctorRepoImp>())),
+        BlocProvider(
+            create: (context) => UpdateDoctorCubit(getIt.get<DoctorRepoImp>())),
+        BlocProvider(
             create: (context) => ForgetPassCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
             create: (context) => LogoutCubit(getIt.get<AuthRepoImp>())),
@@ -32,6 +39,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => RegisterCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(create: (context) => GetClinicImageCubit()),
+        BlocProvider(create: (context) => GetDocImageCubit()),
         BlocProvider(
             create: (context) => AddClinicCubit(getIt.get<DoctorRepoImp>())),
       ],

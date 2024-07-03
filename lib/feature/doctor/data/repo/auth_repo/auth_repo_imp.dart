@@ -21,13 +21,13 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, AuthModel>> getUser() async {
+  Future<Either<Failure, Map<String, dynamic>>> getUser() async {
     try {
       var response = await FirebaseFirestore.instance
           .collection('users')
           .doc(_firebaseAuth.currentUser!.uid)
           .get();
-      return right(AuthModel.fromJson(response.data()!));
+      return right(response.data()!);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
     } catch (e) {
@@ -36,7 +36,7 @@ class AuthRepoImp implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, AuthModel>> login(
+  Future<Either<Failure, DoctorModel>> login(
       {required String email, required String password}) async {
     try {
       var loginResponse =
@@ -55,7 +55,7 @@ class AuthRepoImp implements AuthRepo {
           .doc(loginResponse.user!.uid)
           .get();
 
-      return right(AuthModel.fromJson(response.data()!));
+      return right(DoctorModel.fromJson(response.data()!));
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
     } on Exception catch (e) {
@@ -87,12 +87,8 @@ class AuthRepoImp implements AuthRepo {
         password: password,
       );
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-      AuthModel authModel = AuthModel(
-          name: name,
-          email: email,
-          password: password,
-          id: response.user!.uid,
-          isDoctor: isDoctor);
+      DoctorModel authModel = DoctorModel(
+          name: name, email: email, id: response.user!.uid, isDoctor: isDoctor);
       await FirebaseFirestore.instance
           .collection('users')
           .doc(authModel.id)

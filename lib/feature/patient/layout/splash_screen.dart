@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_state.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
@@ -50,19 +51,18 @@ class _SplashScreenState extends State<SplashScreen> {
         Widget nextScreen;
         if (user == null) {
           nextScreen = const LoginScreen();
-        } else if (state is GetUserSuccess)
-        {
-          if (state.authModel.isDoctor == null) {
+        } else if (state is GetUserSuccess) {
+          if (state.userData['isDoctor'] == null) {
             nextScreen = const LoginScreen();
           } else {
-            if (state.authModel.isDoctor!) {
+            if (state.userData['isDoctor']) {
+              GetDoctorCubit.get(context).getDoctor();
               nextScreen = const DoctorView();
             } else {
               nextScreen = const PatientHome();
             }
           }
-        }
-        else {
+        } else {
           nextScreen = const DefaultLoading();
         }
         return AnimatedSplashScreen(

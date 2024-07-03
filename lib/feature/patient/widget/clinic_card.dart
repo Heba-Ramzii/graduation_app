@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../doctor/pages/appointment/appointment_screen.dart';
-import '../../doctor/widgets/home/appointment_section/appointment_list_builder.dart';
 
 class ClinicCad extends StatelessWidget {
   const ClinicCad({
@@ -15,16 +14,16 @@ class ClinicCad extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => InkWell(
-          //todooooo
-          child:  AppointmentListBuilder(data:{},),
-          onTap: () {
+            //todooooo
+            //child:  AppointmentListBuilder(data:{},),
+            /*  onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => const AppointmentScreen()),
             );
-          },
-        ),
+          }, */
+            ),
         itemCount: 5,
         separatorBuilder: (context, index) => const SizedBox(
           width: 16,

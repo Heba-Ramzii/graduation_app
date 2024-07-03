@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
+import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 
 import '../../../../core/theme_manager/style_manager.dart';
 
@@ -10,25 +14,47 @@ class MoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 20),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
         child: Column(
           children: [
-            const ProfileImage(
-              height: 100,
-              width: 100,
-              size: 100,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0,bottom: 20.0),
-              child: Text(
-                "Jimmy Fallon",
-                style: StyleManager.textStyle14.copyWith(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w500
-                ),
-              ),
-            ),
+            FutureBuilder<DocumentSnapshot>(
+                future: FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                    .get(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text("Something went wrong");
+                  } else if (snapshot.hasData && !snapshot.data!.exists) {
+                    goToFinish(context, const LoginScreen());
+                    return const Text("Document does not exist");
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    Map<String, dynamic> data =
+                        snapshot.data!.data() as Map<String, dynamic>;
+                    return Column(
+                      children: [
+                        ProfileImage(
+                          height: 100,
+                          width: 100,
+                          size: 100,
+                          url: data['imagePath'],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 10.0, bottom: 20.0),
+                          child: Text(
+                            data['name'],
+                            style: StyleManager.textStyle14.copyWith(
+                                fontSize: 24, fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                  return const SizedBox();
+                }),
             const OptionsColumn(),
           ],
         ),

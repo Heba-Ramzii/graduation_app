@@ -4,7 +4,11 @@ import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
-      {super.key, required this.title, this.actionIcon, this.actionTap, this.actions});
+      {super.key,
+      required this.title,
+      this.actionIcon,
+      this.actionTap,
+      this.actions});
 
   final String title;
   final IconData? actionIcon;
@@ -17,13 +21,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: ColorsManager.white,
       title: Text(
         title,
-        style:
-            StyleManager.mainTextStyle15.copyWith(
-              fontSize: 16,
-                fontWeight: FontWeight.bold,
-            ),
+        style: StyleManager.mainTextStyle15.copyWith(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
       ),
-      leading: Builder(
+      /* leading: Builder(
         builder: (BuildContext context) {
           return IconButton(
             icon: const Icon(
@@ -35,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
           );
         },
-      ),
+      ), */
       actions: actions,
     );
   }

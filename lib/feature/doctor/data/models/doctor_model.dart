@@ -1,26 +1,33 @@
-class AuthModel {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
+
+class DoctorModel {
   String? id;
   String? name;
   String? email;
-  String? password;
+  String? phone;
+  String? imagePath;
+  Timestamp? birthDate;
   bool? isDoctor;
+  XFile? image;
 
-  AuthModel({
-    this.id,
-    required this.name,
-    required this.email,
-    required this.password,
-    required this.isDoctor,
-  });
+  DoctorModel(
+      {this.id,
+      this.name,
+      this.email,
+      this.birthDate,
+      this.isDoctor,
+      this.phone,
+      this.imagePath});
 
-  factory AuthModel.fromJson(Map<String, dynamic> json) {
-    return AuthModel(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      password: json['password'],
-      isDoctor: json['isDoctor'],
-    );
+  DoctorModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    phone = json['phone'];
+    isDoctor = json['isDoctor'];
+    imagePath = json['imagePath'];
+    birthDate = json['birthDate'];
   }
 
   Map<String, dynamic> toJson() {
@@ -28,8 +35,10 @@ class AuthModel {
       'id': id,
       'name': name,
       'email': email,
-      'password': password,
-      'isDoctor': isDoctor
+      'phone': phone,
+      'isDoctor': isDoctor,
+      'imagePath': imagePath,
+      'birthDate': birthDate
     };
   }
 }
