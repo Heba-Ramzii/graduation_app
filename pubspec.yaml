@@ -45,8 +45,14 @@ dependencies:
   mobkit_dashed_border: ^0.0.6
   flutter_switch:
   percent_indicator:
+  image_picker: ^0.8.7+5
+  dio: ^5.4.3+1
+  get_it: ^7.7.0
+  dartz: ^0.10.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
 
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
