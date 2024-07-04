@@ -21,6 +21,7 @@ class ClinicModel {
     this.imagePath,
     this.appointments,
     this.price,
+    this.id,
   });
 
   factory ClinicModel.fromJson(Map<String, dynamic> json) {
@@ -31,6 +32,7 @@ class ClinicModel {
       description: json['description'],
       imagePath: json['imagePath'],
       price: json['price'],
+      id: json['id'],
     );
   }
   Map<String, dynamic> toJson() {
@@ -41,29 +43,33 @@ class ClinicModel {
       'description': description,
       'imagePath': imagePath,
       'price': price,
-
+      'id': id
     };
   }
-
 }
 
-class AppointmentModel{
-   int? _day ;
-   String? dayName;
-   DateTimeFirebaseManager? from;
-   DateTimeFirebaseManager? to;
-   String? clinicId;
+class AppointmentModel {
+  int? _day;
+  String? dayName;
+  DateTimeFirebaseManager? from;
+  DateTimeFirebaseManager? to;
+  String? clinicId;
+  String? id;
+  bool isDeleted;
+  bool isNew;
 
-   AppointmentModel({
-   this.from,
-   this.to,
+  AppointmentModel({
+    this.from,
+    this.to,
+    this.id,
     this.clinicId,
-   });
+    this.isDeleted = false,
+    this.isNew = false,
+  });
 
-
-   int? get day {
+  int? get day {
     return _day;
-   }
+  }
 
   set day(int? value) {
     _day = value;
@@ -94,30 +100,32 @@ class AppointmentModel{
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) {
     AppointmentModel appointmentModel = AppointmentModel(
-      from: DateTimeFirebaseManager(timeOfDay: json['fromTime'], dateTime: json['from']),
-       to: DateTimeFirebaseManager(timeOfDay: json['toTime'], dateTime: json['to']),
+      id: json['id'],
+      from: DateTimeFirebaseManager(
+          timeOfDay: json['fromTime'], dateTime: json['from']),
+      to: DateTimeFirebaseManager(
+          timeOfDay: json['toTime'], dateTime: json['to']),
       clinicId: json['clinicId'],
     );
     appointmentModel.day = json['day'];
-   return appointmentModel;
-   }
+    return appointmentModel;
+  }
 
-   Map<String, dynamic> toJson() {
-   return {
-   'day': _day,
-   'from': from!.dateTime,
-   'to': to!.dateTime,
-   'fromTime': from!.timeOfDay,
-   'toTime': to!.timeOfDay,
-   'clinicId': clinicId,
-   };
-   }
+  Map<String, dynamic> toJson() {
+    return {
+      'day': _day,
+      'from': from!.dateTime,
+      'to': to!.dateTime,
+      'fromTime': from!.timeOfDay,
+      'toTime': to!.timeOfDay,
+      'clinicId': clinicId,
+      'id': id
+    };
+  }
 }
 
-
-class DateTimeFirebaseManager
-{
+class DateTimeFirebaseManager {
   Timestamp? dateTime;
   String? timeOfDay;
-  DateTimeFirebaseManager({this.dateTime,this.timeOfDay});
+  DateTimeFirebaseManager({this.dateTime, this.timeOfDay});
 }

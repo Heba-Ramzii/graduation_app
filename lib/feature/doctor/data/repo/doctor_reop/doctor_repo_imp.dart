@@ -22,23 +22,31 @@ class DoctorRepoImp implements DoctorRepo {
           .doc()
           .id;
       WriteBatch batch = FirebaseFirestore.instance.batch();
+      clinicModel.id = clinicId;
 
       batch.set(
           FirebaseFirestore.instance
               .collection('users')
               .doc(_firebaseAuth.currentUser!.uid)
               .collection('clinics')
-              .doc(clinicId),
+              .doc(clinicModel.id),
           clinicModel.toJson());
 
       for (var element in clinicModel.appointments!) {
         element.clinicId = clinicId;
+        String appointmentId = FirebaseFirestore.instance
+            .collection('users')
+            .doc(_firebaseAuth.currentUser!.uid)
+            .collection('appointments')
+            .doc()
+            .id;
+        element.id = appointmentId;
         batch.set(
             FirebaseFirestore.instance
                 .collection('users')
                 .doc(_firebaseAuth.currentUser!.uid)
                 .collection('appointments')
-                .doc(),
+                .doc(element.id),
             element.toJson());
       }
       await batch.commit();
@@ -98,14 +106,51 @@ class DoctorRepoImp implements DoctorRepo {
   }
 
   @override
-  Future<Either<Failure, void>> editClinic({required ClinicModel clinicModel}) async{
+  Future<Either<Failure, void>> editClinic(
+      {required ClinicModel clinicModel}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .collection('clinics')
-          .doc(clinicModel.id)
-          .update(clinicModel.toJson());
+      WriteBatch batch = FirebaseFirestore.instance.batch();
+      batch.update(
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(_firebaseAuth.currentUser!.uid)
+              .collection('clinics')
+              .doc(clinicModel.id),
+          clinicModel.toJson());
+      for (var element in clinicModel.appointments!) {
+        if (element.isDeleted) {
+          batch.delete(FirebaseFirestore.instance
+              .collection('users')
+              .doc(_firebaseAuth.currentUser!.uid)
+              .collection('appointments')
+              .doc(element.id));
+        } else if (element.isNew) {
+          String appointmentId = FirebaseFirestore.instance
+              .collection('users')
+              .doc(_firebaseAuth.currentUser!.uid)
+              .collection('appointments')
+              .doc()
+              .id;
+          element.clinicId = clinicModel.id;
+          element.id = appointmentId;
+          batch.set(
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(_firebaseAuth.currentUser!.uid)
+                  .collection('appointments')
+                  .doc(element.id),
+              element.toJson());
+        } else {
+          batch.update(
+              FirebaseFirestore.instance
+                  .collection('users')
+                  .doc(_firebaseAuth.currentUser!.uid)
+                  .collection('appointments')
+                  .doc(element.id),
+              element.toJson());
+        }
+      }
+      await batch.commit();
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
@@ -115,9 +160,9 @@ class DoctorRepoImp implements DoctorRepo {
   }
 
   @override
-  Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments({required String clinicId}) async {
+  Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments(
+      {required String clinicId}) async {
     try {
-
       var response = await FirebaseFirestore.instance
           .collection('users')
           .doc(_firebaseAuth.currentUser!.uid)
@@ -125,16 +170,13 @@ class DoctorRepoImp implements DoctorRepo {
           .where("clinicId", isEqualTo: clinicId)
           .get();
       List<AppointmentModel> appointments = [];
-      await Future.forEach(response.docs, (element){
+      await Future.forEach(response.docs, (element) {
         appointments.add(AppointmentModel.fromJson(element.data()));
       });
       return right(appointments);
     } on FirebaseAuthException catch (e) {
-      print('${e.toString()} +++++++++++++')  ;
       return left(Failure.fromFirebaseError(e));
     } catch (e) {
-      print('${e.toString()} +++++++++++++')  ;
-
       return left(Failure("400", e.toString()));
     }
   }
