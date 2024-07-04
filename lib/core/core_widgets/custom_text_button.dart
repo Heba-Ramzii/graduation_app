@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
+ // ignore: must_be_immutable
  class CustomTextButton extends StatelessWidget {
     CustomTextButton({
     super.key,

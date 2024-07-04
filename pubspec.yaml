@@ -51,6 +51,7 @@ dependencies:
   dartz: ^0.10.1
   bloc: ^8.1.4
   flutter_bloc: ^8.1.6
+  toastification: ^1.2.1
 
 
 dev_dependencies:

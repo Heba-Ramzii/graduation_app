@@ -13,7 +13,6 @@ class RateClinic extends StatefulWidget {
 
 class _RateClinicState extends State<RateClinic> {
   // The rating value
-  double? _ratingValue;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,6 @@ class _RateClinicState extends State<RateClinic> {
                      )),
                  onRatingUpdate: (value) {
                    setState(() {
-                     _ratingValue = value;
                    });
                    print("******** Rate $value **************");
                  }),

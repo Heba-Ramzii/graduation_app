@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 
 
+// ignore: must_be_immutable
 class EditInfoRow extends StatelessWidget {
    EditInfoRow({
     super.key,
