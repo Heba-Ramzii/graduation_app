@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
-// ignore: must_be_immutable
 class FileContainer extends StatelessWidget {
     FileContainer({super.key,});
    bool isClear = true;
