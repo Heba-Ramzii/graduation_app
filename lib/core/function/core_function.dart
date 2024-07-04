@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
+
 void navigateToScreen(BuildContext context, Widget screen) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => screen),
-  );
+
+  Navigator.push(context, CustomPageRoute(screen));
+
 }
 
 // This function is triggered by a user action, like pressing a button
@@ -76,6 +76,7 @@ showMyDialog(BuildContext context,
     },
   );
 }
+
 
 
 

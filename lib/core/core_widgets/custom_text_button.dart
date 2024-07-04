@@ -1,35 +1,41 @@
 import 'package:flutter/material.dart';
+
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
- // ignore: must_be_immutable
+
  class CustomTextButton extends StatelessWidget {
     CustomTextButton({
+
+class CustomTextButton extends StatelessWidget {
+  final String text;
+  final Color fontColor;
+  final Function()? onPressed;
+  FontWeight? fontWeight;
+  double? fontSize;
+
+  CustomTextButton({
+
     super.key,
     required this.text,
     required this.onPressed,
-      this.fontWeight,
-      this.fontSize,
-      this.fontColor = ColorsManager.primary,
+     this.fontColor =ColorsManager.primary,
+    this.fontWeight ,
+    this.fontSize
   });
-  String text;
-  Function()? onPressed;
-    FontWeight? fontWeight;
-    double? fontSize;
-    final Color fontColor;
-    @override
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      child:  Text(
+      child: Text(
         text,
         textAlign: TextAlign.center,
-        style: StyleManager.textStyle14.copyWith(
-          color: fontColor,
+        style: StyleManager.buttonTextStyle16.copyWith(
+          color:fontColor ,
           fontWeight: fontWeight,
-          fontSize: fontSize,
-        )
-
+          fontSize:fontSize
+        ),
       ),
     );
   }

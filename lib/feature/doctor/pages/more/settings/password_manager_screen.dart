@@ -8,7 +8,6 @@ import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart
 import '../../../../../core/theme_manager/colors_manager.dart';
 class PasswordManagerScreen extends StatelessWidget {
   const PasswordManagerScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final passwordController = TextEditingController();

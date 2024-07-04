@@ -5,7 +5,9 @@ import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
 class ClinicSection extends StatelessWidget {
-  const ClinicSection({super.key});
+  const ClinicSection({super.key, required this.data, required this.clincData});
+  final Map<String, dynamic> data;
+  final Map<String, dynamic> clincData;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class ClinicSection extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text(
-              'Clinic Name',
-              style:StyleManager.textStyle14mid ,
+            Text(
+              clincData['name'] ?? '',
+              style: StyleManager.textStyle14mid,
             ),
             const Spacer(),
             InkWell(
@@ -26,22 +28,22 @@ class ClinicSection extends StatelessWidget {
                 size: 20,
                 color: ColorsManager.primary,
               ),
-
             ),
-            const SizedBox(width: 10,),
-            const Text(
-              "16:00 - 22:00",
+            const SizedBox(
+              width: 10,
+            ),
+            Text(
+              '${data['fromTime']} : ${data['toTime']}',
               style: StyleManager.textStyle12,
             ),
           ],
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 12,bottom: 20),
+          padding: const EdgeInsets.only(top: 12, bottom: 20),
           child: Text(
-            'Address',
-            style: StyleManager.textStyle12.copyWith(
-                 color: ColorsManager.primaryLight
-            ),
+            clincData['address'] ?? '',
+            style: StyleManager.textStyle12
+                .copyWith(color: ColorsManager.primaryLight),
           ),
         ),
       ],

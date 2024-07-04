@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
@@ -7,11 +8,15 @@ import 'package:graduation_app/feature/doctor/pages/ai_diagnosis/manage/repo/ai_
 
 import 'core/dio_helper/dio_helper.dart';
 import 'core/service/service_locator.dart';
+import 'package:graduation_app/core/app/app.dart';
+import 'package:graduation_app/core/services/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DioHelper.init();
+  await Firebase.initializeApp();
   setupForgotPassSingleton();
+  setupSingleton();
   runApp(const MyApp());
 }
 
