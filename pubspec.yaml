@@ -45,6 +45,11 @@ dependencies:
   mobkit_dashed_border: ^0.0.6
   flutter_switch:
   percent_indicator:
+
+  
+  dio: ^5.4.3+1
+  toastification: ^1.2.1
+
   booking_calendar: ^1.1.10
   carousel_slider: ^4.2.1
   date_picker_plus: ^3.0.2
