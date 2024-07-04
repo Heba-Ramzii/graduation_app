@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import '../theme_manager/colors_manager.dart';
 import '../theme_manager/style_manager.dart';
 
-
- class CustomTextButton extends StatelessWidget {
-    CustomTextButton({
-
 class CustomTextButton extends StatelessWidget {
   final String text;
   final Color fontColor;
@@ -15,7 +11,6 @@ class CustomTextButton extends StatelessWidget {
   double? fontSize;
 
   CustomTextButton({
-
     super.key,
     required this.text,
     required this.onPressed,
