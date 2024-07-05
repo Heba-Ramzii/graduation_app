@@ -180,4 +180,21 @@ class DoctorRepoImp implements DoctorRepo {
       return left(Failure("400", e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteClinic({required String clinicId}) async{
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_firebaseAuth.currentUser!.uid)
+          .collection('clinics')
+          .doc(clinicId)
+          .delete();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
+    }
+  }
 }

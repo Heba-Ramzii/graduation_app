@@ -13,7 +13,7 @@ import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../pages/doctor_clinics/add_clinic.dart';
-import '../../pages/more/profile/patient_profile.dart';
+import '../../pages/more/profile/doctor_profile.dart';
 import '../../pages/more/settings/settings_screen.dart';
 
 class OptionsColumn extends StatelessWidget {
@@ -26,7 +26,7 @@ class OptionsColumn extends StatelessWidget {
         OptionRow(
             icon: IconlyLight.profile,
             onTap: () {
-              navigateToScreen(context, const PatientProfileScreen());
+              navigateToScreen(context, const DoctorProfileScreen());
             },
             text: "Profile"),
         OptionRow(

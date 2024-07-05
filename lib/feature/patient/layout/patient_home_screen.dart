@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_state.dart';
+import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_more_screen.dart';
 import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
@@ -120,35 +125,55 @@ class PatientHomeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              const ProfileImage(
-                url:'https://picsum.photos/200/300',
-                  height: 60,
-                  width: 60,
-                size: 60,
-              ),
-              const SizedBox(width: 10),
-              const Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      ' Hello,',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: ColorsManager.primaryLight,
+              BlocConsumer<GetPatientCubit,GetPatientState>(
+                listener: (context, state) {
+                  if (state is GetPatientFailure) {
+                    callMyToast(
+                        massage: state.failure.message, state: ToastState.ERROR);
+                    goToFinish(context, const LoginScreen());
+                  }
+                },
+                builder: (context, state) {
+                  if(state is GetPatientSuccess){
+                    return  Expanded(
+                      child: Row(
+                        children: [
+                          ProfileImage(
+                            url: state.patientModel.imagePath,
+                            height: 60,
+                            width: 60,
+                            size: 60,
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  ' Hello,',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: ColorsManager.primaryLight,
+                                  ),
+                                ),
+                                Text(
+                                  state.patientModel.name ?? '',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: ColorsManager.font,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      'Jimmy Foley!',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: ColorsManager.font,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                    );
+                  }
+                  return const SizedBox();
+                },
               ),
               IconButton(
                 iconSize: 30,

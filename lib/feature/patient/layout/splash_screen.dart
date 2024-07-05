@@ -8,6 +8,7 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/getuser_cubit/getuser_state.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:graduation_app/generated/assets.dart';
@@ -59,6 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               GetDoctorCubit.get(context).getDoctor();
               nextScreen = const DoctorView();
             } else {
+              GetPatientCubit.get(context).getPatient();
               nextScreen = const PatientHome();
             }
           }

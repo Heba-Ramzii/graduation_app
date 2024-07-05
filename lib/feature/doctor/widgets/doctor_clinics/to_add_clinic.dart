@@ -17,7 +17,9 @@ class ToAddClinic extends StatelessWidget {
         const SizedBox(height: 22,),
         CustomMaterialButton(
             text: "Add One",
-            onPressed:  (){}
+            onPressed:  (){
+
+            }
         ),
       ],
     );

@@ -5,8 +5,11 @@ import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'dart:io';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
+import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/delete_clinic_cubit/delete_clinic_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/delete_clinic_cubit/delete_clinic_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_cubit.dart';
@@ -66,6 +69,8 @@ class _EditClinicState extends State<EditClinic> {
     addressController.text = widget.clinicModel.address ?? '';
     descriptionController.text = widget.clinicModel.description ?? '';
     priceController.text = widget.clinicModel.price.toString();
+    GetClinicImageCubit.get(context).profileImage = null;
+
     setState(() {});
     super.initState();
   }
@@ -74,7 +79,40 @@ class _EditClinicState extends State<EditClinic> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        actions: [
+        actions:[
+          BlocConsumer<DeleteClinicCubit, DeleteClinicState>(
+          listener: (context, state) {
+            if (state is DeleteClinicFailure) {
+              callMyToast(
+                  massage: state.failure.message, state: ToastState.ERROR);
+            }
+            else if (state is DeleteClinicSuccess) {
+              callMyToast(
+                  massage: 'Successfully Deleted',
+                  state: ToastState.SUCCESS);
+              Navigator.pop(context);
+              Navigator.pop(context);
+            }
+          },
+          builder: (context, state) {
+            if (state is DeleteClinicLoading) {
+              return const SizedBox();
+            } else {
+              return IconButton(
+                onPressed: () {
+                  showMyDialog(context, "Delete Clinic", "Yes, Delete", () {
+                    DeleteClinicCubit.get(context)
+                        .deleteClinic(widget.clinicModel.id!);
+                  });
+                },
+                icon: const Icon(
+                  Icons.delete_rounded,
+                  color: ColorsManager.red,
+                ),
+              );
+            }
+          },
+        ),
           BlocConsumer<GetClinicImageCubit, GetClinicImageState>(
             listener: (context, state) {
               if (state is GetClinicImageFailure) {
@@ -100,11 +138,7 @@ class _EditClinicState extends State<EditClinic> {
                             int.parse(priceController.text);
                         widget.clinicModel.image =
                             GetClinicImageCubit.get(context).profileImage;
-
                         widget.clinicModel.appointments = appointments;
-                        widget.clinicModel.image =
-                            GetClinicImageCubit.get(context).profileImage;
-
                         EditClinicCubit.get(context).editClinic(
                           widget.clinicModel,
                         );
@@ -136,6 +170,7 @@ class _EditClinicState extends State<EditClinic> {
                       callMyToast(
                           massage: 'Successfully Edited',
                           state: ToastState.SUCCESS);
+                      Navigator.pop(context);
                     } else if (state is EditClinicFailure) {
                       callMyToast(
                           massage: state.failure.message,
@@ -388,7 +423,8 @@ class _EditClinicState extends State<EditClinic> {
                                                   ),
                                                   appointmentFieldBuilder(
                                                       index: index,
-                                                      isFrom: false),
+                                                      isFrom: false,
+                                                  ),
                                                 ],
                                               ),
                                             ],

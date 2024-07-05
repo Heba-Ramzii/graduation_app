@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
-import 'package:graduation_app/feature/doctor/data/repo/doctor_reop/doctor_repo_imp.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:graduation_app/feature/doctor/data/repo/doctor_repo/doctor_repo_imp.dart';
 import 'update_doctor_state.dart';
 
 class UpdateDoctorCubit extends Cubit<UpdateDoctorState> {

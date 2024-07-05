@@ -13,4 +13,5 @@ abstract class DoctorRepo {
   Future<Either<Failure, DoctorModel>> getDoctor();
   Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments(
       {required String clinicId});
+  Future<Either<Failure, void>> deleteClinic({required String clinicId});
 }

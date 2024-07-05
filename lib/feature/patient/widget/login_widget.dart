@@ -10,6 +10,7 @@ import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_state.dart';
 import 'package:graduation_app/feature/doctor/pages/home/main_screen.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/layout/onboarding_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_home_screen.dart';
 import 'package:graduation_app/feature/patient/widget/forget_password.dart';
@@ -94,6 +95,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                 if(state.authModel.isDoctor!)
                 {
                   GetDoctorCubit.get(context).getDoctor();
+                }
+                else
+                {
+                  GetPatientCubit.get(context).getPatient();
                 }
                 goTo(
                     context,

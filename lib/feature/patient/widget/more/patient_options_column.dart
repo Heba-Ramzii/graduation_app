@@ -8,11 +8,11 @@ import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_state.dart';
-import 'package:graduation_app/feature/doctor/pages/more/profile/patient_profile.dart';
 import 'package:graduation_app/feature/doctor/pages/more/settings/settings_screen.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 import 'package:graduation_app/feature/patient/layout/favorites_screen.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
+import 'package:graduation_app/feature/patient/layout/patient_edit_profile_screen.dart';
 import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
 

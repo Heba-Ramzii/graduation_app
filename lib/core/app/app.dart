@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/services/service_locator.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/delete_clinic_cubit/delete_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_cubit.dart';
@@ -15,7 +16,11 @@ import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubi
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/update_doctor_cubit/update_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
-import 'package:graduation_app/feature/doctor/data/repo/doctor_reop/doctor_repo_imp.dart';
+import 'package:graduation_app/feature/doctor/data/repo/doctor_repo/doctor_repo_imp.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_image_cubit/get_patient_image_cubit.dart';
+import 'package:graduation_app/feature/patient/cubit/update_patient_cubit/update_patient_cubit.dart';
+import 'package:graduation_app/feature/patient/data/repo/patient_repo/patient_repo_imp.dart';
 import 'package:graduation_app/feature/patient/layout/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -31,7 +36,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => GetDoctorCubit(getIt.get<DoctorRepoImp>())),
         BlocProvider(
+            create: (context) => GetPatientCubit(getIt.get<PatientRepoImp>())),
+        BlocProvider(
             create: (context) => UpdateDoctorCubit(getIt.get<DoctorRepoImp>())),
+        BlocProvider(
+            create: (context) => UpdatePatientCubit(getIt.get<PatientRepoImp>())),
         BlocProvider(
             create: (context) => ForgetPassCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(
@@ -42,10 +51,13 @@ class MyApp extends StatelessWidget {
             create: (context) => RegisterCubit(getIt.get<AuthRepoImp>())),
         BlocProvider(create: (context) => GetClinicImageCubit()),
         BlocProvider(create: (context) => GetDocImageCubit()),
+        BlocProvider(create: (context) => GetPatientImageCubit()),
         BlocProvider(
             create: (context) => AddClinicCubit(getIt.get<DoctorRepoImp>())),
         BlocProvider(
             create: (context) => EditClinicCubit(getIt.get<DoctorRepoImp>())),
+        BlocProvider(
+            create: (context) => DeleteClinicCubit(getIt.get<DoctorRepoImp>())),
         BlocProvider(
             create: (context) => GetClinicAppointmentsCubit(getIt.get<DoctorRepoImp>())),
       ],
