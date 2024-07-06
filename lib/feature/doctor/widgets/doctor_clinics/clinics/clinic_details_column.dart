@@ -18,34 +18,20 @@ class ClinicDetailsColumn extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  clinicModel.name ?? '',
-                  style: StyleManager.textStyle14
-                      .copyWith(fontWeight: FontWeight.w500),
-                ),
-                // Text(
-                //   "Respiratory",
-                //   style: StyleManager.textStyle12
-                //       .copyWith(color: ColorsManager.primaryLight),
-                // ),
-              ],
+            Text(
+              clinicModel.name ?? '',
+              style: StyleManager.textStyle14
+                  .copyWith(fontWeight: FontWeight.w500),
             ),
             Padding(
               padding: const EdgeInsets.only(
                 right: 10.0,
               ),
-              child: Row(
-                children: [
-                  Text(
-                    '${clinicModel.price.toString()}.LE',
-                    style: StyleManager.textStyle14mid.copyWith(
-                      color: ColorsManager.primary,
-                    ),
-                  ),
-                ],
+              child: Text(
+                '${clinicModel.price.toString()}.LE',
+                style: StyleManager.textStyle14mid.copyWith(
+                  color: ColorsManager.primary,
+                ),
               ),
             ),
           ],

@@ -6,13 +6,16 @@ import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 
 import '../../widget/clinic_card.dart';
 import 'continue_schedule.dart';
 
 class SchedualScreen extends StatefulWidget {
+  final DoctorModel doctorModel;
   const SchedualScreen({
     super.key,
+    required this.doctorModel,
   });
 
   @override
@@ -32,37 +35,37 @@ class _SchedualScreenState extends State<SchedualScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ProfileImage(height: 200, width: double.infinity),
-             Padding(
-               padding: const EdgeInsets.only(top: 16.0,bottom: 6),
-               child: Text(
-                "Profile",
-                style: StyleManager.buttonTextStyle16.copyWith(
-                  color: ColorsManager.font
-                ),
-                           ),
-             ),
-            const Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+            ProfileImage(
+              height: 200,
+              width: double.infinity,
+              url: widget.doctorModel.imagePath,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0, bottom: 6),
+              child: Text(
+                'Dr. ${widget.doctorModel.name}',
+                style: StyleManager.buttonTextStyle16
+                    .copyWith(color: ColorsManager.font),
+              ),
+            ),
+            Text(
+              widget.doctorModel.speciality ?? '',
             ),
             const SizedBox(height: 30),
-             Text(
+            Text(
               "Choose Clinic",
-              style: StyleManager.buttonTextStyle16.copyWith(
-                  color: ColorsManager.font
-              ),
+              style: StyleManager.buttonTextStyle16
+                  .copyWith(color: ColorsManager.font),
             ),
-            const ClinicCad(
-            ),
+            ClinicCad(doctorModel: widget.doctorModel),
             const SizedBox(height: 15),
-             Text(
+            Text(
               "Choose Time",
-              style: StyleManager.buttonTextStyle16.copyWith(
-                  color: ColorsManager.font
-              ),
+              style: StyleManager.buttonTextStyle16
+                  .copyWith(color: ColorsManager.font),
             ),
             Container(
-              margin:const EdgeInsets.symmetric(vertical: 20.0) ,
+              margin: const EdgeInsets.symmetric(vertical: 20.0),
               decoration: StyleManager.containerDecoration,
               child: DatePicker(
                 minDate: DateTime(2024, 1, 1),

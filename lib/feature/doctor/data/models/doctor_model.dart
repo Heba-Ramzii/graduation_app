@@ -13,17 +13,17 @@ class DoctorModel {
   String? speciality;
   double? rate;
 
-  DoctorModel(
-      {this.id,
-      this.name,
-      this.email,
-      this.birthDate,
-      this.isDoctor,
-      this.phone,
-      this.imagePath,
-      this.speciality,
-      this.rate,
-      });
+  DoctorModel({
+    this.id,
+    this.name,
+    this.email,
+    this.birthDate,
+    this.isDoctor,
+    this.phone,
+    this.imagePath,
+    this.speciality,
+    this.rate,
+  });
 
   DoctorModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -34,7 +34,7 @@ class DoctorModel {
     imagePath = json['imagePath'];
     birthDate = json['birthDate'];
     speciality = json['speciality'];
-    rate = json['rate'];
+    rate = json['rate'] == null ? 0.0 : json['rate'].toDouble();
   }
 
   Map<String, dynamic> toJson() {

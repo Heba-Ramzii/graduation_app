@@ -5,6 +5,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_state.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
@@ -29,7 +30,10 @@ class _PatientHomeState extends State<PatientHome> {
   List<Widget> screens = [
     const PatientHomeScreen(),
     const ChatScreen(),
-    const SchedualScreen(),
+    // todo
+    SchedualScreen(
+      doctorModel: DoctorModel(),
+    ),
     const PatientMoreScreen(),
   ];
 
@@ -39,8 +43,8 @@ class _PatientHomeState extends State<PatientHome> {
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
             height: 70,
-            indicatorShape:  const CircleBorder(
-                eccentricity: 0.2,
+            indicatorShape: const CircleBorder(
+              eccentricity: 0.2,
             ),
             backgroundColor: ColorsManager.blue2,
             selectedIndex: currentIndex,
@@ -101,8 +105,7 @@ class _PatientHomeState extends State<PatientHome> {
                 ),
                 label: '',
               ),
-            ]
-        ),
+            ]),
         body: screens[currentIndex],
       ),
     );
@@ -125,17 +128,18 @@ class PatientHomeScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              BlocConsumer<GetPatientCubit,GetPatientState>(
+              BlocConsumer<GetPatientCubit, GetPatientState>(
                 listener: (context, state) {
                   if (state is GetPatientFailure) {
                     callMyToast(
-                        massage: state.failure.message, state: ToastState.ERROR);
+                        massage: state.failure.message,
+                        state: ToastState.ERROR);
                     goToFinish(context, const LoginScreen());
                   }
                 },
                 builder: (context, state) {
-                  if(state is GetPatientSuccess){
-                    return  Expanded(
+                  if (state is GetPatientSuccess) {
+                    return Expanded(
                       child: Row(
                         children: [
                           ProfileImage(
@@ -186,20 +190,16 @@ class PatientHomeScreen extends StatelessWidget {
           const SizedBox(height: 16),
           SearchBar(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (BuildContext context) {
-                  return const SearchPatientSceen();
-                }),
-              );
+              goTo(context, const SearchPatientSceen());
             },
-            backgroundColor: const MaterialStatePropertyAll(ColorsManager.white),
-            hintText: 'Search Doctor, Clinic',
+            backgroundColor:
+                const MaterialStatePropertyAll(ColorsManager.white),
+            hintText: 'Search Doctor',
             leading: const Center(
               child: Padding(
                 padding: EdgeInsets.only(left: 10.0),
                 child: Icon(
-                    Icons.search_rounded,
+                  Icons.search_rounded,
                   color: ColorsManager.primary,
                   size: 30,
                 ),

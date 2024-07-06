@@ -15,15 +15,13 @@ class ProfileImage extends StatelessWidget {
     required this.width,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(size)),
         child: CachedNetworkImage(
           placeholder: (context, url) => const CircularProgressIndicator(),
-          errorWidget: (context, url, error) =>
-              const Icon(Icons.person),
+          errorWidget: (context, url, error) => const Icon(Icons.person),
           imageUrl: url ?? '',
           fit: BoxFit.cover,
           height: height,

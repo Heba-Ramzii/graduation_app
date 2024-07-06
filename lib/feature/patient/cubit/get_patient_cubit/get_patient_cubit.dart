@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation_app/feature/patient/data/models/patient_model.dart';
 import 'package:graduation_app/feature/patient/data/repo/patient_repo/patient_repo_imp.dart';
 import 'get_patient_state.dart';
 
@@ -8,10 +9,13 @@ class GetPatientCubit extends Cubit<GetPatientState> {
 
   GetPatientCubit(this.patientRepoImp) : super(GetPatientInitial());
 
+  PatientModel? patientModel;
   void getPatient() async {
     emit(GetPatientLoading());
     final result = await patientRepoImp.getPatient();
-    result.fold((l) => emit(GetPatientFailure(failure: l)),
-        (r) => emit(GetPatientSuccess(patientModel: r)));
+    result.fold((l) => emit(GetPatientFailure(failure: l)), (r) {
+      patientModel = r;
+      emit(GetPatientSuccess(patientModel: r));
+    });
   }
 }

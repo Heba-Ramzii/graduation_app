@@ -10,6 +10,7 @@ class PatientModel {
   Timestamp? birthDate;
   bool? isDoctor;
   XFile? image;
+  List<String> favoriteDoctors = [];
 
   PatientModel({
     this.id,
@@ -29,6 +30,10 @@ class PatientModel {
     isDoctor = json['isDoctor'];
     imagePath = json['imagePath'];
     birthDate = json['birthDate'];
+
+    if (json['favoriteDoctors'] != null) {
+      favoriteDoctors = json['favoriteDoctors'].cast<String>();
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +45,7 @@ class PatientModel {
       'isDoctor': isDoctor,
       'imagePath': imagePath,
       'birthDate': birthDate,
+      'favoriteDoctors': favoriteDoctors
     };
   }
 }

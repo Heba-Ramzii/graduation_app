@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_app/core/failure/failure.dart';
+import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:graduation_app/feature/patient/data/models/patient_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'patient_repo.dart';
@@ -44,7 +45,7 @@ class PatientRepoImp implements PatientRepo {
 
   @override
   Future<Either<Failure, void>> updatePatient(
-      {required PatientModel patientModel }) async {
+      {required PatientModel patientModel}) async {
     try {
       await FirebaseFirestore.instance
           .collection('users')
@@ -57,5 +58,4 @@ class PatientRepoImp implements PatientRepo {
       return left(Failure("400", e.toString()));
     }
   }
-
 }

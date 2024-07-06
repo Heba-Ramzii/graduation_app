@@ -8,5 +8,4 @@ abstract class PatientRepo {
   Future<Either<Failure, PatientModel>> getPatient();
   Future<Either<Failure, void>> updatePatient(
       {required PatientModel patientModel});
-
 }
