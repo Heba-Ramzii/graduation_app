@@ -55,7 +55,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
           SizedBox(
             child: Container(
               //width: 380,
-              width: 320,
+              width: MediaQuery.of(context).size.width * 0.85,
               height: 50,
               margin: const EdgeInsets.symmetric(horizontal: 16),
               child: SearchBar(
@@ -140,7 +140,6 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
                 'All',
                 'Top Doctor',
                 'Favourite',
-                'Near',
               ],
               onSelected: (index) {
                 setState(() {

@@ -7,7 +7,17 @@ import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/patient/layout/scedule/final_schedule.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+class DayTime {
+  final String day;
+  final String time;
 
+  DayTime(this.day, this.time);
+
+  @override
+  String toString() {
+    return '$day - $time';
+  }
+}
 class ContinueScheduleScreen extends StatefulWidget {
   const ContinueScheduleScreen({
     super.key,
@@ -18,7 +28,26 @@ class ContinueScheduleScreen extends StatefulWidget {
 }
 
 class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
-  get controller1 => null;
+  final TextEditingController patientNameController = TextEditingController();
+  final TextEditingController ageController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  bool isSelf = true;
+  bool isMale = true;
+
+  DayTime? selectedDayTime;
+
+  final List<DayTime> dayTimeList = [
+    DayTime('Monday', '08:00 AM'),
+    DayTime('Monday', '09:00 AM'),
+    DayTime('Tuesday', '10:00 AM'),
+    DayTime('Tuesday', '11:00 AM'),
+    DayTime('Wednesday', '12:00 PM'),
+    DayTime('Wednesday', '01:00 PM'),
+    DayTime('Thursday', '02:00 PM'),
+    DayTime('Thursday', '03:00 PM'),
+    DayTime('Friday', '04:00 PM'),
+    DayTime('Friday', '05:00 PM'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +58,25 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children:[
+            const SizedBox(height: 20),
+            Text('Select a Day and Time:'),
+            DropdownButton<DayTime>(
+              hint: Text('Select Day and Time'),
+              value: selectedDayTime,
+              onChanged: (DayTime? newValue) {
+                setState(() {
+                  selectedDayTime = newValue!;
+                });
+              },
+              items: dayTimeList.map<DropdownMenuItem<DayTime>>((DayTime value) {
+                return DropdownMenuItem<DayTime>(
+                  value: value,
+                  child: Text(value.toString()),
+                );
+              }).toList(),
+            ),
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Text(
@@ -41,7 +88,7 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             ),
             ToggleSwitch(
               minWidth: MediaQuery.of(context).size.width,
-              initialLabelIndex: 0,
+              initialLabelIndex: isSelf ? 0 : 1,
               totalSwitches: 2,
               borderWidth: 1,
               borderColor: const [
@@ -53,7 +100,11 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
               labels: const ['Your Self', 'Another Person'],
               onToggle: (index) {
                 print('switched to: $index');
+                setState(() {
+                  isSelf = !isSelf;
+                });
               },
+
             ),
             const SizedBox(height: 15),
             Text(
@@ -64,7 +115,7 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             ),
             TextField(
               cursorColor: ColorsManager.primary,
-              controller: controller1,
+              controller: patientNameController,
             ),
             const SizedBox(height: 10),
             Text(
@@ -75,13 +126,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             ),
             TextField(
               cursorColor: ColorsManager.primary,
-              controller: controller1,
+              controller: ageController,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: ToggleSwitch(
                 minWidth: MediaQuery.of(context).size.width,
-                initialLabelIndex: 0,
+                initialLabelIndex: isMale ? 0 : 1,
                 totalSwitches: 2,
                 borderWidth: 1,
                 borderColor: const [
@@ -93,6 +144,9 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                 labels: const ['Male', 'Female'],
                 onToggle: (index) {
                   print('switched to: $index');
+                  setState(() {
+                    isMale = !isMale;
+                  });
                 },
               ),
             ),
@@ -106,6 +160,7 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: TextField(
+                controller: descriptionController,
                 cursorColor: ColorsManager.primary,
                 maxLines: 3,
                 decoration: InputDecoration(
