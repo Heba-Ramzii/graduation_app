@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
@@ -8,7 +9,8 @@ import '../../layout/appointments/add_review_screen.dart';
 import 'appointments_card_builder.dart';
 
 class CompletedAppointment extends StatelessWidget {
-  const CompletedAppointment({super.key});
+  const CompletedAppointment({super.key, required this.bookModel});
+  final BookModel bookModel ;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class CompletedAppointment extends StatelessWidget {
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(bottom: 10.0),
             child: Row(
               children: [
@@ -29,7 +31,7 @@ class CompletedAppointment extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(left: 10.0),
-                    child: AppointmentsCardBuilder(),
+                    child: AppointmentsCardBuilder(bookModel: bookModel),
                   ),
                 ),
               ],

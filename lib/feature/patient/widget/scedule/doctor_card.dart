@@ -8,7 +8,8 @@ import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/clinics/cli
 import '../../../../core/theme_manager/colors_manager.dart';
 
 class DoctorCard extends StatelessWidget {
-  const DoctorCard({super.key});
+  const DoctorCard({required this.clinicModel,super.key});
+  final ClinicModel clinicModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +24,18 @@ class DoctorCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              ProfileImage(height: 90, width: 90),
+              ProfileImage(
+                  height: 90,
+                  width: 90,
+                  url: clinicModel.imagePath,
+              ),
+              // Text(getNextDayTime(bookModel.appointmentModel!.dayName!,
+              //     '${bookModel.appointmentModel!.from!.dateTime!.toDate().hour}:${bookModel.appointmentModel!.from!.dateTime!.toDate().minute}').toString()),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(left: 10.0),
                   child: ClinicDetailsColumn(
-                    clinicModel: ClinicModel(name: 'test'),
+                    clinicModel: clinicModel,
                   ),
                 ),
               ),

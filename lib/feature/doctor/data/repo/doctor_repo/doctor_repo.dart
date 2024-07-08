@@ -12,6 +12,6 @@ abstract class DoctorRepo {
   Future<Either<Failure, String?>> uploadImage({required XFile? image});
   Future<Either<Failure, DoctorModel>> getDoctor();
   Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments(
-      {required String clinicId});
+      {required String clinicId, String? docID});
   Future<Either<Failure, void>> deleteClinic({required String clinicId});
 }

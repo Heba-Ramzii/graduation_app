@@ -161,18 +161,20 @@ class DoctorRepoImp implements DoctorRepo {
 
   @override
   Future<Either<Failure, List<AppointmentModel>>> getClinicAppointments(
-      {required String clinicId}) async {
+      {required String clinicId, String? docID}) async {
     try {
       var response = await FirebaseFirestore.instance
           .collection('users')
-          .doc(_firebaseAuth.currentUser!.uid)
+          .doc(docID??_firebaseAuth.currentUser!.uid)
           .collection('appointments')
           .where("clinicId", isEqualTo: clinicId)
           .get();
       List<AppointmentModel> appointments = [];
       await Future.forEach(response.docs, (element) {
+        print('test ++++');
         appointments.add(AppointmentModel.fromJson(element.data()));
       });
+
       return right(appointments);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));

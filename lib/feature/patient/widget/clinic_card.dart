@@ -6,6 +6,7 @@ import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_cubit.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:graduation_app/feature/doctor/pages/appointment/appointment_screen.dart';
@@ -175,27 +176,28 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
     required this.doctorModel,
   });
 
+  final double width = 270;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Container(
-        width: 270,
-        margin: const EdgeInsets.symmetric(vertical: 5),
-        padding: const EdgeInsets.all(10),
-        decoration: StyleManager.containerDecoration,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ProfileImage(
-                  height: 80,
-                  width: 80,
-                  url: clinicModel.imagePath,
-                ),
-                SizedBox(
+    return Container(
+      width: width,
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.all(10),
+      decoration: StyleManager.containerDecoration,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              ProfileImage(
+                height: 80,
+                width: 80,
+                url: clinicModel.imagePath,
+              ),
+              Expanded(
+                child: SizedBox(
                   height: 60,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
@@ -205,25 +207,25 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
                       crossAxisAlignment:
                       CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children:[
-                            Text(
-                              clinicModel.name ?? '',
-                              style: StyleManager.textStyle14mid,
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.only(
-                                start: 50.0,
-                                end: 10.0,
+                        Expanded(
+                          child: Row(
+                            children:[
+                              Text(
+                                clinicModel.name ?? '',
+                                style: StyleManager.textStyle14mid,
                               ),
-                              child: Text(
-                              '${clinicModel.price.toString()}.LE',
-                               style: StyleManager.textStyle14mid.copyWith(
-                               color: ColorsManager.primary,
-                                 ),
+                              const SizedBox(
+                                width: 5,
                               ),
-                            ),
-                          ],
+                              Spacer(),
+                              Text(
+                                '${clinicModel.price.toString()}.LE',
+                                style: StyleManager.textStyle14mid.copyWith(
+                                  color: ColorsManager.primary,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 5,
@@ -240,47 +242,49 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
-            ),
-            // Text(
-            //   '12 Patients',
-            //   style: StyleManager.textStyle12.copyWith(
-            //     fontSize: 13,
-            //     color: ColorsManager.primaryLight,
-            //   ),
-            // ),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     InkWell(
-            //       onTap: () {},
-            //       child: const Icon(
-            //         FontAwesomeIcons.calendarMinus,
-            //         size: 20,
-            //         color: ColorsManager.primary,
-            //       ),
-            //     ),
-            //     const SizedBox(
-            //       width: 8,
-            //     ),
-            //     const Text(
-            //       "16:00 - 22:00",
-            //       style: StyleManager.textStyle12,
-            //     )
-            //   ],
-            // ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomMaterialButton(
-              text: "Book",
-              onPressed: () {
-                goTo(context, const ContinueScheduleScreen());
-              },
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          // Text(
+          //   '12 Patients',
+          //   style: StyleManager.textStyle12.copyWith(
+          //     fontSize: 13,
+          //     color: ColorsManager.primaryLight,
+          //   ),
+          // ),
+          // Row(
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     InkWell(
+          //       onTap: () {},
+          //       child: const Icon(
+          //         FontAwesomeIcons.calendarMinus,
+          //         size: 20,
+          //         color: ColorsManager.primary,
+          //       ),
+          //     ),
+          //     const SizedBox(
+          //       width: 8,
+          //     ),
+          //     const Text(
+          //       "16:00 - 22:00",
+          //       style: StyleManager.textStyle12,
+          //     )
+          //   ],
+          // ),
+          SizedBox(
+            height: 10,
+          ),
+          CustomMaterialButton(
+            text: "Book",
+            onPressed: () {
+              GetClinicAppointmentsCubit.get(context).getClinicAppointment(clinicId: clinicModel.id!, docID: doctorModel.id);
+              goTo(context, ContinueScheduleScreen(clinicModel: clinicModel,
+                doctorModel: doctorModel,));
+            },
+          ),
+        ],
       ),
     );
   }

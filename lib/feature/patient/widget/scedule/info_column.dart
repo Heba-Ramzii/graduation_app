@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
 class InfoColumn extends StatelessWidget {
-  const InfoColumn({super.key});
-
+  const InfoColumn({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,8 +23,8 @@ class InfoColumn extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Text(
-                "Another person",
+              Text(
+                bookModel.isSelf! ? "Your Self" : "Another Person",
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -40,8 +41,8 @@ class InfoColumn extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Text(
-                "Anna Jao",
+              Text(
+                bookModel.patientName ?? "",
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -58,8 +59,8 @@ class InfoColumn extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              const Text(
-                "30",
+              Text(
+                bookModel.age.toString(),
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -74,8 +75,8 @@ class InfoColumn extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            const Text(
-              "Female",
+            Text(
+              bookModel.isMale! ? "Male" : "Female",
               style: StyleManager.textStyle14,
             ),
           ],
@@ -96,8 +97,7 @@ class InfoColumn extends StatelessWidget {
         ),
         const SizedBox(height: 8,),
         Text(
-          "Problem Problem Prksdfoblem Problem Problem Problem Problem "
-              "Problekjvbjm Problem Problem Problem Problem Problem Problem ProblemProblemProblemProblemProblemProblem",
+          bookModel.description ?? "",
           maxLines: null,
           style: StyleManager.textStyle14.copyWith(
             color: ColorsManager.grayFont,

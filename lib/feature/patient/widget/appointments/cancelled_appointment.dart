@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/core/function/core_function.dart';
-import 'package:graduation_app/feature/patient/layout/appointments/add_review_screen.dart';
-
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import 'appointments_card_builder.dart';
 
 class CancelledAppointment extends StatelessWidget {
-  const CancelledAppointment({super.key});
+  const CancelledAppointment({super.key, required this.bookModel});
+  final BookModel bookModel ;
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +17,24 @@ class CancelledAppointment extends StatelessWidget {
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
-          const Row(
+          Row(
             children: [
-              ProfileImage(
+              const ProfileImage(
                   height: 91,
                   width: 95
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(left: 10.0),
-                  child: AppointmentsCardBuilder(),
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: AppointmentsCardBuilder(bookModel: bookModel),
                 ),
               ),
             ],
           ),
           CustomMaterialButton(
-              text: "Add review",
+              text: "Rebook",
               onPressed:  (){
-                navigateToScreen(context, const AddReviewScreen());
+                //navigateToScreen(context, const AddReviewScreen());
               }
           ),
 

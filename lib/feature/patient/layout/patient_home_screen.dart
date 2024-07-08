@@ -5,16 +5,15 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_state.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_more_screen.dart';
-import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 import 'package:graduation_app/feature/patient/layout/search_patient_screen.dart';
 
 import '../widget/appointment_card.dart';
 import '../widget/reminder_card.dart';
+import 'appointments/appointments_patient_screen.dart';
 import 'chat_screen.dart';
 
 class PatientHome extends StatefulWidget {
@@ -30,10 +29,10 @@ class _PatientHomeState extends State<PatientHome> {
   List<Widget> screens = [
     const PatientHomeScreen(),
     const ChatScreen(),
-    // todo
-    SchedualScreen(
-      doctorModel: DoctorModel(),
-    ),
+    const AppointmentsPatientScreen(),
+    // SchedualScreen(
+    //   doctorModel: DoctorModel(),
+    // ),
     const PatientMoreScreen(),
   ];
 
@@ -49,9 +48,9 @@ class _PatientHomeState extends State<PatientHome> {
             backgroundColor: ColorsManager.blue2,
             selectedIndex: currentIndex,
             indicatorColor: ColorsManager.white,
-            onDestinationSelected: (Index) {
+            onDestinationSelected: (index) {
               setState(() {
-                currentIndex = Index;
+                currentIndex = index;
               });
             },
             destinations: const [
@@ -148,13 +147,13 @@ class PatientHomeScreen extends StatelessWidget {
                             width: 60,
                             size: 60,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Expanded(
                             flex: 3,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   ' Hello,',
                                   style: TextStyle(
                                     fontSize: 13,
@@ -163,7 +162,7 @@ class PatientHomeScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   state.patientModel.name ?? '',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     color: ColorsManager.font,
                                     fontWeight: FontWeight.bold,

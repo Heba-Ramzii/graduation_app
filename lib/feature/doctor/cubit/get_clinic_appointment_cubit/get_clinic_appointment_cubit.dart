@@ -8,9 +8,9 @@ class GetClinicAppointmentsCubit extends Cubit<GetClinicAppointmentState> {
 
   GetClinicAppointmentsCubit(this.doctorRepoImp) : super(GetClinicAppointmentInitial());
 
-  void getClinicAppointment({required String clinicId}) async {
+  void getClinicAppointment({required String clinicId, String? docID}) async {
     emit(GetClinicAppointmentLoading());
-    final result = await doctorRepoImp.getClinicAppointments(clinicId: clinicId);
+    final result = await doctorRepoImp.getClinicAppointments(clinicId: clinicId, docID: docID);
     result.fold((l) => emit(GetClinicAppointmentFailure(failure: l)),
         (r) => emit(GetClinicAppointmentSuccess(appointmentModels: r)));
   }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_app/feature/patient/layout/appointments/cancel_screen.dart';
-
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
+import 'package:graduation_app/feature/patient/widget/scedule/details.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/core_widgets/profile_image.dart';
-import '../../../../core/function/core_function.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import 'appointments_card_builder.dart';
 
 class UpcomingAppointment extends StatelessWidget {
-  const UpcomingAppointment({super.key});
-
+  const UpcomingAppointment({super.key, required this.bookModel});
+  final BookModel bookModel ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,18 +18,18 @@ class UpcomingAppointment extends StatelessWidget {
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
+           Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Row(
               children: [
-                ProfileImage(
+                const ProfileImage(
                     height: 91,
                     width: 95
                 ),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: AppointmentsCardBuilder(),
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: AppointmentsCardBuilder(bookModel: bookModel),
                   ),
                 ),
               ],
@@ -37,22 +37,15 @@ class UpcomingAppointment extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0,),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomMaterialButton(
-                    minWidth: 185,
-                    text: "Details",
-                    onPressed:  (){}
-                ),
-                CustomMaterialButton(
-                    minWidth: 185,
-                    text: "Cancel",
-                    onPressed:  (){
-                      navigateToScreen(context, const CancelAppointmentScreen(),);
-                    }
-                ),
-              ],
+            child: CustomMaterialButton(
+                //minWidth: 185,
+                text: "Details",
+                onPressed:  (){
+                  goTo(
+                    context,
+                    DetailsScreen(bookModel: bookModel),
+                  );
+                }
             ),
           ),
 
@@ -61,3 +54,11 @@ class UpcomingAppointment extends StatelessWidget {
     );
   }
 }
+
+// CustomMaterialButton(
+//     minWidth: 185,
+//     text: "Cancel",
+//     onPressed:  (){
+//       navigateToScreen(context, const CancelAppointmentScreen(),);
+//     }
+// ),
