@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
-import '../../../../core/core_widgets/profile_image.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import 'appointments_card_builder.dart';
 
@@ -17,19 +16,10 @@ class CancelledAppointment extends StatelessWidget {
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
-          Row(
-            children: [
-              const ProfileImage(
-                  height: 91,
-                  width: 95
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: AppointmentsCardBuilder(bookModel: bookModel),
-                ),
-              ),
-            ],
+          Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: AppointmentsCardBuilder(bookModel: bookModel)
+
           ),
           CustomMaterialButton(
               text: "Rebook",

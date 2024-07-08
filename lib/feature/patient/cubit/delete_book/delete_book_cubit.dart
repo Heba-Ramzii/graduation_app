@@ -10,9 +10,9 @@ class DeleteBookCubit extends Cubit<DeleteBookState> {
   static DeleteBookCubit get(context) => BlocProvider.of(context);
 
   DeleteBookCubit(this.patientRepoImp) : super(DeleteBookInitial());
-  void deleteBook(BookModel bookModel) async {
+  void deleteBook(PatientBookModel patientBookModel) async {
     emit(DeleteBookLoading());
-    final result = await patientRepoImp.deleteBook(bookModel: bookModel);
+    final result = await patientRepoImp.deleteBook(patientBookModel: patientBookModel);
     result.fold((l) => emit(DeleteBookFailed(l)), (r) {
       emit(DeleteBookSuccess());
     });

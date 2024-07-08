@@ -5,8 +5,8 @@ import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
 class InfoColumn extends StatelessWidget {
-  const InfoColumn({super.key, required this.bookModel});
-  final BookModel bookModel;
+  const InfoColumn({super.key, required this.patientBookModel});
+  final PatientBookModel patientBookModel;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,7 +24,7 @@ class InfoColumn extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                bookModel.isSelf! ? "Your Self" : "Another Person",
+                patientBookModel.isSelf! ? "Your Self" : "Another Person",
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -42,7 +42,7 @@ class InfoColumn extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                bookModel.patientName ?? "",
+                patientBookModel.patientName ?? "",
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -60,7 +60,7 @@ class InfoColumn extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                bookModel.age.toString(),
+                patientBookModel.age.toString(),
                 style: StyleManager.textStyle14,
               ),
             ],
@@ -76,7 +76,7 @@ class InfoColumn extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              bookModel.isMale! ? "Male" : "Female",
+              patientBookModel.isMale! ? "Male" : "Female",
               style: StyleManager.textStyle14,
             ),
           ],
@@ -97,7 +97,7 @@ class InfoColumn extends StatelessWidget {
         ),
         const SizedBox(height: 8,),
         Text(
-          bookModel.description ?? "",
+          patientBookModel.description ?? "",
           maxLines: null,
           style: StyleManager.textStyle14.copyWith(
             color: ColorsManager.grayFont,

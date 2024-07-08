@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
@@ -224,18 +225,21 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                     if (formKey.currentState!.validate()) {
                       final bookModel = BookModel(
                         appointmentModel: selectedAppointment,
-                        patientName: patientNameController.text,
-                        age: int.parse(ageController.text),
-                        isSelf: isSelf,
-                        isMale: isMale,
-                        description: descriptionController.text,
                         clinicModel: widget.clinicModel,
                         doctorModel: widget.doctorModel,
                         appointmentId: selectedAppointment!.id,
                         clinicId: widget.clinicModel.id,
                         doctorId: widget.doctorModel.id,
                       );
-                      goTo(context, FinalScheduleScreen(bookModel: bookModel));
+                      final PatientBookModel patientBookModel = PatientBookModel(
+                        patientName: patientNameController.text,
+                        age: int.parse(ageController.text),
+                        isSelf: isSelf,
+                        isMale: isMale,
+                        description: descriptionController.text,
+                        dateTime: Timestamp.fromDate(DateTime.now())
+                      );
+                      goTo(context, FinalScheduleScreen(bookModel: bookModel, patientBookModel: patientBookModel));
                     }
                   }
                   else

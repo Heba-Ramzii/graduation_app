@@ -5,20 +5,22 @@ import 'package:graduation_app/feature/patient/widget/appointments/completed_app
 import 'package:graduation_app/feature/patient/widget/appointments/upcoming_appointment.dart';
 
 class AllAppointments extends StatelessWidget {
-  const AllAppointments({super.key, required this.bookModel});
+  const AllAppointments({super.key, required this.bookModel, required this.patientBookModel});
   final BookModel bookModel ;
+  final PatientBookModel patientBookModel;
+
 
   @override
   Widget build(BuildContext context) {
-    switch (bookModel.status) {
+    switch (patientBookModel.status) {
       case 1:
-        return UpcomingAppointment(bookModel: bookModel);
+        return UpcomingAppointment(bookModel: bookModel, patientBookModel: patientBookModel);
       case 2:
         return CompletedAppointment(bookModel: bookModel);
       case 3:
         return CancelledAppointment(bookModel: bookModel);
       default:
-        return const SizedBox();
+        return  SizedBox(child: Text('data ${patientBookModel.status}'),);
     }
   }
 }

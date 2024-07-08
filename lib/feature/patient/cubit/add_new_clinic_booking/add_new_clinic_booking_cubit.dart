@@ -10,9 +10,9 @@ class AddNewClinicBookingCubit extends Cubit<AddNewClinicBookingState> {
   static AddNewClinicBookingCubit get(context) => BlocProvider.of(context);
 
   AddNewClinicBookingCubit(this.patientRepoImp) : super(AddNewClinicBookingInitial());
-  void addNewBook(BookModel bookModel) async {
+  void addNewBook({required BookModel bookModel, required PatientBookModel patientBookModel}) async {
     emit(AddNewClinicBookingLoading());
-    final result = await patientRepoImp.addNewClinicBooking(bookModel: bookModel);
+    final result = await patientRepoImp.addNewClinicBooking(bookModel: bookModel, patientBookModel: patientBookModel);
     result.fold((l) => emit(AddNewClinicBookingFailed(l)), (r) {
       emit(AddNewClinicBookingSuccess());
     });

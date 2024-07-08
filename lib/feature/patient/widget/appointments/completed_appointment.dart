@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
-
 import '../../../../core/core_widgets/custom_material_button.dart';
-import '../../../../core/core_widgets/profile_image.dart';
 import '../../../../core/function/core_function.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import '../../layout/appointments/add_review_screen.dart';
@@ -21,21 +19,8 @@ class CompletedAppointment extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(bottom: 10.0),
-            child: Row(
-              children: [
-                ProfileImage(
-                    height: 91,
-                    width: 95
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: AppointmentsCardBuilder(bookModel: bookModel),
-                  ),
-                ),
-              ],
-            ),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: AppointmentsCardBuilder(bookModel: bookModel)
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0,),

@@ -53,13 +53,13 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
             StreamBuilder<QuerySnapshot>(
               stream: selectedIndex== 0
                   ? FirebaseFirestore.instance
-                  .collection('books')
+                  .collection('patientsBooks')
                   .where('patientId',
                   isEqualTo: FirebaseAuth.instance.currentUser!.uid)
                   .snapshots()
                   :
               FirebaseFirestore.instance
-                  .collection('books')
+                  .collection('patientsBooks')
                   .where('patientId',
                       isEqualTo: FirebaseAuth.instance.currentUser!.uid)
                   .where('status', isEqualTo: selectedIndex )
@@ -83,22 +83,53 @@ class _AppointmentsPatientScreenState extends State<AppointmentsPatientScreen> {
                       shrinkWrap: true,
                       itemBuilder: (context, index)
                       {
-                        List<BookModel> bookModels =
+                        List<PatientBookModel> patientBookModels =
                         snapshot.data!.docs.map((DocumentSnapshot document) {
                           Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-                          return BookModel.fromJson(data);
+                          return PatientBookModel.fromJson(data);
                         }).toList();
-                        switch(selectedIndex) {
-                          case 0:
-                            return AllAppointments(bookModel: bookModels[index]);
-                          case 1:
-                            return UpcomingAppointment(bookModel: bookModels[index]);
-                          case 2:
-                            return CompletedAppointment(bookModel: bookModels[index]);
-                          case 3:
-                            return CancelledAppointment(bookModel: bookModels[index]);
-                        }
-                        return null;
+                        print('patientBookModels[index].bookId ${patientBookModels[index].bookId}');
+
+                      return  FutureBuilder<DocumentSnapshot>(
+                      future: FirebaseFirestore.instance
+                          .collection('clinicBooks')
+                          .doc(patientBookModels[index].bookId)
+                          .get(),
+                          builder:
+                              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+                            if (snapshot.hasError) {
+                              return Text("Something went wrong");
+                            }
+
+                            if (snapshot.hasData && !snapshot.data!.exists) {
+                              return Text("Document does not exist");
+                            }
+
+                            if (snapshot.connectionState == ConnectionState.done) {
+                              Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+                              BookModel bookModel = BookModel.fromJson(data);
+                              switch(selectedIndex) {
+                                case 0:
+                                  return AllAppointments(bookModel: bookModel,
+                                    patientBookModel: patientBookModels[index],
+                                  );
+                                case 1:
+                                  return UpcomingAppointment(
+                                      patientBookModel: patientBookModels[index],
+                                      bookModel:bookModel
+                                  );
+                                case 2:
+                                  return CompletedAppointment(bookModel: bookModel);
+                                case 3:
+                                  return CancelledAppointment(bookModel: bookModel);
+                              }
+                            }
+
+                            return Text("loading");
+                          },
+                        );
+
                       },
                       itemCount:  snapshot.data!.docs.length,
                     ),

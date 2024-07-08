@@ -17,8 +17,9 @@ import '../appointments/appointments_patient_screen.dart';
 
 // ignore: must_be_immutable
 class FinalScheduleScreen extends StatefulWidget {
-   FinalScheduleScreen({required this.bookModel,super.key,});
-  BookModel bookModel;
+  const FinalScheduleScreen({required this.bookModel,super.key, required this.patientBookModel});
+  final BookModel bookModel;
+  final PatientBookModel patientBookModel;
 
   @override
   State<FinalScheduleScreen> createState() => _FinalScheduleScreenState();
@@ -56,7 +57,7 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
               clinicModel: widget.bookModel.clinicModel!,
              ),
              TimeColumn(appointmentModel: widget.bookModel.appointmentModel!),
-             InfoColumn(bookModel: widget.bookModel),
+             InfoColumn(patientBookModel: widget.patientBookModel),
              BlocConsumer<AddNewClinicBookingCubit,AddNewClinicBookingState>(
                listener: (context, state) {
                   if(state is AddNewClinicBookingFailed){
@@ -111,7 +112,10 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
                  child: CustomMaterialButton(
                    text: "Submit",
                    onPressed: () {
-                     AddNewClinicBookingCubit.get(context).addNewBook(widget.bookModel);
+                     AddNewClinicBookingCubit.get(context).addNewBook(
+                       bookModel: widget.bookModel,
+                       patientBookModel: widget.patientBookModel,
+                     );
                    },
                  ),
                );

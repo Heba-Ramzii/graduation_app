@@ -9,6 +9,8 @@ abstract class PatientRepo {
   Future<Either<Failure, PatientModel>> getPatient();
   Future<Either<Failure, void>> updatePatient(
       {required PatientModel patientModel});
-  Future<Either<Failure, void>> addNewClinicBooking({required BookModel bookModel});
-  Future<Either<Failure, void>> deleteBook({required BookModel bookModel});
+  Future<Either<Failure, void>> addNewClinicBooking({required BookModel bookModel,
+    required PatientBookModel patientBookModel
+  });
+  Future<Either<Failure, void>> deleteBook({required PatientBookModel patientBookModel});
 }

@@ -15,9 +15,9 @@ import 'package:graduation_app/feature/patient/widget/scedule/time_column.dart';
 import '../../widget/scedule/doctor_card.dart';
 
 class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key, required this.bookModel,});
+  const DetailsScreen({super.key, required this.bookModel, required this.patientBookModel,});
   final BookModel bookModel;
-
+  final PatientBookModel patientBookModel;
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
 }
@@ -82,9 +82,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                 return Text("loading");
               },
+
             ),
 
-            InfoColumn(bookModel: widget.bookModel),
+            InfoColumn(patientBookModel: widget.patientBookModel),
             BlocConsumer<DeleteBookCubit,DeleteBookState>(
               listener: (context, state) {
                 if(state is DeleteBookFailed){
@@ -110,7 +111,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   child: CustomMaterialButton(
                     text: "Cancel",
                     onPressed: () {
-                      DeleteBookCubit.get(context).deleteBook(widget.bookModel);
+                      DeleteBookCubit.get(context).deleteBook(
+                          widget.patientBookModel
+                      );
                     },
                   ),
                 );

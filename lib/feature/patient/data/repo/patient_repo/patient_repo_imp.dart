@@ -61,7 +61,10 @@ class PatientRepoImp implements PatientRepo {
   }
 
   @override
-  Future<Either<Failure, void>> addNewClinicBooking({required BookModel bookModel}) async {
+  Future<Either<Failure, void>> addNewClinicBooking({
+    required BookModel bookModel,
+    required PatientBookModel patientBookModel
+  }) async {
     try {
       DateTime nextDayTime =
             getNextDayTime(bookModel.appointmentModel!.dayName!,
@@ -71,13 +74,42 @@ class PatientRepoImp implements PatientRepo {
             );
 
       bookModel.date = Timestamp.fromDate(nextDayTime);
-      bookModel.id = nextDayTime.toString();
-      bookModel.patientId = _firebaseAuth.currentUser!.uid;
+      bookModel.id = '${nextDayTime.toString()}${bookModel.doctorId}';
       bookModel.status = 1;//pending
-      await FirebaseFirestore.instance
+
+      WriteBatch batch = FirebaseFirestore.instance.batch();
+
+      var response = await FirebaseFirestore.instance
           .collection('clinicBooks')
           .doc(bookModel.id)
-          .set(bookModel.toJson());
+          .get();
+      patientBookModel.id =  FirebaseFirestore.instance
+          .collection('patientsBooks')
+          .doc().id;
+      patientBookModel.patientId = _firebaseAuth.currentUser!.uid;
+      patientBookModel.bookId = bookModel.id;
+      patientBookModel.status = 1;//pending
+      if (!response.exists)
+      {
+        batch.set(
+            FirebaseFirestore.instance.collection('clinicBooks').doc(bookModel.id),
+            bookModel.toJson()
+        );
+        batch.set(
+            FirebaseFirestore.instance
+            .collection('patientsBooks').doc(patientBookModel.id),
+            patientBookModel.toJson()
+        );
+      }
+      else
+      {
+        batch.set(
+            FirebaseFirestore.instance
+                .collection('patientsBooks').doc(patientBookModel.id),
+            patientBookModel.toJson()
+        );
+      }
+      await batch.commit();
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));
@@ -87,12 +119,12 @@ class PatientRepoImp implements PatientRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteBook({required BookModel bookModel}) async{
+  Future<Either<Failure, void>> deleteBook({required PatientBookModel patientBookModel}) async{
     try {
-      bookModel.status = 3;//cancelled
-      await FirebaseFirestore.instance.collection('books')
-          .doc(bookModel.id)
-          .set(bookModel.toJson());
+      patientBookModel.status = 3;//cancelled
+      await FirebaseFirestore.instance.collection('patientsBooks')
+          .doc(patientBookModel.id)
+          .set(patientBookModel.toJson());
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));

@@ -3,13 +3,13 @@ import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import 'package:graduation_app/feature/patient/widget/scedule/details.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
-import '../../../../core/core_widgets/profile_image.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 import 'appointments_card_builder.dart';
 
 class UpcomingAppointment extends StatelessWidget {
-  const UpcomingAppointment({super.key, required this.bookModel});
+  const UpcomingAppointment({super.key, required this.bookModel, required this.patientBookModel});
   final BookModel bookModel ;
+  final PatientBookModel patientBookModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,20 +20,8 @@ class UpcomingAppointment extends StatelessWidget {
         children: [
            Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              children: [
-                const ProfileImage(
-                    height: 91,
-                    width: 95
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: AppointmentsCardBuilder(bookModel: bookModel),
-                  ),
-                ),
-              ],
-            ),
+            child: AppointmentsCardBuilder(bookModel: bookModel)
+
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0,),
@@ -43,7 +31,10 @@ class UpcomingAppointment extends StatelessWidget {
                 onPressed:  (){
                   goTo(
                     context,
-                    DetailsScreen(bookModel: bookModel),
+                    DetailsScreen(
+                      bookModel: bookModel,
+                        patientBookModel: patientBookModel
+                    ),
                   );
                 }
             ),

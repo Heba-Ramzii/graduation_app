@@ -1,72 +1,111 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
-import 'package:graduation_app/feature/patient/data/models/patient_model.dart';
 class BookModel {
-  Timestamp? date;
+  String? id; // date
+  Timestamp? date; // date of the appointment
+
   AppointmentModel? appointmentModel;
+  String? appointmentId;
+
+  ClinicModel? clinicModel;
+  String? clinicId;
+
+  DoctorModel? doctorModel;
+  String? doctorId;
+
+  int? status; //1 for pending, 2 for current, 3 for completed, 4 for cancelled
+
+  List<PatientBookModel> patientsBookModel = [];
+
+  BookModel({
+    this.id,
+    this.date,
+    this.appointmentModel,
+    this.appointmentId,
+    this.clinicModel,
+    this.clinicId,
+    this.doctorModel,
+    this.doctorId,
+    this.status,
+  });
+
+  BookModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    date = json['date'];
+    appointmentId = json['appointmentId'];
+    clinicId = json['clinicId'];
+    doctorId = json['doctorId'];
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = this.id;
+    data['date'] = this.date;
+    data['appointmentId'] = this.appointmentId;
+    data['clinicId'] = this.clinicId;
+    data['doctorId'] = this.doctorId;
+    data['status'] = this.status;
+    return data;
+  }
+
+
+}
+
+class PatientBookModel {
+  String? id;
+  String? patientId;
+  String? bookId; // Book Model id
   String? patientName;
   int? age;
   bool? isSelf;
   bool? isMale;
   String? description;
-  String? appointmentId;
-  String? id;
-  ClinicModel? clinicModel;
-  String? clinicId;
-  DoctorModel? doctorModel;
-  String? doctorId;
-  PatientModel? patientModel;
-  String? patientId;
   int? status; //1 for pending, 2 for completed, 3 for cancelled
-  BookModel({
-    this.appointmentModel,
+  Timestamp? dateTime; // date of the appointment order
+
+  PatientBookModel({
+    this.id,
+    this.patientId,
+    this.bookId,
     this.patientName,
     this.age,
     this.isSelf,
     this.isMale,
     this.description,
-    this.appointmentId,
-    this.id,
-    this.clinicModel,
-    this.clinicId,
-    this.doctorModel,
-    this.doctorId,
-    this.patientModel,
-    this.patientId,
-    this.status ,
-    this.date,
+    this.status,
+    this.dateTime,
   });
-  //from json
-  BookModel.fromJson(Map<String, dynamic> json) {
+
+  PatientBookModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    patientId = json['patientId'];
+    bookId = json['bookId'];
     patientName = json['patientName'];
     age = json['age'];
     isSelf = json['isSelf'];
     isMale = json['isMale'];
     description = json['description'];
-    appointmentId = json['appointmentId'];
-    id = json['id'];
-    clinicId = json['clinicId'];
-    doctorId = json['doctorId'];
-    patientId = json['patientId'];
     status = json['status'];
-    date = json['date'];
+    dateTime = json['dateTime'];
   }
-  //to json
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['patientName'] = patientName;
-    data['age'] = age;
-    data['isSelf'] = isSelf;
-    data['isMale'] = isMale;
-    data['description'] = description;
-    data['appointmentId'] = appointmentId;
-    data['id'] = id;
-    data['clinicId'] = clinicId;
-    data['doctorId'] = doctorId;
-    data['patientId'] = patientId;
-    data['status'] = status;
-    data['date'] = date;
+
+
+Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = this.id;
+    data['patientId'] = this.patientId;
+    data['bookId'] = this.bookId;
+    data['patientName'] = this.patientName;
+    data['age'] = this.age;
+    data['isSelf'] = this.isSelf;
+    data['isMale'] = this.isMale;
+    data['description'] = this.description;
+    data['status'] = this.status;
+    data['dateTime'] = this.dateTime;
     return data;
   }
+
 }
+
