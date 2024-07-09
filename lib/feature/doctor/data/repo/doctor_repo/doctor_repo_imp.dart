@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:graduation_app/core/failure/failure.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
@@ -188,7 +189,7 @@ class DoctorRepoImp implements DoctorRepo {
           .get();
       List<AppointmentModel> appointments = [];
       await Future.forEach(response.docs, (element) {
-        print('test ++++');
+        debugPrint('test ++++');
         appointments.add(AppointmentModel.fromJson(element.data()));
       });
 

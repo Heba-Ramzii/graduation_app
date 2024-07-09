@@ -99,7 +99,7 @@ class MoreScreen extends StatelessWidget {
                               {
                                 return const DefaultLoading();
                               }
-                              return SizedBox();
+                              return const SizedBox();
                             }
                         )
                       ],

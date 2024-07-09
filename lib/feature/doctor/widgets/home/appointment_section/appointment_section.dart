@@ -6,8 +6,6 @@ import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/pages/appointment/appointment_screen.dart';
-import 'package:graduation_app/feature/patient/data/repo/patient_repo/patient_repo_imp.dart';
-
 import '../../../../../core/theme_manager/style_manager.dart';
 
 class AppointmentSection extends StatelessWidget {
@@ -73,9 +71,9 @@ class AppointmentSection extends StatelessWidget {
                       builder: (BuildContext context,
                           AsyncSnapshot<DocumentSnapshot> snapshot) {
                         if (snapshot.hasError) {
-                          return Text("Something went wrong");
+                          return const Text("Something went wrong");
                         } else if (snapshot.hasData && !snapshot.data!.exists) {
-                          return Text("Document does not exist");
+                          return const Text("Document does not exist");
                         } else if (snapshot.connectionState ==
                             ConnectionState.done) {
                           Map<String, dynamic> clinicData =
@@ -178,8 +176,9 @@ class AppointmentSection extends StatelessWidget {
                                           clincData: clinicData)));
                             },
                           );
-                        } else
-                          return Text("loading");
+                        } else {
+                          return const Text("loading");
+                        }
                       },
                     );
                   },

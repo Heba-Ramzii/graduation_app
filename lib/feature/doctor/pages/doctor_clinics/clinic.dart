@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
-import 'package:graduation_app/core/function/core_function.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/core/theme_manager/style_manager.dart';
 import 'package:graduation_app/feature/doctor/pages/doctor_clinics/add_clinic.dart';
-import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/app_bar_section.dart';
-
 import '../../widgets/doctor_clinics/clinics/clinics_list.dart';
 
 class Clinics extends StatelessWidget {

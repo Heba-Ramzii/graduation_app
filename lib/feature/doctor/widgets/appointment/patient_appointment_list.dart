@@ -29,12 +29,12 @@ class PatientAppointmentList extends StatelessWidget {
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> patientsBooksSnapshot) {
           if (patientsBooksSnapshot.hasError) {
-            return Text('Something went wrong');
+            return const Text('Something went wrong');
           }
 
           if (patientsBooksSnapshot.connectionState ==
               ConnectionState.waiting) {
-            return Text("Loading");
+            return const Text("Loading");
           }
 
           return Expanded(

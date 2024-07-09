@@ -81,19 +81,19 @@ class _AddClinicState extends State<AddClinic> {
                         return IconButton(
                           onPressed: () {
                             if (state is GetDoctorFailure) {
-                              print(state.failure.message);
+                              debugPrint(state.failure.message);
                             }
                             else if (state is GetDoctorSuccess) {
-                              print('success');
+                              debugPrint('success');
                             }
                             else if (state is GetDoctorLoading) {
-                              print('loading');
+                              debugPrint('loading');
                             }
                             else
                             {
-                              print('else');
+                              debugPrint('else');
                             }
-                            print('object1111111');
+                            debugPrint('object1111111');
                             if (state is GetDoctorSuccess) {
                               if (state.doctorModel.adminVerified!) {
                                 if (formKey.currentState!.validate()) {
@@ -113,7 +113,7 @@ class _AddClinicState extends State<AddClinic> {
                                   );
                                 }
                               } else {
-                                print('object');
+                                debugPrint('object');
                                 callMyToast(
                                     massage: 'You are not verified Yet',
                                     state: ToastState.ERROR);

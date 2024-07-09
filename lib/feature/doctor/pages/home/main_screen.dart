@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
-import 'package:graduation_app/feature/doctor/pages/appointment/appointment_screen.dart';
 import 'package:graduation_app/feature/doctor/pages/doctor_clinics/clinic.dart';
 import 'package:graduation_app/feature/doctor/pages/home/home_screen.dart';
 import 'package:graduation_app/feature/doctor/pages/more/more_screen.dart';
@@ -38,9 +36,9 @@ class _DoctorViewState extends State<DoctorView> {
             backgroundColor: ColorsManager.blue2,
             selectedIndex: currentIndex,
             indicatorColor: ColorsManager.white,
-            onDestinationSelected: (Index) {
+            onDestinationSelected: (index) {
               setState(() {
-                currentIndex = Index;
+                currentIndex = index;
               });
             },
             destinations: const [

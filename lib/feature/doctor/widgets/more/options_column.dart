@@ -9,7 +9,6 @@ import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.da
 import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_state.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/option_row.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
-import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../pages/doctor_clinics/add_clinic.dart';

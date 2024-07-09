@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_app/core/services/service_locator.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/ai_cubit/ai_diagnosis_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/confirm_cubit/confirm_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/delete_clinic_cubit/delete_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/edit_clinic_cubit/edit_clinic_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/forget_pass_cubit/forget_pass_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_diagnose_image_cubit/get_doc_diagnose_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_id_image_cubit/get_doc_id_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_image_cubit/get_doc_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_license_image_cubit/get_doc_license_image_cubit.dart';
@@ -18,6 +20,7 @@ import 'package:graduation_app/feature/doctor/cubit/logout_cubit/logout_cubit.da
 import 'package:graduation_app/feature/doctor/cubit/register_cubit/register_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/signin_cubit/sign_in_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/update_doctor_cubit/update_doctor_cubit.dart';
+import 'package:graduation_app/feature/doctor/data/repo/ai_repo/ai_repo_imp.dart';
 import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
 import 'package:graduation_app/feature/doctor/data/repo/doctor_repo/doctor_repo_imp.dart';
 import 'package:graduation_app/feature/patient/cubit/add_new_clinic_booking/add_new_clinic_booking_cubit.dart';
@@ -37,6 +40,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+            create: (context) => AiDiagnosisCubit(getIt.get<AiRepoImp>())),
         BlocProvider(
             create: (context) =>
                 AddNewClinicBookingCubit(getIt.get<PatientRepoImp>())),
@@ -72,6 +77,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => GetDocLicenseImageCubit()),
         BlocProvider(create: (context) => GetDocImageCubit()),
         BlocProvider(create: (context) => GetPatientImageCubit()),
+        BlocProvider(create: (context) => GetDocDiagnoseImageCubit()),
         BlocProvider(
             create: (context) => AddClinicCubit(getIt.get<DoctorRepoImp>())),
         BlocProvider(

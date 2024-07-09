@@ -6,7 +6,6 @@ import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/pages/doctor_clinics/edit_clinic.dart';
 import 'package:graduation_app/feature/doctor/widgets/doctor_clinics/clinics/clinic_details_column.dart';
-
 import '../../../../../core/core_widgets/custom_material_button.dart';
 
 class ClinicsItemBuilder extends StatelessWidget {

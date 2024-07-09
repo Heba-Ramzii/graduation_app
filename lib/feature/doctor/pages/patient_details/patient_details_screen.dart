@@ -18,9 +18,9 @@ class PatientDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Patient'),
+      appBar: const CustomAppBar(title: 'Patient'),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,7 +33,8 @@ class PatientDetailsScreen extends StatelessWidget {
                 child: XrayImage(
               patientId: patientBookModel.patientId!,
               patientBookModelId: patientBookModel.id!,
-            )),
+            )
+            ),
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/feature/doctor/widgets/info/info_container.dart';
-
 import '../../widgets/info/file_container.dart';
 
 
