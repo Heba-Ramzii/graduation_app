@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
+import 'package:graduation_app/feature/patient/cubit/get_doctor_rebook_cubit/get_doctor_rebook_cubit.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
@@ -10,45 +11,51 @@ import 'appointments_card_builder.dart';
 
 class CompletedAppointment extends StatelessWidget {
   const CompletedAppointment({super.key, required this.bookModel});
-  final BookModel bookModel ;
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 13),
-      padding: const EdgeInsets.all( 10.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: StyleManager.containerDecoration,
       child: Column(
         children: [
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: AppointmentsCardBuilder(bookModel: bookModel)
-          ),
+              child: AppointmentsCardBuilder(bookModel: bookModel)),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0,),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 5.0,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CustomMaterialButton(
-                  minWidth: 185,
+                    minWidth: 185,
                     text: "Rebook",
-                    onPressed:  ()
-                    {
-
-                    }
-                ),
+                    onPressed: () {
+                      GetDoctorRebookCubit.get(context)
+                          .getDoctorRebook(doctorId: bookModel.doctorId!);
+                      goTo(
+                          context,
+                          RebookScreen(
+                            doctorId: bookModel.doctorId!,
+                          ));
+                    }),
                 //SizedBox(width: 100,),
                 CustomMaterialButton(
                     minWidth: 185,
                     text: "Add review",
-                    onPressed:  (){
-                      navigateToScreen(context, const AddReviewScreen(),);
-                    }
-                ),
+                    onPressed: () {
+                      navigateToScreen(
+                        context,
+                        const AddReviewScreen(),
+                      );
+                    }),
               ],
             ),
           ),
-
         ],
       ),
     );

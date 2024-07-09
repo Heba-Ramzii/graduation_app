@@ -1,12 +1,15 @@
- import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import '../../../../core/core_widgets/profile_image.dart';
 import '../../../../core/theme_manager/colors_manager.dart';
 import '../../../../core/theme_manager/style_manager.dart';
 
 class PatientListBuilder extends StatelessWidget {
-  const PatientListBuilder({super.key});
+  const PatientListBuilder(
+      {super.key, required this.patientBookModel, required this.index});
+  final PatientBookModel patientBookModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +19,34 @@ class PatientListBuilder extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: StyleManager.containerDecoration,
       child: Row(
-         children: [
-          const ProfileImage(
-            height: 46,
-            width:42 ,
+        children: [
+          FutureBuilder<DocumentSnapshot>(
+            future: FirebaseFirestore.instance
+                .collection('users')
+                .doc(patientBookModel.patientId)
+                .get(),
+            builder: (BuildContext context,
+                AsyncSnapshot<DocumentSnapshot> snapshot) {
+              if (snapshot.hasError) {
+                return Text("Something went wrong");
+              }
+
+              if (snapshot.hasData && !snapshot.data!.exists) {
+                return Text("Document does not exist");
+              }
+
+              if (snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> data =
+                    snapshot.data!.data() as Map<String, dynamic>;
+                return ProfileImage(
+                  height: 46,
+                  width: 42,
+                  url: data['imagePath'],
+                );
+              }
+
+              return Text("loading");
+            },
           ),
           Expanded(
             child: Padding(
@@ -30,32 +57,28 @@ class PatientListBuilder extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: <Widget>[
-                      const Text(
-                        'Patient Name',
-                        style:StyleManager.textStyle14mid ,
+                    children: <Widget>[
+                      Text(
+                        patientBookModel.patientName ?? '',
+                        style: StyleManager.textStyle14mid,
                       ),
-                     //const Spacer(),
+                      //const Spacer(),
                       Padding(
                         padding: const EdgeInsets.only(right: 5.0),
                         child: Text(
-                          '1',
+                          '${index + 1}',
                           style: StyleManager.textStyle12.copyWith(
-                              fontSize: 13,
-                              color: ColorsManager.primaryLight
-                          ),
+                              fontSize: 13, color: ColorsManager.primaryLight),
                         ),
                       ),
                     ],
                   ),
                   Text(
-                    'Take After Meal',
+                    patientBookModel.description ?? '',
                     style: StyleManager.textStyle12.copyWith(
-                        fontSize: 13,
-                        color: ColorsManager.primaryLight
-                    ),
+                        fontSize: 13, color: ColorsManager.primaryLight),
                   ),
-                  Row(
+                  /*      Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
@@ -70,9 +93,8 @@ class PatientListBuilder extends StatelessWidget {
                           ),
                           Text(
                             "8:45 AM",
-                            style: StyleManager.textStyle12.copyWith(
-                                color: ColorsManager.primaryLight
-                            ),
+                            style: StyleManager.textStyle12
+                                .copyWith(color: ColorsManager.primaryLight),
                           ),
                         ],
                       ),
@@ -83,11 +105,12 @@ class PatientListBuilder extends StatelessWidget {
                       ),
                     ],
                   ),
+                 */
                 ],
               ),
             ),
           ),
-         ],
+        ],
       ),
     );
   }

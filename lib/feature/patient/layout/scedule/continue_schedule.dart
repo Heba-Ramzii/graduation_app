@@ -10,6 +10,7 @@ import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_appointment_cubit/get_clinic_appointment_state.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
+import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 import 'package:graduation_app/feature/patient/layout/scedule/final_schedule.dart';
 import 'package:toggle_switch/toggle_switch.dart';
@@ -28,7 +29,9 @@ class DayTime {
 
 class ContinueScheduleScreen extends StatefulWidget {
   const ContinueScheduleScreen({
-    super.key, required this.clinicModel, required this.doctorModel,
+    super.key,
+    required this.clinicModel,
+    required this.doctorModel,
   });
   final ClinicModel clinicModel;
   final DoctorModel doctorModel;
@@ -61,12 +64,10 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
             children: [
               const SizedBox(height: 20),
               Text('Select a Day and Time:'),
-              BlocConsumer<GetClinicAppointmentsCubit, GetClinicAppointmentState>(
-                listener: (context, state) {
-
-                },
+              BlocConsumer<GetClinicAppointmentsCubit,
+                  GetClinicAppointmentState>(
+                listener: (context, state) {},
                 builder: (context, state) {
-
                   if (state is GetClinicAppointmentLoading) {
                     return const Center(child: CircularProgressIndicator());
                   }
@@ -82,10 +83,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                           selectedAppointment = newValue!;
                         });
                       },
-                      items: state.appointmentModels.map<DropdownMenuItem<AppointmentModel>>((AppointmentModel value) {
+                      items: state.appointmentModels
+                          .map<DropdownMenuItem<AppointmentModel>>(
+                              (AppointmentModel value) {
                         return DropdownMenuItem<AppointmentModel>(
                           value: value,
-                          child: Text('${value.dayName}, ${value.from!.timeOfDay} - ${value.to!.timeOfDay}'),
+                          child: Text(
+                              '${value.dayName}, ${value.from!.timeOfDay} - ${value.to!.timeOfDay}'),
                         );
                       }).toList(),
                     );
@@ -98,9 +102,8 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Text(
                   "Patient Information",
-                  style: StyleManager.textStyle18.copyWith(
-                      fontWeight: FontWeight.bold
-                  ),
+                  style: StyleManager.textStyle18
+                      .copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
               ToggleSwitch(
@@ -118,44 +121,57 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                 onToggle: (index) {
                   print('switched to: $index');
                   setState(() {
-                    isSelf = !isSelf;
+                    if (index == 0) {
+                      isSelf = true;
+                    } else {
+                      isSelf = false;
+                    }
                   });
                 },
               ),
               const SizedBox(height: 15),
               Text(
                 "Patient name",
-                style: StyleManager.buttonTextStyle16.copyWith(
-                    color: ColorsManager.primary
-                ),
+                style: StyleManager.buttonTextStyle16
+                    .copyWith(color: ColorsManager.primary),
               ),
               TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
+                enabled: !(isSelf &&
+                    GetPatientCubit.get(context).patientModel!.name != null),
+                validator: isSelf &&
+                        GetPatientCubit.get(context).patientModel!.name != null
+                    ? null
+                    : (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
                 cursorColor: ColorsManager.primary,
                 controller: patientNameController,
               ),
               const SizedBox(height: 10),
               Text(
                 "Age",
-                style: StyleManager.buttonTextStyle16.copyWith(
-                    color: ColorsManager.primary
-                ),
+                style: StyleManager.buttonTextStyle16
+                    .copyWith(color: ColorsManager.primary),
               ),
               TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your age';
-                  }
-                  else if(int.tryParse(ageController.text)==null) {
-                    return 'Please enter a valid age';
-                  }
-                  return null;
-                },
+                enabled: !(isSelf &&
+                    GetPatientCubit.get(context).patientModel!.birthDate !=
+                        null),
+                validator: isSelf &&
+                        GetPatientCubit.get(context).patientModel!.birthDate !=
+                            null
+                    ? null
+                    : (value) {
+                        if (value!.isEmpty) {
+                          return 'Please enter your age';
+                        } else if (int.tryParse(ageController.text) == null) {
+                          return 'Please enter a valid age';
+                        }
+                        return null;
+                      },
                 cursorColor: ColorsManager.primary,
                 controller: ageController,
               ),
@@ -176,16 +192,19 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                   onToggle: (index) {
                     print('switched to: $index');
                     setState(() {
-                      isMale = !isMale;
+                      if (index == 0) {
+                        isMale = true;
+                      } else {
+                        isMale = false;
+                      }
                     });
                   },
                 ),
               ),
               Text(
                 "Describe Your Case",
-                style: StyleManager.buttonTextStyle16.copyWith(
-                    color: ColorsManager.font
-                ),
+                style: StyleManager.buttonTextStyle16
+                    .copyWith(color: ColorsManager.font),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -202,11 +221,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: ColorsManager.primaryBorder),
+                      borderSide:
+                          const BorderSide(color: ColorsManager.primaryBorder),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: ColorsManager.primaryBorder),
+                      borderSide:
+                          const BorderSide(color: ColorsManager.primaryBorder),
                     ),
                     filled: true,
                     fillColor: ColorsManager.white,
@@ -217,11 +238,13 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               CustomMaterialButton(
                 text: "Continue",
                 onPressed: () {
-                  if(selectedAppointment != null) {
+                  if (selectedAppointment != null) {
                     if (formKey.currentState!.validate()) {
                       final bookModel = BookModel(
                         appointmentModel: selectedAppointment,
@@ -231,20 +254,37 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
                         clinicId: widget.clinicModel.id,
                         doctorId: widget.doctorModel.id,
                       );
-                      final PatientBookModel patientBookModel = PatientBookModel(
-                        patientName: patientNameController.text,
-                        age: int.parse(ageController.text),
-                        isSelf: isSelf,
-                        isMale: isMale,
-                        description: descriptionController.text,
-                        dateTime: Timestamp.fromDate(DateTime.now())
-                      );
-                      goTo(context, FinalScheduleScreen(bookModel: bookModel, patientBookModel: patientBookModel));
+                      final PatientBookModel patientBookModel =
+                          PatientBookModel(
+                              patientName: isSelf
+                                  ? GetPatientCubit.get(context)
+                                      .patientModel!
+                                      .name
+                                  : patientNameController.text,
+                              age: isSelf &&
+                                      GetPatientCubit.get(context)
+                                              .patientModel!
+                                              .birthDate !=
+                                          null
+                                  ? calculateAge(GetPatientCubit.get(context)
+                                      .patientModel!
+                                      .birthDate!
+                                      .toDate())
+                                  : int.parse(ageController.text),
+                              isSelf: isSelf,
+                              isMale: isMale,
+                              description: descriptionController.text,
+                              dateTime: Timestamp.now());
+                      goTo(
+                          context,
+                          FinalScheduleScreen(
+                              bookModel: bookModel,
+                              patientBookModel: patientBookModel));
                     }
-                  }
-                  else
-                  {
-                    callMyToast(massage: 'Please select a day and time', state: ToastState.ERROR);
+                  } else {
+                    callMyToast(
+                        massage: 'Please select a day and time',
+                        state: ToastState.ERROR);
                   }
                 },
               ),
@@ -254,6 +294,15 @@ class _ContinueScheduleScreenState extends State<ContinueScheduleScreen> {
       ),
     );
   }
+
+  int calculateAge(DateTime birthDate) {
+    DateTime currentDate = DateTime.now();
+    int age = currentDate.year - birthDate.year;
+    if (currentDate.month < birthDate.month ||
+        (currentDate.month == birthDate.month &&
+            currentDate.day < birthDate.day)) {
+      age--;
+    }
+    return age;
+  }
 }
-
-

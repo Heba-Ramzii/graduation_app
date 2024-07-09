@@ -65,14 +65,16 @@ class ClinicCard extends StatelessWidget {
         });
   }
 }
-class ClinicCardItemBuilder extends StatelessWidget
-{
+
+class ClinicCardItemBuilder extends StatelessWidget {
   final ClinicModel clinicModel;
   final DoctorModel doctorModel;
+  final AppointmentModel appointmentModel;
   const ClinicCardItemBuilder({
     super.key,
     required this.clinicModel,
     required this.doctorModel,
+    required this.appointmentModel,
   });
   @override
   Widget build(BuildContext context) {
@@ -100,10 +102,8 @@ class ClinicCardItemBuilder extends StatelessWidget
                     child: Padding(
                       padding: const EdgeInsets.only(left: 18.0),
                       child: Column(
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
-                        crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             clinicModel.name ?? '',
@@ -111,11 +111,9 @@ class ClinicCardItemBuilder extends StatelessWidget
                           ),
                           Text(
                             clinicModel.address ?? '',
-                            style: StyleManager.textStyle12
-                                .copyWith(
+                            style: StyleManager.textStyle12.copyWith(
                                 fontSize: 13,
-                                color: ColorsManager
-                                    .primaryLight),
+                                color: ColorsManager.primaryLight),
                           ),
                         ],
                       ),
@@ -159,6 +157,7 @@ class ClinicCardItemBuilder extends StatelessWidget
         goTo(
             context,
             AppointmentScreen(
+              appointmentModel: appointmentModel,
               clincData: clinicModel.toJson(),
               data: doctorModel.toJson(),
             ));
@@ -202,14 +201,12 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 18.0),
                     child: Column(
-                      mainAxisAlignment:
-                      MainAxisAlignment.center,
-                      crossAxisAlignment:
-                      CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Row(
-                            children:[
+                            children: [
                               Text(
                                 clinicModel.name ?? '',
                                 style: StyleManager.textStyle14mid,
@@ -232,11 +229,8 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
                         ),
                         Text(
                           clinicModel.address ?? '',
-                          style: StyleManager.textStyle12
-                              .copyWith(
-                              fontSize: 13,
-                              color: ColorsManager
-                                  .primaryLight),
+                          style: StyleManager.textStyle12.copyWith(
+                              fontSize: 13, color: ColorsManager.primaryLight),
                         ),
                       ],
                     ),
@@ -279,9 +273,14 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
           CustomMaterialButton(
             text: "Book",
             onPressed: () {
-              GetClinicAppointmentsCubit.get(context).getClinicAppointment(clinicId: clinicModel.id!, docID: doctorModel.id);
-              goTo(context, ContinueScheduleScreen(clinicModel: clinicModel,
-                doctorModel: doctorModel,));
+              GetClinicAppointmentsCubit.get(context).getClinicAppointment(
+                  clinicId: clinicModel.id!, docID: doctorModel.id);
+              goTo(
+                  context,
+                  ContinueScheduleScreen(
+                    clinicModel: clinicModel,
+                    doctorModel: doctorModel,
+                  ));
             },
           ),
         ],
@@ -289,5 +288,3 @@ class PatientClinicCardItemBuilder extends StatelessWidget {
     );
   }
 }
-
-

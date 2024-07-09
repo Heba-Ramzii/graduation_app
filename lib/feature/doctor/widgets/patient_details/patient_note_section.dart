@@ -4,15 +4,18 @@ import 'package:graduation_app/core/theme_manager/colors_manager.dart';
 import 'package:graduation_app/core/theme_manager/style_manager.dart';
 
 class PatientNote extends StatelessWidget {
-  const PatientNote({super.key});
+  const PatientNote({super.key, required this.problem});
+  final String problem;
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.only(bottom: 15.0,),
+          padding: EdgeInsets.only(
+            bottom: 15.0,
+          ),
           child: Text(
             'Patient Note',
             style: StyleManager.textStyle14,
@@ -20,28 +23,28 @@ class PatientNote extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.only(bottom: 21.0,),
+          margin: const EdgeInsets.only(
+            bottom: 21.0,
+          ),
           decoration: BoxDecoration(
             color: ColorsManager.primaryLight2,
             borderRadius: BorderRadius.circular(20),
           ),
-          child:  Row(
+          child: Row(
             children: [
               const Icon(
                 IconlyBold.infoCircle,
               ),
-              const SizedBox(width: 6,),
-              Text(
-                  "Patient message...",
+              const SizedBox(
+                width: 6,
+              ),
+              Text(problem,
                   style: StyleManager.textStyle12.copyWith(
                     color: ColorsManager.primaryLight,
-                  )
-              ),
+                  )),
             ],
           ),
-
         ),
-
       ],
     );
   }

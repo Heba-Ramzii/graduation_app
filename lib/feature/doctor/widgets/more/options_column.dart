@@ -32,22 +32,9 @@ class OptionsColumn extends StatelessWidget {
         OptionRow(
             icon: Icons.add_business_outlined,
             onTap: () {
-              navigateToScreen(context,  AddClinic());
+              navigateToScreen(context, AddClinic());
             },
             text: "Add clinic"),
-        OptionRow(icon: Icons.payment_rounded,
-            onTap: () {navigateToScreen(context, const PaymentScreen());},
-            text: "Payments"),
-         OptionRow(
-            icon: Icons.settings_outlined,
-            onTap: () {
-              navigateToScreen(context, const SettingsScreen());
-            },
-            text: "Settings"),
-        OptionRow(
-            icon: Icons.help_outline_rounded,
-            onTap: () {},
-            text: "Help Center "),
         const SizedBox(
           height: 17,
         ),
@@ -61,33 +48,32 @@ class OptionsColumn extends StatelessWidget {
             const SizedBox(
               width: 40,
             ),
-            BlocConsumer<LogoutCubit,LogoutState>(
-                builder: (context, state) {
-                  if(state is LogoutLoading){
-                   return const DefaultLoading();
-                  }
-                  else{
-                    return CustomTextButton(
-                      text: "Log Out",
-                      onPressed: () {
-                        showMyDialog(context, "Log Out", "Yes, Log Out", () {
-                          LogoutCubit.get(context).logout();
-                        });
-                      },
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      fontColor: ColorsManager.font,
-                    );
-                  }
-                } ,
-                listener: (context, state) {
-                  if(state is LogoutSuccess){
-                    goToFinish(context, const LoginScreen());
-                  }
-                  else if(state is LogoutFailure){
-                    callMyToast(massage: state.failure.message, state: ToastState.ERROR);
-                  }
-                },
+            BlocConsumer<LogoutCubit, LogoutState>(
+              builder: (context, state) {
+                if (state is LogoutLoading) {
+                  return const DefaultLoading();
+                } else {
+                  return CustomTextButton(
+                    text: "Log Out",
+                    onPressed: () {
+                      showMyDialog(context, "Log Out", "Yes, Log Out", () {
+                        LogoutCubit.get(context).logout();
+                      });
+                    },
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontColor: ColorsManager.font,
+                  );
+                }
+              },
+              listener: (context, state) {
+                if (state is LogoutSuccess) {
+                  goToFinish(context, const LoginScreen());
+                } else if (state is LogoutFailure) {
+                  callMyToast(
+                      massage: state.failure.message, state: ToastState.ERROR);
+                }
+              },
             ),
           ],
         )

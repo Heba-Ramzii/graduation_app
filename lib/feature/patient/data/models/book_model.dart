@@ -1,9 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
+import 'package:intl/intl.dart';
+
 class BookModel {
+  DateFormat dateFormat = DateFormat('MMMM dd, yyyy HH:mm');
+
   String? id; // date
   Timestamp? date; // date of the appointment
+
+  String? dateToShow;
 
   AppointmentModel? appointmentModel;
   String? appointmentId;
@@ -28,11 +34,14 @@ class BookModel {
     this.doctorModel,
     this.doctorId,
     this.status,
-  });
+  }) {
+    dateToShow = date == null ? null : dateFormat.format(date!.toDate());
+  }
 
   BookModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     date = json['date'];
+    dateToShow = date == null ? null : dateFormat.format(date!.toDate());
     appointmentId = json['appointmentId'];
     clinicId = json['clinicId'];
     doctorId = json['doctorId'];
@@ -49,8 +58,6 @@ class BookModel {
     data['status'] = this.status;
     return data;
   }
-
-
 }
 
 class PatientBookModel {
@@ -91,8 +98,7 @@ class PatientBookModel {
     dateTime = json['dateTime'];
   }
 
-
-Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = this.id;
     data['patientId'] = this.patientId;
@@ -106,6 +112,4 @@ Map<String, dynamic> toJson() {
     data['dateTime'] = this.dateTime;
     return data;
   }
-
 }
-

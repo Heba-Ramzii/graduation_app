@@ -82,7 +82,6 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         ],
       ),
       backgroundColor: ColorsManager.homePageBackground,
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -227,11 +226,11 @@ class FavouriteDoctorList extends StatelessWidget {
           builder:
               (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
             if (snapshot.hasError) {
-              return Text("Something went wrong");
+              return const Center(child: Text("Something went wrong"));
             }
 
             if (snapshot.hasData && !snapshot.data!.exists) {
-              return Text("Document does not exist");
+              return const SizedBox();
             }
 
             if (snapshot.connectionState == ConnectionState.done) {

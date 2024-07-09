@@ -15,8 +15,6 @@ import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 import 'package:graduation_app/feature/patient/layout/patient_edit_profile_screen.dart';
 import 'package:graduation_app/feature/patient/layout/payment_screen.dart';
 
-
-
 class PatientOptionsColumn extends StatelessWidget {
   const PatientOptionsColumn({super.key});
 
@@ -30,7 +28,7 @@ class PatientOptionsColumn extends StatelessWidget {
               navigateToScreen(context, const PatientProfileScreen());
             },
             text: "Profile"),
-        OptionRow(
+        /* OptionRow(
             icon: Icons.favorite_border_rounded,
             onTap: () {
               navigateToScreen(context, const FavoritesScreen());
@@ -51,7 +49,7 @@ class PatientOptionsColumn extends StatelessWidget {
         OptionRow(
             icon: Icons.help_outline_rounded,
             onTap: () {},
-            text: "Help Center "),
+            text: "Help Center "), */
         const SizedBox(
           height: 17,
         ),
@@ -65,12 +63,11 @@ class PatientOptionsColumn extends StatelessWidget {
             const SizedBox(
               width: 40,
             ),
-            BlocConsumer<LogoutCubit,LogoutState>(
+            BlocConsumer<LogoutCubit, LogoutState>(
               builder: (context, state) {
-                if(state is LogoutLoading){
+                if (state is LogoutLoading) {
                   return const DefaultLoading();
-                }
-                else{
+                } else {
                   return CustomTextButton(
                     text: "Log Out",
                     onPressed: () {
@@ -83,13 +80,13 @@ class PatientOptionsColumn extends StatelessWidget {
                     fontColor: ColorsManager.font,
                   );
                 }
-              } ,
+              },
               listener: (context, state) {
-                if(state is LogoutSuccess){
+                if (state is LogoutSuccess) {
                   goToFinish(context, const LoginScreen());
-                }
-                else if(state is LogoutFailure){
-                  callMyToast(massage: state.failure.message, state: ToastState.ERROR);
+                } else if (state is LogoutFailure) {
+                  callMyToast(
+                      massage: state.failure.message, state: ToastState.ERROR);
                 }
               },
             ),

@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/pages/appointment/appointment_screen.dart';
+import 'package:graduation_app/feature/patient/data/repo/patient_repo/patient_repo_imp.dart';
 
 import '../../../../../core/theme_manager/style_manager.dart';
 
@@ -31,7 +33,7 @@ class AppointmentSection extends StatelessWidget {
               .collection('appointments')
               .where(
                 'day',
-                isEqualTo: DateTime.now().day,
+                isEqualTo: DateTime.now().weekday,
               )
               .orderBy('from')
               .snapshots(),
@@ -58,6 +60,8 @@ class AppointmentSection extends StatelessWidget {
                   itemBuilder: (context, index) {
                     Map<String, dynamic> data = snapshot.data!.docs[index]
                         .data()! as Map<String, dynamic>;
+                    AppointmentModel appointmentModel =
+                        AppointmentModel.fromJson(data);
 
                     return FutureBuilder<DocumentSnapshot>(
                       future: FirebaseFirestore.instance
@@ -132,14 +136,9 @@ class AppointmentSection extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        Text(
-                                          '12 Patients',
-                                          style:
-                                              StyleManager.textStyle12.copyWith(
-                                            fontSize: 13,
-                                            color: ColorsManager.primaryLight,
-                                          ),
-                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        )
                                       ],
                                     ),
                                     Row(
@@ -174,7 +173,9 @@ class AppointmentSection extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => AppointmentScreen(
-                                          data: data, clincData: clinicData)));
+                                          appointmentModel: appointmentModel,
+                                          data: data,
+                                          clincData: clinicData)));
                             },
                           );
                         } else

@@ -61,21 +61,19 @@ class PatientRepoImp implements PatientRepo {
   }
 
   @override
-  Future<Either<Failure, void>> addNewClinicBooking({
-    required BookModel bookModel,
-    required PatientBookModel patientBookModel
-  }) async {
+  Future<Either<Failure, void>> addNewClinicBooking(
+      {required BookModel bookModel,
+      required PatientBookModel patientBookModel}) async {
     try {
-      DateTime nextDayTime =
-            getNextDayTime(bookModel.appointmentModel!.dayName!,
-            '${bookModel.appointmentModel!.from!.dateTime!.toDate().hour}'
-                ':'
-                '${bookModel.appointmentModel!.from!.dateTime!.toDate().minute}'
-            );
+      DateTime nextDayTime = getNextDayTime(
+          bookModel.appointmentModel!.dayName!,
+          '${bookModel.appointmentModel!.from!.dateTime!.toDate().hour}'
+          ':'
+          '${bookModel.appointmentModel!.from!.dateTime!.toDate().minute}');
 
       bookModel.date = Timestamp.fromDate(nextDayTime);
       bookModel.id = '${nextDayTime.toString()}${bookModel.doctorId}';
-      bookModel.status = 1;//pending
+      bookModel.status = 1; //pending
 
       WriteBatch batch = FirebaseFirestore.instance.batch();
 
@@ -83,31 +81,28 @@ class PatientRepoImp implements PatientRepo {
           .collection('clinicBooks')
           .doc(bookModel.id)
           .get();
-      patientBookModel.id =  FirebaseFirestore.instance
-          .collection('patientsBooks')
-          .doc().id;
+      patientBookModel.id =
+          FirebaseFirestore.instance.collection('patientsBooks').doc().id;
       patientBookModel.patientId = _firebaseAuth.currentUser!.uid;
       patientBookModel.bookId = bookModel.id;
-      patientBookModel.status = 1;//pending
-      if (!response.exists)
-      {
-        batch.set(
-            FirebaseFirestore.instance.collection('clinicBooks').doc(bookModel.id),
-            bookModel.toJson()
-        );
+      patientBookModel.status = 1; //pending
+      if (!response.exists) {
         batch.set(
             FirebaseFirestore.instance
-            .collection('patientsBooks').doc(patientBookModel.id),
-            patientBookModel.toJson()
-        );
-      }
-      else
-      {
+                .collection('clinicBooks')
+                .doc(bookModel.id),
+            bookModel.toJson());
         batch.set(
             FirebaseFirestore.instance
-                .collection('patientsBooks').doc(patientBookModel.id),
-            patientBookModel.toJson()
-        );
+                .collection('patientsBooks')
+                .doc(patientBookModel.id),
+            patientBookModel.toJson());
+      } else {
+        batch.set(
+            FirebaseFirestore.instance
+                .collection('patientsBooks')
+                .doc(patientBookModel.id),
+            patientBookModel.toJson());
       }
       await batch.commit();
       return right(null);
@@ -119,10 +114,12 @@ class PatientRepoImp implements PatientRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteBook({required PatientBookModel patientBookModel}) async{
+  Future<Either<Failure, void>> deleteBook(
+      {required PatientBookModel patientBookModel}) async {
     try {
-      patientBookModel.status = 3;//cancelled
-      await FirebaseFirestore.instance.collection('patientsBooks')
+      patientBookModel.status = 3; //cancelled
+      await FirebaseFirestore.instance
+          .collection('patientsBooks')
           .doc(patientBookModel.id)
           .set(patientBookModel.toJson());
       return right(null);
@@ -157,7 +154,9 @@ class PatientRepoImp implements PatientRepo {
     // Get the next occurrence of the specified day
     int targetDay = dayMap[day]!;
     int daysUntilNextTargetDay = (targetDay - now.weekday + 7) % 7;
-    if (daysUntilNextTargetDay == 0 && (now.hour > parsedTime.hour || (now.hour == parsedTime.hour && now.minute >= parsedTime.minute))) {
+    if (daysUntilNextTargetDay == 0 &&
+        (now.hour > parsedTime.hour ||
+            (now.hour == parsedTime.hour && now.minute >= parsedTime.minute))) {
       daysUntilNextTargetDay = 7;
     }
 
