@@ -51,7 +51,7 @@ class ScheduleScreen extends StatelessWidget {
                 const Spacer(),
                 RatingBar.builder(
                   //  ignoreGestures: true,
-                  initialRating: doctorModel.rate ?? 0.0,
+                  initialRating: doctorModel.rate != null? doctorModel.rate!.toDouble(): 0,
                   itemSize: 20,
                   itemCount: 5,
                   minRating: 1,
@@ -72,9 +72,9 @@ class ScheduleScreen extends StatelessWidget {
                       'rateSubmission': doctorModel.rateSubmission! + value,
                       'raters': doctorModel.raters! + 1
                     });
-                    doctorModel.rate = newValue.toDouble();
+                    doctorModel.rate = newValue;
                     doctorModel.rateSubmission =
-                        doctorModel.rateSubmission! + value;
+                        doctorModel.rateSubmission! + value.toInt();
                     doctorModel.raters = doctorModel.raters! + 1;
                   },
                 ),

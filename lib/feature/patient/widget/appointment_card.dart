@@ -178,7 +178,7 @@ class RecommandedDoctorCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   RatingBar.builder(
                     ignoreGestures: true,
-                    initialRating: doctorModel.rate ?? 0,
+                    initialRating: doctorModel.rate !=null? doctorModel.rate!.toDouble(): 0.0,
                     itemSize: 25,
                     itemCount: 5,
                     minRating: 1,

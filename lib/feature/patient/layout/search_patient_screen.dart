@@ -311,7 +311,7 @@ class _DoctorCardState extends State<DoctorCard> {
                       const SizedBox(height: 10),
                       RatingBar.builder(
                         ignoreGestures: true,
-                        initialRating: widget.doctorModel.rate ?? 0.0,
+                        initialRating: widget.doctorModel.rate!=null? widget.doctorModel.rate!.toDouble() :0.0,
                         itemSize: 20,
                         itemCount: 5,
                         minRating: 1,

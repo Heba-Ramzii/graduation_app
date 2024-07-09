@@ -72,7 +72,8 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
               builder: (context, state) {
                 if (state is GetDoctorLoading) {
                   return const DefaultLoading();
-                } else if (state is GetDoctorSuccess) {
+                } 
+                else if (state is GetDoctorSuccess) {
                   nameController.text = state.doctorModel.name ?? '';
                   emailController.text = state.doctorModel.email ?? '';
 
@@ -446,6 +447,10 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                       ),
                     ),
                   );
+                }
+                else if(state is GetDoctorFailure)
+                {
+                  return Text(state.failure.message);
                 }
                 return const SizedBox();
               })),

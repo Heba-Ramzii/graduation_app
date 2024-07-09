@@ -72,10 +72,28 @@ class _AddClinicState extends State<AddClinic> {
                   return const SizedBox();
                 } else {
                   return BlocConsumer<GetDoctorCubit, GetDoctorState>(
-                      listener: (context, state) {},
+                      listener: (context, state)
+                      {
+
+                      },
                       builder: (context, state) {
+
                         return IconButton(
                           onPressed: () {
+                            if (state is GetDoctorFailure) {
+                              print(state.failure.message);
+                            }
+                            else if (state is GetDoctorSuccess) {
+                              print('success');
+                            }
+                            else if (state is GetDoctorLoading) {
+                              print('loading');
+                            }
+                            else
+                            {
+                              print('else');
+                            }
+                            print('object1111111');
                             if (state is GetDoctorSuccess) {
                               if (state.doctorModel.adminVerified!) {
                                 if (formKey.currentState!.validate()) {
@@ -95,6 +113,7 @@ class _AddClinicState extends State<AddClinic> {
                                   );
                                 }
                               } else {
+                                print('object');
                                 callMyToast(
                                     massage: 'You are not verified Yet',
                                     state: ToastState.ERROR);

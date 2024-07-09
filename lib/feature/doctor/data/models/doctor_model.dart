@@ -15,8 +15,8 @@ class DoctorModel {
   XFile? nationalIdImage;
   XFile? licenseImage;
   String? speciality;
-  double? rate;
-  double? rateSubmission;
+  int? rate;
+  int? rateSubmission;
   int? raters;
   String? adminReason;
   bool? adminVerified;
@@ -48,13 +48,13 @@ class DoctorModel {
     imagePath = json['imagePath'];
     birthDate = json['birthDate'];
     speciality = json['speciality'];
-    rate = json['rate'] == null ? 0.0 : json['rate'].toDouble();
+    rate = json['rate'] ==null? 0 : json['rate'].toInt();
     adminReason = json['adminReason'];
     adminVerified = json['adminVerified'];
     licenseImagePath = json['licenseImagePath'];
     nationalIdImagePath = json['nationalIdImagePath'];
-    raters = json['raters'] ?? 0;
-    rateSubmission = json['rateSubmission'] ?? 0;
+    raters = json['raters'] ==null? 0 : json['raters'].toInt();
+    rateSubmission = json['rateSubmission'] ==null? 0 : json['rateSubmission'].toInt();
 
     if (json['patientsID'] != null) {
       patientsID = json['patientsID'].cast<String>();
