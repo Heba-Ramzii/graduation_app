@@ -90,6 +90,21 @@ class DoctorRepoImp implements DoctorRepo {
   }
 
   @override
+  Future<Either<Failure, DoctorModel>> getDoctorRebook({required String doctorId}) async {
+    try {
+      var response = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(doctorId)
+          .get();
+      return right(DoctorModel.fromJson(response.data()!));
+    } on FirebaseAuthException catch (e) {
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> updateDoctor(
       {required DoctorModel doctorModel}) async {
     try {

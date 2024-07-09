@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
+import 'package:graduation_app/feature/patient/layout/scedule/schedule_screen.dart';
 import '../../../../core/core_widgets/custom_material_button.dart';
 import '../../../../core/function/core_function.dart';
 import '../../../../core/theme_manager/style_manager.dart';
@@ -30,7 +32,10 @@ class CompletedAppointment extends StatelessWidget {
                 CustomMaterialButton(
                   minWidth: 185,
                     text: "Rebook",
-                    onPressed:  (){}
+                    onPressed:  ()
+                    {
+
+                    }
                 ),
                 //SizedBox(width: 100,),
                 CustomMaterialButton(

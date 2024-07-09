@@ -60,7 +60,7 @@ class BookCard extends StatelessWidget {
                   // TODO: implement
                   navigateToScreen(
                       context,
-                      SchedualScreen(
+                      ScheduleScreen(
                         doctorModel: DoctorModel(),
                       ));
                 }),

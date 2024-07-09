@@ -82,54 +82,7 @@ class _SearchPatientSceenState extends State<SearchPatientSceen> {
         ],
       ),
       backgroundColor: ColorsManager.homePageBackground,
-      bottomNavigationBar: NavigationBar(
-        height: 70,
-        indicatorShape: const CircleBorder(
-          eccentricity: 0.0,
-        ),
-        backgroundColor: ColorsManager.blue2,
-        selectedIndex: 0,
-        indicatorColor: ColorsManager.white,
-        onDestinationSelected: (index) {},
-        destinations: [
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/home.svg',
-              color: ColorsManager.blue,
-              width: 24, // Adjusted icon size
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/chat-alt.svg',
-              color: ColorsManager.blue,
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/calendar.svg',
-              color: ColorsManager.blue,
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: SvgPicture.asset(
-              'assets/icons/dots-horizontal.svg',
-              color: ColorsManager.blue,
-              width: 24,
-              height: 24,
-            ),
-            label: '',
-          ),
-        ],
-      ),
+
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -196,6 +149,7 @@ class AllDoctorList extends StatelessWidget {
     Stream<QuerySnapshot<Object?>>? stream = FirebaseFirestore.instance
         .collection('users')
         .where('isDoctor', isEqualTo: true)
+        .orderBy('rate', descending: true)
         .snapshots();
     return StreamBuilder<QuerySnapshot>(
         stream: stream,
@@ -319,7 +273,7 @@ class _DoctorCardState extends State<DoctorCard> {
         onTap: () {
           goTo(
               context,
-              SchedualScreen(
+              ScheduleScreen(
                 doctorModel: widget.doctorModel,
               ));
         },
@@ -423,3 +377,55 @@ class _DoctorCardState extends State<DoctorCard> {
     );
   }
 }
+
+
+/*
+* bottomNavigationBar: NavigationBar(
+        height: 70,
+        indicatorShape: const CircleBorder(
+          eccentricity: 0.0,
+        ),
+        backgroundColor: ColorsManager.blue2,
+        selectedIndex: 0,
+        indicatorColor: ColorsManager.white,
+        onDestinationSelected: (index) {},
+        destinations: [
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              'assets/icons/home.svg',
+              color: ColorsManager.blue,
+              width: 24, // Adjusted icon size
+              height: 24,
+            ),
+            label: '',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              'assets/icons/chat-alt.svg',
+              color: ColorsManager.blue,
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              'assets/icons/calendar.svg',
+              color: ColorsManager.blue,
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
+          NavigationDestination(
+            icon: SvgPicture.asset(
+              'assets/icons/dots-horizontal.svg',
+              color: ColorsManager.blue,
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
+        ],
+      ),
+* */

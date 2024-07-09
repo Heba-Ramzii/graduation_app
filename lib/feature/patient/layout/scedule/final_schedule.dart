@@ -71,8 +71,12 @@ class _FinalScheduleScreenState extends State<FinalScheduleScreen> {
                       context: context,
                       builder: (context) {
                         Future.delayed(const Duration(seconds: 1), () {
-                          navigateToScreen(
-                              context, const AppointmentsPatientScreen());
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          Navigator.of(context).pop();
+                          // navigateToScreen(
+                          //     context, const AppointmentsPatientScreen());
                         });
                         return  Padding(
                           padding: const EdgeInsets.all(15.0),

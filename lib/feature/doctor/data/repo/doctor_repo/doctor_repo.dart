@@ -5,6 +5,7 @@ import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class DoctorRepo {
+  Future<Either<Failure, DoctorModel>> getDoctorRebook({required String doctorId});
   Future<Either<Failure, void>> addClinic({required ClinicModel clinicModel});
   Future<Either<Failure, void>> editClinic({required ClinicModel clinicModel});
   Future<Either<Failure, void>> updateDoctor(

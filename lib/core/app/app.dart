@@ -19,6 +19,7 @@ import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.
 import 'package:graduation_app/feature/doctor/data/repo/doctor_repo/doctor_repo_imp.dart';
 import 'package:graduation_app/feature/patient/cubit/add_new_clinic_booking/add_new_clinic_booking_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/delete_book/delete_book_cubit.dart';
+import 'package:graduation_app/feature/patient/cubit/get_doctor_rebook_cubit/get_doctor_rebook_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_cubit/get_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/get_patient_image_cubit/get_patient_image_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/update_patient_cubit/update_patient_cubit.dart';
@@ -43,6 +44,8 @@ class MyApp extends StatelessWidget {
             create: (context) => GetPatientCubit(getIt.get<PatientRepoImp>())),
         BlocProvider(
             create: (context) => UpdateDoctorCubit(getIt.get<DoctorRepoImp>())),
+        BlocProvider(
+            create: (context) => GetDoctorRebookCubit(getIt.get<DoctorRepoImp>())),
         BlocProvider(
             create: (context) => UpdatePatientCubit(getIt.get<PatientRepoImp>())),
         BlocProvider(

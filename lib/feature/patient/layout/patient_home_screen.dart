@@ -30,9 +30,6 @@ class _PatientHomeState extends State<PatientHome> {
     const PatientHomeScreen(),
     const ChatScreen(),
     const AppointmentsPatientScreen(),
-    // SchedualScreen(
-    //   doctorModel: DoctorModel(),
-    // ),
     const PatientMoreScreen(),
   ];
 
