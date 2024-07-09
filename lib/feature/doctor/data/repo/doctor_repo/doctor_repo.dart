@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:graduation_app/core/failure/failure.dart';
+import 'package:graduation_app/feature/doctor/data/models/ai_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,6 +20,7 @@ abstract class DoctorRepo {
 
   Future<Either<Failure, void>> confirmAppointment(
       {required DoctorModel doctorModel,
+        required AIModel? model,
       required String patientId,
       required String patientBookModelId});
 }

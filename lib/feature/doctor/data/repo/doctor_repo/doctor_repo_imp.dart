@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/failure/failure.dart';
+import 'package:graduation_app/feature/doctor/data/models/ai_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 import 'package:graduation_app/feature/patient/data/models/patient_model.dart';
@@ -221,6 +222,7 @@ class DoctorRepoImp implements DoctorRepo {
   @override
   Future<Either<Failure, void>> confirmAppointment(
       {required DoctorModel doctorModel,
+        required AIModel? model,
       required String patientId,
       required String patientBookModelId}) async {
     try {
@@ -246,6 +248,25 @@ class DoctorRepoImp implements DoctorRepo {
       batch.update(
           FirebaseFirestore.instance.collection('users').doc(patientModel.id),
           {'doctorsID': patientModel.doctorsID});
+
+      String chatID = '${doctorModel.id}:$patientId';
+      var chatResponse = await FirebaseFirestore.instance
+          .collection('chat')
+      .doc(chatID)
+          .get();
+      if(!chatResponse.exists){
+        batch.set( FirebaseFirestore.instance.collection('chat').doc(chatID), {
+          'id': chatID,
+          'doctorId': doctorModel.id,
+          'patientId': patientId,
+        });
+      }
+      batch.set( FirebaseFirestore.instance.collection('chat').doc(chatID)
+          .collection('messages').doc(), {
+        'message': model!.report,
+        'senderIsDoctor': true,
+        'time': Timestamp.fromDate( DateTime.now()),
+      });
 
       await batch.commit();
 

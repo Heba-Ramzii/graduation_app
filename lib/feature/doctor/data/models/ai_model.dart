@@ -4,8 +4,9 @@ class AIModel {
   int? resultClass;
   String? result;
   int? doctorId;
+  String? report;
 
-  AIModel({this.id, this.image, this.resultClass, this.result, this.doctorId});
+  AIModel({this.id, this.image, this.resultClass, this.result, this.doctorId, this.report});
 
   AIModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
