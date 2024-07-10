@@ -17,6 +17,20 @@ class UpdateDoctorCubit extends Cubit<UpdateDoctorState> {
         doctorModel.imagePath = r;
       });
     }
+    if (doctorModel.nationalIdImage != null) {
+      final result =
+          await doctorRepoImp.uploadImage(image: doctorModel.nationalIdImage);
+      result.fold((l) => emit(UpdateDoctorFailure(failure: l)), (r) {
+        doctorModel.nationalIdImagePath = r;
+      });
+    }
+    if (doctorModel.licenseImage != null) {
+      final result =
+          await doctorRepoImp.uploadImage(image: doctorModel.licenseImage);
+      result.fold((l) => emit(UpdateDoctorFailure(failure: l)), (r) {
+        doctorModel.licenseImagePath = r;
+      });
+    }
     final result = await doctorRepoImp.updateDoctor(doctorModel: doctorModel);
     result.fold((l) => emit(UpdateDoctorFailure(failure: l)), (r) {
       return emit(UpdateDoctorSuccess());

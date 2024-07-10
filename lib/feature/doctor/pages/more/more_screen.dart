@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/profile_image.dart';
+import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/widgets/more/options_column.dart';
 import 'package:graduation_app/feature/patient/layout/login_screen.dart';
 
@@ -50,6 +52,40 @@ class MoreScreen extends StatelessWidget {
                                 fontSize: 24, fontWeight: FontWeight.w500),
                           ),
                         ),
+                        Builder(builder: (context) {
+                          if (data['adminVerified'] &&
+                              GetDoctorCubit.get(context)
+                                      .doctorModel!
+                                      .adminVerified ==
+                                  false) {
+                            GetDoctorCubit.get(context).getDoctor();
+                          }
+                          if (data['adminVerified']) {
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10.0, bottom: 20.0),
+                              child: Text(
+                                'You are verified',
+                                style: StyleManager.textStyle14.copyWith(
+                                    color: ColorsManager.primary,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            );
+                          } else {
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10.0, bottom: 20.0),
+                              child: Text(
+                                'You are not verified yet',
+                                style: StyleManager.textStyle14.copyWith(
+                                    color: ColorsManager.red,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            );
+                          }
+                        })
                       ],
                     );
                   }

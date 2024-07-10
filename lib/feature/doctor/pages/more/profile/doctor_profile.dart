@@ -8,8 +8,12 @@ import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/custom_material_button.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_id_image_cubit/get_doc_id_image_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_id_image_cubit/get_doc_id_image_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_image_cubit/get_doc_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_image_cubit/get_doc_image_state.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_license_image_cubit/get_doc_license_image_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doc_license_image_cubit/get_doc_license_image_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/update_doctor_cubit/update_doctor_cubit.dart';
@@ -228,6 +232,168 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                             },
                           ),
                           const SizedBox(
+                            height: 20,
+                          ),
+                          BlocConsumer<GetDocIDImageCubit, GetDocIDImageState>(
+                              listener: (context, state) {},
+                              builder: (context, imageState) {
+                                return Stack(
+                                  alignment: Alignment.bottomRight,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 52,
+                                      backgroundColor: Colors.white,
+                                      child: Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            image: GetDocIDImageCubit.get(
+                                                            context)
+                                                        .docIDImage !=
+                                                    null
+                                                ? DecorationImage(
+                                                    image: FileImage(File(
+                                                        GetDocIDImageCubit.get(
+                                                                context)
+                                                            .docIDImage!
+                                                            .path)),
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : state.doctorModel
+                                                            .nationalIdImagePath !=
+                                                        null
+                                                    ? DecorationImage(
+                                                        image: NetworkImage(state
+                                                            .doctorModel
+                                                            .nationalIdImagePath!),
+                                                        fit: BoxFit.cover,
+                                                      )
+                                                    : null),
+                                        child: GetDocIDImageCubit.get(context)
+                                                        .docIDImage ==
+                                                    null &&
+                                                state.doctorModel
+                                                        .nationalIdImagePath ==
+                                                    null
+                                            ? const Icon(
+                                                Icons.person,
+                                                size: 40,
+                                                color: Colors.grey,
+                                              )
+                                            : null,
+                                      ),
+                                    ),
+                                    CircleAvatar(
+                                      backgroundColor: ColorsManager.primary,
+                                      radius: 18,
+                                      child: Center(
+                                        child: IconButton(
+                                          icon: const Icon(
+                                            Icons.camera_alt_outlined,
+                                            color: Colors.white,
+                                            size: 18,
+                                          ),
+                                          onPressed: () {
+                                            GetDocIDImageCubit.get(context)
+                                                .getImage();
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            'National ID',
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          BlocConsumer<GetDocLicenseImageCubit,
+                                  GetDocLicenseImageState>(
+                              listener: (context, state) {},
+                              builder: (context, imageState) {
+                                return Stack(
+                                  alignment: Alignment.bottomRight,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 52,
+                                      backgroundColor: Colors.white,
+                                      child: Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            image: GetDocLicenseImageCubit.get(
+                                                            context)
+                                                        .docLicenseImage !=
+                                                    null
+                                                ? DecorationImage(
+                                                    image: FileImage(File(
+                                                        GetDocLicenseImageCubit
+                                                                .get(context)
+                                                            .docLicenseImage!
+                                                            .path)),
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : state.doctorModel
+                                                            .licenseImagePath !=
+                                                        null
+                                                    ? DecorationImage(
+                                                        image: NetworkImage(state
+                                                            .doctorModel
+                                                            .licenseImagePath!),
+                                                        fit: BoxFit.cover,
+                                                      )
+                                                    : null),
+                                        child:
+                                            GetDocLicenseImageCubit.get(context)
+                                                            .docLicenseImage ==
+                                                        null &&
+                                                    state.doctorModel
+                                                            .licenseImagePath ==
+                                                        null
+                                                ? const Icon(
+                                                    Icons.person,
+                                                    size: 40,
+                                                    color: Colors.grey,
+                                                  )
+                                                : null,
+                                      ),
+                                    ),
+                                    CircleAvatar(
+                                      backgroundColor: ColorsManager.primary,
+                                      radius: 18,
+                                      child: Center(
+                                        child: IconButton(
+                                          icon: const Icon(
+                                            Icons.camera_alt_outlined,
+                                            color: Colors.white,
+                                            size: 18,
+                                          ),
+                                          onPressed: () {
+                                            GetDocLicenseImageCubit.get(context)
+                                                .getImage();
+                                          },
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              }),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            'License',
+                          ),
+                          const SizedBox(
                             height: 80,
                           ),
                           BlocConsumer<UpdateDoctorCubit, UpdateDoctorState>(
@@ -253,6 +419,12 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                                     if (formKey.currentState!.validate()) {
                                       state.doctorModel.image =
                                           GetDocImageCubit.get(context).image;
+                                      state.doctorModel.nationalIdImage =
+                                          GetDocIDImageCubit.get(context)
+                                              .docIDImage;
+                                      state.doctorModel.licenseImage =
+                                          GetDocLicenseImageCubit.get(context)
+                                              .docLicenseImage;
                                       state.doctorModel.speciality =
                                           sepcialityController.text;
                                       state.doctorModel.name =

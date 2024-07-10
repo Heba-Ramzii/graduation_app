@@ -10,12 +10,12 @@ import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_
 import 'package:graduation_app/feature/doctor/cubit/add_clinic_cubit/add_clinic_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_clinic_image_cubit/get_clinic_image_state.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
+import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_state.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/widgets/profile/edit_info_row.dart';
 
-
 class AddClinic extends StatefulWidget {
-
   const AddClinic({super.key});
 
   @override
@@ -23,8 +23,6 @@ class AddClinic extends StatefulWidget {
 }
 
 class _AddClinicState extends State<AddClinic> {
-
-
   final nameController = TextEditingController();
 
   final phoneController = TextEditingController();
@@ -59,51 +57,62 @@ class _AddClinicState extends State<AddClinic> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          actions: [
-            BlocConsumer<GetClinicImageCubit,GetClinicImageState>(
-              listener: (context, state) {
-                if (state is GetClinicImageFailure) {
-                  callMyToast(massage: state.failure.message,
-                      state: ToastState.ERROR);
+        actions: [
+          BlocConsumer<GetClinicImageCubit, GetClinicImageState>(
+            listener: (context, state) {
+              if (state is GetClinicImageFailure) {
+                callMyToast(
+                    massage: state.failure.message, state: ToastState.ERROR);
+              }
+            },
+            builder: (context, state) {
+              return BlocBuilder<AddClinicCubit, AddClinicState>(
+                  builder: (context, state) {
+                if (state is AddClinicLoading) {
+                  return const SizedBox();
+                } else {
+                  return BlocConsumer<GetDoctorCubit, GetDoctorState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        return IconButton(
+                          onPressed: () {
+                            if (state is GetDoctorSuccess) {
+                              if (state.doctorModel.adminVerified!) {
+                                if (formKey.currentState!.validate()) {
+                                  ClinicModel clinicModel = ClinicModel(
+                                    name: nameController.text,
+                                    phone: phoneController.text,
+                                    address: addressController.text,
+                                    description: descriptionController.text,
+                                    price: int.parse(priceController.text),
+                                  );
+                                  clinicModel.appointments = appointments;
+                                  clinicModel.image =
+                                      GetClinicImageCubit.get(context)
+                                          .profileImage;
+                                  AddClinicCubit.get(context).addClinic(
+                                    clinicModel,
+                                  );
+                                }
+                              } else {
+                                callMyToast(
+                                    massage: 'You are not verified Yet',
+                                    state: ToastState.ERROR);
+                              }
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.done_rounded,
+                            color: ColorsManager.primary,
+                          ),
+                        );
+                      });
                 }
-              },
-              builder: (context, state) {
-               return BlocBuilder<AddClinicCubit, AddClinicState>(
-                   builder: (context, state){
-                     if (state is AddClinicLoading) {
-                       return const SizedBox();
-                     }
-                     else {
-                       return IconButton(
-                       onPressed: () {
-                         if (formKey.currentState!.validate()) {
-                           ClinicModel clinicModel = ClinicModel(
-                             name: nameController.text,
-                             phone: phoneController.text,
-                             address: addressController.text,
-                             description: descriptionController.text,
-                             price: int.parse(priceController.text),
-                           );
-                           clinicModel.appointments = appointments;
-                           clinicModel.image = GetClinicImageCubit
-                               .get(context)
-                               .profileImage;
-                           AddClinicCubit.get(context).addClinic(
-                             clinicModel,
-                           );
-                         }
-                       },
-                       icon: const Icon(
-                         Icons.done_rounded,
-                         color: ColorsManager.primary,
-                       ),
-                     );
-                     }
-                   });
-              },
-            ),
-          ],
-          title: "Add Clinic",
+              });
+            },
+          ),
+        ],
+        title: "Add Clinic",
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -116,24 +125,26 @@ class _AddClinicState extends State<AddClinic> {
                 BlocConsumer<AddClinicCubit, AddClinicState>(
                   listener: (context, state) {
                     if (state is AddClinicSuccess) {
-                      callMyToast(massage: 'Successfully Added',
+                      callMyToast(
+                          massage: 'Successfully Added',
                           state: ToastState.SUCCESS);
                       Navigator.of(context).pop();
-                    }
-                    else if (state is AddClinicFailure) {
-                      callMyToast(massage: state.failure.message,
+                    } else if (state is AddClinicFailure) {
+                      callMyToast(
+                          massage: state.failure.message,
                           state: ToastState.ERROR);
                     }
                   },
                   builder: (context, state) {
                     if (state is AddClinicLoading) {
-                      return const Center(child: LinearProgressIndicator(),);
-                    }
-                    else {
+                      return const Center(
+                        child: LinearProgressIndicator(),
+                      );
+                    } else {
                       return const SizedBox();
                     }
-                  },),
-
+                  },
+                ),
                 Container(
                   padding: const EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
@@ -143,11 +154,8 @@ class _AddClinicState extends State<AddClinic> {
                   child: Center(
                     child: Column(
                       children: [
-
                         BlocConsumer<GetClinicImageCubit, GetClinicImageState>(
-                            listener: (context, state) {
-
-                            },
+                            listener: (context, state) {},
                             builder: (context, state) {
                               return Stack(
                                 alignment: Alignment.bottomRight,
@@ -159,30 +167,32 @@ class _AddClinicState extends State<AddClinic> {
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              50),
-                                          image: GetClinicImageCubit
-                                              .get(context)
-                                              .profileImage != null ?
-                                          DecorationImage(
-                                            image: FileImage(
-                                                File(GetClinicImageCubit
-                                                    .get(context)
-                                                    .profileImage!
-                                                    .path)),
-                                            fit: BoxFit.cover,
-                                          ) : null
-                                      ),
-                                      child: GetClinicImageCubit
-                                          .get(context)
-                                          .profileImage == null ? const Icon(
-                                        Icons.add_business_outlined,
-                                        size: 40,
-                                        color: Colors.grey,
-                                      ) : null,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          image:
+                                              GetClinicImageCubit.get(context)
+                                                          .profileImage !=
+                                                      null
+                                                  ? DecorationImage(
+                                                      image: FileImage(File(
+                                                          GetClinicImageCubit
+                                                                  .get(context)
+                                                              .profileImage!
+                                                              .path)),
+                                                      fit: BoxFit.cover,
+                                                    )
+                                                  : null),
+                                      child: GetClinicImageCubit.get(context)
+                                                  .profileImage ==
+                                              null
+                                          ? const Icon(
+                                              Icons.add_business_outlined,
+                                              size: 40,
+                                              color: Colors.grey,
+                                            )
+                                          : null,
                                     ),
                                   ),
-
                                   CircleAvatar(
                                     backgroundColor: ColorsManager.primary,
                                     radius: 18,
@@ -262,8 +272,7 @@ class _AddClinicState extends State<AddClinic> {
                 ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) =>
-                        Container(
+                    itemBuilder: (context, index) => Container(
                           margin: const EdgeInsets.only(bottom: 20.0),
                           padding: const EdgeInsets.all(12.0),
                           decoration: BoxDecoration(
@@ -276,12 +285,13 @@ class _AddClinicState extends State<AddClinic> {
                                 children: [
                                   Text(
                                     "Appointment ${index + 1}",
-                                    style: StyleManager.mainTextStyle15
-                                        .copyWith(
+                                    style:
+                                        StyleManager.mainTextStyle15.copyWith(
                                       fontWeight: FontWeight.normal,
-                                    ),),
+                                    ),
+                                  ),
                                   const Spacer(),
-                                  if(index != 0)
+                                  if (index != 0)
                                     IconButton(
                                       icon: const Icon(
                                         Icons.remove_circle_outline,
@@ -310,8 +320,9 @@ class _AddClinicState extends State<AddClinic> {
                                     appointments[index].day = newValue;
                                   });
                                 },
-                                validator: (value) =>
-                                value == null ? 'Please select a day' : null,
+                                validator: (value) => value == null
+                                    ? 'Please select a day'
+                                    : null,
                               ),
                               // EditInfoRow(
                               //   readOnly: true,
@@ -327,7 +338,9 @@ class _AddClinicState extends State<AddClinic> {
                                 children: [
                                   appointmentFieldBuilder(
                                       index: index, isFrom: true),
-                                  const SizedBox(width: 15,),
+                                  const SizedBox(
+                                    width: 15,
+                                  ),
                                   appointmentFieldBuilder(
                                       index: index, isFrom: false),
                                 ],
@@ -336,9 +349,8 @@ class _AddClinicState extends State<AddClinic> {
                           ),
                         ),
                     separatorBuilder: (context, index) =>
-                    const SizedBox(height: 20.0),
-                    itemCount: appointments.length
-                ),
+                        const SizedBox(height: 20.0),
+                    itemCount: appointments.length),
               ],
             ),
           ),
@@ -349,8 +361,7 @@ class _AddClinicState extends State<AddClinic> {
 
   Widget appointmentFieldBuilder({required int index, required bool isFrom}) =>
       Expanded(
-        child:
-        TextFormField(
+        child: TextFormField(
           validator: (value) {
             if (value!.isEmpty) {
               return 'this field is required';
@@ -369,13 +380,18 @@ class _AddClinicState extends State<AddClinic> {
           decoration: InputDecoration(
             labelText: isFrom ? 'From' : 'To',
             focusColor: ColorsManager.primary,
-            labelStyle: const TextStyle(fontSize: 14,),
+            labelStyle: const TextStyle(
+              fontSize: 14,
+            ),
           ),
-          controller: TextEditingController(text:
-          isFrom ?
-          appointments[index].from == null ? null : appointments[index].from!.timeOfDay
-              :
-          appointments[index].to == null ? null : appointments[index].to!.timeOfDay,
+          controller: TextEditingController(
+            text: isFrom
+                ? appointments[index].from == null
+                    ? null
+                    : appointments[index].from!.timeOfDay
+                : appointments[index].to == null
+                    ? null
+                    : appointments[index].to!.timeOfDay,
           ),
         ),
       );
@@ -389,10 +405,13 @@ class _AddClinicState extends State<AddClinic> {
     if (picked != null) {
       final now = DateTime.now();
       setState(() {
-        selectedTime = DateTime(now.year, now.month, now.day, picked.hour, picked.minute);
+        selectedTime =
+            DateTime(now.year, now.month, now.day, picked.hour, picked.minute);
       });
     }
-    return DateTimeFirebaseManager(dateTime:selectedTime==null?null: Timestamp.fromDate(selectedTime!), timeOfDay: picked==null?null: picked.format(context));
+    return DateTimeFirebaseManager(
+        dateTime:
+            selectedTime == null ? null : Timestamp.fromDate(selectedTime!),
+        timeOfDay: picked == null ? null : picked.format(context));
   }
 }
-

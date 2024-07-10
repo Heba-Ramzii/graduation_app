@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:graduation_app/core/theme_manager/colors_manager.dart';
+import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
 
 import '../../../../generated/assets.dart';
 import '../../pages/ai_diagnosis/ai-diagnosis_detected.dart';
 
 class XrayImage extends StatelessWidget {
-  const XrayImage({super.key});
+  const XrayImage(
+      {super.key, required this.patientId, required this.patientBookModelId});
+
+  final String patientId;
+  final String patientBookModelId;
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +26,24 @@ class XrayImage extends StatelessWidget {
           ),
         ),
         InkWell(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const AIDiagnosisDetectedScreen()));
-        },
-        child: const CircleAvatar(
-          backgroundColor: ColorsManager.secondary,
-          child: Icon(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AIDiagnosisDetectedScreen(
+                          patientId: patientId,
+                          patientBookModelId: patientBookModelId,
+                        )));
+          },
+          child: const CircleAvatar(
+            backgroundColor: ColorsManager.secondary,
+            child: Icon(
               IconlyBold.scan,
-            color: ColorsManager.primary,
-            size: 24,
+              color: ColorsManager.primary,
+              size: 24,
+            ),
           ),
-        ),
-                  )
+        )
       ],
     );
   }

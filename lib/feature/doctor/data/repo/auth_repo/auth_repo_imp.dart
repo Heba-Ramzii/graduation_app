@@ -88,7 +88,11 @@ class AuthRepoImp implements AuthRepo {
       );
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
       DoctorModel authModel = DoctorModel(
-          name: name, email: email, id: response.user!.uid, isDoctor: isDoctor);
+          name: name,
+          email: email,
+          id: response.user!.uid,
+          isDoctor: isDoctor,
+          adminVerified: false);
       await FirebaseFirestore.instance
           .collection('users')
           .doc(authModel.id)

@@ -21,7 +21,6 @@ class PatientAppointmentList extends StatelessWidget {
           '${getNextDayTime(DateTime.now().weekday, '${appointmentModel.from!.dateTime!.toDate().hour}'
               ':'
               '${appointmentModel.from!.dateTime!.toDate().minute}').toString()}${FirebaseAuth.instance.currentUser!.uid}';
-      print('+++++++ ${id}');
       return StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('patientsBooks')

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:graduation_app/core/core_widgets/call_my_toast.dart';
 import 'package:graduation_app/core/core_widgets/custom_app_bar.dart';
 import 'package:graduation_app/core/core_widgets/default_loading.dart';
@@ -41,8 +43,42 @@ class ScheduleScreen extends StatelessWidget {
                     .copyWith(color: ColorsManager.font),
               ),
             ),
-            Text(
-              doctorModel.speciality ?? '',
+            Row(
+              children: [
+                Text(
+                  doctorModel.speciality ?? '',
+                ),
+                const Spacer(),
+                RatingBar.builder(
+                  //  ignoreGestures: true,
+                  initialRating: doctorModel.rate ?? 0.0,
+                  itemSize: 20,
+                  itemCount: 5,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: ColorsManager.gold,
+                  ),
+                  onRatingUpdate: (value) async {
+                    int newValue = (doctorModel.rateSubmission! + value) ~/
+                        (doctorModel.raters! + 1);
+                    print('******** Rate $newValue **************');
+                    await FirebaseFirestore.instance
+                        .collection('users')
+                        .doc(doctorModel.id)
+                        .update({
+                      'rate': newValue,
+                      'rateSubmission': doctorModel.rateSubmission! + value,
+                      'raters': doctorModel.raters! + 1
+                    });
+                    doctorModel.rate = newValue.toDouble();
+                    doctorModel.rateSubmission =
+                        doctorModel.rateSubmission! + value;
+                    doctorModel.raters = doctorModel.raters! + 1;
+                  },
+                ),
+              ],
             ),
             const SizedBox(height: 30),
             Text(

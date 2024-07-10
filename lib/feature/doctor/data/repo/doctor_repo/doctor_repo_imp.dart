@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation_app/core/failure/failure.dart';
 import 'package:graduation_app/feature/doctor/data/models/clinic_model.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
+import 'package:graduation_app/feature/patient/data/models/patient_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'doctor_repo.dart';
 
@@ -90,7 +91,8 @@ class DoctorRepoImp implements DoctorRepo {
   }
 
   @override
-  Future<Either<Failure, DoctorModel>> getDoctorRebook({required String doctorId}) async {
+  Future<Either<Failure, DoctorModel>> getDoctorRebook(
+      {required String doctorId}) async {
     try {
       var response = await FirebaseFirestore.instance
           .collection('users')
@@ -180,7 +182,7 @@ class DoctorRepoImp implements DoctorRepo {
     try {
       var response = await FirebaseFirestore.instance
           .collection('users')
-          .doc(docID??_firebaseAuth.currentUser!.uid)
+          .doc(docID ?? _firebaseAuth.currentUser!.uid)
           .collection('appointments')
           .where("clinicId", isEqualTo: clinicId)
           .get();
@@ -199,7 +201,7 @@ class DoctorRepoImp implements DoctorRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteClinic({required String clinicId}) async{
+  Future<Either<Failure, void>> deleteClinic({required String clinicId}) async {
     try {
       await FirebaseFirestore.instance
           .collection('users')
@@ -207,6 +209,45 @@ class DoctorRepoImp implements DoctorRepo {
           .collection('clinics')
           .doc(clinicId)
           .delete();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(Failure.fromFirebaseError(e));
+    } catch (e) {
+      return left(Failure("400", e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> confirmAppointment(
+      {required DoctorModel doctorModel,
+      required String patientId,
+      required String patientBookModelId}) async {
+    try {
+      WriteBatch batch = FirebaseFirestore.instance.batch();
+      batch.update(
+          FirebaseFirestore.instance
+              .collection('patientsBooks')
+              .doc(patientBookModelId),
+          {"status": 2});
+
+      doctorModel.patientsID.add(patientId);
+      batch.update(
+          FirebaseFirestore.instance.collection('users').doc(doctorModel.id),
+          {'patientsID': doctorModel.patientsID});
+
+      var response = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(patientId)
+          .get();
+      PatientModel patientModel = PatientModel.fromJson(response.data()!);
+      patientModel.doctorsID.add(doctorModel.id!);
+
+      batch.update(
+          FirebaseFirestore.instance.collection('users').doc(patientModel.id),
+          {'doctorsID': patientModel.doctorsID});
+
+      await batch.commit();
+
       return right(null);
     } on FirebaseAuthException catch (e) {
       return left(Failure.fromFirebaseError(e));

@@ -11,6 +11,7 @@ class PatientModel {
   bool? isDoctor;
   XFile? image;
   List<String> favoriteDoctors = [];
+  List<String> doctorsID = [];
 
   PatientModel({
     this.id,
@@ -34,6 +35,10 @@ class PatientModel {
     if (json['favoriteDoctors'] != null) {
       favoriteDoctors = json['favoriteDoctors'].cast<String>();
     }
+
+    if (json['doctorsID'] != null) {
+      doctorsID = json['doctorsID'].cast<String>();
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -45,7 +50,8 @@ class PatientModel {
       'isDoctor': isDoctor,
       'imagePath': imagePath,
       'birthDate': birthDate,
-      'favoriteDoctors': favoriteDoctors
+      'favoriteDoctors': favoriteDoctors,
+      'doctorsID': doctorsID
     };
   }
 }

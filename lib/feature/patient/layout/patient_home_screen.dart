@@ -334,46 +334,56 @@ class PatientHomeScreen extends StatelessWidget {
                 return Text("Loading");
               }
 
-              return SizedBox(
-                height: 110,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: patientBookSnapshot.data!.docs
-                      .map((DocumentSnapshot document) {
-                    Map<String, dynamic> data =
-                        document.data()! as Map<String, dynamic>;
-                    PatientBookModel patientBookModel =
-                        PatientBookModel.fromJson(data);
-                    return FutureBuilder<DocumentSnapshot>(
-                      future: FirebaseFirestore.instance
-                          .collection('clinicBooks')
-                          .doc(patientBookModel.bookId)
-                          .get(),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<DocumentSnapshot> snapshot) {
-                        if (snapshot.hasError) {
-                          return Text("Something went wrong");
-                        }
+              if (patientBookSnapshot.data != null) {
+                if (patientBookSnapshot.data!.docs.isEmpty) {
+                  return const Center(
+                    child: Text('No upcoming appointment yet !'),
+                  );
+                } else {
+                  return SizedBox(
+                    height: 110,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: patientBookSnapshot.data!.docs
+                          .map((DocumentSnapshot document) {
+                        Map<String, dynamic> data =
+                            document.data()! as Map<String, dynamic>;
+                        PatientBookModel patientBookModel =
+                            PatientBookModel.fromJson(data);
+                        return FutureBuilder<DocumentSnapshot>(
+                          future: FirebaseFirestore.instance
+                              .collection('clinicBooks')
+                              .doc(patientBookModel.bookId)
+                              .get(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<DocumentSnapshot> snapshot) {
+                            if (snapshot.hasError) {
+                              return Text("Something went wrong");
+                            }
 
-                        if (snapshot.hasData && !snapshot.data!.exists) {
-                          return Text("Document does not exist");
-                        }
+                            if (snapshot.hasData && !snapshot.data!.exists) {
+                              return Text("Document does not exist");
+                            }
 
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          Map<String, dynamic> data =
-                              snapshot.data!.data() as Map<String, dynamic>;
-                          BookModel bookModel = BookModel.fromJson(data);
-                          return AppointmentCard(
-                            bookModel: bookModel,
-                            patientBookModel: patientBookModel,
-                          );
-                        }
-                        return Text("loading");
-                      },
-                    );
-                  }).toList(),
-                ),
-              );
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              Map<String, dynamic> data =
+                                  snapshot.data!.data() as Map<String, dynamic>;
+                              BookModel bookModel = BookModel.fromJson(data);
+                              return AppointmentCard(
+                                bookModel: bookModel,
+                                patientBookModel: patientBookModel,
+                              );
+                            }
+                            return Text("loading");
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  );
+                }
+              }
+              return const SizedBox();
             },
           ),
 
@@ -424,33 +434,40 @@ class PatientHomeScreen extends StatelessWidget {
                   return Text("Loading");
                 }
                 if (snapshot.data != null) {
-                  return CarouselSlider(
-                    options: CarouselOptions(autoPlay: true, aspectRatio: 2.5),
-                    items: List.generate(snapshot.data!.docs.length, (index) {
-                      Map<String, dynamic> data = snapshot.data!.docs[index]
-                          .data() as Map<String, dynamic>;
-                      return BlocConsumer<GetPatientCubit, GetPatientState>(
-                        listener: (context, state) {
-                          if (state is GetPatientFailure) {
-                            goToFinish(context, const LoginScreen());
-                          }
-                        },
-                        builder: (context, state) {
-                          if (state is GetPatientSuccess) {
-                            return DoctorCard(
-                                doctorModel: DoctorModel.fromJson(data),
-                                favoriteDoctors: GetPatientCubit.get(context)
-                                    .patientModel!
-                                    .favoriteDoctors);
-                          } else if (state is GetPatientLoading) {
-                            return const DefaultLoading();
-                          }
-                          return const SizedBox();
-                        },
-                      );
-                      //return RecommandedDoctorCard(doctorModel: DoctorModel.fromJson(data));
-                    }),
-                  );
+                  if (snapshot.data!.docs.isEmpty) {
+                    return const Center(
+                      child: Text('There is no doctor available'),
+                    );
+                  } else {
+                    return CarouselSlider(
+                      options:
+                          CarouselOptions(autoPlay: true, aspectRatio: 2.5),
+                      items: List.generate(snapshot.data!.docs.length, (index) {
+                        Map<String, dynamic> data = snapshot.data!.docs[index]
+                            .data() as Map<String, dynamic>;
+                        return BlocConsumer<GetPatientCubit, GetPatientState>(
+                          listener: (context, state) {
+                            if (state is GetPatientFailure) {
+                              goToFinish(context, const LoginScreen());
+                            }
+                          },
+                          builder: (context, state) {
+                            if (state is GetPatientSuccess) {
+                              return DoctorCard(
+                                  doctorModel: DoctorModel.fromJson(data),
+                                  favoriteDoctors: GetPatientCubit.get(context)
+                                      .patientModel!
+                                      .favoriteDoctors);
+                            } else if (state is GetPatientLoading) {
+                              return const DefaultLoading();
+                            }
+                            return const SizedBox();
+                          },
+                        );
+                        //return RecommandedDoctorCard(doctorModel: DoctorModel.fromJson(data));
+                      }),
+                    );
+                  }
                 }
                 return const SizedBox();
               }),

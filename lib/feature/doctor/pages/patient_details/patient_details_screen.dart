@@ -6,8 +6,12 @@ import 'package:graduation_app/feature/doctor/widgets/patient_details/xray_image
 import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 
 class PatientDetailsScreen extends StatelessWidget {
-  const PatientDetailsScreen(
-      {super.key, required this.patientBookModel, required this.index});
+  const PatientDetailsScreen({
+    super.key,
+    required this.patientBookModel,
+    required this.index,
+  });
+
   final PatientBookModel patientBookModel;
   final int index;
 
@@ -25,7 +29,11 @@ class PatientDetailsScreen extends StatelessWidget {
               patientBookModel: patientBookModel,
             ),
             PatientNote(problem: patientBookModel.description ?? ''),
-            Center(child: XrayImage()),
+            Center(
+                child: XrayImage(
+              patientId: patientBookModel.patientId!,
+              patientBookModelId: patientBookModel.id!,
+            )),
           ],
         ),
       ),

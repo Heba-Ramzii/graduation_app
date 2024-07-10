@@ -7,23 +7,37 @@ class DoctorModel {
   String? email;
   String? phone;
   String? imagePath;
+  String? nationalIdImagePath;
+  String? licenseImagePath;
   Timestamp? birthDate;
   bool? isDoctor;
   XFile? image;
+  XFile? nationalIdImage;
+  XFile? licenseImage;
   String? speciality;
   double? rate;
+  double? rateSubmission;
+  int? raters;
+  String? adminReason;
+  bool? adminVerified;
+  List<String> patientsID = [];
 
-  DoctorModel({
-    this.id,
-    this.name,
-    this.email,
-    this.birthDate,
-    this.isDoctor,
-    this.phone,
-    this.imagePath,
-    this.speciality,
-    this.rate,
-  });
+  DoctorModel(
+      {this.id,
+      this.name,
+      this.email,
+      this.birthDate,
+      this.isDoctor,
+      this.phone,
+      this.imagePath,
+      this.speciality,
+      this.rate,
+      this.adminReason,
+      this.adminVerified,
+      this.licenseImagePath,
+      this.nationalIdImagePath,
+      this.rateSubmission,
+      this.raters});
 
   DoctorModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -35,6 +49,16 @@ class DoctorModel {
     birthDate = json['birthDate'];
     speciality = json['speciality'];
     rate = json['rate'] == null ? 0.0 : json['rate'].toDouble();
+    adminReason = json['adminReason'];
+    adminVerified = json['adminVerified'];
+    licenseImagePath = json['licenseImagePath'];
+    nationalIdImagePath = json['nationalIdImagePath'];
+    raters = json['raters'] ?? 0;
+    rateSubmission = json['rateSubmission'] ?? 0;
+
+    if (json['patientsID'] != null) {
+      patientsID = json['patientsID'].cast<String>();
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -48,6 +72,13 @@ class DoctorModel {
       'birthDate': birthDate,
       'speciality': speciality,
       'rate': rate,
+      'adminReason': adminReason,
+      'adminVerified': adminVerified,
+      'licenseImagePath': licenseImagePath,
+      'nationalIdImagePath': nationalIdImagePath,
+      'patientsID': patientsID,
+      'raters': raters ?? 0,
+      'rateSubmission': rateSubmission ?? 0
     };
   }
 }
