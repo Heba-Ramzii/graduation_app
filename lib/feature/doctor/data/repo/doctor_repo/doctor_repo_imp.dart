@@ -259,11 +259,22 @@ class DoctorRepoImp implements DoctorRepo {
           'id': chatID,
           'doctorId': doctorModel.id,
           'patientId': patientId,
+          'lastMessage': model!.report,
+          'lastMessageTime': Timestamp.fromDate( DateTime.now()),
+          'lastMessageIsDoctor': true,
+        });
+      }
+      else
+      {
+        batch.update( FirebaseFirestore.instance.collection('chat').doc(chatID), {
+          'lastMessage': model!.report,
+          'lastMessageTime': Timestamp.fromDate( DateTime.now()),
+          'lastMessageIsDoctor': true,
         });
       }
       batch.set( FirebaseFirestore.instance.collection('chat').doc(chatID)
           .collection('messages').doc(), {
-        'message': model!.report,
+        'message': model.report,
         'senderIsDoctor': true,
         'time': Timestamp.fromDate( DateTime.now()),
       });

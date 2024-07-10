@@ -34,7 +34,7 @@ class _PatientHomeState extends State<PatientHome> {
 
   List<Widget> screens = [
     const PatientHomeScreen(),
-    const ChatScreen(),
+    const ChatPatientScreen(),
     const AppointmentsPatientScreen(),
     const PatientMoreScreen(),
   ];

@@ -37,10 +37,6 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   intl:
-  pdf:
-  printing:
-  open_file:
-  path_provider:
   dio:
   toastification: ^1.2.1
   flutter_svg: ^2.0.10+1

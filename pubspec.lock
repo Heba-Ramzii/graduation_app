@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  ansicolor:
+    dependency: transitive
+    description:
+      name: ansicolor
+      sha256: "8bf17a8ff6ea17499e40a2d2542c2f481cd7615760c6d34065cb22bfd22e6880"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   archive:
     dependency: transitive
     description:
@@ -41,14 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  barcode:
-    dependency: transitive
-    description:
-      name: barcode
-      sha256: ab180ce22c6555d77d45f0178a523669db67f95856e3378259ef2ffeb43e6003
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.8"
   bloc:
     dependency: "direct main"
     description:
@@ -458,10 +458,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_native_splash
-      sha256: "6777a3abb974021a39b5fdd2d46a03ca390e03903b6351f21d10e7ecc969f12d"
+      sha256: "558f10070f03ee71f850a78f7136ab239a67636a294a44a06b6b7345178edb1e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.16"
+    version: "2.3.10"
   flutter_parsed_text:
     dependency: transitive
     description:
@@ -572,10 +572,10 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "8e9d133755c3e84c73288363e6343157c383a0c6c56fc51afcc5d4d7180306d6"
+      sha256: "2237616a36c0d69aef7549ab439b833fb7f9fb9fc861af2cc9ac3eedddd69ca8"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.0"
+    version: "4.2.0"
   image_picker:
     dependency: "direct main"
     description:
@@ -736,14 +736,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  open_file:
-    dependency: "direct main"
-    description:
-      name: open_file
-      sha256: "5cd0288033d613ee7908aa974b7ff00805ae55d253f64d311603cf2e30613ca8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.1"
   page_transition:
     dependency: "direct main"
     description:
@@ -769,7 +761,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
@@ -824,14 +816,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0+3"
-  pdf:
-    dependency: "direct main"
-    description:
-      name: pdf
-      sha256: "10659b915e65832b106f6d1d213e09b789cc1f24bf282ee911e49db35b96be4d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.8.4"
   percent_indicator:
     dependency: "direct main"
     description:
@@ -872,14 +856,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-  printing:
-    dependency: "direct main"
-    description:
-      name: printing
-      sha256: d97b1e6007ed15b8197211dd7810c4da7b4a6af610e48e305fb6e2ced01a9cd1
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.3.0"
   provider:
     dependency: transitive
     description:
@@ -888,14 +864,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.2"
-  qr:
-    dependency: transitive
-    description:
-      name: qr
-      sha256: "64957a3930367bf97cc211a5af99551d630f2f4625e38af10edd6b19131b64b3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.1"
   rxdart:
     dependency: transitive
     description:
