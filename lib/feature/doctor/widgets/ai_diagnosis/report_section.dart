@@ -10,6 +10,8 @@ import 'package:graduation_app/feature/doctor/cubit/confirm_cubit/confirm_cubit.
 import 'package:graduation_app/feature/doctor/cubit/confirm_cubit/confirm_state.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doctor_cubit/get_doctor_cubit.dart';
 import 'package:graduation_app/feature/doctor/data/models/ai_model.dart';
+import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 
 class ReportSection extends StatelessWidget {
   const ReportSection({super.key});
@@ -59,9 +61,9 @@ class ReportSection extends StatelessWidget {
 }
 
 class ReportDoctorSection extends StatefulWidget {
-  const ReportDoctorSection({super.key , required this.patientId, required this.patientBookModelId, this.model});
+  const ReportDoctorSection({super.key , required this.patientId, required this.patientBookModel, this.model});
   final String patientId;
-  final String patientBookModelId;
+  final PatientBookModel patientBookModel;
   final AIModel? model;
 
   @override
@@ -142,12 +144,13 @@ class _ReportDoctorSectionState extends State<ReportDoctorSection> {
                     onPressed: () {
                       if(formKey.currentState!.validate()){
                         widget.model!.report = controller.text;
+                        widget.patientBookModel.patientName;
 
                         ConfirmCubit.get(context).confirm(
                             model: widget.model!,
                             doctorModel: GetDoctorCubit.get(context).doctorModel!,
                             patientId: widget.patientId,
-                            patientBookModelId: widget.patientBookModelId);
+                            patientBookModelId: widget.patientBookModel.id!);
                       }}
                       );
 

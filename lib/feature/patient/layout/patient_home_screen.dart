@@ -182,12 +182,6 @@ class PatientHomeScreen extends StatelessWidget {
                   return const SizedBox();
                 },
               ),
-              IconButton(
-                iconSize: 30,
-                color: ColorsManager.blue,
-                onPressed: () {},
-                icon: const Icon(Icons.notifications_none),
-              ),
             ],
           ),
           const SizedBox(height: 16),

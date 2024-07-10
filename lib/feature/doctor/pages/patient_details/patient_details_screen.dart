@@ -32,7 +32,7 @@ class PatientDetailsScreen extends StatelessWidget {
             Center(
                 child: XrayImage(
               patientId: patientBookModel.patientId!,
-              patientBookModelId: patientBookModel.id!,
+                  patientBookModel: patientBookModel,
             )
             ),
           ],

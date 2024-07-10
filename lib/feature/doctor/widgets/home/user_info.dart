@@ -56,12 +56,6 @@ class UserInfoSection extends StatelessWidget {
                   ],
                 ),
               ),
-              const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: const FaIcon(FontAwesomeIcons.bell),
-                color: ColorsManager.primary,
-              ),
             ],
           );
         }));

@@ -23,6 +23,7 @@ import 'package:graduation_app/feature/doctor/cubit/update_doctor_cubit/update_d
 import 'package:graduation_app/feature/doctor/data/repo/ai_repo/ai_repo_imp.dart';
 import 'package:graduation_app/feature/doctor/data/repo/auth_repo/auth_repo_imp.dart';
 import 'package:graduation_app/feature/doctor/data/repo/doctor_repo/doctor_repo_imp.dart';
+import 'package:graduation_app/feature/doctor/widgets/report_pdf/create.dart';
 import 'package:graduation_app/feature/patient/cubit/add_new_clinic_booking/add_new_clinic_booking_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/delete_book/delete_book_cubit.dart';
 import 'package:graduation_app/feature/patient/cubit/get_doctor_rebook_cubit/get_doctor_rebook_cubit.dart';
@@ -31,6 +32,8 @@ import 'package:graduation_app/feature/patient/cubit/get_patient_image_cubit/get
 import 'package:graduation_app/feature/patient/cubit/update_patient_cubit/update_patient_cubit.dart';
 import 'package:graduation_app/feature/patient/data/repo/patient_repo/patient_repo_imp.dart';
 import 'package:graduation_app/feature/patient/layout/splash_screen.dart';
+
+import '../../feature/doctor/widgets/report_pdf/pdf_report.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -109,7 +112,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: ColorsManager.primaryMaterialColor,
         ),
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home:  Home(),
       ),
     );
   }

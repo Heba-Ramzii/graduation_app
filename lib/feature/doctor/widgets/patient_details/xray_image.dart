@@ -12,16 +12,17 @@ import 'package:graduation_app/feature/doctor/cubit/ai_cubit/ai_diagnosis_state.
 import 'package:graduation_app/feature/doctor/cubit/get_doc_diagnose_image_cubit/get_doc_diagnose_image_cubit.dart';
 import 'package:graduation_app/feature/doctor/cubit/get_doc_diagnose_image_cubit/get_doc_diagnose_image_state.dart';
 import 'package:graduation_app/feature/doctor/data/models/doctor_model.dart';
+import 'package:graduation_app/feature/patient/data/models/book_model.dart';
 
 import '../../../../generated/assets.dart';
 import '../../pages/ai_diagnosis/ai-diagnosis_detected.dart';
 
 class XrayImage extends StatelessWidget {
   const XrayImage(
-      {super.key, required this.patientId, required this.patientBookModelId});
+      {super.key, required this.patientId, required this.patientBookModel});
 
   final String patientId;
-  final String patientBookModelId;
+  final PatientBookModel patientBookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class XrayImage extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => AIDiagnosisDetectedDoctorScreen(
                     patientId: patientId,
-                    patientBookModelId: patientBookModelId,
+                    patientBookModel: patientBookModel,
                     model: state.result,
                     image: AiDiagnosisCubit.get(context).image,
 
