@@ -5,8 +5,8 @@ class DioHelper {
   static late Dio dio;
   static init() {
     dio = Dio(BaseOptions(
-      //local http://127.0.0.1:8000/
-      baseUrl: "https://doctor-assistant-ai-model-production.up.railway.app/",
+        baseurl: "http://192.168.1.16:8000/",
+      //baseUrl: "https://doctor-assistant-ai-model-production.up.railway.app/",
       // receiveDataWhenStatusError: true,
       // connectTimeout: const Duration(
       //   seconds: 10,
