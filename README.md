@@ -87,3 +87,18 @@ python manage.py runserver
 cd admin_dashboard
 npm install
 npm start
+
+---
+
+## 🚀 Future Roadmap
+IoT integration for remote patient monitoring
+
+Expansion to cardiology and neurology specialties
+
+Multi-disease AI detection models
+
+Payment gateway implementation (Stripe/Paymob)
+
+Multi-language support (Arabic/English)
+
+---
