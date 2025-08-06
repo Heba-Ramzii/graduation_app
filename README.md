@@ -66,6 +66,20 @@
 
 ---
 
+## 🚀 Future Roadmap
+IoT integration for remote patient monitoring
+
+Expansion to cardiology and neurology specialties
+
+Multi-disease AI detection models
+
+Payment gateway implementation (Stripe/Paymob)
+
+Multi-language support (Arabic/English)
+
+
+---
+
 ## 📦 Installation
 ```bash
 # Clone repository
@@ -90,15 +104,4 @@ npm start
 
 ---
 
-## 🚀 Future Roadmap
-IoT integration for remote patient monitoring
 
-Expansion to cardiology and neurology specialties
-
-Multi-disease AI detection models
-
-Payment gateway implementation (Stripe/Paymob)
-
-Multi-language support (Arabic/English)
-
----
